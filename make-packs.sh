@@ -1,17 +1,20 @@
-DIVADISTRO=../diva-distribution
-MAUTIL=$DIVADISTRO/bin/mautil.exe
-MIREPO=../mono-addin-repos/metaverseink
-wd=`pwd`
+#!/bin/bash
 
-cd $DIVADISTRO
-$MAUTIL pack bin/Diva.AddinExample.dll
-$MAUTIL pack bin/Diva.Interfaces.dll
-$MAUTIL pack bin/Diva.Wifi.dll
+DIVADISTRO="../diva-distribution"
+MAUTIL="$DIVADISTRO/bin/mautil.exe"
+MIREPO="../mono-addin-repos/metaverseink"
+wd=$(pwd)
 
-mv Diva.AddinExample_* $MIREPO
-mv Diva.Interfaces_* $MIREPO
-mv Diva.Wifi_* $MIREPO
+cd "$DIVADISTRO" || { echo "Failed to change directory to $DIVADISTRO"; exit 1; }
 
-$MAUTIL rep-build $MIREPO
+"$MAUTIL" pack bin/Diva.AddinExample.dll
+"$MAUTIL" pack bin/Diva.Interfaces.dll
+"$MAUTIL" pack bin/Diva.Wifi.dll
 
-cd $wd
+mv Diva.AddinExample_* "$MIREPO"
+mv Diva.Interfaces_* "$MIREPO"
+mv Diva.Wifi_* "$MIREPO"
+
+"$MAUTIL" rep-build "$MIREPO"
+
+cd "$wd" || { echo "Failed to return to the original directory"; exit 1; }
