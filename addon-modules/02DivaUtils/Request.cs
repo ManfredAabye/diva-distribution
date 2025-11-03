@@ -29,6 +29,7 @@ using System.Globalization;
 using System.Net;
 using System.Web;
 using OpenSim.Framework.Servers.HttpServer;
+using OSHttpServer;
 
 using Diva.Interfaces;
 
@@ -37,7 +38,7 @@ namespace Diva.Utils
     public struct Request : IRequest
     {
         public string Resource;
-        public HttpCookieCollection Cookies;
+        public RequestCookies Cookies;
         public IPEndPoint IPEndPoint;
         public Hashtable Query;
         public CultureInfo[] LanguageInfo;
@@ -54,7 +55,7 @@ namespace Diva.Utils
         {
             Request request = new Request();
             request.Resource = resource;
-            request.Cookies = httpRequest.Cookies;
+            request.Cookies = null; // IOSHttpRequest does not provide Cookies property in OpenSim
             request.IPEndPoint = httpRequest.RemoteIPEndPoint;
             request.Query = httpRequest.Query;
             request.LanguageInfo = cinfo;
