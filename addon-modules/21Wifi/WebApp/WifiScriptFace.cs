@@ -103,7 +103,7 @@ namespace Diva.Wifi
 
         public string RuntimeInfo
         {
-            get { return OpenSim.Framework.Util.GetRuntimeInformation(); }
+            get { return OpenSim.Framework.Util.RuntimeInformationStr; }
         }
 
         public uint UsersInworld
