@@ -1,4 +1,4 @@
-    <Project name="Configure" path="addon-modules/configuration" type="Exe">
+    <Project name="Configure" path="addon-modules/30Configuration" type="Exe">
       <Configuration name="Debug">
         <Options>
           <OutputPath>../../bin/</OutputPath>

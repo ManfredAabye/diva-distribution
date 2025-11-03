@@ -1,5 +1,5 @@
 <!-- Diva.Wifi.ScriptEngine -->
-<Project name="Diva.Utils" path="addon-modules/01DivaUtils" type="Library">
+<Project name="Diva.Utils" path="addon-modules/02DivaUtils" type="Library">
   <Configuration name="Debug">
     <Options>
       <OutputPath>../../bin/</OutputPath>

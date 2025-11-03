@@ -1,4 +1,4 @@
-    <Project name="Update" path="addon-modules/update" type="Exe">
+    <Project name="Update" path="addon-modules/31Update" type="Exe">
       <Configuration name="Debug">
         <Options>
           <OutputPath>../../bin/</OutputPath>
