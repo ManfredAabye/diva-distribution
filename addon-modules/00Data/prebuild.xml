@@ -2,17 +2,43 @@
 <Project name="Diva.Data" path="addon-modules/00Data" type="Library">
   <Configuration name="Debug">
     <Options>
+      <CompilerDefines>TRACE</CompilerDefines>
+      <OptimizeCode>false</OptimizeCode>
+      <CheckUnderflowOverflow>false</CheckUnderflowOverflow>
+      <AllowUnsafe>true</AllowUnsafe>
+      <WarningLevel>4</WarningLevel>
+      <WarningsAsErrors>false</WarningsAsErrors>
+      <SuppressWarnings>CA1416,SYSLIB0011,SYSLIB0014,SYSLIB0039</SuppressWarnings>
       <OutputPath>../../bin/</OutputPath>
+      <DebugInformation>true</DebugInformation>
+      <IncrementalBuild>true</IncrementalBuild>
+      <NoStdLib>false</NoStdLib>
+      <Prefer32Bit>false</Prefer32Bit>
+      <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+      <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+      <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     </Options>
   </Configuration>
   <Configuration name="Release">
     <Options>
+      <OptimizeCode>true</OptimizeCode>
+      <CheckUnderflowOverflow>false</CheckUnderflowOverflow>
+      <AllowUnsafe>true</AllowUnsafe>
+      <WarningLevel>4</WarningLevel>
+      <WarningsAsErrors>false</WarningsAsErrors>
+      <SuppressWarnings>CA1416,SYSLIB0011,SYSLIB0014,SYSLIB0039</SuppressWarnings>
       <OutputPath>../../bin/</OutputPath>
+      <DebugInformation>false</DebugInformation>
+      <IncrementalBuild>true</IncrementalBuild>
+      <NoStdLib>false</NoStdLib>
+      <Prefer32Bit>false</Prefer32Bit>
+      <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+      <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+      <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     </Options>
   </Configuration>
 
   <ReferencePath>../../bin/</ReferencePath>
-  <Reference name="System"/>
   
   <Reference name="OpenMetaverseTypes" path="../../bin/"/>
 
