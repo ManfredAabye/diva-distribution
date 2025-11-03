@@ -1,0 +1,33 @@
+<html>
+<head>
+<script type="text/javascript" language="JavaScript">
+function check() {
+  var ext = document.upload.datafile.value;
+  ext = ext.substring(ext.length-3,ext.length);
+  ext = ext.toLowerCase();
+  if(ext != 'kmz' && ext != 'KMZ' && ext != 'zip' && ext != 'ZIP') {
+    alert('Please select a .kmz file!');
+    return false; }
+  else
+    return true; }
+</script>
+</head>
+
+<body>
+<h2>Encitra KMZ Upload (*MODEL*)</h2>
+<form  name="upload" onsubmit="return check();" action="/encitra/objects/upload" enctype="multipart/form-data" method="post">
+<p>
+Chose a kmz file:<br>
+<input type="file" name="datafile" size="40">
+</p>
+<p><input type="checkbox" name="replace-doc" checked> Replace entire Document</p>
+<p>Assign objects to:</br>
+  &nbsp;&nbsp;First name: <input type="text" name="firstname"></br>
+  &nbsp;&nbsp;Last name: <input type="text" name="lastname">
+</p>
+<div>
+<input type="submit" value="Upload">
+</div>
+</form>
+</body>
+</html>
