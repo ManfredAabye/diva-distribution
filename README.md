@@ -1,4 +1,6 @@
-# 🚀 Diva Distribution - .NET 8 Edition
+# ⚠️ This is expert knowledge and has no use yet. ⚠️
+
+## 🚀 Diva Distribution - .NET 8 Edition
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![License](https://img.shields.io/badge/License-BSD--3--Clause-orange.svg)](LICENSE.txt)
