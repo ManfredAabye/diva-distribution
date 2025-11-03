@@ -2,7 +2,7 @@
 
 ## Wichtiger Hinweis
 
-Die Diva Distribution muss **innerhalb** des OpenSimulator Core-Projekts kompiliert werden, nicht als separates Projekt. 
+Die Diva Distribution muss **innerhalb** des OpenSimulator Core-Projekts kompiliert werden, nicht als separates Projekt.
 
 ## Korrekte Integration
 
@@ -22,6 +22,7 @@ cp -r /pfad/zur/diva-distribution/addon-modules/* addon-modules/
 ### 2. Prebuild-Integration
 
 Das OpenSim Core `prebuild.xml` bereits die Zeile:
+
 ```xml
 <?include file="addon-modules/*/prebuild*.xml" ?>
 ```
@@ -46,8 +47,9 @@ dotnet build OpenSim.sln -c Release
 ### 4. Visual Studio 2022/2026 Integration
 
 Die `runprebuild.bat` unterstützt jetzt:
+
 - Visual Studio 2026 (bevorzugt)
-- Visual Studio 2022 
+- Visual Studio 2022
 - .NET 8 CLI als Fallback
 
 Das Target ist jetzt `vs2022` statt der veralteten `vs2015`.
@@ -61,7 +63,7 @@ Das Target ist jetzt `vs2022` statt der veralteten `vs2015`.
 
 ## Verzeichnisstruktur
 
-```
+```bash
 opensim-core/
 ├── OpenSim/              # Core OpenSim Code
 ├── bin/                  # Compiled Output
@@ -77,16 +79,19 @@ opensim-core/
 ## Wichtige Datei-Anpassungen
 
 ### runprebuild.bat (Windows)
+
 - Target: `vs2022` statt `vs2015`
 - Unterstützung für VS 2022/2026
 - .NET CLI Fallback
 
 ### runprebuild.sh (Linux/macOS)  
+
 - Target: `vs2022`
 - .NET CLI Integration
 - Mono nur für Prebuild.exe (falls benötigt)
 
 ### Modul prebuild.xml Dateien
+
 - Entfernte `frameworkVersion` Attribute
 - Korrekte Pfade zu OpenSim.Framework
 - .NET 8 Kompatibilität

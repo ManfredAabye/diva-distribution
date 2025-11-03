@@ -1,11 +1,12 @@
 # 🚀 Diva Distribution .NET 8 Migration Guide
 
-**Umfassende Anleitung für die Migration von .NET Framework 4.8 zu .NET 8**
+Umfassende Anleitung für die Migration von .NET Framework 4.8 zu .NET 8
 
 ---
 
 ## 📖 Inhaltsverzeichnis
 
+```bash
 - [🎯 Überblick](#-überblick)
 - [👶 Für Anfänger](#-für-anfänger)
 - [🔧 Für System-Administratoren](#-für-system-administratoren)
@@ -16,6 +17,7 @@
 - [🔄 Update-Prozess](#-update-prozess)
 - [🆘 Troubleshooting](#-troubleshooting)
 - [❓ FAQ](#-faq)
+```
 
 ---
 
@@ -33,7 +35,7 @@ Die Diva Distribution wurde erfolgreich von .NET Framework 4.8 auf .NET 8 portie
 
 ### 🏗️ Neue Modulstruktur
 
-```
+```bash
 📦 addon-modules/
 ├── 📁 00Data                    # Datenbank-Layer
 ├── 📁 01DivaInterfaces          # Kern-Interfaces  
@@ -70,6 +72,7 @@ OpenSim ist eine Open-Source-Plattform für virtuelle Welten, ähnlich wie Secon
    - MySQL oder SQLite Datenbank
 
 2. **OpenSimulator Core + Diva Distribution setup:**
+
    ```bash
    # OpenSim Core herunterladen
    git clone https://github.com/opensim/opensim.git opensim-core
@@ -80,6 +83,7 @@ OpenSim ist eine Open-Source-Plattform für virtuelle Welten, ähnlich wie Secon
    ```
 
 3. **Kompilieren:**
+
    ```bash
    # Windows
    .\runprebuild.bat
@@ -89,8 +93,9 @@ OpenSim ist eine Open-Source-Plattform für virtuelle Welten, ähnlich wie Secon
    ./runprebuild.sh
    dotnet build OpenSim.sln -c Release
    ```
-   
+
 4. **OpenSim starten:**
+
    ```bash
    cd bin
    dotnet OpenSim.dll
@@ -106,13 +111,15 @@ OpenSim ist eine Open-Source-Plattform für virtuelle Welten, ähnlich wie Secon
 
 ### 📋 System-Anforderungen
 
-#### Mindestanforderungen:
+#### Mindestanforderungen
+
 - **CPU:** 2 GHz Dual-Core
 - **RAM:** 4 GB (8 GB empfohlen)
 - **Speicher:** 10 GB freier Speicherplatz
 - **Netzwerk:** Breitband-Internet für Hypergrid-Konnektivität
 
-#### Software-Anforderungen:
+#### Software-Anforderungen
+
 - **.NET 8 Runtime/SDK:** [Download](https://dotnet.microsoft.com/download/dotnet/8.0)
 - **Datenbank:** MySQL 8.0+ oder SQLite
 - **Firewall:** Ports 9000-9010 (TCP/UDP) geöffnet
@@ -214,12 +221,14 @@ dotnet build OpenSim.sln
 ### 📦 Neues Addon-Modul erstellen
 
 1. **Verzeichnis erstellen:**
+
    ```bash
    mkdir addon-modules/[NN]ModuleName
    cd addon-modules/[NN]ModuleName
    ```
 
 2. **prebuild.xml erstellen:**
+
    ```xml
    <Project name="Your.Module" path="addon-modules/[NN]ModuleName" type="Library">
      <Configuration name="Debug">
@@ -246,6 +255,7 @@ dotnet build OpenSim.sln
    ```
 
 3. **C# Klasse erstellen:**
+
    ```csharp
    using System;
    using OpenSim.Framework;
@@ -292,13 +302,15 @@ dotnet-trace collect --process-id [PID]
 
 ### 📚 API-Referenz
 
-#### Wichtige Interfaces:
+#### Wichtige Interfaces
+
 - `ISharedRegionModule` - Basis für alle Module
 - `IRegionModuleBase` - Grundlegende Region-Module
 - `IWifiAddon` - Wifi-Erweiterungen
 - `ISceneActor` - Scene-Aktionen
 
-#### Nützliche Utilities:
+#### Nützliche Utilities
+
 - `Diva.Utils.WebAppUtils` - Web-Utilities
 - `Diva.Utils.HttpContentParser` - HTTP-Parsing
 - `Diva.Utils.CSVUtil` - CSV-Verarbeitung
@@ -320,21 +332,24 @@ dotnet-trace collect --process-id [PID]
 ### 📋 Modul-Details
 
 #### 00Data - Datenbank-Layer
-```
+
+```bash
 Zweck: Datenbankzugriff und -verwaltung
 Abhängigkeiten: MySQL/SQLite, OpenSim.Data
 Interfaces: IRegionData, IUserAccountData, IGridUserData
 ```
 
 #### 01DivaInterfaces - Kern-Interfaces
-```
+
+```bash
 Zweck: Zentrale Schnitstellendefinitionen
 Abhängigkeiten: OpenSim.Framework
 Wichtige Interfaces: IWifiAddon, IWifiApp, IEnvironment
 ```
 
 #### 21Wifi - Web-Interface
-```
+
+```bash
 Zweck: Web-basierte Benutzerverwaltung
 Features: User-Registration, Inventory-Management, Admin-Panel
 URL: http://your-domain:9000/wifi
@@ -360,6 +375,7 @@ graph TD
 ### 📥 Download und Installation
 
 1. **Repository klonen:**
+
    ```bash
    git clone https://github.com/diva/diva-distribution.git
    cd diva-distribution
@@ -367,6 +383,7 @@ graph TD
    ```
 
 2. **Abhängigkeiten installieren:**
+
    ```bash
    # .NET 8 Runtime installieren
    # Windows:
@@ -381,6 +398,7 @@ graph TD
    ```
 
 3. **Datenbank einrichten:**
+
    ```sql
    -- MySQL
    CREATE DATABASE opensim;
@@ -390,6 +408,7 @@ graph TD
    ```
 
 4. **Kompilieren:**
+
    ```bash
    ./runprebuild.sh    # Linux/macOS
    .\runprebuild.bat   # Windows
@@ -405,6 +424,7 @@ dotnet Configure.dll
 ```
 
 **Konfiguration ausfüllen:**
+
 - World Name: `Meine Welt`
 - IP Address: `your-domain.com` oder IP
 - Database Host: `localhost`
@@ -418,6 +438,7 @@ dotnet Configure.dll
 ### 📝 Wichtige Konfigurationsdateien
 
 #### `bin/config-include/MyWorld.ini`
+
 ```ini
 [DatabaseService]
 ConnectionString = "Data Source=localhost;Database=opensim;User ID=opensim;Password=your_password;"
@@ -436,6 +457,7 @@ AdminEmail = "admin@your-domain.com"
 ```
 
 #### `bin/Regions/RegionConfig.ini`
+
 ```ini
 [Region_Meine_Welt_1]
 RegionUUID = 11111111-1111-1111-1111-111111111111
@@ -448,7 +470,8 @@ ExternalHostName = your-domain.com
 
 ### 🌐 Netzwerk-Konfiguration
 
-#### Firewall-Regeln:
+#### Firewall-Regeln
+
 ```bash
 # Linux (ufw)
 sudo ufw allow 9000:9010/tcp
@@ -459,7 +482,8 @@ New-NetFirewallRule -DisplayName "OpenSim" -Direction Inbound -Protocol TCP -Loc
 New-NetFirewallRule -DisplayName "OpenSim" -Direction Inbound -Protocol UDP -LocalPort 9000-9010 -Action Allow
 ```
 
-#### Router-Konfiguration:
+#### Router-Konfiguration
+
 - Port-Weiterleitung für 9000-9010 (TCP/UDP)
 - DynDNS einrichten (empfohlen)
 
@@ -477,6 +501,7 @@ dotnet Update.dll
 ### 🔧 Manuelles Update
 
 1. **Backup erstellen:**
+
    ```bash
    # Datenbank Backup
    mysqldump -u opensim -p opensim > backup_$(date +%Y%m%d).sql
@@ -487,6 +512,7 @@ dotnet Update.dll
    ```
 
 2. **Neue Version herunterladen:**
+
    ```bash
    git fetch origin
    git checkout dotnet8-migration
@@ -494,12 +520,14 @@ dotnet Update.dll
    ```
 
 3. **Neu kompilieren:**
+
    ```bash
    ./runprebuild.sh
    dotnet build OpenSim.sln -c Release
    ```
 
 4. **Konfiguration wiederherstellen:**
+
    ```bash
    # Konfigurationsdateien überprüfen und anpassen
    diff config-backup/MyWorld.ini config-include/MyWorld.ini.example
@@ -512,6 +540,7 @@ dotnet Update.dll
 ### 🚨 Häufige Probleme
 
 #### Problem: "Could not load file or assembly"
+
 ```bash
 # Lösung: .NET Runtime überprüfen
 dotnet --list-runtimes
@@ -522,6 +551,7 @@ dotnet --list-runtimes
 ```
 
 #### Problem: Datenbankverbindung fehlgeschlagen
+
 ```bash
 # Verbindung testen:
 mysql -h localhost -u opensim -p opensim
@@ -531,6 +561,7 @@ grep ConnectionString config-include/MyWorld.ini
 ```
 
 #### Problem: Ports nicht erreichbar
+
 ```bash
 # Port-Status prüfen:
 netstat -tlnp | grep :9000
@@ -587,7 +618,8 @@ A: Wechseln Sie zum `master` Branch: `git checkout master`
 ### 🔧 Technische Fragen
 
 **Q: Welche Performance-Verbesserungen bringt .NET 8?**
-A: 
+A:
+
 - Bis zu 40% bessere CPU-Performance
 - Reduzierter Memory-Verbrauch
 - Schnellere Startup-Zeiten
@@ -598,6 +630,7 @@ A: Ja, vollständig unterstützt. Getestet unter Ubuntu 20.04+, Debian 11+, Cent
 
 **Q: Wie erstelle ich ein Systemd-Service (Linux)?**
 A:
+
 ```ini
 [Unit]
 Description=OpenSim Server
@@ -623,7 +656,8 @@ A: Verwenden Sie Visual Studio Code oder Visual Studio mit dem .NET 8 Debugger.
 A: In den Interface-Dateien unter `addon-modules/01DivaInterfaces/` und der offiziellen OpenSim-Dokumentation.
 
 **Q: Wie erstelle ich ein NuGet-Package für Module?**
-A: 
+A:
+
 ```bash
 dotnet pack addon-modules/[ModuleName]/[ModuleName].csproj
 ```
@@ -634,9 +668,9 @@ dotnet pack addon-modules/[ModuleName]/[ModuleName].csproj
 
 ### 🌐 Ressourcen
 
-- **GitHub Repository:** https://github.com/diva/diva-distribution
-- **OpenSim Wiki:** http://opensimulator.org/wiki/
-- **Diva's Blog:** http://metaverseink.com/blog/
+- **GitHub Repository:** <https://github.com/diva/diva-distribution>
+- **OpenSim Wiki:** <http://opensimulator.org/wiki/>
+- **Diva's Blog:** <http://metaverseink.com/blog/>
 
 ### 💬 Community
 
@@ -647,11 +681,13 @@ dotnet pack addon-modules/[ModuleName]/[ModuleName].csproj
 ### 🐛 Bug Reports
 
 Bugs bitte via GitHub Issues melden:
-```
+
+```bash
 https://github.com/diva/diva-distribution/issues
 ```
 
 **Benötigte Informationen:**
+
 - Betriebssystem und Version
 - .NET Version (`dotnet --version`)
 - Log-Ausgaben

@@ -18,7 +18,7 @@ namespace MetaverseInk.Configuration
         private static string adminPasswd = "secret";
         private static string adminEmail = "admin@localhost";
         private static string ipAddress = "127.0.0.1";
-        private static string platform = "1"; // 1 for .NET; 2 for mono
+        private static string platform = "1"; // 1 for .NET 8+
         private static int baseLocationX = 0, baseLocationY = 0;
         private static bool confirmationRequired = false;
         private static bool myWorldReconfig = false;

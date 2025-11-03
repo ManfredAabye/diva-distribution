@@ -3,10 +3,12 @@
 ## Zusammenfassung der durchgeführten Änderungen
 
 ### 🗂️ XML-Konfiguration bereinigt
+
 - ✅ Alle `frameworkVersion="v4_8"` Attribute aus prebuild.xml Dateien entfernt
 - ✅ Framework-Version wird jetzt zentral vom OpenSimulator Core bestimmt
 
 ### 📦 Module reorganisiert
+
 - ✅ Zweistellige Nummerierung eingeführt (00-39)
 - ✅ Logische Gruppierung implementiert:
   - **00-09:** Basis-Module (Data, Interfaces, Utils)
@@ -15,20 +17,23 @@
   - **30-39:** Tool-Module (Configuration, Update)
 
 ### 🧹 Veraltete Module entfernt
+
 - ✅ `OnLookSupport/` - Nicht mehr benötigt
 - ✅ `ProcessorTest/` - Nicht mehr benötigt
 
 ### 🔧 D2-Erweiterungen integriert
+
 - ✅ **30Configuration/** - Modernes Setup-Tool für .NET 8
 - ✅ **31Update/** - Update-System für .NET 8
 
 ### 📚 Dokumentation erstellt
+
 - ✅ **DOTNET8_MIGRATION_GUIDE.md** - Umfassende Anleitung (500+ Zeilen)
 - ✅ **README_DOTNET8.md** - Übersichtliche Schnellreferenz
 
 ## 📁 Neue Modulstruktur
 
-```
+```bash
 addon-modules/
 ├── 00Data/               # MySQL/SQLite Datenbank-Layer
 ├── 01DivaInterfaces/     # Kern-Schnittstellen  
@@ -53,6 +58,7 @@ addon-modules/
 ## 🔄 Nächste Schritte
 
 1. **Build-System testen:**
+
    ```bash
    ./runprebuild.sh
    dotnet build OpenSim.sln -c Release
