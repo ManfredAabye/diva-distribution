@@ -1,4 +1,4 @@
-# ⚠️ This is a feasibility study and has no practical use yet
+# ⚠️This is a feasibility study and has no practical use yet
 
 ## 🚀 Diva Distribution - .NET 8 Edition
 
