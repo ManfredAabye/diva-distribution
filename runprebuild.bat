@@ -1,6 +1,10 @@
 @echo OFF
 
-bin\Prebuild.exe /target vs2015
+echo Building Diva Distribution for .NET 8
+echo ======================================
+
+rem Führe prebuild mit vs2022 target aus
+bin\Prebuild.exe /target vs2022
 
 setlocal ENABLEEXTENSIONS
 set VALUE_NAME=MSBuildToolsPath
@@ -8,16 +12,23 @@ set VALUE_NAME=MSBuildToolsPath
 if "%PROCESSOR_ARCHITECTURE%"=="x86" set PROGRAMS=%ProgramFiles%
 if defined ProgramFiles(x86) set PROGRAMS=%ProgramFiles(x86)%
 
-rem Try to find VS2019
+rem Try to find VS2026 first
 for %%e in (Enterprise Professional Community) do (
-    if exist "%PROGRAMS%\Microsoft Visual Studio\2019\%%e\MSBuild\Current\Bin\MSBuild.exe" (
-
-        set ValueValue="%PROGRAMS%\Microsoft Visual Studio\2019\%%e\MSBuild\Current\Bin\MSBuild"
-		goto :found
+    if exist "%PROGRAMS%\Microsoft Visual Studio\2026\%%e\MSBuild\Current\Bin\MSBuild.exe" (
+        set ValueValue="%PROGRAMS%\Microsoft Visual Studio\2026\%%e\MSBuild\Current\Bin\MSBuild"
+        echo Found VS2026 %%e
+        goto :found
     )
 )
 
-rem try find vs2017
+rem Try to find VS2022
+for %%e in (Enterprise Professional Community) do (
+    if exist "%PROGRAMS%\Microsoft Visual Studio\2022\%%e\MSBuild\Current\Bin\MSBuild.exe" (
+        set ValueValue="%PROGRAMS%\Microsoft Visual Studio\2022\%%e\MSBuild\Current\Bin\MSBuild"
+        echo Found VS2022 %%e
+        goto :found
+    )
+)
 for %%e in (Enterprise Professional Community) do (
     if exist "%PROGRAMS%\Microsoft Visual Studio\2017\%%e\MSBuild\15.0\Bin\MSBuild.exe" (
 
@@ -38,13 +49,18 @@ if defined FOUNDGREP (
   set FINDCMD=find
 )
 
-rem try vs2015
-FOR /F "usebackq tokens=1-3" %%A IN (`REG QUERY "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\14.0" /v %VALUE_NAME% 2^>nul ^| %FINDCMD% "%VALUE_NAME%"`) DO (
-	set ValueValue=%%C\msbuild
-	goto :found
+rem Try to find dotnet CLI if no Visual Studio found
+where dotnet >nul 2>&1
+if %ERRORLEVEL% EQU 0 (
+    echo Using dotnet CLI for build
+    set ValueValue=dotnet
+    goto :found
 )
 
-@echo msbuild for at least VS2015 not found, please install a (Community) edition of VS2017 or VS2015
+@echo Error: Neither Visual Studio 2022/2026 nor .NET CLI found!
+@echo Please install one of the following:
+@echo - Visual Studio 2022 or 2026 (Community, Professional, or Enterprise)
+@echo - .NET 8 SDK from https://dotnet.microsoft.com/download/dotnet/8.0
 @echo Not creating compile.bat
 if exist "compile.bat" (
 	del compile.bat
@@ -52,12 +68,18 @@ if exist "compile.bat" (
 goto :done
 
 :found
-    @echo Found msbuild at %ValueValue%
+if "%ValueValue%"=="dotnet" (
+    @echo Found .NET CLI
+    @echo Creating compile.bat for .NET 8
+    @echo dotnet build opensim.sln -c Debug > compile.bat
+    @echo echo "To compile in Release mode, use: dotnet build opensim.sln -c Release" >> compile.bat
+) else (
+    @echo Found MSBuild at %ValueValue%
     @echo Creating compile.bat
-rem To compile in debug mode
     @echo %ValueValue% opensim.sln > compile.bat
-rem To compile in release mode comment line (add rem to start) above and uncomment next (remove rem)
-rem    @echo %ValueValue% /p:Configuration=Release opensim.sln > compile.bat
+    rem To compile in release mode comment line (add rem to start) above and uncomment next (remove rem)
+    rem @echo %ValueValue% /p:Configuration=Release opensim.sln > compile.bat
+)
 :done
 if exist "bin\addin-db-002" (
 	del /F/Q/S bin\addin-db-002 > NUL
