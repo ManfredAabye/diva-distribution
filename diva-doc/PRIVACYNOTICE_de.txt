@@ -1,0 +1,23 @@
+Die Diva-Distribution von OpenSim nutzt Metaverse Ink (MI abgekürzt)
+Services, um Daten aus Ihrer virtuellen Welt auf folgende Weise zu sammeln:
+
+- Während der Konfiguration (Configure.exe): MI wird über einen HTTP-Aufruf
+  für statistische Zwecke aufgerufen. Die einzigen gesammelten Daten sind die öffentliche IP-
+  Adresse, die im HTTP-Aufruf übermittelt wird, und diese wird in den Webserver-
+  Logs von MI gespeichert.
+
+- Während Updates (Update.exe): MI wird über einen HTTP-Aufruf aufgerufen, damit
+  dieses Tool neue Release-Informationen abrufen kann.
+
+- Während der OpenSim-Ausführung: Die Standardkonfiguration dieser
+  Distribution von OpenSim nutzt MI Search für die Indizierung der öffentlichen
+  (durchsuchbaren) Daten der Simulatoren. Die Konfiguration für diesen
+  Service befindet sich im Abschnitt [DataSnapshot] in der Datei
+  DivaPreferences.ini. Sie können es deaktivieren, indem Sie es in
+  MyWorld.ini überschreiben, bevor Sie OpenSim starten, wie folgt:
+
+[DataSnapshot]
+    index_sims = false
+
+WENN SIE NICHT MÖCHTEN, DASS IHRE IP-ADRESSE ODER DIE DATEN IHRER WELT
+IN DER OBEN BESCHRIEBENEN WEISE VERWENDET WERDEN, VERWENDEN SIE DIESE SOFTWARE NICHT.

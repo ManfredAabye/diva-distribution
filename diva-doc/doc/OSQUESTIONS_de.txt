@@ -1,0 +1,23 @@
+Beim ersten Ausführen von OpenSim werden Ihnen einige
+Fragen zum "Estate" und zum Besitzer der Regionen gestellt. Da
+die Diva-Distro mit 4 Regionen kommt, werden Ihnen einige der
+Fragen mehrmals gestellt. Hier ist eine typische Interaktion:
+
+...
+Region Test 1 is not part of an estate.
+No existing estates found.  You must create a new one.
+New estate name [My Estate]: <----- <Enter drücken>
+
+...
+The current estate has no owner set.
+Estate owner first name [Test]: Test
+Estate owner last name [User]: User
+Password: 123
+Email []: meine@email.com
+...
+
+Die Estate-Fragen wiederholen sich für die anderen 3 Regionen.
+Typische Antworten sind:
+
+Do you wish to join region Test 2 to an existing estate (yes/no)? [yes]: <----- <Enter drücken>
+Name of estate to join.  Existing estate names are (My Estate) [My Estate]: <----- <Enter drücken>

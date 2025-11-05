@@ -1,0 +1,33 @@
+***          Instructions for installing .NET 8.0        ***
+***                 for OpenSim                       ***
+*** Linux/Unix ONLY. Windows users already have .NET 8.0. ***
+
+There isn't one single set of instructions for installing .NET 8.0 on your
+Linux/Unix machine -- the installation depends on your flavour of
+Linux/Unix. With luck, you will find the .NET 8.0 installer for the exact
+version of your operating system here:
+https://dotnet.microsoft.com/download/dotnet/8.0
+
+The .NET community provides additional installers beyond those
+available by Microsoft. Use Google or your favorite site for
+information about how to install .NET 8.0 on your operating system.
+
+Important things to keep in mind:
+
+* OpenSim requires .NET 8.0 or higher. Older versions of .NET will
+  not run OpenSim. Because of this requirement, depending on your
+  operating system, you may need to install .NET 8.0 from official sources.
+
+* Some of the most recent versions of .NET may not run OpenSim
+  well yet. Please research and ask around to find out about other
+  people's experiences with .NET 8.0 and OpenSim.
+
+* The .NET 8.0 framework consists of the .NET runtime itself, along with
+  several other components such as SDK, ASP.NET Core, etc. If you
+  don't plan to develop further applications with .NET, the only thing
+  you need to run OpenSim is the .NET 8.0 runtime itself.
+
+Once you install .NET 8.0, type this:
+$ dotnet --version
+
+Make sure you have the right version installed.

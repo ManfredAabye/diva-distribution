@@ -1,0 +1,194 @@
+*** Release-Hinweise ***
+
+diva-wifi-09210
+
+Keine Änderungen in Wifi.
+
+--------------------------------------
+
+diva-wifi-09110
+
+Keine Änderungen in Wifi.
+
+--------------------------------------
+
+diva-wifi-09100
+
+Keine Änderungen in Wifi.
+
+--------------------------------------
+
+diva-wifi-09000
+
+Keine Änderungen
+
+--------------------------------------
+
+diva-wifi-0-8-0
+
+Keine Änderungen
+
+--------------------------------------
+
+diva-wifi-0-7-6
+
+- Neue Funktion: Möglichkeit, IARs von Wifi hochzuladen. Grid-Betreiber können
+  kontrollieren, wer die Berechtigung dazu hat, indem sie das UserLevel in
+  den Konten der Personen einstellen. Das minimale UserLevel für diese Funktion ist
+  konfigurierbar
+
+- Spanische Übersetzung hinzugefügt. Dank an Sergio Melero Raya!
+
+- Fehler bei Standard-Erscheinungsbild behoben, bei dem Gegenstände unter "Verloren & Gefunden" platziert wurden
+
+--------------------------------------
+
+diva-wifi-0-7-5
+
+Benutzeroberfläche für die Verwaltung von Gruppen unter dem Administrator-Konto hinzugefügt.
+
+--------------------------------------
+
+diva-wifi-0-7-4
+
+Keine Änderungen
+
+--------------------------------------
+
+diva-wifi-0-7-2
+
+*** Änderungen seit der vorherigen Version:
+
+- Fehlende Lokalisierungs-DLLs hinzugefügt (betrifft niemanden mit englischer
+  Sprache)
+
+- Unterstützung für SQLite
+
+- (Dies ist keine neue Änderung und betrifft niemanden, der die
+  Diva-Distro sofort verwendet, kann aber diejenigen betreffen, die sie weiter
+  anpassen): Wenn Sie eine ältere Konfiguration für Wifi wiederverwenden,
+  nutzen Sie möglicherweise nicht das volle Potenzial. Die neuesten Wifi-Versionen
+  verwenden Diva.Data.MySql.dll als Speicher-Plugin, nicht
+  OpenSim.Data.MySql.dll. Eines der Symptome dafür, dass Sie die
+  "falsche" DLL verwenden, ist, dass die Startseite von Wifi 0 für alle
+  Statistiken anzeigt. In diesem Fall wechseln Sie unter
+  [DatabaseService] zur Diva-Version
+
+
+----------------------------------------
+diva-wifi-0-7-1-1
+
+*** Änderungen seit der vorherigen Version:
+
+- Russische Übersetzung im Paket enthalten. Dank an Rodion Rotaru.
+
+----------------------------------------
+diva-wifi-0-7-1
+
+*** Änderungen seit der vorherigen Version:
+
+- BenutzerInWelt, BenutzerGesamt, RegionenGesamt auf der Startseite angezeigt
+- Unterstützung für Lokalisierung, d.h. lokale Sprache. Siehe 
+  https://github.com/diva/d2/wiki/Wifi (Lokalisierung)
+- Ermöglicht Konfiguration des Heimatorts für neue Konten.
+  Konfigurationsvariable: HomeLocation
+- Für neue Konten, Typ des Standard-Avatars als Inventar-Ordnername verwenden
+- Administratoren und Benutzer können verknüpfte Regionen (Hyperlinks) anzeigen, hinzufügen und löschen
+- Content-Typen für Erweiterungen ".txt" und ".xml" hinzugefügt.
+- Konfigurationsoption ServePath_* für beliebige zu servierende Pfade hinzugefügt
+- Neue experimentelle Funktion für Wifi-Admins: Remote-Konsole. 
+  Nicht dokumentiert, da sie noch nicht sicher genug ist. Vorerst ignorieren.
+
+----------------------------------------
+
+diva-wifi-0-7-0-2[-b]
+
+Vielen Dank an Marck für wichtige Beiträge zu Wifi!
+
+*** Fehlerkorrekturen seit der vorherigen Version:
+
+- Hilfetext zum Benutzer-Suchformular hinzugefügt.
+- URL-Auffüllung robuster gemacht, indem nicht eine bestimmte Reihenfolge von Attributen in HTML-Elementen angenommen wird.
+- Kleine Verbesserungen an der Inventar-Ladestatus-Nachricht.
+- Schnelle Korrektur für nicht funktionierende Inventar-Operationen.
+- "mailto"-URLs nicht mit Sitzungsinformationen auffüllen.
+
+----------------------------------------
+diva-wifi-0-7-0-2[-a]
+
+Vielen Dank an Marck für wichtige Beiträge zu Wifi!
+
+*** Änderungen seit der vorherigen Version:
+
+- Logos und Links zu ihnen auf den Startseiten hinzugefügt
+- Konfiguration beliebiger Standard-Avatare ermöglicht: jetzt nicht nur 3
+  (Männlich, Weiblich, Neutral), sondern so viele wie gewünscht. Siehe Wifi-
+  Dokumentation http://wiki.github.com/diva/d2/wiki/Wifi
+- Stylesheet und HTML-Vorlagen umstrukturiert und flüssiges Stylesheet
+  hinzugefügt, das die ursprüngliche style.css ersetzt. Flüssig passt sich der Größe des
+  Browser-Fensters an
+- Unterstützung für JavaScript hinzugefügt
+- Erweitern/Zusammenklappen von Inventar-Ordnern hinzugefügt
+- Option "Inventar" zum Hauptmenü des Administrators hinzugefügt
+- Optionale Variablen zur Anzeige von Versions- und Laufzeit-
+  Informationen bereitgestellt
+- Client-Download-Links aktualisiert
+- Spalte mit "Erstellt"-Datum und -Zeit sowohl zur Liste ausstehender Benutzer als auch
+  zur Kontoliste hinzugefügt
+- Benutzer-Titel-Spalte zur Benutzerliste hinzugefügt
+- Benutzerkonten-Listen sortierbar gemacht
+- LoginURI zur Aktivierungsnachricht hinzugefügt
+
+
+*** Konfigurationsänderungen:
+
+HINWEIS: Diese Änderung betrifft hauptsächlich Benutzer, die Wifi auf einem
+Grid betreiben. Benutzer von Diva-Distro-Installationen werden dies automatisch
+über DivaPreferences.ini aktualisiert bekommen und sollten sich keine Sorgen machen.
+
+Die Art, wie Standard-Avatar-Typen angegeben werden, hat sich geändert. Früher gab es
+genau 3 Typen, angegeben als
+  FemaleAvatarAccount = "Female Avatar"
+  MaleAvatarAccount = "Male Avatar"
+  NeutralAvatarAccount = "Neutral Avatar"
+
+Die Syntax hat sich jetzt geändert zu
+  AvatarAccount_Neutral = "Neutral Avatar"
+  AvatarAccount_Female = "Female Avatar"
+  AvatarAccount_Male = "Male Avatar"
+
+Stellen Sie sicher, dass Sie Ihre Konfiguration aktualisieren.
+
+Diese neue Syntax ermöglicht die Existenz einer beliebigen Anzahl von Avatar-
+Typen, wie folgt:
+  AvatarAccount_<AvatarTyp> = "<Vorname> <Nachname>"
+
+*** Fehlerkorrekturen seit der vorherigen Version:
+
+- Fehlerhafte To-Adresse beim Versenden von E-Mails abfangen
+- Neue Konten müssen nicht-leere Vor- und Nachnamen haben
+- Passwort nicht per E-Mail senden
+- Leere Zeilen am Ende von Listen auf zusammengesetzten Webseiten entfernt
+- Auf aktueller Seite bleiben, wenn Links "Aktivieren" oder "Ignorieren" in
+  leerer Liste ausstehender Konten ausgewählt werden
+- Nur nicht-ausstehende Konten in Benutzer-Suchergebnissen auflisten
+- Korrekter Bestätigungstext für das Löschen von Benutzerkonten
+- Rechtschreibfehler auf der Passwort-Wiederherstellungs-Webseite behoben
+
+----------------------------------------
+
+diva-wifi-0-7-0-1
+
+Änderungen seit der vorherigen Version:
+
+- Willkommensseite unter /wifi/welcome.html hinzugefügt
+- splash.html von index.html für einfachere Anpassung getrennt
+- weitere Teile für einfachere Anpassung getrennt
+- Favicon hinzugefügt
+- automatischer Sitzungsablauf nach 30 min Inaktivität hinzugefügt
+- verschiedene Verbesserungen am Grafikdesign (Dank an Ai Austin!)
+
+
+----------------------------------------
+Erste Version. Juhu! Alles ist neu.
+Lesen Sie READWIFI.txt.

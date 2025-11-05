@@ -1,0 +1,80 @@
+*** Diva Distribution von OpenSim ***
+
+Die Diva-Distribution ist eine Binär-Distribution. Als solche ist sie sehr
+einfach zu installieren. Falls Sie auf Webseiten mit Anweisungen zur
+Installation von OpenSim stoßen, bedenken Sie bitte folgendes -- diese Distribution
+benötigt nichts im Zusammenhang mit dem Beschaffen und Kompilieren von Quellcode
+(z.B. git, nant, etc).
+
+Befolgen Sie diese 5 (6 unter *ix) Schritte für die Installation dieser OpenSim-Distribution.
+ 
+[Unter Linux/Unix,
+ 0 - Installieren Sie .NET 8.0 oder höher. Siehe
+     doc/DOTNET.txt
+     für wichtige Anweisungen zur Einrichtung von .NET 8.0 für
+     OpenSim]
+     
+ 1 - Installieren Sie MySQL und optional MySQLAdmin. Siehe
+     doc/MYSQL.txt
+     für wichtige Anweisungen zur Einrichtung von MySQL für 
+     diese Distribution.
+
+ 2 - Richten Sie Ihr Netzwerk ordnungsgemäß ein und erstellen Sie einen Domainnamen für den
+     Rechner, auf dem diese OpenSim-Welt läuft. Siehe
+     doc/DNS.txt
+     für wichtige Anweisungen zur Konfiguration Ihres Netzwerks.
+
+ 3 - Erstellen Sie ein Konto in Gmail für das Versenden von E-Mail-Benachrichtigungen. Siehe
+     doc/WIFI.txt 
+     für wichtige Anweisungen zu Wifi, einem Diva-Distro-Addon 
+     für Benutzerregistrierungen.
+     
+ 4 - Wechseln Sie in den bin-Ordner und führen Sie Configure.exe aus. Dies startet
+     eine Konsolenanwendung, die Ihr OpenSim automatisch konfiguriert.
+     (Unter Linux geben Sie ein 
+      $ dotnet Configure.dll)
+     Beantworten Sie die wenigen Fragen, die gestellt werden.
+     - Wenn Sie Ihre Antworten ändern möchten, führen Sie es erneut aus.
+     - Nach der Konfiguration mit Configure.exe können Sie die 
+       Konfigurationen jederzeit manuell ändern, indem Sie 
+       bin/config-include/MyWorld.ini bearbeiten
+     
+ 5 - Führen Sie in bin OpenSim.exe aus. Dies startet eine
+     Konsolenanwendung. Wenn Sie auf einem 64-Bit-Rechner arbeiten, führen Sie
+     stattdessen OpenSim.32BitLaunch.exe aus.
+     (Unter Linux geben Sie ein 
+      $ dotnet OpenSim.dll)
+     Beantworten Sie die wenigen Fragen, die gestellt werden. Siehe 
+     doc/OSQUESTIONS.txt
+     für typische Fragen und Antworten.
+
+     OpenSim hat mehrere Konsolenbefehle, Sie können mehr darüber erfahren unter
+     http://opensimulator.org
+
+     Zum Glätten des Geländes geben Sie ein:
+     # terrain fill 21
+     
+     Zum Herunterfahren geben Sie ein:
+     # shutdown
+     
+ Das war's für OpenSim! Für die Verbindung des Clients zu Ihrer Welt siehe
+ http://opensimulator.org/wiki/Connecting
+ 
+
+------------------------------------------------------------------
+UPDATES
+
+Um Ihre Welt auf eine neuere Diva-Version zu aktualisieren, führen Sie einfach das Tool
+Update.exe aus
+
+Fahren Sie dann OpenSim.exe in der alten Version herunter und starten Sie 
+OpenSim.exe in der neuen Version.
+
+------------------------------------------------------------------
+Für erweiterte Konfigurationsoptionen siehe bitte
+doc/ADVANCED.txt
+
+------------------------------------------------------------------
+
+Zur Fehlerbehebung beim Ausführen von OpenSim siehe bitte
+doc/TROUBLESHOOTING.txt
