@@ -1,6 +1,10 @@
 # ⚠️This is a feasibility study and has no practical use yet
 Status: It works, but the Wifi HTML pages cannot be accessed.
 
+To create a binary OpenSimulator or Diva-distribution, you can simply use OpenSimBuilder.bat, it is self-explanatory.
+
+---
+
 ## 🚀 Diva Distribution - .NET 8 Edition
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download/dotnet/8.0)
