@@ -1,4 +1,5 @@
 # ⚠️This is a feasibility study and has no practical use yet
+Status: It works, but the Wifi HTML pages cannot be accessed.
 
 ## 🚀 Diva Distribution - .NET 8 Edition
 
