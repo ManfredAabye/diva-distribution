@@ -36,7 +36,7 @@ using Diva.Utils;
 
 using log4net;
 
-namespace Diva.Wifi.WifiScript
+namespace Diva.Wifi.ScriptEngine
 {
     public class Processor
     {
@@ -70,19 +70,19 @@ namespace Diva.Wifi.WifiScript
             m_Env = env;
             m_ListOfObjects = lot;
             m_Index = 0;
-            //m_log.DebugFormat("[Wifi]: New processor m_Index = {0}", m_Index);
+            m_log.DebugFormat("[WifiScript] New processor m_Index = {0}", m_Index);
         }
 
         public string Process(string html)
         {
             string processedHtml = string.Empty;
             MatchCollection matches = ssi.Matches(html);
-            //m_log.DebugFormat("Regex: {0}; matches = {1}", ssi.ToString(), matches.Count);
+            m_log.DebugFormat("[WifiScript] Regex: {0}; matches = {1}", ssi.ToString(), matches.Count);
 
             int lastindex = 0;
             foreach (Match match in matches)
             {
-                //m_log.DebugFormat("Match {0}", match.Value);
+                m_log.DebugFormat("[WifiScript] Match: {0}", match.Value);
                 string replacement = Process(match);
                 string before = html.Substring(lastindex, match.Index - lastindex);
                 string after = html.Substring(match.Index + match.Length);
@@ -104,7 +104,7 @@ namespace Diva.Wifi.WifiScript
         {
             string directive = string.Empty;
             string argStr = string.Empty;
-            //m_log.DebugFormat("Groups: {0}", match.Groups.Count);
+            m_log.DebugFormat("[WifiScript] Groups: {0}", match.Groups.Count);
             //foreach (Group g in match.Groups)
             //{
             //    m_log.DebugFormat(" --> {0} {1}", g.Value, g.Success);
@@ -125,7 +125,7 @@ namespace Diva.Wifi.WifiScript
 
         private string Eval(string directive, string argStr)
         {
-            //m_log.DebugFormat("[WifiScript]: Interpret {0} {1}", directive, argStr);
+            m_log.InfoFormat("[WifiScript] Evaluating directive: {0} with args: {1}", directive, argStr);
 
             if (directive.Equals("include"))
                 return Include(argStr);
@@ -136,6 +136,7 @@ namespace Diva.Wifi.WifiScript
             if (directive.Equals("call"))
                 return Call(argStr);
 
+            m_log.WarnFormat("[WifiScript] Unknown directive: {0}", directive);
             return string.Empty;
         }
 

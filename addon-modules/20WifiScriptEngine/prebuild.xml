@@ -1,5 +1,5 @@
-<!-- Diva.WifiScriptEngine -->
-<Project name="Diva.WifiScriptEngine" path="addon-modules/20WifiScriptEngine" type="Library">
+<!-- Diva.Wifi.ScriptEngine -->
+<Project name="Diva.Wifi.ScriptEngine" path="addon-modules/20WifiScriptEngine" type="Library">
   <Configuration name="Debug">
     <Options>
       <CompilerDefines>TRACE</CompilerDefines>
