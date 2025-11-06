@@ -33,7 +33,7 @@ using OpenSim.Services.Interfaces;
 
 using Diva.Interfaces;
 using Diva.OpenSimServices;
-using Diva.Wifi.WifiScript;
+using Diva.Wifi.ScriptEngine;
 using Diva.Utils;
 using Environment = Diva.Utils.Environment;
 

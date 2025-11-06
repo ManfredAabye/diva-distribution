@@ -48,7 +48,7 @@ using OpenSim.Services.InventoryService;
 
 using Diva.Interfaces;
 using Diva.Utils;
-using Diva.Wifi.WifiScript;
+using Diva.Wifi.ScriptEngine;
 using Diva.OpenSimServices;
 using Environment = Diva.Utils.Environment;
 

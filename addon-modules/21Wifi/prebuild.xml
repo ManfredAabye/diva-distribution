@@ -67,7 +67,7 @@
 
   <Reference name="Diva.Interfaces"/>
   <Reference name="Diva.Utils"/>
-  <Reference name="Diva.WifiScriptEngine"/>
+  <Reference name="Diva.Wifi.ScriptEngine"/>
   <Reference name="Diva.OpenSimServices"/>
 
   <Files>

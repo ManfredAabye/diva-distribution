@@ -43,7 +43,7 @@ using OpenSim.Framework.Servers.HttpServer;
 using OpenSim.Services.Interfaces;
 using OpenSim.Services.InventoryService;
 
-using Diva.Wifi.WifiScript;
+using Diva.Wifi.ScriptEngine;
 using Diva.Utils;
 using Diva.Interfaces;
 

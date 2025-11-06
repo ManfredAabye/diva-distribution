@@ -45,7 +45,7 @@ using OpenSim.Services.Interfaces;
 using OpenSim.Services.AuthenticationService;
 using OpenSim.Services.InventoryService;
 
-using Diva.Wifi.WifiScript;
+using Diva.Wifi.ScriptEngine;
 using Diva.Utils;
 using Environment = Diva.Utils.Environment;
 using OpenSim.Server.Base;

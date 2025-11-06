@@ -53,7 +53,7 @@ using OpenSim.Services.PresenceService;
 using OpenSim.Server.Base;
 
 using Diva.Utils;
-using Diva.Wifi.WifiScript;
+using Diva.Wifi.ScriptEngine;
 using Environment = Diva.Utils.Environment;
 using GridRegion = OpenSim.Services.Interfaces.GridRegion;
 using Request = Diva.Utils.Request;

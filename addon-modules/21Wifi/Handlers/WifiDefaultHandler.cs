@@ -44,10 +44,9 @@ using OpenSim.Framework;
 using OpenSim.Framework.Servers.HttpServer;
 using OpenMetaverse;
 
-using Diva.Wifi.WifiScript;
+using Diva.Wifi.ScriptEngine;
 using Diva.Utils;
 
-using Processor = Diva.Wifi.WifiScript.Processor;
 using Environment = Diva.Utils.Environment;
 
 namespace Diva.Wifi

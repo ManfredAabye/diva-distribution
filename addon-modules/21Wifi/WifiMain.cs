@@ -71,9 +71,18 @@ namespace Diva.Wifi
             m_Server = server;
             m_SceneActor = sactor;
 
-            m_log.DebugFormat("[Wifi]: WifiMain starting with config {0}", ConfigName);
+            m_log.InfoFormat("[Init] Wifi module starting with config: {0}", ConfigName);
 
-            Initialize(server);
+            try
+            {
+                Initialize(server);
+                m_log.InfoFormat("[Init] Wifi module successfully started on port {0}", server.Port);
+            }
+            catch (Exception ex)
+            {
+                m_log.ErrorFormat("[Init] Wifi module failed to start: {0}\n{1}", ex.Message, ex.StackTrace);
+                throw;
+            }
 
         }
 
@@ -85,13 +94,17 @@ namespace Diva.Wifi
 
         private void Initialize(IHttpServer server)
         {
-            m_log.DebugFormat("[Wifi]: Initializing. Server at port {0}.", server.Port);
+            m_log.InfoFormat("[Init] Wifi initializing on server port {0}", server.Port);
 
             IConfig serverConfig = m_Config.Configs[ConfigName];
             if (serverConfig == null)
+            {
+                m_log.ErrorFormat("[Init] No section {0} in config file", ConfigName);
                 throw new Exception(String.Format("No section {0} in config file", ConfigName));
+            }
 
             // Launch the WebApp
+            m_log.InfoFormat("[Init] Launching WebApp");
             m_WebApp = new WebApp(m_Config, ConfigName, m_Server, m_SceneActor);
 
             // Register all the handlers

@@ -27,7 +27,7 @@
 
 using System;
 using System.IO;
-using Diva.Wifi.WifiScript;
+using Diva.Wifi.ScriptEngine;
 using Diva.Utils;
 using Environment = Diva.Utils.Environment;
 
