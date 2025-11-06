@@ -1,0 +1,8 @@
+{
+  "UpdateServerUrl": "https://api.github.com/repos/diva/diva-distribution/releases",
+  "CheckForPreReleases": false,
+  "AutoBackup": true,
+  "BackupRetentionDays": 30,
+  "Debug": false,
+  "CurrentVersion": "1.0.0"
+}
