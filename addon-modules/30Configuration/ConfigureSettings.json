@@ -1,0 +1,21 @@
+{
+  "WorldName": "My World",
+  "DbHost": "localhost",
+  "DbSchema": "opensim",
+  "DbUser": "opensim",
+  "DbPassword": "secret",
+  "AdminFirstName": "Wifi",
+  "AdminLastName": "Admin",
+  "AdminPassword": "secret",
+  "AdminEmail": "admin@localhost",
+  "IpAddress": "127.0.0.1",
+  "HttpPort": 9000,
+  "BaseLocationX": 1000,
+  "BaseLocationY": 1000,
+  "RegionSizeX": 256,
+  "RegionSizeY": 256,
+  "GmailAccount": "",
+  "GmailPassword": "",
+  "AutoBackup": true,
+  "Debug": false
+}
