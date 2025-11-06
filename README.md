@@ -1,5 +1,9 @@
 # ⚠️This is a feasibility study and has no practical use yet
-Status: It works, but the Wifi HTML pages cannot be accessed.
+Status: It works.
+
+Configuration using Configure.exe/dll doesn't work.
+
+Updating using Update.exe/dll doesn't work.
 
 To create a binary OpenSimulator or Diva-distribution, you can simply use OpenSimBuilder.bat, it is self-explanatory.
 
