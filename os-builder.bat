@@ -1,11 +1,11 @@
 @echo off
 REM Lösche obj Ordner, *.csproj Dateien und  *.sln Dateien,in allen Verzeichnissen und Unterverzeichnissen
 echo Lösche obj Ordner...
-for /d /r %%i in (obj) do rd /s /q "%%i"
+for /d /r %%i in (obj) do @if exist "%%i" rd /s /q "%%i" 2>nul
 echo Lösche *.csproj Dateien...
-for /r %%i in (*.csproj) do del /q "%%i"
+for /r %%i in (*.csproj) do @if exist "%%i" del /q "%%i" 2>nul
 echo Lösche *.sln Dateien...
-for /r %%i in (*.sln) do del /q "%%i"
+for /r %%i in (*.sln) do @if exist "%%i" del /q "%%i" 2>nul
 echo Fertig.
 
 copy bin\System.Drawing.Common.dll.win bin\System.Drawing.Common.dll
@@ -29,5 +29,11 @@ if exist "bin\addin-db-004" (
 	rmdir /Q/S bin\addin-db-004
 	)
 
-dotnet build --configuration Release OpenSim.sln 
+REM Wähle Build-Konfiguration: Debug oder Release
+set BUILD_CONFIG=Debug
+REM Für Release-Build diese Zeile auskommentieren (REM entfernen) und Debug-Zeile auskommentieren:
+REM set BUILD_CONFIG=Release
+
+echo Kompiliere mit %BUILD_CONFIG% Konfiguration...
+dotnet build --configuration %BUILD_CONFIG% OpenSim.sln
 pause
