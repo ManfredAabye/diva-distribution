@@ -1,0 +1,174 @@
+/* ============================================
+   Wifi Configuration - Theme and Language
+   ============================================
+   
+   This file allows you to customize colors and language
+   for the Wifi interface.
+   
+   USAGE:
+   1. Choose a color theme below
+   2. Remove the comment markers around the desired theme
+   3. Reload the page
+   
+   ============================================ */
+
+/* ============================================
+   COLOR THEMES
+   ============================================ */
+
+/* STANDARD ORANGE THEME - Active */
+:root {
+  --wifi-orange: #FF9800;
+  --wifi-orange-hover: #fb8c00;
+  --wifi-orange-active: #f57c00;
+  --wifi-bg-sidebar: #616161;
+}
+
+/* DEEP ORANGE THEME
+:root {
+  --wifi-orange: #ff5722;
+  --wifi-orange-hover: #e64a19;
+  --wifi-orange-active: #d84315;
+}
+*/
+
+/* BLUE THEME
+:root {
+  --wifi-orange: #2196F3;
+  --wifi-orange-hover: #1976D2;
+  --wifi-orange-active: #0D47A1;
+  --wifi-bg-sidebar: #455A64;
+}
+*/
+
+/* GREEN THEME
+:root {
+  --wifi-orange: #4CAF50;
+  --wifi-orange-hover: #388E3C;
+  --wifi-orange-active: #1B5E20;
+  --wifi-bg-sidebar: #546E7A;
+}
+*/
+
+/* RED THEME
+:root {
+  --wifi-orange: #F44336;
+  --wifi-orange-hover: #D32F2F;
+  --wifi-orange-active: #B71C1C;
+  --wifi-bg-sidebar: #616161;
+}
+*/
+
+/* PURPLE THEME
+:root {
+  --wifi-orange: #9C27B0;
+  --wifi-orange-hover: #7B1FA2;
+  --wifi-orange-active: #4A148C;
+  --wifi-bg-sidebar: #5E35B1;
+}
+*/
+
+/* TEAL THEME
+:root {
+  --wifi-orange: #00BCD4;
+  --wifi-orange-hover: #0097A7;
+  --wifi-orange-active: #006064;
+  --wifi-bg-sidebar: #00838F;
+}
+*/
+
+/* PINK THEME
+:root {
+  --wifi-orange: #E91E63;
+  --wifi-orange-hover: #C2185B;
+  --wifi-orange-active: #880E4F;
+  --wifi-bg-sidebar: #AD1457;
+}
+*/
+
+/* ============================================
+   SIDEBAR ADJUSTMENTS
+   ============================================ */
+
+/* Very Dark Sidebar (almost black)
+:root {
+  --wifi-bg-sidebar: #212121;
+}
+*/
+
+/* Medium Dark Sidebar
+:root {
+  --wifi-bg-sidebar: #424242;
+}
+*/
+
+/* Lighter Sidebar
+:root {
+  --wifi-bg-sidebar: #757575;
+}
+*/
+
+/* ============================================
+   BACKGROUND ADJUSTMENTS
+   ============================================ */
+
+/* Dark Gray Background
+body {
+  background-color: #1a1a1a !important;
+}
+*/
+
+/* Very Dark Background
+body {
+  background-color: #121212 !important;
+}
+*/
+
+/* ============================================
+   LANGUAGE CONFIGURATION
+   ============================================ */
+
+/* GERMAN (Default) - Active */
+/* German texts are displayed by default */
+
+/* ENGLISH - Uncomment to activate
+body .lang-de { display: none !important; }
+body .lang-en { display: inline !important; }
+*/
+
+/* ============================================
+   EXAMPLE COMBINATIONS
+   ============================================ */
+
+/* COMBINATION 1: Deep Orange + Black Sidebar
+:root {
+  --wifi-orange: #ff5722;
+  --wifi-orange-hover: #e64a19;
+  --wifi-orange-active: #d84315;
+  --wifi-bg-sidebar: #212121;
+}
+*/
+
+/* COMBINATION 2: Blue + Dark Background
+:root {
+  --wifi-orange: #2196F3;
+  --wifi-orange-hover: #1976D2;
+  --wifi-orange-active: #0D47A1;
+  --wifi-bg-sidebar: #37474F;
+}
+body {
+  background-color: #263238 !important;
+}
+*/
+
+/* COMBINATION 3: Green + Material Design Dark
+:root {
+  --wifi-orange: #4CAF50;
+  --wifi-orange-hover: #388E3C;
+  --wifi-orange-active: #1B5E20;
+  --wifi-bg-sidebar: #263238;
+}
+body {
+  background-color: #121212 !important;
+}
+*/

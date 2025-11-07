@@ -6,8 +6,10 @@
     <title><!-- #get var=GridName --></title>
     <!-- #call method=GetRefresh -->
     <link rel="shortcut icon" href="/wifi/images/favicon.ico" />
+    <link rel="stylesheet" media="screen" type="text/css" href="/wifi/w3.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="/wifi/wifi-custom.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="/wifi/wifi-config.css" />
     <link rel="stylesheet" media="screen" type="text/css" href="/wifi/console.css" />
-    <link rel="stylesheet" media="screen" type="text/css" href="/wifi/fluid.css" />
     <!-- The following embedded style MUST be the last one defined -->
     <!-- in order to work with the remote console.                 -->
     <style type="text/css">
@@ -24,39 +26,80 @@
     
   </head>
 
-  <body>
-    <div id="header">
-      <!--#include file=header.html -->
+  <body class="w3-black">
+
+    <!-- Header -->
+    <header class="w3-container w3-deep-orange w3-center">
+      <h1><!-- #get var=GridName --></h1>
+    </header>
+
+    <!-- Page Container (weißer Hintergrund) -->
+    <div class="wifi-main w3-white">
+      <div class="wifi-row">
+
+        <!-- Sidebar/Navigation (Grau, 1/3) -->
+        <div class="wifi-sidebar">
+          
+          <!-- Header -->
+          <div class="wifi-sidebar-header">
+            <h2><!-- #get var=GridName --></h2>
+            <p class="w3-text-light-gray">Virtual World</p>
+          </div>
+
+          <!-- Hauptmenü -->
+          <div class="wifi-sidebar-section">
+            <div class="wifi-container">
+              <h5 class="w3-text-orange">Main Menu</h5>
+              <!--#call method=GetMainMenu --> 
+            </div>
+          </div>
+
+          <!-- Erweiterungen -->
+          <div class="wifi-sidebar-section">
+            <div class="wifi-container">
+              <h5 class="w3-text-orange">Add-ons</h5>
+              <!--#call method=GetAddonsMenu -->
+            </div>
+          </div>
+
+          <!-- Login/Logout -->
+          <div class="wifi-sidebar-section">
+            <div class="wifi-container">
+              <h5 class="w3-text-orange">Account</h5>
+              <!--#call method=GetLoginLogout --> 
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div class="wifi-sidebar-section">
+            <div class="wifi-container">
+              <h5 class="w3-text-orange">Links</h5>
+              <!--#include file=links.html --> 
+            </div>
+          </div>
+
+        </div>
+        <!-- Ende Sidebar -->
+
+        <!-- Content (Weiß, 2/3) -->
+        <div class="wifi-content">
+          <!-- Schwarze Card für Content -->
+          <div class="w3-card w3-black w3-margin">
+            <div class="w3-container w3-padding-32">
+              <!--#include file=content-box.html --> 
+            </div>
+          </div>
+        </div>
+        <!-- Ende Content -->
+
+      </div>
     </div>
+    <!-- Ende Page Container -->
 
-    <div id="page">  <!-- wraps and defines overall page width, centers it -->
-
-      <div id="right-nav">  <!-- right side navigation, etc on page -->
-        <!--#call method=GetMainMenu --> 
-        <br />
-
-        <div class="right-nav-divider"></div>
-        <!--#call method=GetAddonsMenu -->
-        <br />
-
-        <div class="right-nav-divider"></div>
-        <!--#call method=GetLoginLogout --> 
-        <br />
-
-        <div class="right-nav-divider"></div>
-        <!--#include file=links.html --> 
-
-      </div> <!-- end right side navigation -->
-	  
-      <div id="content"> <!-- content area of page -->
-        <!--#include file=content-box.html --> 
-      </div> <!-- end content area of page -->
-	  
-    </div>
-
-    <div id="footer">
+    <!-- Footer -->
+    <footer class="w3-container w3-deep-orange w3-center w3-margin-top">
       <!-- #include file=footer.html -->
-    </div>
-  
+    </footer>
+
   </body>
 </html>

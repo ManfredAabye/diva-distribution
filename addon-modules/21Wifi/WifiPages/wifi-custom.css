@@ -1,0 +1,1075 @@
+/* ============================================
+   Wifi Custom CSS - W3.CSS CV Template Style
+   ============================================
+   Basiert auf: W3Schools CV Template
+   Farben: Schwarz, Weiß, Orange (#FF9800)
+   Layout: Sidebar links (1/3), Content rechts (2/3)
+   ============================================ */
+
+/* CSS Variablen für Farbkonfiguration */
+:root {
+  /* Primärfarben - Orange Theme */
+  --wifi-orange: #FF9800;
+  --wifi-orange-hover: #fb8c00;
+  --wifi-orange-active: #f57c00;
+  --wifi-orange-light: #FFB74D;
+  
+  /* Hintergrundfarben - BLACK THEME */
+  --wifi-bg-dark: #000000;
+  --wifi-bg-body: #000000;  /* Schwarzer Body-Hintergrund */
+  --wifi-bg-sidebar: #616161;
+  --wifi-bg-content: #1d1d1d;
+  
+  /* Textfarben - Kontrast zum Hintergrund */
+  --wifi-text-white: #ffffff;      /* Weiß für dunkle Hintergründe */
+  --wifi-text-black: #000000;      /* Schwarz für helle Hintergründe */
+  --wifi-text-gray: #bdbdbd;       /* Hellgrau für dunkle Hintergründe */
+  --wifi-text-on-orange: #ffffff;  /* Weiß auf Orange */
+  
+  /* Schatten */
+  --wifi-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+/* ============================================
+   W3.CSS THEME - DEEP ORANGE
+   ============================================ */
+.w3-theme-deep-orange,
+.wifi-theme-deep-orange {
+  --wifi-orange: #ff5722;
+  --wifi-orange-hover: #e64a19;
+  --wifi-orange-active: #d84315;
+}
+
+/* Deep Orange Farben */
+.w3-theme-l5 {color:#000 !important; background-color:#fbe9e7 !important}
+.w3-theme-l4 {color:#000 !important; background-color:#ffccbc !important}
+.w3-theme-l3 {color:#000 !important; background-color:#ffab91 !important}
+.w3-theme-l2 {color:#000 !important; background-color:#ff8a65 !important}
+.w3-theme-l1 {color:#000 !important; background-color:#ff7043 !important}
+.w3-theme-d1 {color:#fff !important; background-color:#f4511e !important}
+.w3-theme-d2 {color:#fff !important; background-color:#e64a19 !important}
+.w3-theme-d3 {color:#fff !important; background-color:#d84315 !important}
+.w3-theme-d4 {color:#fff !important; background-color:#bf360c !important}
+.w3-theme-d5 {color:#fff !important; background-color:#a0290b !important}
+
+.w3-theme-light {color:#000 !important; background-color:#fbe9e7 !important}
+.w3-theme-dark {color:#fff !important; background-color:#bf360c !important}
+.w3-theme-action {color:#fff !important; background-color:#bf360c !important}
+
+.w3-theme {color:#fff !important; background-color:#ff5722 !important}
+.w3-text-theme {color:#ff5722 !important}
+.w3-border-theme {border-color:#ff5722 !important}
+
+.w3-hover-theme:hover {color:#fff !important; background-color:#ff5722 !important}
+.w3-hover-text-theme:hover {color:#ff5722 !important}
+.w3-hover-border-theme:hover {border-color:#ff5722 !important}
+
+/* ============================================
+   W3.CSS THEME - BLACK
+   ============================================ */
+.w3-theme-black,
+.wifi-theme-black {
+  --wifi-bg-sidebar: #212121;
+}
+
+/* Black Theme Farben */
+.w3-theme-l5.w3-theme-black {color:#000 !important; background-color:#f5f5f5 !important}
+.w3-theme-l4.w3-theme-black {color:#000 !important; background-color:#e0e0e0 !important}
+.w3-theme-l3.w3-theme-black {color:#000 !important; background-color:#bdbdbd !important}
+.w3-theme-l2.w3-theme-black {color:#fff !important; background-color:#9e9e9e !important}
+.w3-theme-l1.w3-theme-black {color:#fff !important; background-color:#757575 !important}
+.w3-theme-d1.w3-theme-black {color:#fff !important; background-color:#212121 !important}
+.w3-theme-d2.w3-theme-black {color:#fff !important; background-color:#1a1a1a !important}
+.w3-theme-d3.w3-theme-black {color:#fff !important; background-color:#0d0d0d !important}
+.w3-theme-d4.w3-theme-black {color:#fff !important; background-color:#050505 !important}
+.w3-theme-d5.w3-theme-black {color:#fff !important; background-color:#000000 !important}
+
+.w3-theme-light.w3-theme-black {color:#000 !important; background-color:#f5f5f5 !important}
+.w3-theme-dark.w3-theme-black {color:#fff !important; background-color:#000000 !important}
+.w3-theme-action.w3-theme-black {color:#fff !important; background-color:#000000 !important}
+
+.w3-theme.w3-theme-black {color:#fff !important; background-color:#000000 !important}
+.w3-text-theme.w3-theme-black {color:#000000 !important}
+.w3-border-theme.w3-theme-black {border-color:#000000 !important}
+
+.w3-hover-theme.w3-theme-black:hover {color:#fff !important; background-color:#000000 !important}
+.w3-hover-text-theme.w3-theme-black:hover {color:#000000 !important}
+.w3-hover-border-theme.w3-theme-black:hover {border-color:#000000 !important}
+
+/* ============================================
+   GRUNDLEGENDES LAYOUT
+   ============================================ */
+
+html, body {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #000000;  /* SCHWARZER Hintergrund */
+  color: var(--wifi-text-black);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+h1 { font-size: 36px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 16px; }
+
+/* Header */
+#header {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+/* ============================================
+   CV TEMPLATE LAYOUT - RESPONSIVE FLUID GRID
+   ============================================ */
+
+/* Main Container - Volle Breite */
+.wifi-main {
+  width: 100%;
+  margin: 0;
+  background: var(--wifi-bg-content);
+}
+
+/* Row für Sidebar + Content - Fluid Grid */
+.wifi-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wifi-row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ============================================
+   SIDEBAR - W3.CSS Responsive (w3-col s12 m3 l2)
+   ============================================ */
+
+.wifi-sidebar {
+  background-color: var(--wifi-bg-sidebar);  /* Grau #616161 */
+  color: #ffffff;  /* Weiß auf Grau */
+  padding: 0;
+  line-height: 0.75;  /* 50% reduzierte Zeilenabstände */
+}
+
+/* Responsive Breiten für Sidebar */
+@media (max-width: 600px) {
+  /* Small: Volle Breite auf Handys */
+  .wifi-sidebar {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  /* Medium: 25% auf Tablets */
+  .wifi-sidebar {
+    width: 25%;
+    min-width: 25%;
+  }
+}
+
+@media (min-width: 993px) {
+  /* Large: 280px feste Breite auf Desktop */
+  .wifi-sidebar {
+    width: 280px;
+    min-width: 280px;
+  }
+}
+
+/* Sidebar Container */
+.wifi-sidebar .w3-container,
+.wifi-sidebar .wifi-container {
+  padding: 8px;  /* 50% von 16px */
+}
+
+/* Sidebar Header/Avatar Bereich */
+.wifi-sidebar-header {
+  text-align: center;
+  padding: 16px 8px;  /* 50% von 32px/16px */
+  background-color: rgba(0,0,0,0.1);
+}
+
+.wifi-avatar {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 50%;
+  margin-bottom: 8px;  /* 50% von 16px */
+}
+
+.wifi-sidebar h2 {
+  color: #ffffff;  /* Weiß auf grauem Sidebar */
+  font-weight: 300;
+  margin: 5px 0;  /* 50% von 10px */
+  line-height: 0.75;  /* 50% reduziert */
+}
+
+.wifi-sidebar h5 {
+  margin: 5px 0;  /* 50% von 10px */
+  line-height: 0.75;  /* 50% reduziert */
+}
+
+.wifi-sidebar p {
+  margin: 4px 0;  /* 50% reduziert */
+  line-height: 0.75;  /* 50% reduziert */
+}
+
+/* Sidebar Abschnitte */
+.wifi-sidebar-section {
+  padding: 0;
+  margin: 0;
+}
+
+.wifi-sidebar-section .wifi-container {
+  padding: 8px;  /* 50% von 16px */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Sidebar Listen/Menu */
+.wifi-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wifi-sidebar li {
+  padding: 4px 0;  /* 50% von 8px */
+  line-height: 0.75;  /* 50% reduziert */
+}
+
+.wifi-sidebar a {
+  color: #ffffff;  /* Weiß auf Grau */
+  text-decoration: none;
+  display: block;
+  padding: 4px 8px;  /* 50% von 8px/16px */
+  transition: background-color 0.3s;
+  line-height: 0.75;  /* 50% reduziert */
+}
+
+.wifi-sidebar a:hover {
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* Icons in Sidebar */
+.wifi-sidebar i {
+  margin-right: 8px;  /* 50% von 16px */
+  color: var(--wifi-orange);
+  width: 20px;
+  text-align: center;
+}
+
+/* ============================================
+   CONTENT - W3.CSS Responsive (w3-col s12 m9 l10)
+   ============================================ */
+
+.wifi-content {
+  background-color: var(--wifi-bg-content);  /* Dunkelgrau #1d1d1d */
+  color: #ffffff;  /* Weiß auf Dunkelgrau */
+  padding: 0;
+}
+
+/* Responsive Breiten für Content */
+@media (max-width: 600px) {
+  /* Small: Volle Breite auf Handys */
+  .wifi-content {
+    width: 100%;
+    flex: none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 992px) {
+  /* Medium: 75% auf Tablets */
+  .wifi-content {
+    width: 75%;
+    flex: 1;
+  }
+}
+
+@media (min-width: 993px) {
+  /* Large: calc(100% - 280px) auf Desktop */
+  .wifi-content {
+    width: calc(100% - 280px);
+    flex: 1;
+  }
+}
+
+.wifi-content .w3-container,
+.wifi-content .wifi-container {
+  padding: 16px;
+}
+
+/* Content Sections */
+.wifi-content-section {
+  padding: 32px 16px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.wifi-content-section h2 {
+  color: var(--wifi-orange);
+  font-weight: 400;
+}
+
+.wifi-content-section h3 {
+  color: #ffffff;  /* Weiß auf dunklem Hintergrund */
+  font-weight: 500;
+}
+
+/* ============================================
+   W3.CSS UTILITY CLASSES (Kompatibilität)
+   ============================================ */
+
+/* Container */
+.w3-container {
+  padding: 0.01em 16px;
+}
+
+.w3-container::after,
+.w3-container::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Cards */
+.w3-card, .w3-card-2 {
+  box-shadow: var(--wifi-shadow);
+}
+
+.w3-card-4, .wifi-card {
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* Card mit schwarzem Hintergrund */
+.w3-card.w3-black,
+.w3-card-2.w3-black,
+.w3-card-4.w3-black {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Farben - Text immer Gegenteil vom Hintergrund */
+.w3-orange, .wifi-orange {
+  color: #ffffff !important;  /* Weiß auf Orange */
+  background-color: var(--wifi-orange) !important;
+}
+
+.w3-text-orange {
+  color: var(--wifi-orange) !important;
+}
+
+.w3-white {
+  color: #000000 !important;  /* Schwarz auf Weiß */
+  background-color: #ffffff !important;
+}
+
+.w3-black, .wifi-black {
+  color: #ffffff !important;  /* Weiß auf Schwarz */
+  background-color: #000000 !important;
+}
+
+.w3-text-white {
+  color: #ffffff !important;
+}
+
+.w3-text-black {
+  color: #000000 !important;
+}
+
+.w3-text-grey, .w3-text-gray {
+  color: #bdbdbd !important;
+}
+
+.w3-light-grey, .w3-light-gray {
+  color: #000000 !important;  /* Schwarz auf Hellgrau */
+  background-color: #f1f1f1 !important;
+}
+
+/* Margins & Padding */
+.w3-margin {
+  margin: 16px !important;
+}
+
+.w3-margin-top {
+  margin-top: 16px !important;
+}
+
+.w3-margin-bottom {
+  margin-bottom: 16px !important;
+}
+
+.w3-padding {
+  padding: 8px 16px !important;
+}
+
+.w3-padding-16 {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+.w3-padding-24 {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+.w3-padding-32 {
+  padding-top: 32px !important;
+  padding-bottom: 32px !important;
+}
+
+/* Kompakte Statistik-Cards */
+.stats-card {
+  padding: 8px 12px !important;
+}
+
+.stats-card h3 {
+  margin: 8px 0 !important;
+  font-size: 28px !important;
+}
+
+.stats-card p {
+  margin: 4px 0 !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+}
+
+.w3-padding-64 {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+/* Text Alignment */
+.w3-center {
+  text-align: center !important;
+}
+
+.w3-left-align {
+  text-align: left !important;
+}
+
+.w3-right-align {
+  text-align: right !important;
+}
+
+/* Display */
+.w3-hide {
+  display: none !important;
+}
+
+.w3-show {
+  display: block !important;
+}
+
+/* Bars & Progress */
+.w3-container.w3-round {
+  border-radius: 4px;
+}
+
+/* ============================================
+   BUTTONS UND LINKS
+   ============================================ */
+
+/* Standard Button Styles - Deep Orange wie Header/Footer */
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+.button,
+.wifi-button, 
+.w3-button {
+  border: 1px solid #424242 !important;  /* Dunkelgrauer Rahmen */
+  display: inline-block;
+  padding: 12px 24px !important;  /* Größere Buttons */
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: #ffffff !important;
+  background-color: #ff5722 !important;  /* Deep Orange wie Header/Footer */
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 4px;
+  font-size: 16px !important;  /* Größere Schrift */
+  font-family: inherit;
+  font-weight: 500;  /* Fettere Schrift */
+  min-width: 200px;  /* Mindestbreite für einheitliche Größe */
+}
+
+/* Hover: Helleres Deep Orange */
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+.button:hover {
+  background-color: #ff7043 !important;  /* w3-theme-l1 */
+  color: #ffffff !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border-color: #616161 !important;  /* Hellerer Rahmen beim Hover */
+}
+
+.w3-button:disabled,
+button:disabled,
+input[type="submit"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+/* Links als Buttons - gleiche Größe */
+a.button,
+a.w3-button {
+  display: inline-block !important;
+  min-width: 200px;
+  padding: 12px 24px !important;
+  text-decoration: none !important;
+  border: 1px solid #424242 !important;
+}
+
+/* Button Container für zentrierte Buttons */
+.button-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.button-container button,
+.button-container input[type="submit"],
+.button-container .button {
+  margin: 5px 10px;
+}
+
+/* Button Hover Effects */
+.w3-button:hover {
+  background-color: #ff7043 !important;  /* Deep Orange L1 */
+  color: #ffffff !important;
+}
+
+.w3-hover-orange:hover {
+  background-color: #ff5722 !important;  /* Deep Orange */
+  color: #ffffff !important;
+}
+
+.w3-hover-black:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.w3-hover-white:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.w3-hover-none:hover {
+  background-color: inherit !important;
+  color: inherit !important;
+  box-shadow: none !important;
+}
+
+/* Button mit Orange Hintergrund */
+.w3-button.w3-orange,
+.button.w3-orange,
+button.w3-orange,
+input[type="submit"].w3-orange {
+  background-color: var(--wifi-orange) !important;
+  color: #ffffff !important;
+}
+
+.w3-button.w3-orange:hover,
+.button.w3-orange:hover {
+  background-color: var(--wifi-orange-hover) !important;
+}
+
+/* Button mit schwarzem Hintergrund */
+.w3-button.w3-black,
+.button.w3-black {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.w3-button.w3-black:hover,
+.button.w3-black:hover {
+  background-color: #616161 !important;
+}
+
+/* Button mit weißem Hintergrund */
+.w3-button.w3-white,
+.button.w3-white {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ccc;
+}
+
+.w3-button.w3-white:hover,
+.button.w3-white:hover {
+  background-color: #f1f1f1 !important;
+}
+
+/* Round Buttons */
+.w3-round,
+button.w3-round,
+.button.w3-round {
+  border-radius: 4px !important;
+}
+
+.w3-round-medium {
+  border-radius: 8px !important;
+}
+
+.w3-round-large {
+  border-radius: 16px !important;
+}
+
+.w3-round-xlarge {
+  border-radius: 32px !important;
+}
+
+.w3-round-xxlarge {
+  border-radius: 64px !important;
+}
+
+/* Button Größen */
+.w3-tiny {
+  font-size: 10px !important;
+}
+
+.w3-small {
+  font-size: 12px !important;
+}
+
+.w3-medium {
+  font-size: 15px !important;
+}
+
+.w3-large {
+  font-size: 18px !important;
+}
+
+.w3-xlarge {
+  font-size: 24px !important;
+}
+
+.w3-xxlarge {
+  font-size: 36px !important;
+}
+
+.w3-xxxlarge {
+  font-size: 48px !important;
+}
+
+.w3-jumbo {
+  font-size: 64px !important;
+}
+
+/* Block Button (volle Breite) */
+.w3-block {
+  display: block;
+  width: 100%;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Responsive Breakpoints - W3.CSS Standard */
+
+/* Mobile Geräte (Small) */
+@media (max-width: 600px) {
+  .wifi-main {
+    margin: 0;
+  }
+  
+  .wifi-content-section {
+    padding: 16px 8px;
+  }
+  
+  /* Statistik-Cards: 1 Spalte auf Handys */
+  .w3-quarter {
+    width: 100% !important;
+  }
+  
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+}
+
+/* Tablets (Medium) */
+@media (min-width: 601px) and (max-width: 992px) {
+  /* Statistik-Cards: 2 Spalten auf Tablets */
+  .w3-quarter {
+    width: 50% !important;
+  }
+}
+
+/* Desktop (Large) - 4 Spalten bleiben */
+@media (min-width: 993px) {
+  /* Statistik-Cards: 4 Spalten auf Desktop */
+  .w3-quarter {
+    width: 25%;
+  }
+}
+
+/* ============================================
+   MENU STYLES (Wifi-spezifisch)
+   ============================================ */
+
+/* Main Menu in Sidebar */
+#main-menu ul,
+#gridusers-menu ul,
+#addons-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#main-menu li a,
+#gridusers-menu li a,
+#addons-menu li a {
+  color: var(--wifi-text-white);
+  text-decoration: none;
+  padding: 12px 16px;
+  display: block;
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+#main-menu li a:hover,
+#gridusers-menu li a:hover,
+#addons-menu li a:hover {
+  background-color: rgba(0,0,0,0.2);
+  border-left-color: var(--wifi-orange);
+}
+
+/* Links in Content */
+.wifi-content a {
+  color: var(--wifi-orange);
+  text-decoration: none;
+}
+
+.wifi-content a:hover {
+  color: var(--wifi-orange-hover);
+  text-decoration: underline;
+}
+
+/* ============================================
+   FORMULARE
+   ============================================ */
+
+.wifi-input,
+.wifi-textarea,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+.inputstyle {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  background-color: #ffffff !important;  /* Weiß */
+  color: #000000 !important;  /* Schwarz auf Weiß */
+}
+
+.wifi-input:focus,
+.wifi-textarea:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--wifi-orange);
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.3);
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* ============================================
+   TABELLEN
+   ============================================ */
+
+.wifi-table, table.entries {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.wifi-table th,
+.wifi-table td,
+table.entries th,
+table.entries td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.wifi-table th,
+table.entries th {
+  background-color: var(--wifi-orange);
+  color: var(--wifi-text-white);
+  font-weight: 500;
+}
+
+.wifi-table tr:hover,
+table.entries tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* ============================================
+   SPRACHUNTERSTÜTZUNG
+   ============================================ */
+
+/* Deutsche Texte standardmäßig anzeigen */
+.lang-de { display: inline; }
+.lang-en { display: none; }
+
+/* Englische Ansicht aktivieren mit Body-Klasse */
+body.lang-english .lang-de { display: none; }
+body.lang-english .lang-en { display: inline; }
+
+/* ============================================
+   CONSOLE KOMPATIBILITÄT
+   ============================================ */
+
+#console #messages {
+  overflow: auto;
+}
+
+/* Formular-Labels in Orange für bessere Lesbarkeit */
+.bodytext {
+  color: var(--wifi-orange);
+  font-size: 15px;
+}
+
+/* Labels und Form-Texte */
+label,
+form p {
+  color: var(--wifi-orange) !important;
+}
+
+.white {
+  color: var(--wifi-text-white);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+#footer {
+  background-color: var(--wifi-bg-dark);
+  color: var(--wifi-text-gray);
+  padding: 32px 16px;
+  text-align: center;
+}
+
+#footer a {
+  color: var(--wifi-orange);
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: var(--wifi-orange-hover);
+  text-decoration: underline;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.wifi-text-center { text-align: center; }
+.wifi-text-right { text-align: right; }
+.wifi-text-left { text-align: left; }
+
+.wifi-clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wifi-block {
+  display: block;
+  width: 100%;
+}
+
+.wifi-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Schatten */
+.wifi-shadow {
+  box-shadow: var(--wifi-shadow);
+}
+
+/* W3.CSS Border Classes */
+.w3-border {
+  border: 1px solid #ccc !important;
+}
+
+.w3-border-0 {
+  border: 0 !important;
+}
+
+.w3-border-top {
+  border-top: 1px solid #ccc !important;
+}
+
+.w3-border-bottom {
+  border-bottom: 1px solid #ccc !important;
+}
+
+.w3-border-left {
+  border-left: 1px solid #ccc !important;
+}
+
+.w3-border-right {
+  border-right: 1px solid #ccc !important;
+}
+
+.w3-border-orange {
+  border-color: var(--wifi-orange) !important;
+}
+
+.w3-border-black {
+  border-color: #000000 !important;
+}
+
+.w3-border-white {
+  border-color: #ffffff !important;
+}
+
+/* Hover Border Classes */
+.w3-hover-border-orange:hover {
+  border-color: var(--wifi-orange) !important;
+}
+
+/* Row Padding für Grid-Layouts */
+.w3-row-padding {
+  padding: 0 8px;
+}
+
+.w3-row-padding > * {
+  padding: 0 8px;
+}
+
+/* Grid Columns */
+.w3-half {
+  float: left;
+  width: 49.99999%;
+}
+
+.w3-third {
+  float: left;
+  width: 33.33333%;
+}
+
+.w3-twothird {
+  float: left;
+  width: 66.66666%;
+}
+
+.w3-quarter {
+  float: left;
+  width: 24.99999%;
+}
+
+.w3-threequarter {
+  float: left;
+  width: 74.99999%;
+}
+
+.w3-col {
+  float: left;
+  width: 100%;
+}
+
+/* Responsive Grid */
+@media (max-width: 601px) {
+  .w3-half,
+  .w3-third,
+  .w3-twothird,
+  .w3-quarter,
+  .w3-threequarter {
+    width: 100%;
+  }
+}
+
+/* Content Width */
+.w3-content {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.w3-content {
+  max-width: 980px;
+}
+
+/* Opacity */
+.w3-opacity, .w3-hover-opacity:hover {
+  opacity: 0.60;
+}
+
+.w3-opacity-off, .w3-hover-opacity-off:hover {
+  opacity: 1;
+}
+
+.w3-opacity-min {
+  opacity: 0.75;
+}
+
+.w3-opacity-max {
+  opacity: 0.25;
+}
+
+/* Grayscale */
+.w3-grayscale, .w3-hover-grayscale:hover {
+  filter: grayscale(75%);
+}
+
+.w3-grayscale-min {
+  filter: grayscale(50%);
+}
+
+.w3-grayscale-max {
+  filter: grayscale(100%);
+}
+
+/* Sepia */
+.w3-sepia, .w3-hover-sepia:hover {
+  filter: sepia(75%);
+}
+
+.w3-sepia-min {
+  filter: sepia(50%);
+}
+
+.w3-sepia-max {
+  filter: sepia(100%);
+}
