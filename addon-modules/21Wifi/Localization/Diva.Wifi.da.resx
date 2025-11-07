@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Female"><value>Kvinde</value></data>
+  <data name="Male"><value>Mand</value></data>
+  <data name="Neutral"><value>Neutral</value></data>
+  <data name="Default"><value>Standard</value></data>
+  <data name="nobody"><value>ingen</value></data>
+  <data name="My Inventory"><value>Min Beholdning</value></data>
+  <data name="My Outfits"><value>Mine Outfits</value></data>
+  <data name="My Suitcase"><value>Min Kuffert</value></data>
+  <data name="Animations"><value>Animationer</value></data>
+  <data name="Body Parts"><value>Kropsdele</value></data>
+  <data name="Calling Cards"><value>Visitkort</value></data>
+  <data name="Clothing"><value>Tøj</value></data>
+  <data name="Current Outfit"><value>Nuværende Outfit</value></data>
+  <data name="Favorites"><value>Favoritter</value></data>
+  <data name="Gestures"><value>Fagter</value></data>
+  <data name="Landmarks"><value>Landmærker</value></data>
+  <data name="Lost And Found"><value>Hittegods</value></data>
+  <data name="Notecards"><value>Notatkort</value></data>
+  <data name="Objects"><value>Objekter</value></data>
+  <data name="Photo Album"><value>Fotoalbum</value></data>
+  <data name="Scripts"><value>Scripts</value></data>
+  <data name="Sounds"><value>Lyde</value></data>
+  <data name="Textures"><value>Teksturer</value></data>
+  <data name="Trash"><value>Papirkurv</value></data>
+  <data name="Unknown"><value>Ukendt</value></data>
+  <data name="Texture"><value>Tekstur</value></data>
+  <data name="Sound"><value>Lyd</value></data>
+  <data name="CallingCard"><value>Visitkort</value></data>
+  <data name="Landmark"><value>Landmærke</value></data>
+  <data name="Object"><value>Objekt</value></data>
+  <data name="Notecard"><value>Notatkort</value></data>
+  <data name="Folder"><value>Mappe</value></data>
+  <data name="RootFolder"><value>Rodmappe</value></data>
+  <data name="LSLText"><value>LSL-tekst</value></data>
+  <data name="LSLBytecode"><value>LSL-bytekode</value></data>
+  <data name="TextureTGA"><value>Tekstur TGA</value></data>
+  <data name="Bodypart"><value>Kropsdel</value></data>
+  <data name="TrashFolder"><value>Papirkurvsmappe</value></data>
+  <data name="SnapshotFolder"><value>Øjebliksbilledemappe</value></data>
+  <data name="LostAndFoundFolder"><value>Hittegodsmappe</value></data>
+  <data name="SoundWAV"><value>Lyd WAV</value></data>
+  <data name="ImageTGA"><value>Billede TGA</value></data>
+  <data name="ImageJPEG"><value>Billede JPEG</value></data>
+  <data name="Animation"><value>Animation</value></data>
+  <data name="Gesture"><value>Fagt</value></data>
+  <data name="Simstate"><value>Sim-tilstand</value></data>
+  <data name="FavoriteFolder"><value>Favoritmappe</value></data>
+  <data name="Link"><value>Link</value></data>
+  <data name="LinkFolder"><value>Linkmappe</value></data>
+  <data name="EnsembleStart"><value>Ensemble Start</value></data>
+  <data name="EnsembleEnd"><value>Ensemble Slut</value></data>
+  <data name="CurrentOutfitFolder"><value>Nuværende Outfit Mappe</value></data>
+  <data name="OutfitFolder"><value>Outfit Mappe</value></data>
+  <data name="MyOutfitsFolder"><value>Mine Outfits Mappe</value></data>
+  <data name="Mesh"><value>Mesh</value></data>
+  <data name="delete"><value>slet</value></data>
+  <data name="Your account has been updated."><value>Din konto er blevet opdateret.</value></data>
+  <data name="Failed to link region: {0}"><value>Kunne ikke linke region: {0}</value></data>
+  <data name="Region link to {0} established. (If this link already existed, then it will remain at the original location.)"><value>Regionslink til {0} etableret. (Hvis dette link allerede eksisterede, forbliver det på den oprindelige placering.)</value></data>
+  <data name="Invalid region address."><value>Ugyldig regionsadresse.</value></data>
+  <data name="Region link not found."><value>Regionslink ikke fundet.</value></data>
+  <data name="Deleted region link {0}."><value>Regionslink {0} slettet.</value></data>
+  <data name="Deletion of region link {0} failed."><value>Sletning af regionslink {0} mislykkedes.</value></data>
+  <data name="Your Wifi has been installed. The administrator account is {0} {1}"><value>Din Wifi er blevet installeret. Administratorkontoen er {0} {1}</value></data>
+  <data name="Loading your inventory, please wait"><value>Indlæser din beholdning, vent venligst</value></data>
+  <data name="If your browser does not automatically load the next page, then use the button, please."><value>Hvis din browser ikke automatisk indlæser næste side, så brug knappen.</value></data>
+  <data name="continue"><value>fortsæt</value></data>
+  <data name="Login failed."><value>Login mislykkedes.</value></data>
+  <data name="Welcome to {0}!"><value>Velkommen til {0}!</value></data>
+  <data name="Your account has been created."><value>Din konto er blevet oprettet.</value></data>
+  <data name="New account {0} {1} created in {2} is awaiting your approval."><value>Ny konto {0} {1} oprettet i {2} afventer din godkendelse.</value></data>
+  <data name="Account awaiting approval"><value>Konto afventer godkendelse</value></data>
+  <data name="Your account awaits administrator approval."><value>Din konto afventer administratorgodkendelse.</value></data>
+  <data name="Default Avatar"><value>Standard Avatar</value></data>
+  <data name="OK"><value>OK</value></data>
+  <data name="Your account is {0} {1}"><value>Din konto er {0} {1}</value></data>
+  <data name="Click here to reset your password:"><value>Klik her for at nulstille din adgangskode:</value></data>
+  <data name="Password Reset"><value>Nulstil adgangskode</value></data>
+  <data name="Check your email. You must reset your password within 60 minutes."><value>Tjek din e-mail. Du skal nulstille din adgangskode inden for 60 minutter.</value></data>
+  <data name="Email could not be sent."><value>E-mail kunne ikke sendes.</value></data>
+  <data name="Invalid token."><value>Ugyldigt token.</value></data>
+  <data name="Your password has been reset."><value>Din adgangskode er blevet nulstillet.</value></data>
+  <data name="The account has been updated."><value>Kontoen er blevet opdateret.</value></data>
+  <data name="The account does not exist."><value>Kontoen findes ikke.</value></data>
+  <data name="The account has been activated."><value>Kontoen er blevet aktiveret.</value></data>
+  <data name="Your account has been activated."><value>Din konto er blevet aktiveret.</value></data>
+  <data name="First name:"><value>Fornavn:</value></data>
+  <data name="Last name:"><value>Efternavn:</value></data>
+  <data name="LoginURI:"><value>LoginURI:</value></data>
+  <data name="Account activated"><value>Konto aktiveret</value></data>
+  <data name="The account has been deleted."><value>Kontoen er blevet slettet.</value></data>
+  <data name="Unable to delete account because it does not exist."><value>Kan ikke slette konto, fordi den ikke findes.</value></data>
+  <data name="Who are you?"><value>Hvem er du?</value></data>
+  <data name="No email on file"><value>Ingen e-mail på filen</value></data>
+  <data name="No linked regions found"><value>Ingen linkede regioner fundet</value></data>
+  <data name="No users found"><value>Ingen brugere fundet</value></data>
+  <data name="No regions found"><value>Ingen regioner fundet</value></data>
+  </root>

@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "女性"
+
+msgid "Male"
+msgstr "男性"
+
+msgid "Neutral"
+msgstr "中性"
+
+msgid "Default"
+msgstr "デフォルト"
+
+msgid "nobody"
+msgstr "誰もいない"
+
+msgid "My Inventory"
+msgstr "マイインベントリ"
+
+msgid "My Outfits"
+msgstr "マイ服装"
+
+msgid "My Suitcase"
+msgstr "マイスーツケース"
+
+msgid "Animations"
+msgstr "アニメーション"
+
+msgid "Body Parts"
+msgstr "身体部分"
+
+msgid "Calling Cards"
+msgstr "名刺"
+
+msgid "Clothing"
+msgstr "衣類"
+
+msgid "Current Outfit"
+msgstr "現在の服装"
+
+msgid "Favorites"
+msgstr "お気に入り"
+
+msgid "Gestures"
+msgstr "ジェスチャー"
+
+msgid "Landmarks"
+msgstr "ランドマーク"
+
+msgid "Lost And Found"
+msgstr "紛失物"
+
+msgid "Notecards"
+msgstr "ノートカード"
+
+msgid "Objects"
+msgstr "オブジェクト"
+
+msgid "Photo Album"
+msgstr "フォトアルバム"
+
+msgid "Scripts"
+msgstr "スクリプト"
+
+msgid "Sounds"
+msgstr "サウンド"
+
+msgid "Textures"
+msgstr "テクスチャ"
+
+msgid "Trash"
+msgstr "ゴミ箱"
+
+msgid "Unknown"
+msgstr "不明"
+
+msgid "Texture"
+msgstr "テクスチャ"
+
+msgid "Sound"
+msgstr "サウンド"
+
+msgid "CallingCard"
+msgstr "名刺"
+
+msgid "Landmark"
+msgstr "ランドマーク"
+
+msgid "Object"
+msgstr "オブジェクト"
+
+msgid "Notecard"
+msgstr "ノートカード"
+
+msgid "Folder"
+msgstr "フォルダ"
+
+msgid "RootFolder"
+msgstr "ルートフォルダ"
+
+msgid "LSLText"
+msgstr "LSLテキスト"
+
+msgid "LSLBytecode"
+msgstr "LSLバイトコード"
+
+msgid "TextureTGA"
+msgstr "TGAテクスチャ"
+
+msgid "Bodypart"
+msgstr "身体部分"
+
+msgid "TrashFolder"
+msgstr "ゴミ箱フォルダ"
+
+msgid "SnapshotFolder"
+msgstr "スナップショットフォルダ"
+
+msgid "LostAndFoundFolder"
+msgstr "紛失物フォルダ"
+
+msgid "SoundWAV"
+msgstr "WAVサウンド"
+
+msgid "ImageTGA"
+msgstr "TGA画像"
+
+msgid "ImageJPEG"
+msgstr "JPEG画像"
+
+msgid "Animation"
+msgstr "アニメーション"
+
+msgid "Gesture"
+msgstr "ジェスチャー"
+
+msgid "Simstate"
+msgstr "Sim状態"
+
+msgid "FavoriteFolder"
+msgstr "お気に入りフォルダ"
+
+msgid "Link"
+msgstr "リンク"
+
+msgid "LinkFolder"
+msgstr "リンクフォルダ"
+
+msgid "EnsembleStart"
+msgstr "アンサンブル開始"
+
+msgid "EnsembleEnd"
+msgstr "アンサンブル終了"
+
+msgid "CurrentOutfitFolder"
+msgstr "現在の服装フォルダ"
+
+msgid "OutfitFolder"
+msgstr "服装フォルダ"
+
+msgid "MyOutfitsFolder"
+msgstr "マイ服装フォルダ"
+
+msgid "Mesh"
+msgstr "メッシュ"
+
+msgid "delete"
+msgstr "削除"
+
+msgid "Your account has been updated."
+msgstr "アカウントが更新されました。"
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "リージョンのリンクに失敗しました: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "{0}へのリージョンリンクが確立されました。(このリンクが既に存在していた場合は、元の場所に残ります。)"
+
+msgid "Invalid region address."
+msgstr "無効なリージョンアドレスです。"
+
+msgid "Region link not found."
+msgstr "リージョンリンクが見つかりません。"
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "リージョンリンク{0}を削除しました。"
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "リージョンリンク{0}の削除に失敗しました。"
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Wifiがインストールされました。管理者アカウントは{0} {1}です"
+
+msgid "Loading your inventory, please wait"
+msgstr "インベントリを読み込んでいます。お待ちください"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "ブラウザが自動的に次のページを読み込まない場合は、ボタンを使用してください。"
+
+msgid "continue"
+msgstr "続行"
+
+msgid "Login failed."
+msgstr "ログインに失敗しました。"
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "{0}へようこそ!"
+
+msgid "Your account has been created."
+msgstr "アカウントが作成されました。"
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "{2}で作成された新しいアカウント{0} {1}は承認待ちです。"
+
+msgid "Account awaiting approval"
+msgstr "アカウントは承認待ちです"
+
+msgid "Your account awaits administrator approval."
+msgstr "アカウントは管理者の承認を待っています。"
+
+msgid "Default Avatar"
+msgstr "デフォルトアバター"
+
+msgid "OK"
+msgstr "OK"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "あなたのアカウントは{0} {1}です"
+
+msgid "Click here to reset your password:"
+msgstr "パスワードをリセットするにはここをクリック:"
+
+msgid "Password Reset"
+msgstr "パスワードリセット"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "メールを確認してください。60分以内にパスワードをリセットする必要があります。"
+
+msgid "Email could not be sent."
+msgstr "メールを送信できませんでした。"
+
+msgid "Invalid token."
+msgstr "無効なトークンです。"
+
+msgid "Your password has been reset."
+msgstr "パスワードがリセットされました。"
+
+msgid "The account has been updated."
+msgstr "アカウントが更新されました。"
+
+msgid "The account does not exist."
+msgstr "アカウントが存在しません。"
+
+msgid "The account has been activated."
+msgstr "アカウントがアクティブ化されました。"
+
+msgid "Your account has been activated."
+msgstr "アカウントがアクティブ化されました。"
+
+msgid "First name:"
+msgstr "名:"
+
+msgid "Last name:"
+msgstr "姓:"
+
+msgid "LoginURI:"
+msgstr "ログインURI:"
+
+msgid "Account activated"
+msgstr "アカウントアクティブ化"
+
+msgid "The account has been deleted."
+msgstr "アカウントが削除されました。"
+
+msgid "Unable to delete account because it does not exist."
+msgstr "アカウントが存在しないため削除できません。"
+
+msgid "Who are you?"
+msgstr "あなたは誰ですか?"
+
+msgid "No email on file"
+msgstr "ファイルにメールがありません"
+
+msgid "No linked regions found"
+msgstr "リンクされたリージョンが見つかりません"
+
+msgid "No users found"
+msgstr "ユーザーが見つかりません"
+
+msgid "No regions found"
+msgstr "リージョンが見つかりません"

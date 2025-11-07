@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Dutch\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "Vrouw"
+
+msgid "Male"
+msgstr "Man"
+
+msgid "Neutral"
+msgstr "Neutraal"
+
+msgid "Default"
+msgstr "Standaard"
+
+msgid "nobody"
+msgstr "niemand"
+
+msgid "My Inventory"
+msgstr "Mijn Inventaris"
+
+msgid "My Outfits"
+msgstr "Mijn Outfits"
+
+msgid "My Suitcase"
+msgstr "Mijn Koffer"
+
+msgid "Animations"
+msgstr "Animaties"
+
+msgid "Body Parts"
+msgstr "Lichaamsdelen"
+
+msgid "Calling Cards"
+msgstr "Visitekaartjes"
+
+msgid "Clothing"
+msgstr "Kleding"
+
+msgid "Current Outfit"
+msgstr "Huidige Outfit"
+
+msgid "Favorites"
+msgstr "Favorieten"
+
+msgid "Gestures"
+msgstr "Gebaren"
+
+msgid "Landmarks"
+msgstr "Oriëntatiepunten"
+
+msgid "Lost And Found"
+msgstr "Gevonden Voorwerpen"
+
+msgid "Notecards"
+msgstr "Notitiekaarten"
+
+msgid "Objects"
+msgstr "Objecten"
+
+msgid "Photo Album"
+msgstr "Fotoalbum"
+
+msgid "Scripts"
+msgstr "Scripts"
+
+msgid "Sounds"
+msgstr "Geluiden"
+
+msgid "Textures"
+msgstr "Texturen"
+
+msgid "Trash"
+msgstr "Prullenbak"
+
+msgid "Unknown"
+msgstr "Onbekend"
+
+msgid "Texture"
+msgstr "Textuur"
+
+msgid "Sound"
+msgstr "Geluid"
+
+msgid "CallingCard"
+msgstr "Visitekaartje"
+
+msgid "Landmark"
+msgstr "Oriëntatiepunt"
+
+msgid "Object"
+msgstr "Object"
+
+msgid "Notecard"
+msgstr "Notitiekaart"
+
+msgid "Folder"
+msgstr "Map"
+
+msgid "RootFolder"
+msgstr "Hoofdmap"
+
+msgid "LSLText"
+msgstr "LSL-tekst"
+
+msgid "LSLBytecode"
+msgstr "LSL-bytecode"
+
+msgid "TextureTGA"
+msgstr "Textuur TGA"
+
+msgid "Bodypart"
+msgstr "Lichaamsdeel"
+
+msgid "TrashFolder"
+msgstr "Prullenbakmap"
+
+msgid "SnapshotFolder"
+msgstr "Momentopnamemap"
+
+msgid "LostAndFoundFolder"
+msgstr "Gevonden Voorwerpen Map"
+
+msgid "SoundWAV"
+msgstr "Geluid WAV"
+
+msgid "ImageTGA"
+msgstr "Afbeelding TGA"
+
+msgid "ImageJPEG"
+msgstr "Afbeelding JPEG"
+
+msgid "Animation"
+msgstr "Animatie"
+
+msgid "Gesture"
+msgstr "Gebaar"
+
+msgid "Simstate"
+msgstr "Sim-status"
+
+msgid "FavoriteFolder"
+msgstr "Favorietenmap"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "LinkFolder"
+msgstr "Linkmap"
+
+msgid "EnsembleStart"
+msgstr "Ensemble Start"
+
+msgid "EnsembleEnd"
+msgstr "Ensemble Einde"
+
+msgid "CurrentOutfitFolder"
+msgstr "Huidige Outfit Map"
+
+msgid "OutfitFolder"
+msgstr "Outfit Map"
+
+msgid "MyOutfitsFolder"
+msgstr "Mijn Outfits Map"
+
+msgid "Mesh"
+msgstr "Mesh"
+
+msgid "delete"
+msgstr "verwijderen"
+
+msgid "Your account has been updated."
+msgstr "Uw account is bijgewerkt."
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "Koppelen van regio mislukt: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "Regiolink naar {0} tot stand gebracht. (Als deze link al bestond, blijft deze op de oorspronkelijke locatie.)"
+
+msgid "Invalid region address."
+msgstr "Ongeldig regioadres."
+
+msgid "Region link not found."
+msgstr "Regiolink niet gevonden."
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "Regiolink {0} verwijderd."
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "Verwijderen van regiolink {0} mislukt."
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Uw Wifi is geïnstalleerd. Het beheerdersaccount is {0} {1}"
+
+msgid "Loading your inventory, please wait"
+msgstr "Uw inventaris wordt geladen, even geduld"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "Als uw browser de volgende pagina niet automatisch laadt, gebruik dan de knop."
+
+msgid "continue"
+msgstr "doorgaan"
+
+msgid "Login failed."
+msgstr "Aanmelden mislukt."
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "Welkom bij {0}!"
+
+msgid "Your account has been created."
+msgstr "Uw account is aangemaakt."
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "Nieuw account {0} {1} aangemaakt in {2} wacht op uw goedkeuring."
+
+msgid "Account awaiting approval"
+msgstr "Account wacht op goedkeuring"
+
+msgid "Your account awaits administrator approval."
+msgstr "Uw account wacht op goedkeuring van de beheerder."
+
+msgid "Default Avatar"
+msgstr "Standaard Avatar"
+
+msgid "OK"
+msgstr "OK"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "Uw account is {0} {1}"
+
+msgid "Click here to reset your password:"
+msgstr "Klik hier om uw wachtwoord te resetten:"
+
+msgid "Password Reset"
+msgstr "Wachtwoord Resetten"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "Controleer uw e-mail. U moet uw wachtwoord binnen 60 minuten resetten."
+
+msgid "Email could not be sent."
+msgstr "E-mail kon niet worden verzonden."
+
+msgid "Invalid token."
+msgstr "Ongeldig token."
+
+msgid "Your password has been reset."
+msgstr "Uw wachtwoord is gereset."
+
+msgid "The account has been updated."
+msgstr "Het account is bijgewerkt."
+
+msgid "The account does not exist."
+msgstr "Het account bestaat niet."
+
+msgid "The account has been activated."
+msgstr "Het account is geactiveerd."
+
+msgid "Your account has been activated."
+msgstr "Uw account is geactiveerd."
+
+msgid "First name:"
+msgstr "Voornaam:"
+
+msgid "Last name:"
+msgstr "Achternaam:"
+
+msgid "LoginURI:"
+msgstr "LoginURI:"
+
+msgid "Account activated"
+msgstr "Account geactiveerd"
+
+msgid "The account has been deleted."
+msgstr "Het account is verwijderd."
+
+msgid "Unable to delete account because it does not exist."
+msgstr "Kan account niet verwijderen omdat het niet bestaat."
+
+msgid "Who are you?"
+msgstr "Wie bent u?"
+
+msgid "No email on file"
+msgstr "Geen e-mail in bestand"
+
+msgid "No linked regions found"
+msgstr "Geen gekoppelde regio's gevonden"
+
+msgid "No users found"
+msgstr "Geen gebruikers gevonden"
+
+msgid "No regions found"
+msgstr "Geen regio's gevonden"

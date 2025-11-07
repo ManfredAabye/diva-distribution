@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "Kvinna"
+
+msgid "Male"
+msgstr "Man"
+
+msgid "Neutral"
+msgstr "Neutral"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "nobody"
+msgstr "ingen"
+
+msgid "My Inventory"
+msgstr "Mitt Inventarium"
+
+msgid "My Outfits"
+msgstr "Mina Outfits"
+
+msgid "My Suitcase"
+msgstr "Min Resväska"
+
+msgid "Animations"
+msgstr "Animationer"
+
+msgid "Body Parts"
+msgstr "Kroppsdelar"
+
+msgid "Calling Cards"
+msgstr "Visitkort"
+
+msgid "Clothing"
+msgstr "Kläder"
+
+msgid "Current Outfit"
+msgstr "Nuvarande Outfit"
+
+msgid "Favorites"
+msgstr "Favoriter"
+
+msgid "Gestures"
+msgstr "Gester"
+
+msgid "Landmarks"
+msgstr "Landmärken"
+
+msgid "Lost And Found"
+msgstr "Hittegods"
+
+msgid "Notecards"
+msgstr "Anteckningskort"
+
+msgid "Objects"
+msgstr "Objekt"
+
+msgid "Photo Album"
+msgstr "Fotoalbum"
+
+msgid "Scripts"
+msgstr "Skript"
+
+msgid "Sounds"
+msgstr "Ljud"
+
+msgid "Textures"
+msgstr "Texturer"
+
+msgid "Trash"
+msgstr "Papperskorg"
+
+msgid "Unknown"
+msgstr "Okänd"
+
+msgid "Texture"
+msgstr "Textur"
+
+msgid "Sound"
+msgstr "Ljud"
+
+msgid "CallingCard"
+msgstr "Visitkort"
+
+msgid "Landmark"
+msgstr "Landmärke"
+
+msgid "Object"
+msgstr "Objekt"
+
+msgid "Notecard"
+msgstr "Anteckningskort"
+
+msgid "Folder"
+msgstr "Mapp"
+
+msgid "RootFolder"
+msgstr "Rotmapp"
+
+msgid "LSLText"
+msgstr "LSL-text"
+
+msgid "LSLBytecode"
+msgstr "LSL-bytekod"
+
+msgid "TextureTGA"
+msgstr "Textur TGA"
+
+msgid "Bodypart"
+msgstr "Kroppsdel"
+
+msgid "TrashFolder"
+msgstr "Papperskorgsmapp"
+
+msgid "SnapshotFolder"
+msgstr "Ögonblicksbildmapp"
+
+msgid "LostAndFoundFolder"
+msgstr "Hittegodsmapp"
+
+msgid "SoundWAV"
+msgstr "Ljud WAV"
+
+msgid "ImageTGA"
+msgstr "Bild TGA"
+
+msgid "ImageJPEG"
+msgstr "Bild JPEG"
+
+msgid "Animation"
+msgstr "Animation"
+
+msgid "Gesture"
+msgstr "Gest"
+
+msgid "Simstate"
+msgstr "Sim-tillstånd"
+
+msgid "FavoriteFolder"
+msgstr "Favoritmapp"
+
+msgid "Link"
+msgstr "Länk"
+
+msgid "LinkFolder"
+msgstr "Länkmapp"
+
+msgid "EnsembleStart"
+msgstr "Ensemble Start"
+
+msgid "EnsembleEnd"
+msgstr "Ensemble Slut"
+
+msgid "CurrentOutfitFolder"
+msgstr "Nuvarande Outfit Mapp"
+
+msgid "OutfitFolder"
+msgstr "Outfit Mapp"
+
+msgid "MyOutfitsFolder"
+msgstr "Mina Outfits Mapp"
+
+msgid "Mesh"
+msgstr "Mesh"
+
+msgid "delete"
+msgstr "radera"
+
+msgid "Your account has been updated."
+msgstr "Ditt konto har uppdaterats."
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "Kunde inte länka region: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "Regionlänk till {0} upprättad. (Om denna länk redan fanns, kommer den att finnas kvar på den ursprungliga platsen.)"
+
+msgid "Invalid region address."
+msgstr "Ogiltig regionadress."
+
+msgid "Region link not found."
+msgstr "Regionlänk hittades inte."
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "Regionlänk {0} raderad."
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "Radering av regionlänk {0} misslyckades."
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Din Wifi har installerats. Administratörskontot är {0} {1}"
+
+msgid "Loading your inventory, please wait"
+msgstr "Laddar ditt inventarium, vänta"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "Om din webbläsare inte automatiskt laddar nästa sida, använd knappen."
+
+msgid "continue"
+msgstr "fortsätt"
+
+msgid "Login failed."
+msgstr "Inloggning misslyckades."
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "Välkommen till {0}!"
+
+msgid "Your account has been created."
+msgstr "Ditt konto har skapats."
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "Nytt konto {0} {1} skapat i {2} väntar på ditt godkännande."
+
+msgid "Account awaiting approval"
+msgstr "Konto väntar på godkännande"
+
+msgid "Your account awaits administrator approval."
+msgstr "Ditt konto väntar på administratörsgodkännande."
+
+msgid "Default Avatar"
+msgstr "Standard Avatar"
+
+msgid "OK"
+msgstr "OK"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "Ditt konto är {0} {1}"
+
+msgid "Click here to reset your password:"
+msgstr "Klicka här för att återställa ditt lösenord:"
+
+msgid "Password Reset"
+msgstr "Återställ Lösenord"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "Kontrollera din e-post. Du måste återställa ditt lösenord inom 60 minuter."
+
+msgid "Email could not be sent."
+msgstr "E-post kunde inte skickas."
+
+msgid "Invalid token."
+msgstr "Ogiltig token."
+
+msgid "Your password has been reset."
+msgstr "Ditt lösenord har återställts."
+
+msgid "The account has been updated."
+msgstr "Kontot har uppdaterats."
+
+msgid "The account does not exist."
+msgstr "Kontot finns inte."
+
+msgid "The account has been activated."
+msgstr "Kontot har aktiverats."
+
+msgid "Your account has been activated."
+msgstr "Ditt konto har aktiverats."
+
+msgid "First name:"
+msgstr "Förnamn:"
+
+msgid "Last name:"
+msgstr "Efternamn:"
+
+msgid "LoginURI:"
+msgstr "LoginURI:"
+
+msgid "Account activated"
+msgstr "Konto aktiverat"
+
+msgid "The account has been deleted."
+msgstr "Kontot har raderats."
+
+msgid "Unable to delete account because it does not exist."
+msgstr "Kan inte radera konto eftersom det inte finns."
+
+msgid "Who are you?"
+msgstr "Vem är du?"
+
+msgid "No email on file"
+msgstr "Ingen e-post i filen"
+
+msgid "No linked regions found"
+msgstr "Inga länkade regioner hittades"
+
+msgid "No users found"
+msgstr "Inga användare hittades"
+
+msgid "No regions found"
+msgstr "Inga regioner hittades"

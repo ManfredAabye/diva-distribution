@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "Женский"
+
+msgid "Male"
+msgstr "Мужской"
+
+msgid "Neutral"
+msgstr "Нейтральный"
+
+msgid "Default"
+msgstr "По умолчанию"
+
+msgid "nobody"
+msgstr "никто"
+
+msgid "My Inventory"
+msgstr "Мой инвентарь"
+
+msgid "My Outfits"
+msgstr "Мои наряды"
+
+msgid "My Suitcase"
+msgstr "Мой чемодан"
+
+msgid "Animations"
+msgstr "Анимации"
+
+msgid "Body Parts"
+msgstr "Части тела"
+
+msgid "Calling Cards"
+msgstr "Визитные карточки"
+
+msgid "Clothing"
+msgstr "Одежда"
+
+msgid "Current Outfit"
+msgstr "Текущий наряд"
+
+msgid "Favorites"
+msgstr "Избранное"
+
+msgid "Gestures"
+msgstr "Жесты"
+
+msgid "Landmarks"
+msgstr "Закладки"
+
+msgid "Lost And Found"
+msgstr "Бюро находок"
+
+msgid "Notecards"
+msgstr "Заметки"
+
+msgid "Objects"
+msgstr "Объекты"
+
+msgid "Photo Album"
+msgstr "Фотоальбом"
+
+msgid "Scripts"
+msgstr "Скрипты"
+
+msgid "Sounds"
+msgstr "Звуки"
+
+msgid "Textures"
+msgstr "Текстуры"
+
+msgid "Trash"
+msgstr "Корзина"
+
+msgid "Unknown"
+msgstr "Неизвестно"
+
+msgid "Texture"
+msgstr "Текстура"
+
+msgid "Sound"
+msgstr "Звук"
+
+msgid "CallingCard"
+msgstr "Визитная карточка"
+
+msgid "Landmark"
+msgstr "Закладка"
+
+msgid "Object"
+msgstr "Объект"
+
+msgid "Notecard"
+msgstr "Заметка"
+
+msgid "Folder"
+msgstr "Папка"
+
+msgid "RootFolder"
+msgstr "Корневая папка"
+
+msgid "LSLText"
+msgstr "Текст LSL"
+
+msgid "LSLBytecode"
+msgstr "Байт-код LSL"
+
+msgid "TextureTGA"
+msgstr "Текстура TGA"
+
+msgid "Bodypart"
+msgstr "Часть тела"
+
+msgid "TrashFolder"
+msgstr "Папка корзины"
+
+msgid "SnapshotFolder"
+msgstr "Папка снимков"
+
+msgid "LostAndFoundFolder"
+msgstr "Папка находок"
+
+msgid "SoundWAV"
+msgstr "Звук WAV"
+
+msgid "ImageTGA"
+msgstr "Изображение TGA"
+
+msgid "ImageJPEG"
+msgstr "Изображение JPEG"
+
+msgid "Animation"
+msgstr "Анимация"
+
+msgid "Gesture"
+msgstr "Жест"
+
+msgid "Simstate"
+msgstr "Состояние симулятора"
+
+msgid "FavoriteFolder"
+msgstr "Папка избранного"
+
+msgid "Link"
+msgstr "Ссылка"
+
+msgid "LinkFolder"
+msgstr "Папка ссылок"
+
+msgid "EnsembleStart"
+msgstr "Начало ансамбля"
+
+msgid "EnsembleEnd"
+msgstr "Конец ансамбля"
+
+msgid "CurrentOutfitFolder"
+msgstr "Папка текущего наряда"
+
+msgid "OutfitFolder"
+msgstr "Папка наряда"
+
+msgid "MyOutfitsFolder"
+msgstr "Папка моих нарядов"
+
+msgid "Mesh"
+msgstr "Меш"
+
+msgid "delete"
+msgstr "удалить"
+
+msgid "Your account has been updated."
+msgstr "Ваш аккаунт был обновлен."
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "Не удалось связать регион: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "Установлена связь с регионом {0}. (Если эта связь уже существовала, она останется в исходном месте.)"
+
+msgid "Invalid region address."
+msgstr "Неверный адрес региона."
+
+msgid "Region link not found."
+msgstr "Связь с регионом не найдена."
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "Удалена связь с регионом {0}."
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "Не удалось удалить связь с регионом {0}."
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Ваш Wifi установлен. Учетная запись администратора {0} {1}"
+
+msgid "Loading your inventory, please wait"
+msgstr "Загрузка вашего инвентаря, пожалуйста, подождите"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "Если ваш браузер не загружает следующую страницу автоматически, используйте кнопку."
+
+msgid "continue"
+msgstr "продолжить"
+
+msgid "Login failed."
+msgstr "Ошибка входа."
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "Добро пожаловать в {0}!"
+
+msgid "Your account has been created."
+msgstr "Ваш аккаунт создан."
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "Новый аккаунт {0} {1}, созданный в {2}, ожидает вашего одобрения."
+
+msgid "Account awaiting approval"
+msgstr "Аккаунт ожидает одобрения"
+
+msgid "Your account awaits administrator approval."
+msgstr "Ваш аккаунт ожидает одобрения администратора."
+
+msgid "Default Avatar"
+msgstr "Аватар по умолчанию"
+
+msgid "OK"
+msgstr "ОК"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "Ваш аккаунт {0} {1}"
+
+msgid "Click here to reset your password:"
+msgstr "Нажмите здесь, чтобы сбросить пароль:"
+
+msgid "Password Reset"
+msgstr "Сброс пароля"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "Проверьте свою электронную почту. Вы должны сбросить пароль в течение 60 минут."
+
+msgid "Email could not be sent."
+msgstr "Не удалось отправить email."
+
+msgid "Invalid token."
+msgstr "Недействительный токен."
+
+msgid "Your password has been reset."
+msgstr "Ваш пароль был сброшен."
+
+msgid "The account has been updated."
+msgstr "Аккаунт был обновлен."
+
+msgid "The account does not exist."
+msgstr "Аккаунт не существует."
+
+msgid "The account has been activated."
+msgstr "Аккаунт был активирован."
+
+msgid "Your account has been activated."
+msgstr "Ваш аккаунт был активирован."
+
+msgid "First name:"
+msgstr "Имя:"
+
+msgid "Last name:"
+msgstr "Фамилия:"
+
+msgid "LoginURI:"
+msgstr "URI входа:"
+
+msgid "Account activated"
+msgstr "Аккаунт активирован"
+
+msgid "The account has been deleted."
+msgstr "Аккаунт был удален."
+
+msgid "Unable to delete account because it does not exist."
+msgstr "Невозможно удалить аккаунт, так как он не существует."
+
+msgid "Who are you?"
+msgstr "Кто вы?"
+
+msgid "No email on file"
+msgstr "Нет email в файле"
+
+msgid "No linked regions found"
+msgstr "Связанные регионы не найдены"
+
+msgid "No users found"
+msgstr "Пользователи не найдены"
+
+msgid "No regions found"
+msgstr "Регионы не найдены"

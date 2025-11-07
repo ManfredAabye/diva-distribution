@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Korean\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "여성"
+
+msgid "Male"
+msgstr "남성"
+
+msgid "Neutral"
+msgstr "중성"
+
+msgid "Default"
+msgstr "기본값"
+
+msgid "nobody"
+msgstr "아무도 없음"
+
+msgid "My Inventory"
+msgstr "내 인벤토리"
+
+msgid "My Outfits"
+msgstr "내 의상"
+
+msgid "My Suitcase"
+msgstr "내 여행 가방"
+
+msgid "Animations"
+msgstr "애니메이션"
+
+msgid "Body Parts"
+msgstr "신체 부위"
+
+msgid "Calling Cards"
+msgstr "명함"
+
+msgid "Clothing"
+msgstr "의류"
+
+msgid "Current Outfit"
+msgstr "현재 의상"
+
+msgid "Favorites"
+msgstr "즐겨찾기"
+
+msgid "Gestures"
+msgstr "제스처"
+
+msgid "Landmarks"
+msgstr "랜드마크"
+
+msgid "Lost And Found"
+msgstr "분실물 보관소"
+
+msgid "Notecards"
+msgstr "노트카드"
+
+msgid "Objects"
+msgstr "오브젝트"
+
+msgid "Photo Album"
+msgstr "사진 앨범"
+
+msgid "Scripts"
+msgstr "스크립트"
+
+msgid "Sounds"
+msgstr "사운드"
+
+msgid "Textures"
+msgstr "텍스처"
+
+msgid "Trash"
+msgstr "휴지통"
+
+msgid "Unknown"
+msgstr "알 수 없음"
+
+msgid "Texture"
+msgstr "텍스처"
+
+msgid "Sound"
+msgstr "사운드"
+
+msgid "CallingCard"
+msgstr "명함"
+
+msgid "Landmark"
+msgstr "랜드마크"
+
+msgid "Object"
+msgstr "오브젝트"
+
+msgid "Notecard"
+msgstr "노트카드"
+
+msgid "Folder"
+msgstr "폴더"
+
+msgid "RootFolder"
+msgstr "루트 폴더"
+
+msgid "LSLText"
+msgstr "LSL 텍스트"
+
+msgid "LSLBytecode"
+msgstr "LSL 바이트코드"
+
+msgid "TextureTGA"
+msgstr "TGA 텍스처"
+
+msgid "Bodypart"
+msgstr "신체 부위"
+
+msgid "TrashFolder"
+msgstr "휴지통 폴더"
+
+msgid "SnapshotFolder"
+msgstr "스냅샷 폴더"
+
+msgid "LostAndFoundFolder"
+msgstr "분실물 보관소 폴더"
+
+msgid "SoundWAV"
+msgstr "WAV 사운드"
+
+msgid "ImageTGA"
+msgstr "TGA 이미지"
+
+msgid "ImageJPEG"
+msgstr "JPEG 이미지"
+
+msgid "Animation"
+msgstr "애니메이션"
+
+msgid "Gesture"
+msgstr "제스처"
+
+msgid "Simstate"
+msgstr "심 상태"
+
+msgid "FavoriteFolder"
+msgstr "즐겨찾기 폴더"
+
+msgid "Link"
+msgstr "링크"
+
+msgid "LinkFolder"
+msgstr "링크 폴더"
+
+msgid "EnsembleStart"
+msgstr "앙상블 시작"
+
+msgid "EnsembleEnd"
+msgstr "앙상블 종료"
+
+msgid "CurrentOutfitFolder"
+msgstr "현재 의상 폴더"
+
+msgid "OutfitFolder"
+msgstr "의상 폴더"
+
+msgid "MyOutfitsFolder"
+msgstr "내 의상 폴더"
+
+msgid "Mesh"
+msgstr "메시"
+
+msgid "delete"
+msgstr "삭제"
+
+msgid "Your account has been updated."
+msgstr "계정이 업데이트되었습니다."
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "지역 연결 실패: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "{0}에 대한 지역 연결이 설정되었습니다. (이 연결이 이미 존재했다면 원래 위치에 남아있습니다.)"
+
+msgid "Invalid region address."
+msgstr "잘못된 지역 주소입니다."
+
+msgid "Region link not found."
+msgstr "지역 연결을 찾을 수 없습니다."
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "지역 연결 {0}이(가) 삭제되었습니다."
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "지역 연결 {0} 삭제에 실패했습니다."
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Wifi가 설치되었습니다. 관리자 계정은 {0} {1}입니다"
+
+msgid "Loading your inventory, please wait"
+msgstr "인벤토리를 불러오는 중입니다. 잠시만 기다려주세요"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "브라우저가 자동으로 다음 페이지를 로드하지 않으면 버튼을 사용하세요."
+
+msgid "continue"
+msgstr "계속"
+
+msgid "Login failed."
+msgstr "로그인 실패."
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "{0}에 오신 것을 환영합니다!"
+
+msgid "Your account has been created."
+msgstr "계정이 생성되었습니다."
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "{2}에서 생성된 새 계정 {0} {1}이(가) 승인을 기다리고 있습니다."
+
+msgid "Account awaiting approval"
+msgstr "계정 승인 대기 중"
+
+msgid "Your account awaits administrator approval."
+msgstr "계정이 관리자 승인을 기다리고 있습니다."
+
+msgid "Default Avatar"
+msgstr "기본 아바타"
+
+msgid "OK"
+msgstr "확인"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "귀하의 계정은 {0} {1}입니다"
+
+msgid "Click here to reset your password:"
+msgstr "비밀번호를 재설정하려면 여기를 클릭하세요:"
+
+msgid "Password Reset"
+msgstr "비밀번호 재설정"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "이메일을 확인하세요. 60분 이내에 비밀번호를 재설정해야 합니다."
+
+msgid "Email could not be sent."
+msgstr "이메일을 보낼 수 없습니다."
+
+msgid "Invalid token."
+msgstr "잘못된 토큰입니다."
+
+msgid "Your password has been reset."
+msgstr "비밀번호가 재설정되었습니다."
+
+msgid "The account has been updated."
+msgstr "계정이 업데이트되었습니다."
+
+msgid "The account does not exist."
+msgstr "계정이 존재하지 않습니다."
+
+msgid "The account has been activated."
+msgstr "계정이 활성화되었습니다."
+
+msgid "Your account has been activated."
+msgstr "귀하의 계정이 활성화되었습니다."
+
+msgid "First name:"
+msgstr "이름:"
+
+msgid "Last name:"
+msgstr "성:"
+
+msgid "LoginURI:"
+msgstr "로그인URI:"
+
+msgid "Account activated"
+msgstr "계정 활성화됨"
+
+msgid "The account has been deleted."
+msgstr "계정이 삭제되었습니다."
+
+msgid "Unable to delete account because it does not exist."
+msgstr "계정이 존재하지 않아 삭제할 수 없습니다."
+
+msgid "Who are you?"
+msgstr "당신은 누구입니까?"
+
+msgid "No email on file"
+msgstr "등록된 이메일 없음"
+
+msgid "No linked regions found"
+msgstr "연결된 지역을 찾을 수 없음"
+
+msgid "No users found"
+msgstr "사용자를 찾을 수 없음"
+
+msgid "No regions found"
+msgstr "지역을 찾을 수 없음"

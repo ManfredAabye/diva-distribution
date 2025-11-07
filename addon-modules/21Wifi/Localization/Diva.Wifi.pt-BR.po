@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "Feminino"
+
+msgid "Male"
+msgstr "Masculino"
+
+msgid "Neutral"
+msgstr "Neutro"
+
+msgid "Default"
+msgstr "Padrão"
+
+msgid "nobody"
+msgstr "ninguém"
+
+msgid "My Inventory"
+msgstr "Meu Inventário"
+
+msgid "My Outfits"
+msgstr "Minhas Roupas"
+
+msgid "My Suitcase"
+msgstr "Minha Mala"
+
+msgid "Animations"
+msgstr "Animações"
+
+msgid "Body Parts"
+msgstr "Partes do Corpo"
+
+msgid "Calling Cards"
+msgstr "Cartões de Visita"
+
+msgid "Clothing"
+msgstr "Roupas"
+
+msgid "Current Outfit"
+msgstr "Roupa Atual"
+
+msgid "Favorites"
+msgstr "Favoritos"
+
+msgid "Gestures"
+msgstr "Gestos"
+
+msgid "Landmarks"
+msgstr "Marcos"
+
+msgid "Lost And Found"
+msgstr "Achados e Perdidos"
+
+msgid "Notecards"
+msgstr "Anotações"
+
+msgid "Objects"
+msgstr "Objetos"
+
+msgid "Photo Album"
+msgstr "Álbum de Fotos"
+
+msgid "Scripts"
+msgstr "Scripts"
+
+msgid "Sounds"
+msgstr "Sons"
+
+msgid "Textures"
+msgstr "Texturas"
+
+msgid "Trash"
+msgstr "Lixeira"
+
+msgid "Unknown"
+msgstr "Desconhecido"
+
+msgid "Texture"
+msgstr "Textura"
+
+msgid "Sound"
+msgstr "Som"
+
+msgid "CallingCard"
+msgstr "Cartão de Visita"
+
+msgid "Landmark"
+msgstr "Marco"
+
+msgid "Object"
+msgstr "Objeto"
+
+msgid "Notecard"
+msgstr "Anotação"
+
+msgid "Folder"
+msgstr "Pasta"
+
+msgid "RootFolder"
+msgstr "Pasta Raiz"
+
+msgid "LSLText"
+msgstr "Texto LSL"
+
+msgid "LSLBytecode"
+msgstr "Bytecode LSL"
+
+msgid "TextureTGA"
+msgstr "Textura TGA"
+
+msgid "Bodypart"
+msgstr "Parte do Corpo"
+
+msgid "TrashFolder"
+msgstr "Pasta Lixeira"
+
+msgid "SnapshotFolder"
+msgstr "Pasta de Capturas"
+
+msgid "LostAndFoundFolder"
+msgstr "Pasta Achados e Perdidos"
+
+msgid "SoundWAV"
+msgstr "Som WAV"
+
+msgid "ImageTGA"
+msgstr "Imagem TGA"
+
+msgid "ImageJPEG"
+msgstr "Imagem JPEG"
+
+msgid "Animation"
+msgstr "Animação"
+
+msgid "Gesture"
+msgstr "Gesto"
+
+msgid "Simstate"
+msgstr "Estado da Sim"
+
+msgid "FavoriteFolder"
+msgstr "Pasta Favoritos"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "LinkFolder"
+msgstr "Pasta de Links"
+
+msgid "EnsembleStart"
+msgstr "Início do Conjunto"
+
+msgid "EnsembleEnd"
+msgstr "Fim do Conjunto"
+
+msgid "CurrentOutfitFolder"
+msgstr "Pasta Roupa Atual"
+
+msgid "OutfitFolder"
+msgstr "Pasta de Roupas"
+
+msgid "MyOutfitsFolder"
+msgstr "Pasta Minhas Roupas"
+
+msgid "Mesh"
+msgstr "Malha"
+
+msgid "delete"
+msgstr "excluir"
+
+msgid "Your account has been updated."
+msgstr "Sua conta foi atualizada."
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "Falha ao vincular região: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "Vínculo com a região {0} estabelecido. (Se este vínculo já existia, permanecerá no local original.)"
+
+msgid "Invalid region address."
+msgstr "Endereço de região inválido."
+
+msgid "Region link not found."
+msgstr "Vínculo de região não encontrado."
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "Vínculo de região {0} excluído."
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "Exclusão do vínculo de região {0} falhou."
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Seu Wifi foi instalado. A conta de administrador é {0} {1}"
+
+msgid "Loading your inventory, please wait"
+msgstr "Carregando seu inventário, por favor aguarde"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "Se o navegador não carregar automaticamente a próxima página, use o botão."
+
+msgid "continue"
+msgstr "continuar"
+
+msgid "Login failed."
+msgstr "Falha no login."
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "Bem-vindo ao {0}!"
+
+msgid "Your account has been created."
+msgstr "Sua conta foi criada."
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "Nova conta {0} {1} criada em {2} aguarda sua aprovação."
+
+msgid "Account awaiting approval"
+msgstr "Conta aguardando aprovação"
+
+msgid "Your account awaits administrator approval."
+msgstr "Sua conta aguarda aprovação do administrador."
+
+msgid "Default Avatar"
+msgstr "Avatar Padrão"
+
+msgid "OK"
+msgstr "OK"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "Sua conta é {0} {1}"
+
+msgid "Click here to reset your password:"
+msgstr "Clique aqui para redefinir sua senha:"
+
+msgid "Password Reset"
+msgstr "Redefinir Senha"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "Verifique seu email. Você deve redefinir sua senha em até 60 minutos."
+
+msgid "Email could not be sent."
+msgstr "Não foi possível enviar o email."
+
+msgid "Invalid token."
+msgstr "Token inválido."
+
+msgid "Your password has been reset."
+msgstr "Sua senha foi redefinida."
+
+msgid "The account has been updated."
+msgstr "A conta foi atualizada."
+
+msgid "The account does not exist."
+msgstr "A conta não existe."
+
+msgid "The account has been activated."
+msgstr "A conta foi ativada."
+
+msgid "Your account has been activated."
+msgstr "Sua conta foi ativada."
+
+msgid "First name:"
+msgstr "Primeiro nome:"
+
+msgid "Last name:"
+msgstr "Sobrenome:"
+
+msgid "LoginURI:"
+msgstr "LoginURI:"
+
+msgid "Account activated"
+msgstr "Conta ativada"
+
+msgid "The account has been deleted."
+msgstr "A conta foi excluída."
+
+msgid "Unable to delete account because it does not exist."
+msgstr "Não foi possível excluir a conta porque ela não existe."
+
+msgid "Who are you?"
+msgstr "Quem é você?"
+
+msgid "No email on file"
+msgstr "Nenhum email cadastrado"
+
+msgid "No linked regions found"
+msgstr "Nenhuma região vinculada encontrada"
+
+msgid "No users found"
+msgstr "Nenhum usuário encontrado"
+
+msgid "No regions found"
+msgstr "Nenhuma região encontrada"

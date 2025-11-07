@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "Kadın"
+
+msgid "Male"
+msgstr "Erkek"
+
+msgid "Neutral"
+msgstr "Nötr"
+
+msgid "Default"
+msgstr "Varsayılan"
+
+msgid "nobody"
+msgstr "kimse yok"
+
+msgid "My Inventory"
+msgstr "Envanterim"
+
+msgid "My Outfits"
+msgstr "Kıyafetlerim"
+
+msgid "My Suitcase"
+msgstr "Bavulum"
+
+msgid "Animations"
+msgstr "Animasyonlar"
+
+msgid "Body Parts"
+msgstr "Vücut Parçaları"
+
+msgid "Calling Cards"
+msgstr "Kartvizitler"
+
+msgid "Clothing"
+msgstr "Giysiler"
+
+msgid "Current Outfit"
+msgstr "Mevcut Kıyafet"
+
+msgid "Favorites"
+msgstr "Favoriler"
+
+msgid "Gestures"
+msgstr "Jestler"
+
+msgid "Landmarks"
+msgstr "İşaret Noktaları"
+
+msgid "Lost And Found"
+msgstr "Kayıp Eşya Bürosu"
+
+msgid "Notecards"
+msgstr "Not Kartları"
+
+msgid "Objects"
+msgstr "Nesneler"
+
+msgid "Photo Album"
+msgstr "Fotoğraf Albümü"
+
+msgid "Scripts"
+msgstr "Betikler"
+
+msgid "Sounds"
+msgstr "Sesler"
+
+msgid "Textures"
+msgstr "Dokular"
+
+msgid "Trash"
+msgstr "Çöp Kutusu"
+
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+msgid "Texture"
+msgstr "Doku"
+
+msgid "Sound"
+msgstr "Ses"
+
+msgid "CallingCard"
+msgstr "Kartvizit"
+
+msgid "Landmark"
+msgstr "İşaret Noktası"
+
+msgid "Object"
+msgstr "Nesne"
+
+msgid "Notecard"
+msgstr "Not Kartı"
+
+msgid "Folder"
+msgstr "Klasör"
+
+msgid "RootFolder"
+msgstr "Kök Klasör"
+
+msgid "LSLText"
+msgstr "LSL Metni"
+
+msgid "LSLBytecode"
+msgstr "LSL Bayt Kodu"
+
+msgid "TextureTGA"
+msgstr "TGA Dokusu"
+
+msgid "Bodypart"
+msgstr "Vücut Parçası"
+
+msgid "TrashFolder"
+msgstr "Çöp Kutusu Klasörü"
+
+msgid "SnapshotFolder"
+msgstr "Anlık Görüntü Klasörü"
+
+msgid "LostAndFoundFolder"
+msgstr "Kayıp Eşya Klasörü"
+
+msgid "SoundWAV"
+msgstr "WAV Sesi"
+
+msgid "ImageTGA"
+msgstr "TGA Resmi"
+
+msgid "ImageJPEG"
+msgstr "JPEG Resmi"
+
+msgid "Animation"
+msgstr "Animasyon"
+
+msgid "Gesture"
+msgstr "Jest"
+
+msgid "Simstate"
+msgstr "Sim Durumu"
+
+msgid "FavoriteFolder"
+msgstr "Favoriler Klasörü"
+
+msgid "Link"
+msgstr "Bağlantı"
+
+msgid "LinkFolder"
+msgstr "Bağlantı Klasörü"
+
+msgid "EnsembleStart"
+msgstr "Topluluk Başlangıcı"
+
+msgid "EnsembleEnd"
+msgstr "Topluluk Sonu"
+
+msgid "CurrentOutfitFolder"
+msgstr "Mevcut Kıyafet Klasörü"
+
+msgid "OutfitFolder"
+msgstr "Kıyafet Klasörü"
+
+msgid "MyOutfitsFolder"
+msgstr "Kıyafetlerim Klasörü"
+
+msgid "Mesh"
+msgstr "Ağ Örgü"
+
+msgid "delete"
+msgstr "sil"
+
+msgid "Your account has been updated."
+msgstr "Hesabınız güncellendi."
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "Bölge bağlantısı başarısız: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "{0} ile bölge bağlantısı kuruldu. (Bu bağlantı zaten mevcutsa, orijinal konumda kalacaktır.)"
+
+msgid "Invalid region address."
+msgstr "Geçersiz bölge adresi."
+
+msgid "Region link not found."
+msgstr "Bölge bağlantısı bulunamadı."
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "Bölge bağlantısı {0} silindi."
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "Bölge bağlantısı {0} silinirken hata oluştu."
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Wifi'niz kuruldu. Yönetici hesabı {0} {1}"
+
+msgid "Loading your inventory, please wait"
+msgstr "Envanteriniz yükleniyor, lütfen bekleyin"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "Tarayıcınız bir sonraki sayfayı otomatik olarak yüklemezse, lütfen düğmeyi kullanın."
+
+msgid "continue"
+msgstr "devam et"
+
+msgid "Login failed."
+msgstr "Giriş başarısız."
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "{0}'e hoş geldiniz!"
+
+msgid "Your account has been created."
+msgstr "Hesabınız oluşturuldu."
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "{2} içinde oluşturulan yeni hesap {0} {1} onayınızı bekliyor."
+
+msgid "Account awaiting approval"
+msgstr "Hesap onay bekliyor"
+
+msgid "Your account awaits administrator approval."
+msgstr "Hesabınız yönetici onayı bekliyor."
+
+msgid "Default Avatar"
+msgstr "Varsayılan Avatar"
+
+msgid "OK"
+msgstr "Tamam"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "Hesabınız {0} {1}"
+
+msgid "Click here to reset your password:"
+msgstr "Şifrenizi sıfırlamak için buraya tıklayın:"
+
+msgid "Password Reset"
+msgstr "Şifre Sıfırlama"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "E-postanızı kontrol edin. Şifrenizi 60 dakika içinde sıfırlamanız gerekir."
+
+msgid "Email could not be sent."
+msgstr "E-posta gönderilemedi."
+
+msgid "Invalid token."
+msgstr "Geçersiz belirteç."
+
+msgid "Your password has been reset."
+msgstr "Şifreniz sıfırlandı."
+
+msgid "The account has been updated."
+msgstr "Hesap güncellendi."
+
+msgid "The account does not exist."
+msgstr "Hesap mevcut değil."
+
+msgid "The account has been activated."
+msgstr "Hesap etkinleştirildi."
+
+msgid "Your account has been activated."
+msgstr "Hesabınız etkinleştirildi."
+
+msgid "First name:"
+msgstr "Ad:"
+
+msgid "Last name:"
+msgstr "Soyad:"
+
+msgid "LoginURI:"
+msgstr "GirişURI:"
+
+msgid "Account activated"
+msgstr "Hesap etkinleştirildi"
+
+msgid "The account has been deleted."
+msgstr "Hesap silindi."
+
+msgid "Unable to delete account because it does not exist."
+msgstr "Hesap mevcut olmadığı için silinemiyor."
+
+msgid "Who are you?"
+msgstr "Sen kimsin?"
+
+msgid "No email on file"
+msgstr "Kayıtlı e-posta yok"
+
+msgid "No linked regions found"
+msgstr "Bağlantılı bölge bulunamadı"
+
+msgid "No users found"
+msgstr "Kullanıcı bulunamadı"
+
+msgid "No regions found"
+msgstr "Bölge bulunamadı"

@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Greek\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "Θηλυκό"
+
+msgid "Male"
+msgstr "Αρσενικό"
+
+msgid "Neutral"
+msgstr "Ουδέτερο"
+
+msgid "Default"
+msgstr "Προεπιλογή"
+
+msgid "nobody"
+msgstr "κανείς"
+
+msgid "My Inventory"
+msgstr "Το Αποθεματικό μου"
+
+msgid "My Outfits"
+msgstr "Τα Σύνολά μου"
+
+msgid "My Suitcase"
+msgstr "Η Βαλίτσα μου"
+
+msgid "Animations"
+msgstr "Κινήσεις"
+
+msgid "Body Parts"
+msgstr "Μέρη Σώματος"
+
+msgid "Calling Cards"
+msgstr "Επαγγελματικές Κάρτες"
+
+msgid "Clothing"
+msgstr "Ρούχα"
+
+msgid "Current Outfit"
+msgstr "Τρέχον Σύνολο"
+
+msgid "Favorites"
+msgstr "Αγαπημένα"
+
+msgid "Gestures"
+msgstr "Χειρονομίες"
+
+msgid "Landmarks"
+msgstr "Σημεία Αναφοράς"
+
+msgid "Lost And Found"
+msgstr "Απολεσθέντα και Ευρεθέντα"
+
+msgid "Notecards"
+msgstr "Σημειώσεις"
+
+msgid "Objects"
+msgstr "Αντικείμενα"
+
+msgid "Photo Album"
+msgstr "Φωτογραφικό Λεύκωμα"
+
+msgid "Scripts"
+msgstr "Σενάρια"
+
+msgid "Sounds"
+msgstr "Ήχοι"
+
+msgid "Textures"
+msgstr "Υφές"
+
+msgid "Trash"
+msgstr "Κάδος Απορριμμάτων"
+
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+msgid "Texture"
+msgstr "Υφή"
+
+msgid "Sound"
+msgstr "Ήχος"
+
+msgid "CallingCard"
+msgstr "Επαγγελματική Κάρτα"
+
+msgid "Landmark"
+msgstr "Σημείο Αναφοράς"
+
+msgid "Object"
+msgstr "Αντικείμενο"
+
+msgid "Notecard"
+msgstr "Σημείωση"
+
+msgid "Folder"
+msgstr "Φάκελος"
+
+msgid "RootFolder"
+msgstr "Ριζικός Φάκελος"
+
+msgid "LSLText"
+msgstr "Κείμενο LSL"
+
+msgid "LSLBytecode"
+msgstr "Bytecode LSL"
+
+msgid "TextureTGA"
+msgstr "Υφή TGA"
+
+msgid "Bodypart"
+msgstr "Μέρος Σώματος"
+
+msgid "TrashFolder"
+msgstr "Φάκελος Απορριμμάτων"
+
+msgid "SnapshotFolder"
+msgstr "Φάκελος Στιγμιοτύπων"
+
+msgid "LostAndFoundFolder"
+msgstr "Φάκελος Απολεσθέντων"
+
+msgid "SoundWAV"
+msgstr "Ήχος WAV"
+
+msgid "ImageTGA"
+msgstr "Εικόνα TGA"
+
+msgid "ImageJPEG"
+msgstr "Εικόνα JPEG"
+
+msgid "Animation"
+msgstr "Κίνηση"
+
+msgid "Gesture"
+msgstr "Χειρονομία"
+
+msgid "Simstate"
+msgstr "Κατάσταση Sim"
+
+msgid "FavoriteFolder"
+msgstr "Φάκελος Αγαπημένων"
+
+msgid "Link"
+msgstr "Σύνδεσμος"
+
+msgid "LinkFolder"
+msgstr "Φάκελος Συνδέσμων"
+
+msgid "EnsembleStart"
+msgstr "Αρχή Συνόλου"
+
+msgid "EnsembleEnd"
+msgstr "Τέλος Συνόλου"
+
+msgid "CurrentOutfitFolder"
+msgstr "Φάκελος Τρέχοντος Συνόλου"
+
+msgid "OutfitFolder"
+msgstr "Φάκελος Συνόλου"
+
+msgid "MyOutfitsFolder"
+msgstr "Φάκελος Συνόλων μου"
+
+msgid "Mesh"
+msgstr "Πλέγμα"
+
+msgid "delete"
+msgstr "διαγραφή"
+
+msgid "Your account has been updated."
+msgstr "Ο λογαριασμός σας ενημερώθηκε."
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "Αποτυχία σύνδεσης περιοχής: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "Δημιουργήθηκε σύνδεσμος περιοχής με {0}. (Εάν αυτός ο σύνδεσμος υπήρχε ήδη, θα παραμείνει στην αρχική θέση.)"
+
+msgid "Invalid region address."
+msgstr "Μη έγκυρη διεύθυνση περιοχής."
+
+msgid "Region link not found."
+msgstr "Δεν βρέθηκε σύνδεσμος περιοχής."
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "Διαγράφηκε σύνδεσμος περιοχής {0}."
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "Η διαγραφή του συνδέσμου περιοχής {0} απέτυχε."
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Το Wifi σας έχει εγκατασταθεί. Ο λογαριασμός διαχειριστή είναι {0} {1}"
+
+msgid "Loading your inventory, please wait"
+msgstr "Φόρτωση αποθεματικού, παρακαλώ περιμένετε"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "Εάν το πρόγραμμα περιήγησής σας δεν φορτώσει αυτόματα την επόμενη σελίδα, χρησιμοποιήστε το κουμπί."
+
+msgid "continue"
+msgstr "συνέχεια"
+
+msgid "Login failed."
+msgstr "Η σύνδεση απέτυχε."
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "Καλώς ήρθατε στο {0}!"
+
+msgid "Your account has been created."
+msgstr "Ο λογαριασμός σας δημιουργήθηκε."
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "Ο νέος λογαριασμός {0} {1} που δημιουργήθηκε στο {2} αναμένει την έγκρισή σας."
+
+msgid "Account awaiting approval"
+msgstr "Ο λογαριασμός αναμένει έγκριση"
+
+msgid "Your account awaits administrator approval."
+msgstr "Ο λογαριασμός σας αναμένει έγκριση διαχειριστή."
+
+msgid "Default Avatar"
+msgstr "Προεπιλεγμένο Avatar"
+
+msgid "OK"
+msgstr "Εντάξει"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "Ο λογαριασμός σας είναι {0} {1}"
+
+msgid "Click here to reset your password:"
+msgstr "Κάντε κλικ εδώ για να επαναφέρετε τον κωδικό πρόσβασής σας:"
+
+msgid "Password Reset"
+msgstr "Επαναφορά Κωδικού"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "Ελέγξτε το email σας. Πρέπει να επαναφέρετε τον κωδικό σας εντός 60 λεπτών."
+
+msgid "Email could not be sent."
+msgstr "Το email δεν μπόρεσε να σταλεί."
+
+msgid "Invalid token."
+msgstr "Μη έγκυρο διακριτικό."
+
+msgid "Your password has been reset."
+msgstr "Ο κωδικός σας έχει επαναφερθεί."
+
+msgid "The account has been updated."
+msgstr "Ο λογαριασμός ενημερώθηκε."
+
+msgid "The account does not exist."
+msgstr "Ο λογαριασμός δεν υπάρχει."
+
+msgid "The account has been activated."
+msgstr "Ο λογαριασμός ενεργοποιήθηκε."
+
+msgid "Your account has been activated."
+msgstr "Ο λογαριασμός σας ενεργοποιήθηκε."
+
+msgid "First name:"
+msgstr "Όνομα:"
+
+msgid "Last name:"
+msgstr "Επώνυμο:"
+
+msgid "LoginURI:"
+msgstr "LoginURI:"
+
+msgid "Account activated"
+msgstr "Ο λογαριασμός ενεργοποιήθηκε"
+
+msgid "The account has been deleted."
+msgstr "Ο λογαριασμός διαγράφηκε."
+
+msgid "Unable to delete account because it does not exist."
+msgstr "Αδυναμία διαγραφής λογαριασμού επειδή δεν υπάρχει."
+
+msgid "Who are you?"
+msgstr "Ποιος είσαι;"
+
+msgid "No email on file"
+msgstr "Δεν υπάρχει email στο αρχείο"
+
+msgid "No linked regions found"
+msgstr "Δεν βρέθηκαν συνδεδεμένες περιοχές"
+
+msgid "No users found"
+msgstr "Δεν βρέθηκαν χρήστες"
+
+msgid "No regions found"
+msgstr "Δεν βρέθηκαν περιοχές"

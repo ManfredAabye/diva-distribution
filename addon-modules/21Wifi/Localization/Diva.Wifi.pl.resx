@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Female"><value>Kobieta</value></data>
+  <data name="Male"><value>Mężczyzna</value></data>
+  <data name="Neutral"><value>Neutralny</value></data>
+  <data name="Default"><value>Domyślny</value></data>
+  <data name="nobody"><value>nikt</value></data>
+  <data name="My Inventory"><value>Mój Ekwipunek</value></data>
+  <data name="My Outfits"><value>Moje Stroje</value></data>
+  <data name="My Suitcase"><value>Moja Walizka</value></data>
+  <data name="Animations"><value>Animacje</value></data>
+  <data name="Body Parts"><value>Części Ciała</value></data>
+  <data name="Calling Cards"><value>Wizytówki</value></data>
+  <data name="Clothing"><value>Odzież</value></data>
+  <data name="Current Outfit"><value>Obecny Strój</value></data>
+  <data name="Favorites"><value>Ulubione</value></data>
+  <data name="Gestures"><value>Gesty</value></data>
+  <data name="Landmarks"><value>Punkty Orientacyjne</value></data>
+  <data name="Lost And Found"><value>Biuro Rzeczy Znalezionych</value></data>
+  <data name="Notecards"><value>Notatki</value></data>
+  <data name="Objects"><value>Obiekty</value></data>
+  <data name="Photo Album"><value>Album Zdjęć</value></data>
+  <data name="Scripts"><value>Skrypty</value></data>
+  <data name="Sounds"><value>Dźwięki</value></data>
+  <data name="Textures"><value>Tekstury</value></data>
+  <data name="Trash"><value>Kosz</value></data>
+  <data name="Unknown"><value>Nieznany</value></data>
+  <data name="Texture"><value>Tekstura</value></data>
+  <data name="Sound"><value>Dźwięk</value></data>
+  <data name="CallingCard"><value>Wizytówka</value></data>
+  <data name="Landmark"><value>Punkt Orientacyjny</value></data>
+  <data name="Object"><value>Obiekt</value></data>
+  <data name="Notecard"><value>Notatka</value></data>
+  <data name="Folder"><value>Folder</value></data>
+  <data name="RootFolder"><value>Folder Główny</value></data>
+  <data name="LSLText"><value>Tekst LSL</value></data>
+  <data name="LSLBytecode"><value>Kod Bajtowy LSL</value></data>
+  <data name="TextureTGA"><value>Tekstura TGA</value></data>
+  <data name="Bodypart"><value>Część Ciała</value></data>
+  <data name="TrashFolder"><value>Folder Kosza</value></data>
+  <data name="SnapshotFolder"><value>Folder Migawek</value></data>
+  <data name="LostAndFoundFolder"><value>Folder Rzeczy Znalezionych</value></data>
+  <data name="SoundWAV"><value>Dźwięk WAV</value></data>
+  <data name="ImageTGA"><value>Obraz TGA</value></data>
+  <data name="ImageJPEG"><value>Obraz JPEG</value></data>
+  <data name="Animation"><value>Animacja</value></data>
+  <data name="Gesture"><value>Gest</value></data>
+  <data name="Simstate"><value>Stan Symulacji</value></data>
+  <data name="FavoriteFolder"><value>Folder Ulubionych</value></data>
+  <data name="Link"><value>Link</value></data>
+  <data name="LinkFolder"><value>Folder Linków</value></data>
+  <data name="EnsembleStart"><value>Początek Zestawu</value></data>
+  <data name="EnsembleEnd"><value>Koniec Zestawu</value></data>
+  <data name="CurrentOutfitFolder"><value>Folder Obecnego Stroju</value></data>
+  <data name="OutfitFolder"><value>Folder Stroju</value></data>
+  <data name="MyOutfitsFolder"><value>Folder Moich Strojów</value></data>
+  <data name="Mesh"><value>Siatka</value></data>
+  <data name="delete"><value>usuń</value></data>
+  <data name="Your account has been updated."><value>Twoje konto zostało zaktualizowane.</value></data>
+  <data name="Failed to link region: {0}"><value>Nie udało się połączyć regionu: {0}</value></data>
+  <data name="Region link to {0} established. (If this link already existed, then it will remain at the original location.)"><value>Połączenie z regionem {0} ustanowione. (Jeśli to połączenie już istniało, pozostanie w oryginalnej lokalizacji.)</value></data>
+  <data name="Invalid region address."><value>Nieprawidłowy adres regionu.</value></data>
+  <data name="Region link not found."><value>Nie znaleziono połączenia regionu.</value></data>
+  <data name="Deleted region link {0}."><value>Usunięto połączenie regionu {0}.</value></data>
+  <data name="Deletion of region link {0} failed."><value>Usunięcie połączenia regionu {0} nie powiodło się.</value></data>
+  <data name="Your Wifi has been installed. The administrator account is {0} {1}"><value>Twoje Wifi zostało zainstalowane. Konto administratora to {0} {1}</value></data>
+  <data name="Loading your inventory, please wait"><value>Ładowanie ekwipunku, proszę czekać</value></data>
+  <data name="If your browser does not automatically load the next page, then use the button, please."><value>Jeśli przeglądarka nie załaduje automatycznie następnej strony, użyj przycisku.</value></data>
+  <data name="continue"><value>kontynuuj</value></data>
+  <data name="Login failed."><value>Logowanie nie powiodło się.</value></data>
+  <data name="Welcome to {0}!"><value>Witamy w {0}!</value></data>
+  <data name="Your account has been created."><value>Twoje konto zostało utworzone.</value></data>
+  <data name="New account {0} {1} created in {2} is awaiting your approval."><value>Nowe konto {0} {1} utworzone w {2} oczekuje na zatwierdzenie.</value></data>
+  <data name="Account awaiting approval"><value>Konto oczekuje na zatwierdzenie</value></data>
+  <data name="Your account awaits administrator approval."><value>Twoje konto oczekuje na zatwierdzenie administratora.</value></data>
+  <data name="Default Avatar"><value>Domyślny Awatar</value></data>
+  <data name="OK"><value>OK</value></data>
+  <data name="Your account is {0} {1}"><value>Twoje konto to {0} {1}</value></data>
+  <data name="Click here to reset your password:"><value>Kliknij tutaj, aby zresetować hasło:</value></data>
+  <data name="Password Reset"><value>Resetowanie Hasła</value></data>
+  <data name="Check your email. You must reset your password within 60 minutes."><value>Sprawdź pocztę e-mail. Musisz zresetować hasło w ciągu 60 minut.</value></data>
+  <data name="Email could not be sent."><value>Nie można wysłać e-maila.</value></data>
+  <data name="Invalid token."><value>Nieprawidłowy token.</value></data>
+  <data name="Your password has been reset."><value>Twoje hasło zostało zresetowane.</value></data>
+  <data name="The account has been updated."><value>Konto zostało zaktualizowane.</value></data>
+  <data name="The account does not exist."><value>Konto nie istnieje.</value></data>
+  <data name="The account has been activated."><value>Konto zostało aktywowane.</value></data>
+  <data name="Your account has been activated."><value>Twoje konto zostało aktywowane.</value></data>
+  <data name="First name:"><value>Imię:</value></data>
+  <data name="Last name:"><value>Nazwisko:</value></data>
+  <data name="LoginURI:"><value>LoginURI:</value></data>
+  <data name="Account activated"><value>Konto aktywowane</value></data>
+  <data name="The account has been deleted."><value>Konto zostało usunięte.</value></data>
+  <data name="Unable to delete account because it does not exist."><value>Nie można usunąć konta, ponieważ nie istnieje.</value></data>
+  <data name="Who are you?"><value>Kim jesteś?</value></data>
+  <data name="No email on file"><value>Brak e-maila w pliku</value></data>
+  <data name="No linked regions found"><value>Nie znaleziono połączonych regionów</value></data>
+  <data name="No users found"><value>Nie znaleziono użytkowników</value></data>
+  <data name="No regions found"><value>Nie znaleziono regionów</value></data>
+  </root>

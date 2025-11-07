@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "女性"
+
+msgid "Male"
+msgstr "男性"
+
+msgid "Neutral"
+msgstr "中性"
+
+msgid "Default"
+msgstr "默认"
+
+msgid "nobody"
+msgstr "没有人"
+
+msgid "My Inventory"
+msgstr "我的物品栏"
+
+msgid "My Outfits"
+msgstr "我的服装"
+
+msgid "My Suitcase"
+msgstr "我的手提箱"
+
+msgid "Animations"
+msgstr "动画"
+
+msgid "Body Parts"
+msgstr "身体部位"
+
+msgid "Calling Cards"
+msgstr "名片"
+
+msgid "Clothing"
+msgstr "服装"
+
+msgid "Current Outfit"
+msgstr "当前服装"
+
+msgid "Favorites"
+msgstr "收藏夹"
+
+msgid "Gestures"
+msgstr "手势"
+
+msgid "Landmarks"
+msgstr "地标"
+
+msgid "Lost And Found"
+msgstr "失物招领"
+
+msgid "Notecards"
+msgstr "记事卡"
+
+msgid "Objects"
+msgstr "物体"
+
+msgid "Photo Album"
+msgstr "相册"
+
+msgid "Scripts"
+msgstr "脚本"
+
+msgid "Sounds"
+msgstr "声音"
+
+msgid "Textures"
+msgstr "纹理"
+
+msgid "Trash"
+msgstr "垃圾箱"
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "Texture"
+msgstr "纹理"
+
+msgid "Sound"
+msgstr "声音"
+
+msgid "CallingCard"
+msgstr "名片"
+
+msgid "Landmark"
+msgstr "地标"
+
+msgid "Object"
+msgstr "物体"
+
+msgid "Notecard"
+msgstr "记事卡"
+
+msgid "Folder"
+msgstr "文件夹"
+
+msgid "RootFolder"
+msgstr "根文件夹"
+
+msgid "LSLText"
+msgstr "LSL文本"
+
+msgid "LSLBytecode"
+msgstr "LSL字节码"
+
+msgid "TextureTGA"
+msgstr "TGA纹理"
+
+msgid "Bodypart"
+msgstr "身体部位"
+
+msgid "TrashFolder"
+msgstr "垃圾箱文件夹"
+
+msgid "SnapshotFolder"
+msgstr "快照文件夹"
+
+msgid "LostAndFoundFolder"
+msgstr "失物招领文件夹"
+
+msgid "SoundWAV"
+msgstr "WAV声音"
+
+msgid "ImageTGA"
+msgstr "TGA图像"
+
+msgid "ImageJPEG"
+msgstr "JPEG图像"
+
+msgid "Animation"
+msgstr "动画"
+
+msgid "Gesture"
+msgstr "手势"
+
+msgid "Simstate"
+msgstr "模拟器状态"
+
+msgid "FavoriteFolder"
+msgstr "收藏夹文件夹"
+
+msgid "Link"
+msgstr "链接"
+
+msgid "LinkFolder"
+msgstr "链接文件夹"
+
+msgid "EnsembleStart"
+msgstr "集合开始"
+
+msgid "EnsembleEnd"
+msgstr "集合结束"
+
+msgid "CurrentOutfitFolder"
+msgstr "当前服装文件夹"
+
+msgid "OutfitFolder"
+msgstr "服装文件夹"
+
+msgid "MyOutfitsFolder"
+msgstr "我的服装文件夹"
+
+msgid "Mesh"
+msgstr "网格"
+
+msgid "delete"
+msgstr "删除"
+
+msgid "Your account has been updated."
+msgstr "您的账户已更新。"
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "链接区域失败: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "已建立到{0}的区域链接。(如果此链接已经存在,它将保留在原始位置。)"
+
+msgid "Invalid region address."
+msgstr "无效的区域地址。"
+
+msgid "Region link not found."
+msgstr "未找到区域链接。"
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "已删除区域链接{0}。"
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "删除区域链接{0}失败。"
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "您的Wifi已安装。管理员账户是{0} {1}"
+
+msgid "Loading your inventory, please wait"
+msgstr "正在加载您的物品栏,请稍候"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "如果浏览器未自动加载下一页,请使用按钮。"
+
+msgid "continue"
+msgstr "继续"
+
+msgid "Login failed."
+msgstr "登录失败。"
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "欢迎来到{0}!"
+
+msgid "Your account has been created."
+msgstr "您的账户已创建。"
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "在{2}中创建的新账户{0} {1}正在等待您的批准。"
+
+msgid "Account awaiting approval"
+msgstr "账户等待批准"
+
+msgid "Your account awaits administrator approval."
+msgstr "您的账户正在等待管理员批准。"
+
+msgid "Default Avatar"
+msgstr "默认头像"
+
+msgid "OK"
+msgstr "确定"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "您的账户是{0} {1}"
+
+msgid "Click here to reset your password:"
+msgstr "点击此处重置密码:"
+
+msgid "Password Reset"
+msgstr "密码重置"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "请检查您的电子邮件。您必须在60分钟内重置密码。"
+
+msgid "Email could not be sent."
+msgstr "无法发送电子邮件。"
+
+msgid "Invalid token."
+msgstr "无效的令牌。"
+
+msgid "Your password has been reset."
+msgstr "您的密码已重置。"
+
+msgid "The account has been updated."
+msgstr "账户已更新。"
+
+msgid "The account does not exist."
+msgstr "账户不存在。"
+
+msgid "The account has been activated."
+msgstr "账户已激活。"
+
+msgid "Your account has been activated."
+msgstr "您的账户已激活。"
+
+msgid "First name:"
+msgstr "名字:"
+
+msgid "Last name:"
+msgstr "姓氏:"
+
+msgid "LoginURI:"
+msgstr "登录URI:"
+
+msgid "Account activated"
+msgstr "账户已激活"
+
+msgid "The account has been deleted."
+msgstr "账户已删除。"
+
+msgid "Unable to delete account because it does not exist."
+msgstr "无法删除账户,因为它不存在。"
+
+msgid "Who are you?"
+msgstr "你是谁?"
+
+msgid "No email on file"
+msgstr "文件中没有电子邮件"
+
+msgid "No linked regions found"
+msgstr "未找到链接的区域"
+
+msgid "No users found"
+msgstr "未找到用户"
+
+msgid "No regions found"
+msgstr "未找到区域"

@@ -53,6 +53,21 @@ using Mono.Addins;
 [assembly: ImportAddinAssembly("fr/Diva.Wifi.resources.dll")]
 [assembly: ImportAddinAssembly("pt/Diva.Wifi.resources.dll")]
 
+// Neu hinzugefügte Sprachen - Multilingual Extension (2025-11-07)
+[assembly: ImportAddinAssembly("da/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("el/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("it/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("ja/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("ko/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("nl/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("pl/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("pt-BR/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("ru/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("sv/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("tr/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("zh-CN/Diva.Wifi.resources.dll")]
+[assembly: ImportAddinAssembly("zh-TW/Diva.Wifi.resources.dll")]
+
 [assembly: ImportAddinFile("Wifi.ini")]
 [assembly: ImportAddinFile("Diva.Wifi.pot")]
 

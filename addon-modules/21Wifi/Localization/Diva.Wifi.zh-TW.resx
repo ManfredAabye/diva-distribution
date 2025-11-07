@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Account activated"><value>帳戶已啟用</value></data>
+  <data name="Account awaiting approval"><value>帳戶等待核准</value></data>
+  <data name="Animation"><value>動畫</value></data>
+  <data name="Animations"><value>動畫</value></data>
+  <data name="Body Parts"><value>身體部位</value></data>
+  <data name="Bodypart"><value>身體部位</value></data>
+  <data name="Calling Cards"><value>名片</value></data>
+  <data name="CallingCard"><value>名片</value></data>
+  <data name="Check your email. You must reset your password within 60 minutes."><value>請檢查您的電子郵件。您必須在60分鐘內重設密碼。</value></data>
+  <data name="Click here to reset your password:"><value>點擊此處重設密碼：</value></data>
+  <data name="Clothing"><value>服裝</value></data>
+  <data name="continue"><value>繼續</value></data>
+  <data name="Current Outfit"><value>目前服裝</value></data>
+  <data name="CurrentOutfitFolder"><value>目前服裝資料夾</value></data>
+  <data name="Default"><value>預設</value></data>
+  <data name="Default Avatar"><value>預設化身</value></data>
+  <data name="delete"><value>刪除</value></data>
+  <data name="Deleted region link {0}."><value>已刪除區域連結{0}。</value></data>
+  <data name="Deletion of region link {0} failed."><value>刪除區域連結{0}失敗。</value></data>
+  <data name="Email could not be sent."><value>無法傳送電子郵件。</value></data>
+  <data name="EnsembleEnd"><value>集合結束</value></data>
+  <data name="EnsembleStart"><value>集合開始</value></data>
+  <data name="Failed to link region: {0}"><value>連結區域失敗：{0}</value></data>
+  <data name="FavoriteFolder"><value>我的最愛資料夾</value></data>
+  <data name="Favorites"><value>我的最愛</value></data>
+  <data name="Female"><value>女性</value></data>
+  <data name="First name:"><value>名字：</value></data>
+  <data name="Folder"><value>資料夾</value></data>
+  <data name="Gesture"><value>手勢</value></data>
+  <data name="Gestures"><value>手勢</value></data>
+  <data name="If your browser does not automatically load the next page, then use the button, please."><value>如果瀏覽器未自動載入下一頁，請使用按鈕。</value></data>
+  <data name="ImageJPEG"><value>JPEG圖像</value></data>
+  <data name="ImageTGA"><value>TGA圖像</value></data>
+  <data name="Invalid region address."><value>無效的區域位址。</value></data>
+  <data name="Invalid token."><value>無效的權杖。</value></data>
+  <data name="Landmark"><value>地標</value></data>
+  <data name="Landmarks"><value>地標</value></data>
+  <data name="Last name:"><value>姓氏：</value></data>
+  <data name="Link"><value>連結</value></data>
+  <data name="LinkFolder"><value>連結資料夾</value></data>
+  <data name="Loading your inventory, please wait"><value>正在載入您的物品欄，請稍候</value></data>
+  <data name="Login failed."><value>登入失敗。</value></data>
+  <data name="LoginURI:"><value>登入URI：</value></data>
+  <data name="Lost And Found"><value>失物招領</value></data>
+  <data name="LostAndFoundFolder"><value>失物招領資料夾</value></data>
+  <data name="LSLBytecode"><value>LSL位元組碼</value></data>
+  <data name="LSLText"><value>LSL文字</value></data>
+  <data name="Male"><value>男性</value></data>
+  <data name="Mesh"><value>網格</value></data>
+  <data name="My Inventory"><value>我的物品欄</value></data>
+  <data name="My Outfits"><value>我的服裝</value></data>
+  <data name="My Suitcase"><value>我的手提箱</value></data>
+  <data name="MyOutfitsFolder"><value>我的服裝資料夾</value></data>
+  <data name="Neutral"><value>中性</value></data>
+  <data name="New account {0} {1} created in {2} is awaiting your approval."><value>在{2}中建立的新帳戶{0} {1}正在等待您的核准。</value></data>
+  <data name="No email on file"><value>檔案中沒有電子郵件</value></data>
+  <data name="No linked regions found"><value>未找到連結的區域</value></data>
+  <data name="No regions found"><value>未找到區域</value></data>
+  <data name="No users found"><value>未找到使用者</value></data>
+  <data name="nobody"><value>沒有人</value></data>
+  <data name="Notecard"><value>記事卡</value></data>
+  <data name="Notecards"><value>記事卡</value></data>
+  <data name="Object"><value>物件</value></data>
+  <data name="Objects"><value>物件</value></data>
+  <data name="OK"><value>確定</value></data>
+  <data name="OutfitFolder"><value>服裝資料夾</value></data>
+  <data name="Password Reset"><value>密碼重設</value></data>
+  <data name="Photo Album"><value>相簿</value></data>
+  <data name="Region link not found."><value>未找到區域連結。</value></data>
+  <data name="Region link to {0} established. (If this link already existed, then it will remain at the original location.)"><value>已建立到{0}的區域連結。（如果此連結已經存在，它將保留在原始位置。）</value></data>
+  <data name="RootFolder"><value>根資料夾</value></data>
+  <data name="Scripts"><value>腳本</value></data>
+  <data name="Simstate"><value>模擬器狀態</value></data>
+  <data name="SnapshotFolder"><value>快照資料夾</value></data>
+  <data name="Sound"><value>聲音</value></data>
+  <data name="Sounds"><value>聲音</value></data>
+  <data name="SoundWAV"><value>WAV聲音</value></data>
+  <data name="Texture"><value>材質</value></data>
+  <data name="Textures"><value>材質</value></data>
+  <data name="TextureTGA"><value>TGA材質</value></data>
+  <data name="The account does not exist."><value>帳戶不存在。</value></data>
+  <data name="The account has been activated."><value>帳戶已啟用。</value></data>
+  <data name="The account has been deleted."><value>帳戶已刪除。</value></data>
+  <data name="The account has been updated."><value>帳戶已更新。</value></data>
+  <data name="Trash"><value>垃圾桶</value></data>
+  <data name="TrashFolder"><value>垃圾桶資料夾</value></data>
+  <data name="Unable to delete account because it does not exist."><value>無法刪除帳戶，因為它不存在。</value></data>
+  <data name="Unknown"><value>未知</value></data>
+  <data name="Welcome to {0}!"><value>歡迎來到{0}！</value></data>
+  <data name="Who are you?"><value>你是誰？</value></data>
+  <data name="Your account awaits administrator approval."><value>您的帳戶正在等待管理員核准。</value></data>
+  <data name="Your account has been activated."><value>您的帳戶已啟用。</value></data>
+  <data name="Your account has been created."><value>您的帳戶已建立。</value></data>
+  <data name="Your account has been updated."><value>您的帳戶已更新。</value></data>
+  <data name="Your account is {0} {1}"><value>您的帳戶是{0} {1}</value></data>
+  <data name="Your password has been reset."><value>您的密碼已重設。</value></data>
+  <data name="Your Wifi has been installed. The administrator account is {0} {1}"><value>您的Wifi已安裝。管理員帳戶是{0} {1}</value></data>
+  </root>

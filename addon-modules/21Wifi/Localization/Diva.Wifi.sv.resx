@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Female"><value>Kvinna</value></data>
+  <data name="Male"><value>Man</value></data>
+  <data name="Neutral"><value>Neutral</value></data>
+  <data name="Default"><value>Standard</value></data>
+  <data name="nobody"><value>ingen</value></data>
+  <data name="My Inventory"><value>Mitt Inventarium</value></data>
+  <data name="My Outfits"><value>Mina Outfits</value></data>
+  <data name="My Suitcase"><value>Min Resväska</value></data>
+  <data name="Animations"><value>Animationer</value></data>
+  <data name="Body Parts"><value>Kroppsdelar</value></data>
+  <data name="Calling Cards"><value>Visitkort</value></data>
+  <data name="Clothing"><value>Kläder</value></data>
+  <data name="Current Outfit"><value>Nuvarande Outfit</value></data>
+  <data name="Favorites"><value>Favoriter</value></data>
+  <data name="Gestures"><value>Gester</value></data>
+  <data name="Landmarks"><value>Landmärken</value></data>
+  <data name="Lost And Found"><value>Hittegods</value></data>
+  <data name="Notecards"><value>Anteckningskort</value></data>
+  <data name="Objects"><value>Objekt</value></data>
+  <data name="Photo Album"><value>Fotoalbum</value></data>
+  <data name="Scripts"><value>Skript</value></data>
+  <data name="Sounds"><value>Ljud</value></data>
+  <data name="Textures"><value>Texturer</value></data>
+  <data name="Trash"><value>Papperskorg</value></data>
+  <data name="Unknown"><value>Okänd</value></data>
+  <data name="Texture"><value>Textur</value></data>
+  <data name="Sound"><value>Ljud</value></data>
+  <data name="CallingCard"><value>Visitkort</value></data>
+  <data name="Landmark"><value>Landmärke</value></data>
+  <data name="Object"><value>Objekt</value></data>
+  <data name="Notecard"><value>Anteckningskort</value></data>
+  <data name="Folder"><value>Mapp</value></data>
+  <data name="RootFolder"><value>Rotmapp</value></data>
+  <data name="LSLText"><value>LSL-text</value></data>
+  <data name="LSLBytecode"><value>LSL-bytekod</value></data>
+  <data name="TextureTGA"><value>Textur TGA</value></data>
+  <data name="Bodypart"><value>Kroppsdel</value></data>
+  <data name="TrashFolder"><value>Papperskorgsmapp</value></data>
+  <data name="SnapshotFolder"><value>Ögonblicksbildmapp</value></data>
+  <data name="LostAndFoundFolder"><value>Hittegodsmapp</value></data>
+  <data name="SoundWAV"><value>Ljud WAV</value></data>
+  <data name="ImageTGA"><value>Bild TGA</value></data>
+  <data name="ImageJPEG"><value>Bild JPEG</value></data>
+  <data name="Animation"><value>Animation</value></data>
+  <data name="Gesture"><value>Gest</value></data>
+  <data name="Simstate"><value>Sim-tillstånd</value></data>
+  <data name="FavoriteFolder"><value>Favoritmapp</value></data>
+  <data name="Link"><value>Länk</value></data>
+  <data name="LinkFolder"><value>Länkmapp</value></data>
+  <data name="EnsembleStart"><value>Ensemble Start</value></data>
+  <data name="EnsembleEnd"><value>Ensemble Slut</value></data>
+  <data name="CurrentOutfitFolder"><value>Nuvarande Outfit Mapp</value></data>
+  <data name="OutfitFolder"><value>Outfit Mapp</value></data>
+  <data name="MyOutfitsFolder"><value>Mina Outfits Mapp</value></data>
+  <data name="Mesh"><value>Mesh</value></data>
+  <data name="delete"><value>radera</value></data>
+  <data name="Your account has been updated."><value>Ditt konto har uppdaterats.</value></data>
+  <data name="Failed to link region: {0}"><value>Kunde inte länka region: {0}</value></data>
+  <data name="Region link to {0} established. (If this link already existed, then it will remain at the original location.)"><value>Regionlänk till {0} upprättad. (Om denna länk redan fanns, kommer den att finnas kvar på den ursprungliga platsen.)</value></data>
+  <data name="Invalid region address."><value>Ogiltig regionadress.</value></data>
+  <data name="Region link not found."><value>Regionlänk hittades inte.</value></data>
+  <data name="Deleted region link {0}."><value>Regionlänk {0} raderad.</value></data>
+  <data name="Deletion of region link {0} failed."><value>Radering av regionlänk {0} misslyckades.</value></data>
+  <data name="Your Wifi has been installed. The administrator account is {0} {1}"><value>Din Wifi har installerats. Administratörskontot är {0} {1}</value></data>
+  <data name="Loading your inventory, please wait"><value>Laddar ditt inventarium, vänta</value></data>
+  <data name="If your browser does not automatically load the next page, then use the button, please."><value>Om din webbläsare inte automatiskt laddar nästa sida, använd knappen.</value></data>
+  <data name="continue"><value>fortsätt</value></data>
+  <data name="Login failed."><value>Inloggning misslyckades.</value></data>
+  <data name="Welcome to {0}!"><value>Välkommen till {0}!</value></data>
+  <data name="Your account has been created."><value>Ditt konto har skapats.</value></data>
+  <data name="New account {0} {1} created in {2} is awaiting your approval."><value>Nytt konto {0} {1} skapat i {2} väntar på ditt godkännande.</value></data>
+  <data name="Account awaiting approval"><value>Konto väntar på godkännande</value></data>
+  <data name="Your account awaits administrator approval."><value>Ditt konto väntar på administratörsgodkännande.</value></data>
+  <data name="Default Avatar"><value>Standard Avatar</value></data>
+  <data name="OK"><value>OK</value></data>
+  <data name="Your account is {0} {1}"><value>Ditt konto är {0} {1}</value></data>
+  <data name="Click here to reset your password:"><value>Klicka här för att återställa ditt lösenord:</value></data>
+  <data name="Password Reset"><value>Återställ Lösenord</value></data>
+  <data name="Check your email. You must reset your password within 60 minutes."><value>Kontrollera din e-post. Du måste återställa ditt lösenord inom 60 minuter.</value></data>
+  <data name="Email could not be sent."><value>E-post kunde inte skickas.</value></data>
+  <data name="Invalid token."><value>Ogiltig token.</value></data>
+  <data name="Your password has been reset."><value>Ditt lösenord har återställts.</value></data>
+  <data name="The account has been updated."><value>Kontot har uppdaterats.</value></data>
+  <data name="The account does not exist."><value>Kontot finns inte.</value></data>
+  <data name="The account has been activated."><value>Kontot har aktiverats.</value></data>
+  <data name="Your account has been activated."><value>Ditt konto har aktiverats.</value></data>
+  <data name="First name:"><value>Förnamn:</value></data>
+  <data name="Last name:"><value>Efternamn:</value></data>
+  <data name="LoginURI:"><value>LoginURI:</value></data>
+  <data name="Account activated"><value>Konto aktiverat</value></data>
+  <data name="The account has been deleted."><value>Kontot har raderats.</value></data>
+  <data name="Unable to delete account because it does not exist."><value>Kan inte radera konto eftersom det inte finns.</value></data>
+  <data name="Who are you?"><value>Vem är du?</value></data>
+  <data name="No email on file"><value>Ingen e-post i filen</value></data>
+  <data name="No linked regions found"><value>Inga länkade regioner hittades</value></data>
+  <data name="No users found"><value>Inga användare hittades</value></data>
+  <data name="No regions found"><value>Inga regioner hittades</value></data>
+  </root>

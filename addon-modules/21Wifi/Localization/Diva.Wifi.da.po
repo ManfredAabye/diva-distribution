@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Diva.Wifi\n"
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
+"POT-Creation-Date: 2010-12-09 18:39+0100\n"
+"PO-Revision-Date: 2025-11-07 12:00+0100\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: Danish\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Female"
+msgstr "Kvinde"
+
+msgid "Male"
+msgstr "Mand"
+
+msgid "Neutral"
+msgstr "Neutral"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "nobody"
+msgstr "ingen"
+
+msgid "My Inventory"
+msgstr "Min Beholdning"
+
+msgid "My Outfits"
+msgstr "Mine Outfits"
+
+msgid "My Suitcase"
+msgstr "Min Kuffert"
+
+msgid "Animations"
+msgstr "Animationer"
+
+msgid "Body Parts"
+msgstr "Kropsdele"
+
+msgid "Calling Cards"
+msgstr "Visitkort"
+
+msgid "Clothing"
+msgstr "Tøj"
+
+msgid "Current Outfit"
+msgstr "Nuværende Outfit"
+
+msgid "Favorites"
+msgstr "Favoritter"
+
+msgid "Gestures"
+msgstr "Fagter"
+
+msgid "Landmarks"
+msgstr "Landmærker"
+
+msgid "Lost And Found"
+msgstr "Hittegods"
+
+msgid "Notecards"
+msgstr "Notatkort"
+
+msgid "Objects"
+msgstr "Objekter"
+
+msgid "Photo Album"
+msgstr "Fotoalbum"
+
+msgid "Scripts"
+msgstr "Scripts"
+
+msgid "Sounds"
+msgstr "Lyde"
+
+msgid "Textures"
+msgstr "Teksturer"
+
+msgid "Trash"
+msgstr "Papirkurv"
+
+msgid "Unknown"
+msgstr "Ukendt"
+
+msgid "Texture"
+msgstr "Tekstur"
+
+msgid "Sound"
+msgstr "Lyd"
+
+msgid "CallingCard"
+msgstr "Visitkort"
+
+msgid "Landmark"
+msgstr "Landmærke"
+
+msgid "Object"
+msgstr "Objekt"
+
+msgid "Notecard"
+msgstr "Notatkort"
+
+msgid "Folder"
+msgstr "Mappe"
+
+msgid "RootFolder"
+msgstr "Rodmappe"
+
+msgid "LSLText"
+msgstr "LSL-tekst"
+
+msgid "LSLBytecode"
+msgstr "LSL-bytekode"
+
+msgid "TextureTGA"
+msgstr "Tekstur TGA"
+
+msgid "Bodypart"
+msgstr "Kropsdel"
+
+msgid "TrashFolder"
+msgstr "Papirkurvsmappe"
+
+msgid "SnapshotFolder"
+msgstr "Øjebliksbilledemappe"
+
+msgid "LostAndFoundFolder"
+msgstr "Hittegodsmappe"
+
+msgid "SoundWAV"
+msgstr "Lyd WAV"
+
+msgid "ImageTGA"
+msgstr "Billede TGA"
+
+msgid "ImageJPEG"
+msgstr "Billede JPEG"
+
+msgid "Animation"
+msgstr "Animation"
+
+msgid "Gesture"
+msgstr "Fagt"
+
+msgid "Simstate"
+msgstr "Sim-tilstand"
+
+msgid "FavoriteFolder"
+msgstr "Favoritmappe"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "LinkFolder"
+msgstr "Linkmappe"
+
+msgid "EnsembleStart"
+msgstr "Ensemble Start"
+
+msgid "EnsembleEnd"
+msgstr "Ensemble Slut"
+
+msgid "CurrentOutfitFolder"
+msgstr "Nuværende Outfit Mappe"
+
+msgid "OutfitFolder"
+msgstr "Outfit Mappe"
+
+msgid "MyOutfitsFolder"
+msgstr "Mine Outfits Mappe"
+
+msgid "Mesh"
+msgstr "Mesh"
+
+msgid "delete"
+msgstr "slet"
+
+msgid "Your account has been updated."
+msgstr "Din konto er blevet opdateret."
+
+#, csharp-format
+msgid "Failed to link region: {0}"
+msgstr "Kunne ikke linke region: {0}"
+
+#, csharp-format
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+msgstr "Regionslink til {0} etableret. (Hvis dette link allerede eksisterede, forbliver det på den oprindelige placering.)"
+
+msgid "Invalid region address."
+msgstr "Ugyldig regionsadresse."
+
+msgid "Region link not found."
+msgstr "Regionslink ikke fundet."
+
+#, csharp-format
+msgid "Deleted region link {0}."
+msgstr "Regionslink {0} slettet."
+
+#, csharp-format
+msgid "Deletion of region link {0} failed."
+msgstr "Sletning af regionslink {0} mislykkedes."
+
+#, csharp-format
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+msgstr "Din Wifi er blevet installeret. Administratorkontoen er {0} {1}"
+
+msgid "Loading your inventory, please wait"
+msgstr "Indlæser din beholdning, vent venligst"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."
+msgstr "Hvis din browser ikke automatisk indlæser næste side, så brug knappen."
+
+msgid "continue"
+msgstr "fortsæt"
+
+msgid "Login failed."
+msgstr "Login mislykkedes."
+
+#, csharp-format
+msgid "Welcome to {0}!"
+msgstr "Velkommen til {0}!"
+
+msgid "Your account has been created."
+msgstr "Din konto er blevet oprettet."
+
+#, csharp-format
+msgid "New account {0} {1} created in {2} is awaiting your approval."
+msgstr "Ny konto {0} {1} oprettet i {2} afventer din godkendelse."
+
+msgid "Account awaiting approval"
+msgstr "Konto afventer godkendelse"
+
+msgid "Your account awaits administrator approval."
+msgstr "Din konto afventer administratorgodkendelse."
+
+msgid "Default Avatar"
+msgstr "Standard Avatar"
+
+msgid "OK"
+msgstr "OK"
+
+#, csharp-format
+msgid "Your account is {0} {1}"
+msgstr "Din konto er {0} {1}"
+
+msgid "Click here to reset your password:"
+msgstr "Klik her for at nulstille din adgangskode:"
+
+msgid "Password Reset"
+msgstr "Nulstil adgangskode"
+
+msgid "Check your email. You must reset your password within 60 minutes."
+msgstr "Tjek din e-mail. Du skal nulstille din adgangskode inden for 60 minutter."
+
+msgid "Email could not be sent."
+msgstr "E-mail kunne ikke sendes."
+
+msgid "Invalid token."
+msgstr "Ugyldigt token."
+
+msgid "Your password has been reset."
+msgstr "Din adgangskode er blevet nulstillet."
+
+msgid "The account has been updated."
+msgstr "Kontoen er blevet opdateret."
+
+msgid "The account does not exist."
+msgstr "Kontoen findes ikke."
+
+msgid "The account has been activated."
+msgstr "Kontoen er blevet aktiveret."
+
+msgid "Your account has been activated."
+msgstr "Din konto er blevet aktiveret."
+
+msgid "First name:"
+msgstr "Fornavn:"
+
+msgid "Last name:"
+msgstr "Efternavn:"
+
+msgid "LoginURI:"
+msgstr "LoginURI:"
+
+msgid "Account activated"
+msgstr "Konto aktiveret"
+
+msgid "The account has been deleted."
+msgstr "Kontoen er blevet slettet."
+
+msgid "Unable to delete account because it does not exist."
+msgstr "Kan ikke slette konto, fordi den ikke findes."
+
+msgid "Who are you?"
+msgstr "Hvem er du?"
+
+msgid "No email on file"
+msgstr "Ingen e-mail på filen"
+
+msgid "No linked regions found"
+msgstr "Ingen linkede regioner fundet"
+
+msgid "No users found"
+msgstr "Ingen brugere fundet"
+
+msgid "No regions found"
+msgstr "Ingen regioner fundet"
