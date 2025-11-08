@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	<title>Create Account - <!-- #get var=GridName --></title>
+	<link rel="shortcut icon" href="/wifi/images/favicon.ico" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/w3.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/wifi-custom.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/wifi-config.css" />
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+  <style>
+    /* Fix für Input-Felder: schwarzer Hintergrund mit weißer Schrift */
+    .w3-input {
+      background-color: #1a1a1a !important;
+      color: #ffffff !important;
+    }
+    
+    .w3-input:focus {
+      background-color: #2a2a2a !important;
+      outline: 2px solid var(--wifi-orange, #ff6600);
+    }
+    
+    /* Select-Felder auch anpassen */
+    select.w3-select {
+      background-color: #1a1a1a !important;
+      color: #ffffff !important;
+    }
+    
+    /* Avatar-Auswahl sichtbar machen */
+    .avatar-selection {
+      background-color: #1a1a1a;
+      padding: 15px;
+      border: 1px solid var(--wifi-orange, #ff6600);
+      border-radius: 5px;
+      color: #ffffff;
+    }
+    
+    .avatar-selection input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      accent-color: var(--wifi-orange, #ff6600);
+    }
+    
+    .avatar-selection label {
+      color: #ffffff;
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+  </style>
+  </head>
+
+  <body class="w3-black">
+
+    <!-- Header -->
+    <header class="w3-container w3-deep-orange w3-center">
+      <h1>Konto erstellen - <!-- #get var=GridName --></h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="w3-container w3-padding-64">
+      
+      <div class="w3-content w3-card w3-black w3-padding-32" style="max-width:700px">
+        
+        <h2 class="w3-text-orange w3-center">Neues Benutzerkonto erstellen</h2>
+        
+        <div class="w3-text-white w3-margin-top w3-margin-bottom">
+          <p class="w3-center">
+            Erstellen Sie ein neues Konto für <strong><!-- #get var=GridName --></strong> und beginnen Sie Ihr virtuelles Abenteuer.
+          </p>
+        </div>
+
+        <!-- Account Creation Form -->
+        <div class="w3-container w3-margin-top">
+          <form action="/wifi/user/account" method="post" class="w3-container">
+            
+            <div class="w3-margin-bottom">
+              <label class="w3-text-orange"><strong>Vorname: (*)</strong></label>
+              <input name="first" type="text" class="w3-input w3-border w3-border-orange w3-round" required />
+            </div>
+
+            <div class="w3-margin-bottom">
+              <label class="w3-text-orange"><strong>Nachname: (*)</strong></label>
+              <input name="last" type="text" class="w3-input w3-border w3-border-orange w3-round" required />
+            </div>
+
+            <div class="w3-margin-bottom">
+              <label class="w3-text-orange"><strong>E-Mail:</strong></label>
+              <input name="email" type="email" class="w3-input w3-border w3-border-orange w3-round" />
+            </div>
+
+            <div class="w3-margin-bottom">
+              <label class="w3-text-orange"><strong>Passwort: (*)</strong></label>
+              <input name="password" type="password" class="w3-input w3-border w3-border-orange w3-round" required />
+            </div>
+
+            <div class="w3-margin-bottom">
+              <label class="w3-text-orange"><strong>Passwort wiederholen: (*)</strong></label>
+              <input name="password2" type="password" class="w3-input w3-border w3-border-orange w3-round" required />
+            </div>
+
+            <div class="w3-margin-bottom avatar-selection">
+              <label class="w3-text-orange"><strong>Avatar-Typ:</strong></label>
+              <div style="margin-top: 10px;">
+                <input class="avatar" name="avatar" type="radio" value="Female" checked /> Weiblich<br />
+                <input class="avatar" name="avatar" type="radio" value="Male" /> Männlich<br />
+                <input class="avatar" name="avatar" type="radio" value="Neutral" /> Neutral<br />
+              </div>
+            </div>
+
+            <div class="w3-center w3-margin-top w3-margin-bottom">
+              <input type="submit" value="Konto erstellen" class="w3-button w3-orange w3-round w3-large" />
+            </div>
+
+            <div class="w3-text-gray w3-small w3-center">
+              <p>(*) Pflichtfelder</p>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="w3-margin-top w3-center">
+          <a href="/wifi" class="w3-text-orange">Zurück zur Startseite</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-deep-orange w3-center w3-margin-top">
+      <p>&copy; <!-- #get var=GridName --></p>
+    </footer>
+
+  </body>
+</html>

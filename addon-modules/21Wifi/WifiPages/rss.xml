@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title><!-- #get var=GridName --> - Grid Status</title>
+  <link><!-- #get var=LoginURI --></link>
+  <description>Status und Neuigkeiten von <!-- #get var=GridName --></description>
+  <language>de</language>
+  <lastBuildDate><!-- #get var=CurrentDateTime --></lastBuildDate>
+  <atom:link href="<!-- #get var=LoginURI -->/wifi/rss" rel="self" type="application/rss+xml" />
+
+  <item>
+    <title>Grid ist online</title>
+    <link><!-- #get var=LoginURI -->/wifi/GridStatus</link>
+    <description><!-- #get var=GridName --> ist online und verfügbar. Aktuell sind <!-- #get var=UsersInworld --> Benutzer online.</description>
+    <pubDate><!-- #get var=CurrentDateTime --></pubDate>
+    <guid><!-- #get var=LoginURI -->/wifi/GridStatus</guid>
+  </item>
+
+  <item>
+    <title>Grid-Statistiken</title>
+    <link><!-- #get var=LoginURI -->/wifi/about</link>
+    <description>
+      Aktuelle Statistiken: 
+      <!-- #get var=UsersInworld --> Benutzer online, 
+      <!-- #get var=RegionsTotal --> Regionen verfügbar, 
+      <!-- #get var=UsersTotal --> registrierte Benutzer insgesamt.
+    </description>
+    <pubDate><!-- #get var=CurrentDateTime --></pubDate>
+    <guid><!-- #get var=LoginURI -->/wifi/about</guid>
+  </item>
+
+  <item>
+    <title>Willkommen bei <!-- #get var=GridName --></title>
+    <link><!-- #get var=LoginURI -->/wifi</link>
+    <description>Entdecken Sie unsere virtuelle Welt. Erstellen Sie ein kostenloses Konto und beginnen Sie Ihr Abenteuer!</description>
+    <pubDate><!-- #get var=CurrentDateTime --></pubDate>
+    <guid><!-- #get var=LoginURI -->/wifi</guid>
+  </item>
+
+</channel>
+</rss>

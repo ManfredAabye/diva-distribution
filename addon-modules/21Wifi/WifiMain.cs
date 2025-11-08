@@ -140,6 +140,14 @@ namespace Diva.Wifi
             AddStreamHandler(new WifiGroupsManagementGetHandler(m_WebApp));
             AddStreamHandler(new WifiGroupsManagementPostHandler(m_WebApp));
 
+            // GridInfo pages
+            AddStreamHandler(new WifiAboutGetHandler(m_WebApp));
+            AddStreamHandler(new WifiHelpGetHandler(m_WebApp));
+            AddStreamHandler(new WifiAccountGetHandler(m_WebApp));
+            AddStreamHandler(new WifiGridStatusGetHandler(m_WebApp));
+            AddStreamHandler(new WifiGuideGetHandler(m_WebApp));
+            AddStreamHandler(new WifiRSSGetHandler(m_WebApp));
+
             //server.AddStreamHandler(new WifiRegionManagementPostHandler(app));
             //server.AddStreamHandler(new WifiRegionManagementGetHandler(app));
 

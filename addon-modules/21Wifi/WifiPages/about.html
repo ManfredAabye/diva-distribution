@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	<title>About - <!-- #get var=GridName --></title>
+	<link rel="shortcut icon" href="/wifi/images/favicon.ico" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/w3.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/wifi-custom.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/wifi-config.css" />
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+  </head>
+
+  <body class="w3-black">
+
+    <!-- Header -->
+    <header class="w3-container w3-deep-orange w3-center">
+      <h1>About <!-- #get var=GridName --></h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="w3-container w3-padding-64">
+      
+      <div class="w3-content w3-card w3-black w3-padding-32" style="max-width:900px">
+        
+        <h2 class="w3-text-orange">Über unser Grid</h2>
+        
+        <div class="w3-text-white w3-large w3-margin-top">
+          <p>
+            Willkommen bei <strong><!-- #get var=GridName --></strong>, einer virtuellen Welt basierend auf OpenSimulator.
+          </p>
+          
+          <p>
+            Unser Grid bietet eine offene und kreative Umgebung für Benutzer aus aller Welt.
+            Erkunden Sie neue Welten, treffen Sie interessante Menschen und gestalten Sie Ihre eigenen Regionen.
+          </p>
+        </div>
+
+        <div class="w3-margin-top w3-margin-bottom">
+          <div class="w3-row-padding">
+            <div class="w3-third">
+              <div class="w3-card w3-black w3-padding w3-round w3-border w3-border-orange">
+                <h3 class="w3-text-orange">🌍 Offen</h3>
+                <p class="w3-text-white">Ein offenes Grid für alle, die kreativ sein möchten.</p>
+              </div>
+            </div>
+            <div class="w3-third">
+              <div class="w3-card w3-black w3-padding w3-round w3-border w3-border-orange">
+                <h3 class="w3-text-orange">🤝 Community</h3>
+                <p class="w3-text-white">Eine freundliche Community wartet auf Sie.</p>
+              </div>
+            </div>
+            <div class="w3-third">
+              <div class="w3-card w3-black w3-padding w3-round w3-border w3-border-orange">
+                <h3 class="w3-text-orange">🎨 Kreativ</h3>
+                <p class="w3-text-white">Gestalten Sie Ihre eigene virtuelle Welt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="w3-text-orange w3-margin-top">Grid-Statistiken</h3>
+        <div class="w3-text-white">
+          <ul class="w3-ul w3-border w3-border-orange">
+            <li><strong>Aktive Benutzer:</strong> <!-- #get var=UsersActive --></li>
+            <li><strong>Gesamt Benutzer:</strong> <!-- #get var=UsersTotal --></li>
+            <li><strong>Online Benutzer:</strong> <!-- #get var=UsersInworld --></li>
+            <li><strong>Regionen:</strong> <!-- #get var=RegionsTotal --></li>
+          </ul>
+        </div>
+
+        <h3 class="w3-text-orange w3-margin-top">Technologie</h3>
+        <div class="w3-text-white">
+          <p>
+            <!-- #get var=GridName --> läuft auf <a href="http://opensimulator.org" class="w3-text-orange">OpenSimulator</a>, 
+            einer Open-Source-Plattform für virtuelle Welten.
+          </p>
+          <div class="w3-margin-top">
+            <a href="http://opensimulator.org" target="_blank">
+              <img src="/wifi/images/PoweredByOS.png" alt="Powered by OpenSimulator" style="max-width:300px;">
+            </a>
+          </div>
+        </div>
+
+        <div class="w3-margin-top w3-center">
+          <a href="/wifi" class="w3-button w3-orange w3-round w3-large">Zurück zur Startseite</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-deep-orange w3-center w3-margin-top">
+      <p>&copy; <!-- #get var=GridName --></p>
+    </footer>
+
+  </body>
+</html>

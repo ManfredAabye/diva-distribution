@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	<title>Grid Status - <!-- #get var=GridName --></title>
+	<link rel="shortcut icon" href="/wifi/images/favicon.ico" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/w3.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/wifi-custom.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="/wifi/wifi-config.css" />
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="refresh" content="60">
+  </head>
+
+  <body class="w3-black">
+
+    <!-- Header -->
+    <header class="w3-container w3-deep-orange w3-center">
+      <h1>Grid Status - <!-- #get var=GridName --></h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="w3-container w3-padding-64">
+      
+      <div class="w3-content w3-card w3-black w3-padding-32" style="max-width:1000px">
+        
+        <h2 class="w3-text-orange w3-center">🌐 Grid-Status</h2>
+        
+        <div class="w3-text-white w3-center w3-margin-bottom">
+          <p class="w3-large">
+            Aktuelle Informationen über den Status von <strong><!-- #get var=GridName --></strong>
+          </p>
+          <p class="w3-small w3-text-gray">Diese Seite aktualisiert sich automatisch alle 60 Sekunden.</p>
+        </div>
+
+        <!-- Status Indicator -->
+        <div class="w3-center w3-margin-top w3-margin-bottom">
+          <div class="w3-card w3-green w3-padding w3-round" style="display: inline-block;">
+            <h3 class="w3-text-white">✓ ONLINE</h3>
+          </div>
+        </div>
+
+        <!-- Grid Statistics -->
+        <div class="w3-margin-top">
+          <h3 class="w3-text-orange">📊 Live-Statistiken</h3>
+          
+          <div class="w3-row-padding w3-margin-top w3-margin-bottom">
+            
+            <div class="w3-quarter">
+              <div class="w3-card w3-black w3-padding w3-round w3-border w3-border-orange w3-center">
+                <h2 class="w3-text-orange"><!-- #get var=UsersInworld --></h2>
+                <p class="w3-text-white">Benutzer Online</p>
+              </div>
+            </div>
+
+            <div class="w3-quarter">
+              <div class="w3-card w3-black w3-padding w3-round w3-border w3-border-orange w3-center">
+                <h2 class="w3-text-orange"><!-- #get var=RegionsTotal --></h2>
+                <p class="w3-text-white">Regionen</p>
+              </div>
+            </div>
+
+            <div class="w3-quarter">
+              <div class="w3-card w3-black w3-padding w3-round w3-border w3-border-orange w3-center">
+                <h2 class="w3-text-orange"><!-- #get var=UsersTotal --></h2>
+                <p class="w3-text-white">Gesamt-Benutzer</p>
+              </div>
+            </div>
+
+            <div class="w3-quarter">
+              <div class="w3-card w3-black w3-padding w3-round w3-border w3-border-orange w3-center">
+                <h2 class="w3-text-orange"><!-- #get var=UsersActive --></h2>
+                <p class="w3-text-white">Aktive Benutzer</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Services Status -->
+        <div class="w3-margin-top">
+          <h3 class="w3-text-orange">⚙️ Service-Status</h3>
+          
+          <div class="w3-responsive">
+            <table class="w3-table w3-bordered w3-border w3-border-orange">
+              <thead>
+                <tr class="w3-deep-orange">
+                  <th>Service</th>
+                  <th>Status</th>
+                  <th>Info</th>
+                </tr>
+              </thead>
+              <tbody class="w3-text-white">
+                <tr>
+                  <td>Login-Server</td>
+                  <td><span class="w3-tag w3-green w3-round">✓ Online</span></td>
+                  <td>Anmeldungen funktionieren normal</td>
+                </tr>
+                <tr>
+                  <td>Grid-Services</td>
+                  <td><span class="w3-tag w3-green w3-round">✓ Online</span></td>
+                  <td>Alle Grid-Services aktiv</td>
+                </tr>
+                <tr>
+                  <td>Asset-Server</td>
+                  <td><span class="w3-tag w3-green w3-round">✓ Online</span></td>
+                  <td>Asset-Übertragungen normal</td>
+                </tr>
+                <tr>
+                  <td>Inventory-Server</td>
+                  <td><span class="w3-tag w3-green w3-round">✓ Online</span></td>
+                  <td>Inventar-Zugriff verfügbar</td>
+                </tr>
+                <tr>
+                  <td>Web-Interface</td>
+                  <td><span class="w3-tag w3-green w3-round">✓ Online</span></td>
+                  <td>Wifi läuft stabil</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- System Information -->
+        <div class="w3-margin-top">
+          <h3 class="w3-text-orange">💻 System-Informationen</h3>
+          <div class="w3-text-white">
+            <div class="w3-panel w3-border w3-border-orange w3-round w3-padding">
+              <p><strong>Grid-Name:</strong> <!-- #get var=GridName --></p>
+              <p><strong>Login-URI:</strong> <!-- #get var=LoginURI --></p>
+              <p><strong>Plattform:</strong> OpenSimulator</p>
+              <p><strong>Letzte Aktualisierung:</strong> <span id="update-time"></span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RSS Feed Link -->
+        <div class="w3-margin-top w3-center">
+          <a href="/wifi/rss" class="w3-button w3-orange w3-round">
+            📡 RSS-Feed abonnieren
+          </a>
+        </div>
+
+        <div class="w3-margin-top w3-center">
+          <a href="/wifi" class="w3-button w3-orange w3-round w3-large">Zurück zur Startseite</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-deep-orange w3-center w3-margin-top">
+      <p>&copy; <!-- #get var=GridName --></p>
+    </footer>
+
+    <script>
+      // Update timestamp
+      function updateTime() {
+        var now = new Date();
+        document.getElementById('update-time').textContent = now.toLocaleString('de-DE');
+      }
+      updateTime();
+      setInterval(updateTime, 1000);
+    </script>
+
+  </body>
+</html>
