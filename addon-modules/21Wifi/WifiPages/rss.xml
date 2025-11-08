@@ -3,36 +3,36 @@
 <channel>
   <title><!-- #get var=GridName --> - Grid Status</title>
   <link><!-- #get var=LoginURI --></link>
-  <description>Status und Neuigkeiten von <!-- #get var=GridName --></description>
-  <language>de</language>
+  <description>Status and news from <!-- #get var=GridName --></description>
+  <language>en</language>
   <lastBuildDate><!-- #get var=CurrentDateTime --></lastBuildDate>
   <atom:link href="<!-- #get var=LoginURI -->/wifi/rss" rel="self" type="application/rss+xml" />
 
   <item>
-    <title>Grid ist online</title>
+    <title>Grid is online</title>
     <link><!-- #get var=LoginURI -->/wifi/GridStatus</link>
-    <description><!-- #get var=GridName --> ist online und verfügbar. Aktuell sind <!-- #get var=UsersInworld --> Benutzer online.</description>
+    <description><!-- #get var=GridName --> is online and available. Currently <!-- #get var=UsersInworld --> users are online.</description>
     <pubDate><!-- #get var=CurrentDateTime --></pubDate>
     <guid><!-- #get var=LoginURI -->/wifi/GridStatus</guid>
   </item>
 
   <item>
-    <title>Grid-Statistiken</title>
+    <title>Grid Statistics</title>
     <link><!-- #get var=LoginURI -->/wifi/about</link>
     <description>
-      Aktuelle Statistiken: 
-      <!-- #get var=UsersInworld --> Benutzer online, 
-      <!-- #get var=RegionsTotal --> Regionen verfügbar, 
-      <!-- #get var=UsersTotal --> registrierte Benutzer insgesamt.
+      Current statistics: 
+      <!-- #get var=UsersInworld --> users online, 
+      <!-- #get var=RegionsTotal --> regions available, 
+      <!-- #get var=UsersTotal --> registered users total.
     </description>
     <pubDate><!-- #get var=CurrentDateTime --></pubDate>
     <guid><!-- #get var=LoginURI -->/wifi/about</guid>
   </item>
 
   <item>
-    <title>Willkommen bei <!-- #get var=GridName --></title>
+    <title>Welcome to <!-- #get var=GridName --></title>
     <link><!-- #get var=LoginURI -->/wifi</link>
-    <description>Entdecken Sie unsere virtuelle Welt. Erstellen Sie ein kostenloses Konto und beginnen Sie Ihr Abenteuer!</description>
+    <description>Discover our virtual world. Create a free account and start your adventure!</description>
     <pubDate><!-- #get var=CurrentDateTime --></pubDate>
     <guid><!-- #get var=LoginURI -->/wifi</guid>
   </item>
