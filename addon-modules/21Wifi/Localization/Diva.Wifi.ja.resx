@@ -1,128 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="Female"><value>女性</value></data>
-  <data name="Male"><value>男性</value></data>
-  <data name="Neutral"><value>中性</value></data>
-  <data name="Default"><value>デフォルト</value></data>
-  <data name="nobody"><value>誰もいない</value></data>
-  <data name="My Inventory"><value>マイインベントリ</value></data>
-  <data name="My Outfits"><value>マイ服装</value></data>
-  <data name="My Suitcase"><value>マイスーツケース</value></data>
-  <data name="Animations"><value>アニメーション</value></data>
-  <data name="Body Parts"><value>身体部分</value></data>
-  <data name="Calling Cards"><value>名刺</value></data>
-  <data name="Clothing"><value>衣類</value></data>
-  <data name="Current Outfit"><value>現在の服装</value></data>
-  <data name="Favorites"><value>お気に入り</value></data>
-  <data name="Gestures"><value>ジェスチャー</value></data>
-  <data name="Landmarks"><value>ランドマーク</value></data>
-  <data name="Lost And Found"><value>紛失物</value></data>
-  <data name="Notecards"><value>ノートカード</value></data>
-  <data name="Objects"><value>オブジェクト</value></data>
-  <data name="Photo Album"><value>フォトアルバム</value></data>
-  <data name="Scripts"><value>スクリプト</value></data>
-  <data name="Sounds"><value>サウンド</value></data>
-  <data name="Textures"><value>テクスチャ</value></data>
-  <data name="Trash"><value>ゴミ箱</value></data>
-  <data name="Unknown"><value>不明</value></data>
-  <data name="Texture"><value>テクスチャ</value></data>
-  <data name="Sound"><value>サウンド</value></data>
-  <data name="CallingCard"><value>名刺</value></data>
-  <data name="Landmark"><value>ランドマーク</value></data>
-  <data name="Object"><value>オブジェクト</value></data>
-  <data name="Notecard"><value>ノートカード</value></data>
-  <data name="Folder"><value>フォルダ</value></data>
-  <data name="RootFolder"><value>ルートフォルダ</value></data>
-  <data name="LSLText"><value>LSLテキスト</value></data>
-  <data name="LSLBytecode"><value>LSLバイトコード</value></data>
-  <data name="TextureTGA"><value>TGAテクスチャ</value></data>
-  <data name="Bodypart"><value>身体部分</value></data>
-  <data name="TrashFolder"><value>ゴミ箱フォルダ</value></data>
-  <data name="SnapshotFolder"><value>スナップショットフォルダ</value></data>
-  <data name="LostAndFoundFolder"><value>紛失物フォルダ</value></data>
-  <data name="SoundWAV"><value>WAVサウンド</value></data>
-  <data name="ImageTGA"><value>TGA画像</value></data>
-  <data name="ImageJPEG"><value>JPEG画像</value></data>
-  <data name="Animation"><value>アニメーション</value></data>
-  <data name="Gesture"><value>ジェスチャー</value></data>
-  <data name="Simstate"><value>Sim状態</value></data>
-  <data name="FavoriteFolder"><value>お気に入りフォルダ</value></data>
-  <data name="Link"><value>リンク</value></data>
-  <data name="LinkFolder"><value>リンクフォルダ</value></data>
-  <data name="EnsembleStart"><value>アンサンブル開始</value></data>
-  <data name="EnsembleEnd"><value>アンサンブル終了</value></data>
-  <data name="CurrentOutfitFolder"><value>現在の服装フォルダ</value></data>
-  <data name="OutfitFolder"><value>服装フォルダ</value></data>
-  <data name="MyOutfitsFolder"><value>マイ服装フォルダ</value></data>
-  <data name="Mesh"><value>メッシュ</value></data>
-  <data name="delete"><value>削除</value></data>
-  <data name="Your account has been updated."><value>アカウントが更新されました。</value></data>
-  <data name="Failed to link region: {0}"><value>リージョンのリンクに失敗しました: {0}</value></data>
-  <data name="Region link to {0} established. (If this link already existed, then it will remain at the original location.)"><value>{0}へのリージョンリンクが確立されました。(このリンクが既に存在していた場合は、元の場所に残ります。)</value></data>
-  <data name="Invalid region address."><value>無効なリージョンアドレスです。</value></data>
-  <data name="Region link not found."><value>リージョンリンクが見つかりません。</value></data>
-  <data name="Deleted region link {0}."><value>リージョンリンク{0}を削除しました。</value></data>
-  <data name="Deletion of region link {0} failed."><value>リージョンリンク{0}の削除に失敗しました。</value></data>
-  <data name="Your Wifi has been installed. The administrator account is {0} {1}"><value>Wifiがインストールされました。管理者アカウントは{0} {1}です</value></data>
-  <data name="Loading your inventory, please wait"><value>インベントリを読み込んでいます。お待ちください</value></data>
-  <data name="If your browser does not automatically load the next page, then use the button, please."><value>ブラウザが自動的に次のページを読み込まない場合は、ボタンを使用してください。</value></data>
-  <data name="continue"><value>続行</value></data>
-  <data name="Login failed."><value>ログインに失敗しました。</value></data>
-  <data name="Welcome to {0}!"><value>{0}へようこそ!</value></data>
-  <data name="Your account has been created."><value>アカウントが作成されました。</value></data>
-  <data name="New account {0} {1} created in {2} is awaiting your approval."><value>{2}で作成された新しいアカウント{0} {1}は承認待ちです。</value></data>
-  <data name="Account awaiting approval"><value>アカウントは承認待ちです</value></data>
-  <data name="Your account awaits administrator approval."><value>アカウントは管理者の承認を待っています。</value></data>
-  <data name="Default Avatar"><value>デフォルトアバター</value></data>
-  <data name="OK"><value>OK</value></data>
-  <data name="Your account is {0} {1}"><value>あなたのアカウントは{0} {1}です</value></data>
-  <data name="Click here to reset your password:"><value>パスワードをリセットするにはここをクリック:</value></data>
-  <data name="Password Reset"><value>パスワードリセット</value></data>
-  <data name="Check your email. You must reset your password within 60 minutes."><value>メールを確認してください。60分以内にパスワードをリセットする必要があります。</value></data>
-  <data name="Email could not be sent."><value>メールを送信できませんでした。</value></data>
-  <data name="Invalid token."><value>無効なトークンです。</value></data>
-  <data name="Your password has been reset."><value>パスワードがリセットされました。</value></data>
-  <data name="The account has been updated."><value>アカウントが更新されました。</value></data>
-  <data name="The account does not exist."><value>アカウントが存在しません。</value></data>
-  <data name="The account has been activated."><value>アカウントがアクティブ化されました。</value></data>
-  <data name="Your account has been activated."><value>アカウントがアクティブ化されました。</value></data>
-  <data name="First name:"><value>名:</value></data>
-  <data name="Last name:"><value>姓:</value></data>
-  <data name="LoginURI:"><value>ログインURI:</value></data>
-  <data name="Account activated"><value>アカウントアクティブ化</value></data>
-  <data name="The account has been deleted."><value>アカウントが削除されました。</value></data>
-  <data name="Unable to delete account because it does not exist."><value>アカウントが存在しないため削除できません。</value></data>
-  <data name="Who are you?"><value>あなたは誰ですか?</value></data>
-  <data name="No email on file"><value>ファイルにメールがありません</value></data>
-  <data name="No linked regions found"><value>リンクされたリージョンが見つかりません</value></data>
-  <data name="No users found"><value>ユーザーが見つかりません</value></data>
-  <data name="No regions found"><value>リージョンが見つかりません</value></data>
-  </root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Account activated" xml:space="preserve"><value>アカウントアクティブ化</value></data>
+  <data name="Delete" xml:space="preserve"><value>削除</value></data>
+  <data name="Email could not be sent.&quot;msgstr &quot;" xml:space="preserve"><value>アカウントが更新されました。</value></data>
+  <data name="If your browser does not automatically load the next page, then use the button, please.&quot;msgstr &quot;" xml:space="preserve"><value>デフォルトアバター</value></data>
+  <data name="Login failed." xml:space="preserve"><value>ログインに失敗しました。</value></data>
+  <data name="No email on file&quot;msgstr &quot;" xml:space="preserve"><value>あなたは誰ですか?</value></data>
+  <data name="No regions found" xml:space="preserve"><value>リージョンが見つかりません</value></data>
+  <data name="Not Found" xml:space="preserve"><value>ユーザーが見つかりません</value></data>
+  <data name="The account has been activated." xml:space="preserve"><value>アカウントがアクティブ化されました。</value></data>
+  <data name="The account has been deleted.&quot;msgstr &quot;" xml:space="preserve"><value>アカウントが削除されました。</value></data>
+  <data name="The account has been updated.&quot;msgstr &quot;" xml:space="preserve"><value>アカウントがアクティブ化されました。</value></data>
+  <data name="update" xml:space="preserve"><value>リージョンリンク{0}を削除しました。</value></data>
+  <data name="Your account has been created.&quot;msgstr &quot;" xml:space="preserve"><value>あなたのアカウントは{0} {1}です</value></data>
+  <data name="Your account has been updated." xml:space="preserve"><value>アカウントが更新されました。</value></data>
+  <data name="Your password has been reset." xml:space="preserve"><value>パスワードがリセットされました。</value></data>
+</root>

@@ -1,128 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="Female"><value>女性</value></data>
-  <data name="Male"><value>男性</value></data>
-  <data name="Neutral"><value>中性</value></data>
-  <data name="Default"><value>默认</value></data>
-  <data name="nobody"><value>没有人</value></data>
-  <data name="My Inventory"><value>我的物品栏</value></data>
-  <data name="My Outfits"><value>我的服装</value></data>
-  <data name="My Suitcase"><value>我的手提箱</value></data>
-  <data name="Animations"><value>动画</value></data>
-  <data name="Body Parts"><value>身体部位</value></data>
-  <data name="Calling Cards"><value>名片</value></data>
-  <data name="Clothing"><value>服装</value></data>
-  <data name="Current Outfit"><value>当前服装</value></data>
-  <data name="Favorites"><value>收藏夹</value></data>
-  <data name="Gestures"><value>手势</value></data>
-  <data name="Landmarks"><value>地标</value></data>
-  <data name="Lost And Found"><value>失物招领</value></data>
-  <data name="Notecards"><value>记事卡</value></data>
-  <data name="Objects"><value>物体</value></data>
-  <data name="Photo Album"><value>相册</value></data>
-  <data name="Scripts"><value>脚本</value></data>
-  <data name="Sounds"><value>声音</value></data>
-  <data name="Textures"><value>纹理</value></data>
-  <data name="Trash"><value>垃圾箱</value></data>
-  <data name="Unknown"><value>未知</value></data>
-  <data name="Texture"><value>纹理</value></data>
-  <data name="Sound"><value>声音</value></data>
-  <data name="CallingCard"><value>名片</value></data>
-  <data name="Landmark"><value>地标</value></data>
-  <data name="Object"><value>物体</value></data>
-  <data name="Notecard"><value>记事卡</value></data>
-  <data name="Folder"><value>文件夹</value></data>
-  <data name="RootFolder"><value>根文件夹</value></data>
-  <data name="LSLText"><value>LSL文本</value></data>
-  <data name="LSLBytecode"><value>LSL字节码</value></data>
-  <data name="TextureTGA"><value>TGA纹理</value></data>
-  <data name="Bodypart"><value>身体部位</value></data>
-  <data name="TrashFolder"><value>垃圾箱文件夹</value></data>
-  <data name="SnapshotFolder"><value>快照文件夹</value></data>
-  <data name="LostAndFoundFolder"><value>失物招领文件夹</value></data>
-  <data name="SoundWAV"><value>WAV声音</value></data>
-  <data name="ImageTGA"><value>TGA图像</value></data>
-  <data name="ImageJPEG"><value>JPEG图像</value></data>
-  <data name="Animation"><value>动画</value></data>
-  <data name="Gesture"><value>手势</value></data>
-  <data name="Simstate"><value>模拟器状态</value></data>
-  <data name="FavoriteFolder"><value>收藏夹文件夹</value></data>
-  <data name="Link"><value>链接</value></data>
-  <data name="LinkFolder"><value>链接文件夹</value></data>
-  <data name="EnsembleStart"><value>集合开始</value></data>
-  <data name="EnsembleEnd"><value>集合结束</value></data>
-  <data name="CurrentOutfitFolder"><value>当前服装文件夹</value></data>
-  <data name="OutfitFolder"><value>服装文件夹</value></data>
-  <data name="MyOutfitsFolder"><value>我的服装文件夹</value></data>
-  <data name="Mesh"><value>网格</value></data>
-  <data name="delete"><value>删除</value></data>
-  <data name="Your account has been updated."><value>您的账户已更新。</value></data>
-  <data name="Failed to link region: {0}"><value>链接区域失败: {0}</value></data>
-  <data name="Region link to {0} established. (If this link already existed, then it will remain at the original location.)"><value>已建立到{0}的区域链接。(如果此链接已经存在,它将保留在原始位置。)</value></data>
-  <data name="Invalid region address."><value>无效的区域地址。</value></data>
-  <data name="Region link not found."><value>未找到区域链接。</value></data>
-  <data name="Deleted region link {0}."><value>已删除区域链接{0}。</value></data>
-  <data name="Deletion of region link {0} failed."><value>删除区域链接{0}失败。</value></data>
-  <data name="Your Wifi has been installed. The administrator account is {0} {1}"><value>您的Wifi已安装。管理员账户是{0} {1}</value></data>
-  <data name="Loading your inventory, please wait"><value>正在加载您的物品栏,请稍候</value></data>
-  <data name="If your browser does not automatically load the next page, then use the button, please."><value>如果浏览器未自动加载下一页,请使用按钮。</value></data>
-  <data name="continue"><value>继续</value></data>
-  <data name="Login failed."><value>登录失败。</value></data>
-  <data name="Welcome to {0}!"><value>欢迎来到{0}!</value></data>
-  <data name="Your account has been created."><value>您的账户已创建。</value></data>
-  <data name="New account {0} {1} created in {2} is awaiting your approval."><value>在{2}中创建的新账户{0} {1}正在等待您的批准。</value></data>
-  <data name="Account awaiting approval"><value>账户等待批准</value></data>
-  <data name="Your account awaits administrator approval."><value>您的账户正在等待管理员批准。</value></data>
-  <data name="Default Avatar"><value>默认头像</value></data>
-  <data name="OK"><value>确定</value></data>
-  <data name="Your account is {0} {1}"><value>您的账户是{0} {1}</value></data>
-  <data name="Click here to reset your password:"><value>点击此处重置密码:</value></data>
-  <data name="Password Reset"><value>密码重置</value></data>
-  <data name="Check your email. You must reset your password within 60 minutes."><value>请检查您的电子邮件。您必须在60分钟内重置密码。</value></data>
-  <data name="Email could not be sent."><value>无法发送电子邮件。</value></data>
-  <data name="Invalid token."><value>无效的令牌。</value></data>
-  <data name="Your password has been reset."><value>您的密码已重置。</value></data>
-  <data name="The account has been updated."><value>账户已更新。</value></data>
-  <data name="The account does not exist."><value>账户不存在。</value></data>
-  <data name="The account has been activated."><value>账户已激活。</value></data>
-  <data name="Your account has been activated."><value>您的账户已激活。</value></data>
-  <data name="First name:"><value>名字:</value></data>
-  <data name="Last name:"><value>姓氏:</value></data>
-  <data name="LoginURI:"><value>登录URI:</value></data>
-  <data name="Account activated"><value>账户已激活</value></data>
-  <data name="The account has been deleted."><value>账户已删除。</value></data>
-  <data name="Unable to delete account because it does not exist."><value>无法删除账户,因为它不存在。</value></data>
-  <data name="Who are you?"><value>你是谁?</value></data>
-  <data name="No email on file"><value>文件中没有电子邮件</value></data>
-  <data name="No linked regions found"><value>未找到链接的区域</value></data>
-  <data name="No users found"><value>未找到用户</value></data>
-  <data name="No regions found"><value>未找到区域</value></data>
-  </root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Account activated" xml:space="preserve"><value>账户已激活</value></data>
+  <data name="Delete" xml:space="preserve"><value>删除</value></data>
+  <data name="Email could not be sent.&quot;msgstr &quot;" xml:space="preserve"><value>账户已更新。</value></data>
+  <data name="If your browser does not automatically load the next page, then use the button, please.&quot;msgstr &quot;" xml:space="preserve"><value>默认头像</value></data>
+  <data name="Login failed." xml:space="preserve"><value>登录失败。</value></data>
+  <data name="No email on file&quot;msgstr &quot;" xml:space="preserve"><value>你是谁?</value></data>
+  <data name="No regions found" xml:space="preserve"><value>未找到区域</value></data>
+  <data name="Not Found" xml:space="preserve"><value>未找到用户</value></data>
+  <data name="The account has been activated." xml:space="preserve"><value>账户已激活。</value></data>
+  <data name="The account has been deleted.&quot;msgstr &quot;" xml:space="preserve"><value>账户已删除。</value></data>
+  <data name="The account has been updated.&quot;msgstr &quot;" xml:space="preserve"><value>账户已激活。</value></data>
+  <data name="update" xml:space="preserve"><value>已删除区域链接{0}。</value></data>
+  <data name="Your account has been created.&quot;msgstr &quot;" xml:space="preserve"><value>您的账户是{0} {1}</value></data>
+  <data name="Your account has been updated." xml:space="preserve"><value>您的账户已更新。</value></data>
+  <data name="Your password has been reset." xml:space="preserve"><value>您的密码已重置。</value></data>
+</root>

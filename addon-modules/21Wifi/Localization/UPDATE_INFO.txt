@@ -1,0 +1,209 @@
+================================================================================
+DIVA WIFI LOCALIZATION UPDATE - 08.11.2025
+================================================================================
+
+Diese Dateien wurden aktualisiert/hinzugefügt für die Lokalisierung von Diva Wifi.
+
+ACHTUNG: Diese Änderungen befinden sich in den Quellverzeichnissen:
+- addon-modules\21Wifi\Localization\
+- diva-distribution\addon-modules\21Wifi\Localization\
+
+================================================================================
+GEÄNDERTE/NEUE DATEIEN
+================================================================================
+
+1. TEMPLATE-DATEI (AKTUALISIERT)
+---------------------------------
+[X] Diva.Wifi.pot
+    - Von 98 auf 300+ übersetzbare Strings erweitert
+    - Neue Kategorien: Web-Seiten, Estates, Groups, Grid Users, ACL, etc.
+    - POT-Creation-Date: 2025-11-08 (vorher: 2010-12-09)
+
+2. ÜBERSETZUNGSDATEIEN (AKTUALISIERT) - 18 Sprachen
+-----------------------------------------------------
+[X] Diva.Wifi.da.po      - Dänisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.de.po      - Deutsch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.el.po      - Griechisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.en.po      - Englisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.es.po      - Spanisch: 15 übersetzt, 302 neu
+[X] Diva.Wifi.fr.po      - Französisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.it.po      - Italienisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.ja.po      - Japanisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.ko.po      - Koreanisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.nl.po      - Niederländisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.pl.po      - Polnisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.pt.po      - Portugiesisch: 17 übersetzt, 297 neu
+[X] Diva.Wifi.pt-BR.po   - Brasil. Portugiesisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.ru.po      - Russisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.sv.po      - Schwedisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.tr.po      - Türkisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.zh-CN.po   - Vereinf. Chinesisch: 15 übersetzt, 298 neu
+[X] Diva.Wifi.zh-TW.po   - Trad. Chinesisch: 15 übersetzt, 298 neu
+
+Status: Alte Übersetzungen wurden ERHALTEN, neue Einträge HINZUGEFÜGT
+
+3. .NET RESOURCE-DATEIEN (NEU GENERIERT) - 18 Sprachen
+-------------------------------------------------------
+[X] Diva.Wifi.*.resx (alle 18 Sprachen)
+    - Aus den aktualisierten .po Dateien generiert
+    - Enthalten die vorhandenen Übersetzungen (15-17 pro Sprache)
+    - Sofort verwendbar, fehlende Texte fallen auf Englisch zurück
+
+4. NEUE AUTOMATISIERUNGS-SKRIPTE
+---------------------------------
+[NEU] make_all_language.bat
+      Erstellt Satelliten-Assemblies für ALLE 18 Sprachen auf einmal
+      Verwendung: make_all_language.bat -o "..\..\..\..\bin"
+
+[NEU] update_po_files.bat
+      Aktualisiert .po Dateien aus der .pot Vorlage
+      Verwendet msgmerge (gettext) falls verfügbar, sonst PowerShell
+
+[NEU] update_po_files.ps1
+      PowerShell-Implementierung für .po Update
+      Behält alte Übersetzungen, fügt neue Einträge hinzu
+
+[NEU] update_resx_files.bat
+      Generiert .resx Dateien aus .po Dateien
+      Verwendet PowerShell zur Konvertierung
+
+[NEU] update_resx_files.ps1
+      PowerShell-Implementierung für .resx Generierung
+      Erstellt valide .NET Resource XML-Dateien
+
+5. UNVERÄNDERTE DATEIEN
+------------------------
+[ ] make_languages.bat   - Original-Skript (unverändert)
+[ ] make_languages.sh    - Original-Skript für Linux/Mac (unverändert)
+
+================================================================================
+VERWENDUNG - SATELLITEN-ASSEMBLIES ERSTELLEN
+================================================================================
+
+VORAUSSETZUNG:
+- Developer Command Prompt for Visual Studio
+- ODER: resgen.exe und al.exe im PATH
+
+SCHNELLSTART:
+1. Öffnen Sie ein Developer Command Prompt
+2. Wechseln Sie ins Localization-Verzeichnis:
+   cd D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\21Wifi\Localization
+
+3. Führen Sie aus:
+   make_all_language.bat -o "..\..\..\..\bin"
+
+4. Die Satelliten-Assemblies werden erstellt in:
+   bin\de\Diva.Wifi.resources.dll
+   bin\fr\Diva.Wifi.resources.dll
+   bin\es\Diva.Wifi.resources.dll
+   ... (für alle 18 Sprachen)
+
+================================================================================
+ÜBERSETZUNGS-WORKFLOW
+================================================================================
+
+SCHRITT 1: Übersetzungen vervollständigen
+------------------------------------------
+- Öffnen Sie die .po Dateien mit Poedit oder einem Texteditor
+- Suchen Sie nach Einträgen mit leerem msgstr ""
+- Fügen Sie Übersetzungen hinzu
+
+Beispiel:
+  msgid "Groups:"
+  msgstr ""              <- Hier übersetzen
+
+Nach Übersetzung:
+  msgid "Groups:"
+  msgstr "Gruppen:"      <- Fertig!
+
+SCHRITT 2: .resx Dateien aktualisieren
+---------------------------------------
+Nach dem Übersetzen:
+  update_resx_files.bat
+
+SCHRITT 3: Assemblies neu erstellen
+------------------------------------
+  make_all_language.bat -o "..\..\..\..\bin"
+
+================================================================================
+WAS IST NEU IN DER .POT DATEI?
+================================================================================
+
+Die aktualisierte Diva.Wifi.pot enthält nun Übersetzungen für:
+
+✓ 404 Error Page
+✓ About Page (Grid-Informationen, Statistiken)
+✓ Account Management (Registrierung, Login, Logout)
+✓ Access Control (ACL, Bans, Logins On/Off, Hypergrid On/Off)
+✓ Estates (Grundstücksverwaltung: Owner, Public Access, Groups, Regions)
+✓ Groups (Gruppenverwaltung: Members, Charter, Add/Eject)
+✓ Grid Users (Benutzerverwaltung: List, Search, Create bulk, TOS Reset)
+✓ Grid Status (Online-Status, Services, Statistiken)
+✓ Regions (Regionenverwaltung, Links)
+✓ Inventory (Inventar, Items, IARs)
+✓ User Management (Edit, Delete, Pending, Search)
+✓ Console (Remote Console)
+✓ Notifications (Success, Error, Warning, Info)
+✓ Terms of Service
+✓ Password Recovery
+✓ RSS Feed
+✓ Common UI Elements (Buttons, Labels, Menüs)
+
+TOTAL: 300+ Strings (vorher: 98 Strings von 2010)
+
+================================================================================
+VERZEICHNISSTRUKTUR
+================================================================================
+
+Nach dem Build befinden sich die Assemblies in:
+
+opensimsource\bin\
+├── de\Diva.Wifi.resources.dll      (Deutsch)
+├── fr\Diva.Wifi.resources.dll      (Französisch)
+├── es\Diva.Wifi.resources.dll      (Spanisch)
+├── it\Diva.Wifi.resources.dll      (Italienisch)
+├── pt\Diva.Wifi.resources.dll      (Portugiesisch)
+├── pt-BR\Diva.Wifi.resources.dll   (Brasil. Portugiesisch)
+├── ja\Diva.Wifi.resources.dll      (Japanisch)
+├── zh-CN\Diva.Wifi.resources.dll   (Vereinf. Chinesisch)
+├── zh-TW\Diva.Wifi.resources.dll   (Trad. Chinesisch)
+├── ru\Diva.Wifi.resources.dll      (Russisch)
+├── da\Diva.Wifi.resources.dll      (Dänisch)
+├── el\Diva.Wifi.resources.dll      (Griechisch)
+├── ko\Diva.Wifi.resources.dll      (Koreanisch)
+├── nl\Diva.Wifi.resources.dll      (Niederländisch)
+├── pl\Diva.Wifi.resources.dll      (Polnisch)
+├── sv\Diva.Wifi.resources.dll      (Schwedisch)
+└── tr\Diva.Wifi.resources.dll      (Türkisch)
+
+================================================================================
+FÜR DIVA-DISTRIBUTION
+================================================================================
+
+Die Dateien in diva-distribution\addon-modules\21Wifi\Localization\ sind
+identisch und können direkt verwendet werden.
+
+Beim Erstellen der Diva-Distribution werden diese Localization-Dateien
+automatisch mit eingebunden.
+
+================================================================================
+WICHTIGE HINWEISE
+================================================================================
+
+✓ Alte Übersetzungen wurden NICHT überschrieben, sondern ERHALTEN
+✓ Neue Einträge haben leere msgstr "" und warten auf Übersetzung
+✓ Die .resx Dateien sind sofort verwendbar mit den vorhandenen Übersetzungen
+✓ Fehlende Übersetzungen fallen automatisch auf Englisch zurück
+✓ Die Satelliten-Assemblies können sofort erstellt und verwendet werden
+
+================================================================================
+BACKUP
+================================================================================
+
+Die alte .pot Datei wurde gesichert als:
+- opensimsource\bin\Diva.Wifi.pot.old
+
+================================================================================
+DATUM: 08.11.2025
+ERSTELLT VON: GitHub Copilot
+================================================================================

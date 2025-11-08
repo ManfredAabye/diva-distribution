@@ -1,128 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="Account activated"><value>Hesap etkinleştirildi</value></data>
-  <data name="Account awaiting approval"><value>Hesap onay bekliyor</value></data>
-  <data name="Animation"><value>Animasyon</value></data>
-  <data name="Animations"><value>Animasyonlar</value></data>
-  <data name="Body Parts"><value>Vücut Parçaları</value></data>
-  <data name="Bodypart"><value>Vücut Parçası</value></data>
-  <data name="Calling Cards"><value>Kartvizitler</value></data>
-  <data name="CallingCard"><value>Kartvizit</value></data>
-  <data name="Check your email. You must reset your password within 60 minutes."><value>E-postanızı kontrol edin. Şifrenizi 60 dakika içinde sıfırlamanız gerekir.</value></data>
-  <data name="Click here to reset your password:"><value>Şifrenizi sıfırlamak için buraya tıklayın:</value></data>
-  <data name="Clothing"><value>Giysiler</value></data>
-  <data name="continue"><value>devam et</value></data>
-  <data name="Current Outfit"><value>Mevcut Kıyafet</value></data>
-  <data name="CurrentOutfitFolder"><value>Mevcut Kıyafet Klasörü</value></data>
-  <data name="Default"><value>Varsayılan</value></data>
-  <data name="Default Avatar"><value>Varsayılan Avatar</value></data>
-  <data name="delete"><value>sil</value></data>
-  <data name="Deleted region link {0}."><value>Bölge bağlantısı {0} silindi.</value></data>
-  <data name="Deletion of region link {0} failed."><value>Bölge bağlantısı {0} silinirken hata oluştu.</value></data>
-  <data name="Email could not be sent."><value>E-posta gönderilemedi.</value></data>
-  <data name="EnsembleEnd"><value>Topluluk Sonu</value></data>
-  <data name="EnsembleStart"><value>Topluluk Başlangıcı</value></data>
-  <data name="Failed to link region: {0}"><value>Bölge bağlantısı başarısız: {0}</value></data>
-  <data name="FavoriteFolder"><value>Favoriler Klasörü</value></data>
-  <data name="Favorites"><value>Favoriler</value></data>
-  <data name="Female"><value>Kadın</value></data>
-  <data name="First name:"><value>Ad:</value></data>
-  <data name="Folder"><value>Klasör</value></data>
-  <data name="Gesture"><value>Jest</value></data>
-  <data name="Gestures"><value>Jestler</value></data>
-  <data name="If your browser does not automatically load the next page, then use the button, please."><value>Tarayıcınız bir sonraki sayfayı otomatik olarak yüklemezse, lütfen düğmeyi kullanın.</value></data>
-  <data name="ImageJPEG"><value>JPEG Resmi</value></data>
-  <data name="ImageTGA"><value>TGA Resmi</value></data>
-  <data name="Invalid region address."><value>Geçersiz bölge adresi.</value></data>
-  <data name="Invalid token."><value>Geçersiz belirteç.</value></data>
-  <data name="Landmark"><value>İşaret Noktası</value></data>
-  <data name="Landmarks"><value>İşaret Noktaları</value></data>
-  <data name="Last name:"><value>Soyad:</value></data>
-  <data name="Link"><value>Bağlantı</value></data>
-  <data name="LinkFolder"><value>Bağlantı Klasörü</value></data>
-  <data name="Loading your inventory, please wait"><value>Envanteriniz yükleniyor, lütfen bekleyin</value></data>
-  <data name="Login failed."><value>Giriş başarısız.</value></data>
-  <data name="LoginURI:"><value>GirişURI:</value></data>
-  <data name="Lost And Found"><value>Kayıp Eşya Bürosu</value></data>
-  <data name="LostAndFoundFolder"><value>Kayıp Eşya Klasörü</value></data>
-  <data name="LSLBytecode"><value>LSL Bayt Kodu</value></data>
-  <data name="LSLText"><value>LSL Metni</value></data>
-  <data name="Male"><value>Erkek</value></data>
-  <data name="Mesh"><value>Ağ Örgü</value></data>
-  <data name="My Inventory"><value>Envanterim</value></data>
-  <data name="My Outfits"><value>Kıyafetlerim</value></data>
-  <data name="My Suitcase"><value>Bavulum</value></data>
-  <data name="MyOutfitsFolder"><value>Kıyafetlerim Klasörü</value></data>
-  <data name="Neutral"><value>Nötr</value></data>
-  <data name="New account {0} {1} created in {2} is awaiting your approval."><value>{2} içinde oluşturulan yeni hesap {0} {1} onayınızı bekliyor.</value></data>
-  <data name="No email on file"><value>Kayıtlı e-posta yok</value></data>
-  <data name="No linked regions found"><value>Bağlantılı bölge bulunamadı</value></data>
-  <data name="No regions found"><value>Bölge bulunamadı</value></data>
-  <data name="No users found"><value>Kullanıcı bulunamadı</value></data>
-  <data name="nobody"><value>kimse yok</value></data>
-  <data name="Notecard"><value>Not Kartı</value></data>
-  <data name="Notecards"><value>Not Kartları</value></data>
-  <data name="Object"><value>Nesne</value></data>
-  <data name="Objects"><value>Nesneler</value></data>
-  <data name="OK"><value>Tamam</value></data>
-  <data name="OutfitFolder"><value>Kıyafet Klasörü</value></data>
-  <data name="Password Reset"><value>Şifre Sıfırlama</value></data>
-  <data name="Photo Album"><value>Fotoğraf Albümü</value></data>
-  <data name="Region link not found."><value>Bölge bağlantısı bulunamadı.</value></data>
-  <data name="Region link to {0} established. (If this link already existed, then it will remain at the original location.)"><value>{0} ile bölge bağlantısı kuruldu. (Bu bağlantı zaten mevcutsa, orijinal konumda kalacaktır.)</value></data>
-  <data name="RootFolder"><value>Kök Klasör</value></data>
-  <data name="Scripts"><value>Betikler</value></data>
-  <data name="Simstate"><value>Sim Durumu</value></data>
-  <data name="SnapshotFolder"><value>Anlık Görüntü Klasörü</value></data>
-  <data name="Sound"><value>Ses</value></data>
-  <data name="Sounds"><value>Sesler</value></data>
-  <data name="SoundWAV"><value>WAV Sesi</value></data>
-  <data name="Texture"><value>Doku</value></data>
-  <data name="Textures"><value>Dokular</value></data>
-  <data name="TextureTGA"><value>TGA Dokusu</value></data>
-  <data name="The account does not exist."><value>Hesap mevcut değil.</value></data>
-  <data name="The account has been activated."><value>Hesap etkinleştirildi.</value></data>
-  <data name="The account has been deleted."><value>Hesap silindi.</value></data>
-  <data name="The account has been updated."><value>Hesap güncellendi.</value></data>
-  <data name="Trash"><value>Çöp Kutusu</value></data>
-  <data name="TrashFolder"><value>Çöp Kutusu Klasörü</value></data>
-  <data name="Unable to delete account because it does not exist."><value>Hesap mevcut olmadığı için silinemiyor.</value></data>
-  <data name="Unknown"><value>Bilinmeyen</value></data>
-  <data name="Welcome to {0}!"><value>{0}&apos;e hoş geldiniz!</value></data>
-  <data name="Who are you?"><value>Sen kimsin?</value></data>
-  <data name="Your account awaits administrator approval."><value>Hesabınız yönetici onayı bekliyor.</value></data>
-  <data name="Your account has been activated."><value>Hesabınız etkinleştirildi.</value></data>
-  <data name="Your account has been created."><value>Hesabınız oluşturuldu.</value></data>
-  <data name="Your account has been updated."><value>Hesabınız güncellendi.</value></data>
-  <data name="Your account is {0} {1}"><value>Hesabınız {0} {1}</value></data>
-  <data name="Your password has been reset."><value>Şifreniz sıfırlandı.</value></data>
-  <data name="Your Wifi has been installed. The administrator account is {0} {1}"><value>Wifi&apos;niz kuruldu. Yönetici hesabı {0} {1}</value></data>
-  </root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Account activated" xml:space="preserve"><value>Hesap etkinleştirildi</value></data>
+  <data name="Delete" xml:space="preserve"><value>sil</value></data>
+  <data name="Email could not be sent.&quot;msgstr &quot;" xml:space="preserve"><value>Hesap güncellendi.</value></data>
+  <data name="If your browser does not automatically load the next page, then use the button, please.&quot;msgstr &quot;" xml:space="preserve"><value>Varsayılan Avatar</value></data>
+  <data name="Login failed." xml:space="preserve"><value>Giriş başarısız.</value></data>
+  <data name="No email on file&quot;msgstr &quot;" xml:space="preserve"><value>Sen kimsin?</value></data>
+  <data name="No regions found" xml:space="preserve"><value>Bölge bulunamadı</value></data>
+  <data name="Not Found" xml:space="preserve"><value>Kullanıcı bulunamadı</value></data>
+  <data name="The account has been activated." xml:space="preserve"><value>Hesap etkinleştirildi.</value></data>
+  <data name="The account has been deleted.&quot;msgstr &quot;" xml:space="preserve"><value>Hesap silindi.</value></data>
+  <data name="The account has been updated.&quot;msgstr &quot;" xml:space="preserve"><value>Hesap etkinleştirildi.</value></data>
+  <data name="update" xml:space="preserve"><value>Bölge bağlantısı {0} silindi.</value></data>
+  <data name="Your account has been created.&quot;msgstr &quot;" xml:space="preserve"><value>Hesabınız {0} {1}</value></data>
+  <data name="Your account has been updated." xml:space="preserve"><value>Hesabınız güncellendi.</value></data>
+  <data name="Your password has been reset." xml:space="preserve"><value>Şifreniz sıfırlandı.</value></data>
+</root>

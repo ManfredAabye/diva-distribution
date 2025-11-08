@@ -1,128 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
-  <data name="Female"><value>Женский</value></data>
-  <data name="Male"><value>Мужской</value></data>
-  <data name="Neutral"><value>Нейтральный</value></data>
-  <data name="Default"><value>По умолчанию</value></data>
-  <data name="nobody"><value>никто</value></data>
-  <data name="My Inventory"><value>Мой инвентарь</value></data>
-  <data name="My Outfits"><value>Мои наряды</value></data>
-  <data name="My Suitcase"><value>Мой чемодан</value></data>
-  <data name="Animations"><value>Анимации</value></data>
-  <data name="Body Parts"><value>Части тела</value></data>
-  <data name="Calling Cards"><value>Визитные карточки</value></data>
-  <data name="Clothing"><value>Одежда</value></data>
-  <data name="Current Outfit"><value>Текущий наряд</value></data>
-  <data name="Favorites"><value>Избранное</value></data>
-  <data name="Gestures"><value>Жесты</value></data>
-  <data name="Landmarks"><value>Ориентиры</value></data>
-  <data name="Lost And Found"><value>Бюро находок</value></data>
-  <data name="Notecards"><value>Заметки</value></data>
-  <data name="Objects"><value>Объекты</value></data>
-  <data name="Photo Album"><value>Фотоальбом</value></data>
-  <data name="Scripts"><value>Скрипты</value></data>
-  <data name="Sounds"><value>Звуки</value></data>
-  <data name="Textures"><value>Текстуры</value></data>
-  <data name="Trash"><value>Корзина</value></data>
-  <data name="Unknown"><value>Неизвестно</value></data>
-  <data name="Texture"><value>Текстура</value></data>
-  <data name="Sound"><value>Звук</value></data>
-  <data name="CallingCard"><value>Визитная карточка</value></data>
-  <data name="Landmark"><value>Ориентир</value></data>
-  <data name="Object"><value>Объект</value></data>
-  <data name="Notecard"><value>Заметка</value></data>
-  <data name="Folder"><value>Папка</value></data>
-  <data name="RootFolder"><value>Корневая папка</value></data>
-  <data name="LSLText"><value>LSL текст</value></data>
-  <data name="LSLBytecode"><value>LSL байт-код</value></data>
-  <data name="TextureTGA"><value>Текстура TGA</value></data>
-  <data name="Bodypart"><value>Часть тела</value></data>
-  <data name="TrashFolder"><value>Папка корзины</value></data>
-  <data name="SnapshotFolder"><value>Папка снимков</value></data>
-  <data name="LostAndFoundFolder"><value>Папка находок</value></data>
-  <data name="SoundWAV"><value>Звук WAV</value></data>
-  <data name="ImageTGA"><value>Изображение TGA</value></data>
-  <data name="ImageJPEG"><value>Изображение JPEG</value></data>
-  <data name="Animation"><value>Анимация</value></data>
-  <data name="Gesture"><value>Жест</value></data>
-  <data name="Simstate"><value>Состояние сима</value></data>
-  <data name="FavoriteFolder"><value>Папка избранного</value></data>
-  <data name="Link"><value>Ссылка</value></data>
-  <data name="LinkFolder"><value>Папка ссылок</value></data>
-  <data name="EnsembleStart"><value>Начало ансамбля</value></data>
-  <data name="EnsembleEnd"><value>Конец ансамбля</value></data>
-  <data name="CurrentOutfitFolder"><value>Папка текущего наряда</value></data>
-  <data name="OutfitFolder"><value>Папка наряда</value></data>
-  <data name="MyOutfitsFolder"><value>Папка моих нарядов</value></data>
-  <data name="Mesh"><value>Сетка</value></data>
-  <data name="delete"><value>удалить</value></data>
-  <data name="Your account has been updated."><value>Ваш аккаунт обновлен.</value></data>
-  <data name="Failed to link region: {0}"><value>Не удалось связать регион: {0}</value></data>
-  <data name="Region link to {0} established. (If this link already existed, then it will remain at the original location.)"><value>Связь с регионом {0} установлена. (Если эта связь уже существовала, она останется в исходном месте.)</value></data>
-  <data name="Invalid region address."><value>Неверный адрес региона.</value></data>
-  <data name="Region link not found."><value>Связь региона не найдена.</value></data>
-  <data name="Deleted region link {0}."><value>Связь региона {0} удалена.</value></data>
-  <data name="Deletion of region link {0} failed."><value>Удаление связи региона {0} не удалось.</value></data>
-  <data name="Your Wifi has been installed. The administrator account is {0} {1}"><value>Ваш Wifi установлен. Учетная запись администратора: {0} {1}</value></data>
-  <data name="Loading your inventory, please wait"><value>Загрузка инвентаря, пожалуйста, подождите</value></data>
-  <data name="If your browser does not automatically load the next page, then use the button, please."><value>Если браузер не загружает следующую страницу автоматически, используйте кнопку.</value></data>
-  <data name="continue"><value>продолжить</value></data>
-  <data name="Login failed."><value>Вход не выполнен.</value></data>
-  <data name="Welcome to {0}!"><value>Добро пожаловать в {0}!</value></data>
-  <data name="Your account has been created."><value>Ваш аккаунт создан.</value></data>
-  <data name="New account {0} {1} created in {2} is awaiting your approval."><value>Новый аккаунт {0} {1}, созданный в {2}, ожидает вашего одобрения.</value></data>
-  <data name="Account awaiting approval"><value>Аккаунт ожидает одобрения</value></data>
-  <data name="Your account awaits administrator approval."><value>Ваш аккаунт ожидает одобрения администратора.</value></data>
-  <data name="Default Avatar"><value>Аватар по умолчанию</value></data>
-  <data name="OK"><value>OK</value></data>
-  <data name="Your account is {0} {1}"><value>Ваш аккаунт: {0} {1}</value></data>
-  <data name="Click here to reset your password:"><value>Нажмите здесь, чтобы сбросить пароль:</value></data>
-  <data name="Password Reset"><value>Сброс пароля</value></data>
-  <data name="Check your email. You must reset your password within 60 minutes."><value>Проверьте электронную почту. Вы должны сбросить пароль в течение 60 минут.</value></data>
-  <data name="Email could not be sent."><value>Не удалось отправить электронное письмо.</value></data>
-  <data name="Invalid token."><value>Недействительный токен.</value></data>
-  <data name="Your password has been reset."><value>Ваш пароль сброшен.</value></data>
-  <data name="The account has been updated."><value>Аккаунт обновлен.</value></data>
-  <data name="The account does not exist."><value>Аккаунт не существует.</value></data>
-  <data name="The account has been activated."><value>Аккаунт активирован.</value></data>
-  <data name="Your account has been activated."><value>Ваш аккаунт активирован.</value></data>
-  <data name="First name:"><value>Имя:</value></data>
-  <data name="Last name:"><value>Фамилия:</value></data>
-  <data name="LoginURI:"><value>LoginURI:</value></data>
-  <data name="Account activated"><value>Аккаунт активирован</value></data>
-  <data name="The account has been deleted."><value>Аккаунт удален.</value></data>
-  <data name="Unable to delete account because it does not exist."><value>Невозможно удалить аккаунт, так как он не существует.</value></data>
-  <data name="Who are you?"><value>Кто вы?</value></data>
-  <data name="No email on file"><value>Нет электронной почты в файле</value></data>
-  <data name="No linked regions found"><value>Связанные регионы не найдены</value></data>
-  <data name="No users found"><value>Пользователи не найдены</value></data>
-  <data name="No regions found"><value>Регионы не найдены</value></data>
-  </root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Account activated" xml:space="preserve"><value>Аккаунт активирован</value></data>
+  <data name="Delete" xml:space="preserve"><value>удалить</value></data>
+  <data name="Email could not be sent.&quot;msgstr &quot;" xml:space="preserve"><value>Аккаунт был обновлен.</value></data>
+  <data name="If your browser does not automatically load the next page, then use the button, please.&quot;msgstr &quot;" xml:space="preserve"><value>Аватар по умолчанию</value></data>
+  <data name="Login failed." xml:space="preserve"><value>Ошибка входа.</value></data>
+  <data name="No email on file&quot;msgstr &quot;" xml:space="preserve"><value>Кто вы?</value></data>
+  <data name="No regions found" xml:space="preserve"><value>Регионы не найдены</value></data>
+  <data name="Not Found" xml:space="preserve"><value>Пользователи не найдены</value></data>
+  <data name="The account has been activated." xml:space="preserve"><value>Аккаунт был активирован.</value></data>
+  <data name="The account has been deleted.&quot;msgstr &quot;" xml:space="preserve"><value>Аккаунт был удален.</value></data>
+  <data name="The account has been updated.&quot;msgstr &quot;" xml:space="preserve"><value>Аккаунт был активирован.</value></data>
+  <data name="update" xml:space="preserve"><value>Удалена связь с регионом {0}.</value></data>
+  <data name="Your account has been created.&quot;msgstr &quot;" xml:space="preserve"><value>Ваш аккаунт {0} {1}</value></data>
+  <data name="Your account has been updated." xml:space="preserve"><value>Ваш аккаунт был обновлен.</value></data>
+  <data name="Your password has been reset." xml:space="preserve"><value>Ваш пароль был сброшен.</value></data>
+</root>

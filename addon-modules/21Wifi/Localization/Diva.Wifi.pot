@@ -1,436 +1,1834 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: Diva.Wifi\n"
-"Report-Msgid-Bugs-To: marck00@nexgo.de\n"
-"POT-Creation-Date: 2010-12-09 18:39+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Marck <marck00@nexgo.de>\n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: ..\n"
+msgid ""msgid ""
 
-# A default avatar type
-msgid "Female"
-msgstr ""
+msgstr ""msgstr ""
 
-# A default avatar type
-msgid "Male"
-msgstr ""
+"Project-Id-Version: Diva.Wifi\n""Project-Id-Version: Diva.Wifi\n"
 
-# A default avatar type
-msgid "Neutral"
-msgstr ""
+"Report-Msgid-Bugs-To: marck00@nexgo.de\n""Report-Msgid-Bugs-To: marck00@nexgo.de\n"
 
-# A default avatar type
-msgid "Default"
-msgstr ""
+"POT-Creation-Date: 2025-11-08 12:00+0100\n""POT-Creation-Date: 2010-12-09 18:39+0100\n"
 
-# Region owner name for hyperlinks owned by nobody.
-msgid "nobody"
-msgstr ""
+"PO-Revision-Date: \n""PO-Revision-Date: \n"
 
-# Inventory system folder
-msgid "My Inventory"
-msgstr ""
+"Last-Translator: Marck <marck00@nexgo.de>\n""Last-Translator: Marck <marck00@nexgo.de>\n"
 
-# Inventory system folder
-msgid "My Outfits"
-msgstr ""
+"Language-Team: \n""Language-Team: \n"
 
-# Inventory system folder
-msgid "My Suitcase"
-msgstr ""
+"MIME-Version: 1.0\n""MIME-Version: 1.0\n"
 
-# Inventory system folder
-msgid "Animations"
-msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n""Content-Type: text/plain; charset=UTF-8\n"
 
-# Inventory system folder
-msgid "Body Parts"
-msgstr ""
+"Content-Transfer-Encoding: 8bit\n""Content-Transfer-Encoding: 8bit\n"
 
-# Inventory system folder
-msgid "Calling Cards"
-msgstr ""
+"X-Poedit-KeywordsList: _\n""X-Poedit-KeywordsList: _\n"
 
-# Inventory system folder and asset type
-msgid "Clothing"
-msgstr ""
+"X-Poedit-Basepath: .\n""X-Poedit-Basepath: .\n"
 
-# Inventory system folder
-msgid "Current Outfit"
-msgstr ""
+"X-Poedit-SourceCharset: utf-8\n""X-Poedit-SourceCharset: utf-8\n"
 
-# Inventory system folder
-msgid "Favorites"
-msgstr ""
+"X-Poedit-SearchPath-0: ..\n""X-Poedit-SearchPath-0: ..\n"
 
-# Inventory system folder
-msgid "Gestures"
-msgstr ""
 
-# Inventory system folder
-msgid "Landmarks"
-msgstr ""
 
-# Inventory system folder
-msgid "Lost And Found"
-msgstr ""
+# ============================================================================# A default avatar type
 
-# Inventory system folder
-msgid "Notecards"
-msgstr ""
+# AVATAR TYPESmsgid "Female"
 
-# Inventory system folder
-msgid "Objects"
-msgstr ""
+# ============================================================================msgstr ""
 
-# Inventory system folder
-msgid "Photo Album"
-msgstr ""
 
-# Inventory system folder
-msgid "Scripts"
-msgstr ""
 
-# Inventory system folder
-msgid "Sounds"
-msgstr ""
+# A default avatar type# A default avatar type
 
-# Inventory system folder
-msgid "Textures"
-msgstr ""
+msgid "Female"msgid "Male"
 
-# Inventory system folder
-msgid "Trash"
+msgstr ""msgstr ""
+
+
+
+# A default avatar type# A default avatar type
+
+msgid "Male"msgid "Neutral"
+
+msgstr ""msgstr ""
+
+
+
+# A default avatar type# A default avatar type
+
+msgid "Neutral"msgid "Default"
+
+msgstr ""msgstr ""
+
+
+
+# A default avatar type# Region owner name for hyperlinks owned by nobody.
+
+msgid "Default"msgid "nobody"
+
+msgstr ""msgstr ""
+
+
+
+# ============================================================================# Inventory system folder
+
+# INVENTORY SYSTEM FOLDERSmsgid "My Inventory"
+
+# ============================================================================msgstr ""
+
+
+
+# Region owner name for hyperlinks owned by nobody.# Inventory system folder
+
+msgid "nobody"msgid "My Outfits"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "My Inventory"msgid "My Suitcase"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "My Outfits"msgid "Animations"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "My Suitcase"msgid "Body Parts"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Animations"msgid "Calling Cards"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder and asset type
+
+msgid "Body Parts"msgid "Clothing"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Calling Cards"msgid "Current Outfit"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder and asset type# Inventory system folder
+
+msgid "Clothing"msgid "Favorites"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Current Outfit"msgid "Gestures"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Favorites"msgid "Landmarks"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Gestures"msgid "Lost And Found"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Landmarks"msgid "Notecards"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Lost And Found"msgid "Objects"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Notecards"msgid "Photo Album"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Objects"msgid "Scripts"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Photo Album"msgid "Sounds"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Scripts"msgid "Textures"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Inventory system folder
+
+msgid "Sounds"msgid "Trash"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Asset type
+
+msgid "Textures"msgid "Unknown"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory system folder# Asset type
+
+msgid "Trash"msgid "Texture"
+
+msgstr ""msgstr ""
+
+
+
+# Inventory folder name# Asset type
+
+msgid "Default Avatar"msgid "Sound"
+
+msgstr ""msgstr ""
+
+
+
+# ============================================================================# Asset type
+
+# ASSET TYPESmsgid "CallingCard"
+
+# ============================================================================msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Unknown"msgid "Landmark"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Texture"msgid "Object"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Sound"msgid "Notecard"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "CallingCard"msgid "Folder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Landmark"msgid "RootFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Object"msgid "LSLText"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Notecard"msgid "LSLBytecode"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Folder"msgid "TextureTGA"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "RootFolder"msgid "Bodypart"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "LSLText"msgid "TrashFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "LSLBytecode"msgid "SnapshotFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "TextureTGA"msgid "LostAndFoundFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Bodypart"msgid "SoundWAV"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "TrashFolder"msgid "ImageTGA"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "SnapshotFolder"msgid "ImageJPEG"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "LostAndFoundFolder"msgid "Animation"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "SoundWAV"msgid "Gesture"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "ImageTGA"msgid "Simstate"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "ImageJPEG"msgid "FavoriteFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Animation"msgid "Link"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Gesture"msgid "LinkFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Simstate"msgid "EnsembleStart"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "FavoriteFolder"msgid "EnsembleEnd"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "Link"msgid "CurrentOutfitFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "LinkFolder"msgid "OutfitFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "EnsembleStart"msgid "MyOutfitsFolder"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Asset type
+
+msgid "EnsembleEnd"msgid "Mesh"
+
+msgstr ""msgstr ""
+
+
+
+# Asset type# Button Label
+
+msgid "CurrentOutfitFolder"#: ../ExtensionMethods.cs:155
+
+msgstr ""msgid "delete"
+
 msgstr ""
 
 # Asset type
-msgid "Unknown"
+
+msgid "OutfitFolder"#: ../WebApp/Services.ChangeUserAccount.cs:105
+
+msgstr ""msgid "Your account has been updated."
+
 msgstr ""
 
 # Asset type
-msgid "Texture"
-msgstr ""
 
-# Asset type
-msgid "Sound"
-msgstr ""
+msgid "MyOutfitsFolder"# {0} is an error message
 
-# Asset type
-msgid "CallingCard"
-msgstr ""
+msgstr ""#: ../WebApp/Services.Hyperlinks.cs:91
 
-# Asset type
-msgid "Landmark"
-msgstr ""
-
-# Asset type
-msgid "Object"
-msgstr ""
-
-# Asset type
-msgid "Notecard"
-msgstr ""
-
-# Asset type
-msgid "Folder"
-msgstr ""
-
-# Asset type
-msgid "RootFolder"
-msgstr ""
-
-# Asset type
-msgid "LSLText"
-msgstr ""
-
-# Asset type
-msgid "LSLBytecode"
-msgstr ""
-
-# Asset type
-msgid "TextureTGA"
-msgstr ""
-
-# Asset type
-msgid "Bodypart"
-msgstr ""
-
-# Asset type
-msgid "TrashFolder"
-msgstr ""
-
-# Asset type
-msgid "SnapshotFolder"
-msgstr ""
-
-# Asset type
-msgid "LostAndFoundFolder"
-msgstr ""
-
-# Asset type
-msgid "SoundWAV"
-msgstr ""
-
-# Asset type
-msgid "ImageTGA"
-msgstr ""
-
-# Asset type
-msgid "ImageJPEG"
-msgstr ""
-
-# Asset type
-msgid "Animation"
-msgstr ""
-
-# Asset type
-msgid "Gesture"
-msgstr ""
-
-# Asset type
-msgid "Simstate"
-msgstr ""
-
-# Asset type
-msgid "FavoriteFolder"
-msgstr ""
-
-# Asset type
-msgid "Link"
-msgstr ""
-
-# Asset type
-msgid "LinkFolder"
-msgstr ""
-
-# Asset type
-msgid "EnsembleStart"
-msgstr ""
-
-# Asset type
-msgid "EnsembleEnd"
-msgstr ""
-
-# Asset type
-msgid "CurrentOutfitFolder"
-msgstr ""
-
-# Asset type
-msgid "OutfitFolder"
-msgstr ""
-
-# Asset type
-msgid "MyOutfitsFolder"
-msgstr ""
-
-# Asset type
-msgid "Mesh"
-msgstr ""
-
-# Button Label
-#: ../ExtensionMethods.cs:155
-msgid "delete"
-msgstr ""
-
-#: ../WebApp/Services.ChangeUserAccount.cs:105
-msgid "Your account has been updated."
-msgstr ""
-
-# {0} is an error message
-#: ../WebApp/Services.Hyperlinks.cs:91
 #, csharp-format
-msgid "Failed to link region: {0}"
+
+# Asset typemsgid "Failed to link region: {0}"
+
+msgid "Mesh"msgstr ""
+
 msgstr ""
 
 #: ../WebApp/Services.Hyperlinks.cs:93
-#, csharp-format
-msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+
+# ============================================================================#, csharp-format
+
+# BUTTON LABELS AND COMMON ACTIONSmsgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"
+
+# ============================================================================msgstr ""
+
+
+
+# Button Label#: ../WebApp/Services.Hyperlinks.cs:96
+
+msgid "delete"msgid "Invalid region address."
+
+msgstr ""msgstr ""
+
+
+
+# Button label#: ../WebApp/Services.Hyperlinks.cs:144
+
+msgid "continue"#: ../WebApp/Services.Hyperlinks.cs:190
+
+msgstr ""msgid "Region link not found."
+
 msgstr ""
 
-#: ../WebApp/Services.Hyperlinks.cs:96
-msgid "Invalid region address."
-msgstr ""
+# Button label
 
-#: ../WebApp/Services.Hyperlinks.cs:144
-#: ../WebApp/Services.Hyperlinks.cs:190
-msgid "Region link not found."
-msgstr ""
+msgid "OK"#: ../WebApp/Services.Hyperlinks.cs:175
 
-#: ../WebApp/Services.Hyperlinks.cs:175
-#, csharp-format
+msgstr ""#, csharp-format
+
 msgid "Deleted region link {0}."
-msgstr ""
 
-#: ../WebApp/Services.Hyperlinks.cs:179
+# Button labelmsgstr ""
+
+msgid "update"
+
+msgstr ""#: ../WebApp/Services.Hyperlinks.cs:179
+
 #, csharp-format
-msgid "Deletion of region link {0} failed."
+
+# Button labelmsgid "Deletion of region link {0} failed."
+
+msgid "search"msgstr ""
+
 msgstr ""
 
 #: ../WebApp/Services.Install.cs:64
-#, csharp-format
-msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+
+# Button label#, csharp-format
+
+msgid "Reset"msgid "Your Wifi has been installed. The administrator account is {0} {1}"
+
+msgstr ""msgstr ""
+
+
+
+# Button label#: ../WebApp/Services.Inventory.cs:52
+
+msgid "Move"msgid "Loading your inventory, please wait"
+
+msgstr ""msgstr ""
+
+
+
+# Button label#: ../WebApp/Services.Inventory.cs:53
+
+msgid "New Estate"msgid "If your browser does not automatically load the next page, then use the button, please."
+
+msgstr ""msgstr ""
+
+
+
+# ============================================================================# Button label
+
+# MESSAGES AND NOTIFICATIONS#: ../WebApp/Services.Inventory.cs:54
+
+# ============================================================================msgid "continue"
+
 msgstr ""
 
-#: ../WebApp/Services.Inventory.cs:52
-msgid "Loading your inventory, please wait"
-msgstr ""
+msgid "Your account has been updated."
 
-#: ../WebApp/Services.Inventory.cs:53
-msgid "If your browser does not automatically load the next page, then use the button, please."
-msgstr ""
+msgstr ""#: ../WebApp/Services.LoginLogout.cs:57
 
-# Button label
-#: ../WebApp/Services.Inventory.cs:54
-msgid "continue"
-msgstr ""
-
-#: ../WebApp/Services.LoginLogout.cs:57
 msgid "Login failed."
-msgstr ""
 
-# {0} is the grid name
-#: ../WebApp/Services.LoginLogout.cs:74
+# {0} is an error messagemsgstr ""
+
 #, csharp-format
-msgid "Welcome to {0}!"
+
+msgid "Failed to link region: {0}"# {0} is the grid name
+
+msgstr ""#: ../WebApp/Services.LoginLogout.cs:74
+
+#, csharp-format
+
+#, csharp-formatmsgid "Welcome to {0}!"
+
+msgid "Region link to {0} established. (If this link already existed, then it will remain at the original location.)"msgstr ""
+
 msgstr ""
 
 #: ../WebApp/Services.NewAccount.cs:95
-msgid "Your account has been created."
-msgstr ""
 
-# Admin email message: {0} {1} is the avatar name, {2} is the grid name.
-#: ../WebApp/Services.NewAccount.cs:110
+msgid "Invalid region address."msgid "Your account has been created."
+
+msgstr ""msgstr ""
+
+
+
+msgid "Region link not found."# Admin email message: {0} {1} is the avatar name, {2} is the grid name.
+
+msgstr ""#: ../WebApp/Services.NewAccount.cs:110
+
 #, csharp-format
-msgid "New account {0} {1} created in {2} is awaiting your approval."
+
+#, csharp-formatmsgid "New account {0} {1} created in {2} is awaiting your approval."
+
+msgid "Deleted region link {0}."msgstr ""
+
 msgstr ""
 
 # Admin email subject
-#: ../WebApp/Services.NewAccount.cs:116
-msgid "Account awaiting approval"
-msgstr ""
 
-#: ../WebApp/Services.NewAccount.cs:118
-msgid "Your account awaits administrator approval."
-msgstr ""
+#, csharp-format#: ../WebApp/Services.NewAccount.cs:116
 
-# Inventory folder name
-#: ../WebApp/Services.NewAccount.cs:173
+msgid "Deletion of region link {0} failed."msgid "Account awaiting approval"
+
+msgstr ""msgstr ""
+
+
+
+#, csharp-format#: ../WebApp/Services.NewAccount.cs:118
+
+msgid "Your Wifi has been installed. The administrator account is {0} {1}"msgid "Your account awaits administrator approval."
+
+msgstr ""msgstr ""
+
+
+
+msgid "Loading your inventory, please wait"# Inventory folder name
+
+msgstr ""#: ../WebApp/Services.NewAccount.cs:173
+
 msgid "Default Avatar"
+
+msgid "If your browser does not automatically load the next page, then use the button, please."msgstr ""
+
 msgstr ""
 
 # Button label
-#: ../WebApp/Services.Notify.cs:58
-msgid "OK"
+
+msgid "Login failed."#: ../WebApp/Services.Notify.cs:58
+
+msgstr ""msgid "OK"
+
+msgstr ""
+
+# {0} is the grid name
+
+#, csharp-format# Email message. {0} {1} is the avatar name.
+
+msgid "Welcome to {0}!"#: ../WebApp/Services.PasswordRecovery.cs:78
+
+msgstr ""#, csharp-format
+
+msgid "Your account is {0} {1}"
+
+msgid "Your account has been created."msgstr ""
+
+msgstr ""
+
+# Email message
+
+# Admin email message: {0} {1} is the avatar name, {2} is the grid name.#: ../WebApp/Services.PasswordRecovery.cs:79
+
+#, csharp-formatmsgid "Click here to reset your password:"
+
+msgid "New account {0} {1} created in {2} is awaiting your approval."msgstr ""
+
+msgstr ""
+
+# Email subject.
+
+# Admin email subject#: ../WebApp/Services.PasswordRecovery.cs:81
+
+msgid "Account awaiting approval"msgid "Password Reset"
+
+msgstr ""msgstr ""
+
+
+
+msgid "Your account awaits administrator approval."#: ../WebApp/Services.PasswordRecovery.cs:82
+
+msgstr ""msgid "Check your email. You must reset your password within 60 minutes."
+
 msgstr ""
 
 # Email message. {0} {1} is the avatar name.
-#: ../WebApp/Services.PasswordRecovery.cs:78
-#, csharp-format
-msgid "Your account is {0} {1}"
-msgstr ""
 
-# Email message
-#: ../WebApp/Services.PasswordRecovery.cs:79
-msgid "Click here to reset your password:"
-msgstr ""
+#, csharp-format#: ../WebApp/Services.PasswordRecovery.cs:84
 
-# Email subject.
-#: ../WebApp/Services.PasswordRecovery.cs:81
-msgid "Password Reset"
-msgstr ""
+msgid "Your account is {0} {1}"msgid "Email could not be sent."
 
-#: ../WebApp/Services.PasswordRecovery.cs:82
-msgid "Check your email. You must reset your password within 60 minutes."
-msgstr ""
+msgstr ""msgstr ""
 
-#: ../WebApp/Services.PasswordRecovery.cs:84
-msgid "Email could not be sent."
-msgstr ""
 
-#: ../WebApp/Services.PasswordRecovery.cs:107
-msgid "Invalid token."
-msgstr ""
 
-#: ../WebApp/Services.PasswordRecovery.cs:120
-msgid "Your password has been reset."
-msgstr ""
+# Email message#: ../WebApp/Services.PasswordRecovery.cs:107
 
-#: ../WebApp/Services.UserManagement.cs:135
-#: ../WebApp/Services.UserManagement.cs:168
+msgid "Click here to reset your password:"msgid "Invalid token."
+
+msgstr ""msgstr ""
+
+
+
+# Email subject.#: ../WebApp/Services.PasswordRecovery.cs:120
+
+msgid "Password Reset"msgid "Your password has been reset."
+
+msgstr ""msgstr ""
+
+
+
+msgid "Check your email. You must reset your password within 60 minutes."#: ../WebApp/Services.UserManagement.cs:135
+
+msgstr ""#: ../WebApp/Services.UserManagement.cs:168
+
 msgid "The account has been updated."
+
+msgid "Email could not be sent."msgstr ""
+
 msgstr ""
 
 #: ../WebApp/Services.UserManagement.cs:140
-#: ../WebApp/Services.UserManagement.cs:173
-msgid "The account does not exist."
+
+msgid "Invalid token."#: ../WebApp/Services.UserManagement.cs:173
+
+msgstr ""msgid "The account does not exist."
+
 msgstr ""
 
-#: ../WebApp/Services.UserManagement.cs:196
+msgid "Your password has been reset."
+
+msgstr ""#: ../WebApp/Services.UserManagement.cs:196
+
 msgid "The account has been activated."
+
+msgid "The account has been updated."msgstr ""
+
 msgstr ""
 
 # Email message
-#: ../WebApp/Services.UserManagement.cs:238
-msgid "Your account has been activated."
+
+msgid "The account does not exist."#: ../WebApp/Services.UserManagement.cs:238
+
+msgstr ""msgid "Your account has been activated."
+
 msgstr ""
 
-# Email message
+msgid "The account has been activated."
+
+msgstr ""# Email message
+
 #: ../WebApp/Services.UserManagement.cs:239
-msgid "First name:"
+
+# Email messagemsgid "First name:"
+
+msgid "Your account has been activated."msgstr ""
+
 msgstr ""
 
 # Email message
-#: ../WebApp/Services.UserManagement.cs:240
-msgid "Last name:"
+
+# Email message#: ../WebApp/Services.UserManagement.cs:240
+
+msgid "First name:"msgid "Last name:"
+
+msgstr ""msgstr ""
+
+
+
+# Email message# Email message
+
+msgid "Last name:"#: ../WebApp/Services.UserManagement.cs:241
+
+msgstr ""msgid "LoginURI:"
+
 msgstr ""
 
 # Email message
-#: ../WebApp/Services.UserManagement.cs:241
-msgid "LoginURI:"
-msgstr ""
 
-# Email subject.
-#: ../WebApp/Services.UserManagement.cs:242
+msgid "LoginURI:"# Email subject.
+
+msgstr ""#: ../WebApp/Services.UserManagement.cs:242
+
 msgid "Account activated"
-msgstr ""
 
-#: ../WebApp/Services.UserManagement.cs:297
+# Email subject.msgstr ""
+
+msgid "Account activated"
+
+msgstr ""#: ../WebApp/Services.UserManagement.cs:297
+
 msgid "The account has been deleted."
+
+msgid "The account has been deleted."msgstr ""
+
 msgstr ""
 
 #: ../WebApp/Services.UserManagement.cs:302
-msgid "Unable to delete account because it does not exist."
-msgstr ""
 
-#: ../WebApp/WifiScriptFace.cs:283
-#: ../WebApp/WifiScriptFace.cs:297
+msgid "Unable to delete account because it does not exist."msgid "Unable to delete account because it does not exist."
+
+msgstr ""msgstr ""
+
+
+
+msgid "Who are you?"#: ../WebApp/WifiScriptFace.cs:283
+
+msgstr ""#: ../WebApp/WifiScriptFace.cs:297
+
 msgid "Who are you?"
+
+msgid "No email on file"msgstr ""
+
 msgstr ""
 
 #: ../WebApp/WifiScriptFace.cs:292
-msgid "No email on file"
+
+msgid "No linked regions found"msgid "No email on file"
+
+msgstr ""msgstr ""
+
+
+
+msgid "No users found"#: ../WebApp/WifiScriptFace.cs:345
+
+msgstr ""msgid "No linked regions found"
+
 msgstr ""
 
-#: ../WebApp/WifiScriptFace.cs:345
-msgid "No linked regions found"
-msgstr ""
-
-#: ../WebApp/WifiScriptFace.cs:369
-msgid "No users found"
-msgstr ""
-
-#: ../WebApp/WifiScriptFace.cs:377
 msgid "No regions found"
+
+msgstr ""#: ../WebApp/WifiScriptFace.cs:369
+
+msgid "No users found"
+
+# ============================================================================msgstr ""
+
+# WEB PAGES - 404 ERROR PAGE
+
+# ============================================================================#: ../WebApp/WifiScriptFace.cs:377
+
+msgid "No regions found"
+
+# 404.htmlmsgstr ""
+
+msgid "Not Found"
+
+msgstr ""#: Addons menu
+
+msgid "Addons menu"
+
+# 404.htmlmsgstr ""
+
+msgid "The requested resource is not available in this version of Wifi."
+
 msgstr ""
 
-#: Addons menu
+# ============================================================================
+# WEB PAGES - ABOUT PAGE
+# ============================================================================
+
+# about.html - Page title
+msgid "About"
+msgstr ""
+
+# about.html
+msgid "About Our Grid"
+msgstr ""
+
+# about.html
+msgid "Welcome to <strong><!-- #get var=GridName --></strong>, a virtual world based on OpenSimulator."
+msgstr ""
+
+# about.html
+msgid "Our grid offers an open and creative environment for users from all around the world. Explore new worlds, meet interesting people, and design your own regions."
+msgstr ""
+
+# about.html - Feature card
+msgid "Open"
+msgstr ""
+
+# about.html
+msgid "An open grid for everyone who wants to be creative."
+msgstr ""
+
+# about.html - Feature card
+msgid "Community"
+msgstr ""
+
+# about.html
+msgid "A friendly community is waiting for you."
+msgstr ""
+
+# about.html - Feature card
+msgid "Creative"
+msgstr ""
+
+# about.html
+msgid "Design your own virtual world."
+msgstr ""
+
+# about.html - Section title
+msgid "Grid Statistics"
+msgstr ""
+
+# about.html
+msgid "Active Users:"
+msgstr ""
+
+# about.html
+msgid "Total Users:"
+msgstr ""
+
+# about.html
+msgid "Online Users:"
+msgstr ""
+
+# about.html
+msgid "Regions:"
+msgstr ""
+
+# about.html - Section title
+msgid "Technology"
+msgstr ""
+
+# about.html
+msgid "runs on <a href=\"http://opensimulator.org\" class=\"w3-text-orange\">OpenSimulator</a>, an open-source platform for virtual worlds."
+msgstr ""
+
+# about.html
+msgid "Back to Homepage"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - ACCOUNT / CREATE ACCOUNT
+# ============================================================================
+
+# account.html - Page title
+msgid "Create Account"
+msgstr ""
+
+# account.html
+msgid "Join Our Virtual World"
+msgstr ""
+
+# account.html
+msgid "Create your free account now and start your adventure!"
+msgstr ""
+
+# account.html - Form labels
+msgid "First Name"
+msgstr ""
+
+msgid "Last Name"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Confirm Password"
+msgstr ""
+
+msgid "Avatar Type"
+msgstr ""
+
+msgid "Terms of Service"
+msgstr ""
+
+msgid "I agree to the Terms of Service"
+msgstr ""
+
+msgid "Already have an account?"
+msgstr ""
+
+msgid "Login here"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - ACCESS CONTROL (ACL)
+# ============================================================================
+
+# acl-main.html
+msgid "Access Control"
+msgstr ""
+
+# acl-main.html
+msgid "Access Lists"
+msgstr ""
+
+# acl-main.html
+msgid "Bans"
+msgstr ""
+
+# acl-main.html
+msgid "Logins On/Off"
+msgstr ""
+
+# acl-main.html
+msgid "Hypergrid On/Off"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - ESTATES
+# ============================================================================
+
+# estateeditform.html
+msgid "Estate"
+msgstr ""
+
+# estateeditform.html
+msgid "this estate has"
+msgstr ""
+
+# estateeditform.html
+msgid "regions"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "Name:"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "Owner:"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "Public Access?"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "Allowed Groups:"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "Landing regions:"
+msgstr ""
+
+# estateeditform.html - Section title
+msgid "Reset all regions:"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "Group:"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "Music URL:"
+msgstr ""
+
+# estateeditform.html - Checkbox label
+msgid "Safe options"
+msgstr ""
+
+# estateeditform.html - Section title
+msgid "Region assignments:"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "Move region:"
+msgstr ""
+
+# estateeditform.html - Form label
+msgid "to estate:"
+msgstr ""
+
+# estatelist.html - Section title
+msgid "Estates:"
+msgstr ""
+
+# estatelist.html - Table header
+msgid "# Regions"
+msgstr ""
+
+# estatelist.html - Table header
+msgid "Public Access"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - GROUPS
+# ============================================================================
+
+# groupslist.html
+msgid "Groups:"
+msgstr ""
+
+# groupslist.html, groupslist-advanced.html - Table header
+msgid "Group"
+msgstr ""
+
+# groupslist.html, groupslist-advanced.html - Table header
+msgid "Members"
+msgstr ""
+
+# groupeditform.html - Form label
+msgid "Name"
+msgstr ""
+
+# groupeditform.html - Form label
+msgid "Charter:"
+msgstr ""
+
+# groupmembers-list.html
+msgid "members"
+msgstr ""
+
+# groupmembers-list.html - Title attribute
+msgid "Add members"
+msgstr ""
+
+# groupmembers-list.html - Title attribute
+msgid "Eject members"
+msgstr ""
+
+# groupmembers-add.html - Form label
+msgid "Add members (one per line):"
+msgstr ""
+
+# groupmembers-list.html - Table header
+msgid "Owner?"
+msgstr ""
+
+# groupdeleteform.html
+msgid "Are you sure you want to delete this group?"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - GRID USERS
+# ============================================================================
+
+# griduser-main.html - Section title
+msgid "Retrieve users"
+msgstr ""
+
+# griduser-main.html - Instructions
+msgid "Enter a single space character to list all grid users."
+msgstr ""
+
+# griduser-main.html - Instructions
+msgid "Other search terms must be at least 3 characters long."
+msgstr ""
+
+# griduser-main.html - Menu item
+msgid "List online users"
+msgstr ""
+
+# griduser-main.html - Menu item with confirmation
+msgid "Reset TOS"
+msgstr ""
+
+# griduser-main.html - Confirmation dialog
+msgid "Are you sure you want to reset the TOS?"
+msgstr ""
+
+# griduser-main.html - Menu item
+msgid "Create users (bulk)"
+msgstr ""
+
+# griduserlist.html - Table header
+msgid "Online"
+msgstr ""
+
+# griduserlist.html - Table header
+msgid "Level"
+msgstr ""
+
+# griduserlist.html - Table header
+msgid "Title"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - GRID STATUS
+# ============================================================================
+
+# gridstatus.html - Page title
+msgid "Grid Status"
+msgstr ""
+
+# gridstatus.html
+msgid "Current information about the status of"
+msgstr ""
+
+# gridstatus.html
+msgid "This page automatically refreshes every 60 seconds."
+msgstr ""
+
+# gridstatus.html - Status indicator
+msgid "ONLINE"
+msgstr ""
+
+# gridstatus.html - Statistics label
+msgid "Users Online"
+msgstr ""
+
+# gridstatus.html - Statistics label
+msgid "Total Regions"
+msgstr ""
+
+# gridstatus.html - Statistics label
+msgid "Active Regions"
+msgstr ""
+
+# gridstatus.html - Section title
+msgid "Services Status"
+msgstr ""
+
+# gridstatus.html - Service name
+msgid "Login Service"
+msgstr ""
+
+# gridstatus.html - Service name
+msgid "Asset Service"
+msgstr ""
+
+# gridstatus.html - Service name
+msgid "Inventory Service"
+msgstr ""
+
+# gridstatus.html - Service name
+msgid "Grid Service"
+msgstr ""
+
+# gridstatus.html - Service name
+msgid "Presence Service"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - LOGIN / LOGOUT
+# ============================================================================
+
+# login.html - Page title
+msgid "Login"
+msgstr ""
+
+# login.html
+msgid "Welcome back!"
+msgstr ""
+
+# login.html
+msgid "Please log in to your account"
+msgstr ""
+
+# login.html - Form label
+msgid "Username"
+msgstr ""
+
+# login.html - Button
+msgid "Sign In"
+msgstr ""
+
+# login.html
+msgid "Forgot your password?"
+msgstr ""
+
+# login.html
+msgid "Don't have an account yet?"
+msgstr ""
+
+# login.html
+msgid "Register now"
+msgstr ""
+
+# logout.html
+msgid "Logout"
+msgstr ""
+
+# logout.html
+msgid "You have been successfully logged out."
+msgstr ""
+
+# logout.html
+msgid "Thank you for visiting!"
+msgstr ""
+
+# logout.html
+msgid "Back to Login"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - WELCOME / INDEX
+# ============================================================================
+
+# welcome.html, index.html - Page title
+msgid "Welcome"
+msgstr ""
+
+# welcome.html
+msgid "Welcome to Your Virtual World"
+msgstr ""
+
+# welcome.html
+msgid "Explore, Create, Connect"
+msgstr ""
+
+# welcome.html
+msgid "Start Now"
+msgstr ""
+
+# welcome.html
+msgid "Learn More"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - USER MANAGEMENT
+# ============================================================================
+
+# userlist.html - Page title
+msgid "Users"
+msgstr ""
+
+# userlist.html - Table header
+msgid "User"
+msgstr ""
+
+# userlist.html - Table header
+msgid "Created"
+msgstr ""
+
+# userlist.html - Table header
+msgid "Actions"
+msgstr ""
+
+# usereditform.html - Page title
+msgid "Edit User"
+msgstr ""
+
+# usereditform.html - Form label
+msgid "User Level:"
+msgstr ""
+
+# usereditform.html - Form label
+msgid "User Title:"
+msgstr ""
+
+# usereditform.html - Button
+msgid "Save Changes"
+msgstr ""
+
+# userdeleteform.html - Confirmation
+msgid "Are you sure you want to delete this user?"
+msgstr ""
+
+# userdeleteform.html - Warning
+msgid "This action cannot be undone!"
+msgstr ""
+
+# userdeleteform.html - Button
+msgid "Confirm Delete"
+msgstr ""
+
+# userdeleteform.html - Button
+msgid "Cancel"
+msgstr ""
+
+# userpendinglist.html - Section title
+msgid "Pending Users"
+msgstr ""
+
+# userpendinglist.html - Description
+msgid "These users are waiting for approval"
+msgstr ""
+
+# userpendinglist.html - Button
+msgid "Approve"
+msgstr ""
+
+# userpendinglist.html - Button
+msgid "Reject"
+msgstr ""
+
+# usersearchform.html - Placeholder
+msgid "Search users..."
+msgstr ""
+
+# usersearchform.html - Button
+msgid "Search"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - REGIONS
+# ============================================================================
+
+# regionlist-form.html - Section title
+msgid "Regions"
+msgstr ""
+
+# regionlist-item.html - Table header
+msgid "Region Name"
+msgstr ""
+
+# regionlist-item.html - Table header
+msgid "Location"
+msgstr ""
+
+# regionlist-item.html - Table header
+msgid "Size"
+msgstr ""
+
+# regionlist-item.html - Table header
+msgid "Status"
+msgstr ""
+
+# region-form.html - Form label
+msgid "Region Name:"
+msgstr ""
+
+# region-form.html - Form label
+msgid "Location:"
+msgstr ""
+
+# region-form.html - Button
+msgid "Save Region"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - HYPERLINKS
+# ============================================================================
+
+# linkregionlist.html - Section title
+msgid "Linked Regions"
+msgstr ""
+
+# linkregionform.html - Form label
+msgid "Region Address:"
+msgstr ""
+
+# linkregionform.html - Button
+msgid "Link Region"
+msgstr ""
+
+# linkregiondeleteform.html - Confirmation
+msgid "Are you sure you want to unlink this region?"
+msgstr ""
+
+# linkregiondeleteform.html - Button
+msgid "Confirm Unlink"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - INVENTORY
+# ============================================================================
+
+# inventorylist.html - Section title
+msgid "Inventory"
+msgstr ""
+
+# inventorylist.html - Table header
+msgid "Item Name"
+msgstr ""
+
+# inventorylist.html - Table header
+msgid "Type"
+msgstr ""
+
+# inventorylist.html - Loading message
+msgid "Loading inventory..."
+msgstr ""
+
+# iars.html - Page title
+msgid "Inventory Archives (IARs)"
+msgstr ""
+
+# iars.html - Description
+msgid "Manage your inventory archives"
+msgstr ""
+
+# iars.html - Button
+msgid "Load IAR"
+msgstr ""
+
+# iars.html - Button
+msgid "Save IAR"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - INSTALL
+# ============================================================================
+
+# installform.html - Page title
+msgid "Installation"
+msgstr ""
+
+# installform.html - Section title
+msgid "Wifi Installation"
+msgstr ""
+
+# installform.html - Instructions
+msgid "Please complete the installation by creating an administrator account."
+msgstr ""
+
+# installform.html - Form label
+msgid "Admin First Name:"
+msgstr ""
+
+# installform.html - Form label
+msgid "Admin Last Name:"
+msgstr ""
+
+# installform.html - Form label
+msgid "Admin Email:"
+msgstr ""
+
+# installform.html - Form label
+msgid "Admin Password:"
+msgstr ""
+
+# installform.html - Button
+msgid "Complete Installation"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - HELP AND GUIDE
+# ============================================================================
+
+# help.html - Page title
+msgid "Help"
+msgstr ""
+
+# help.html - Section title
+msgid "Need Help?"
+msgstr ""
+
+# help.html - Description
+msgid "Here you will find answers to frequently asked questions."
+msgstr ""
+
+# guide.html - Page title
+msgid "Guide"
+msgstr ""
+
+# guide.html - Section title
+msgid "Getting Started Guide"
+msgstr ""
+
+# guide.html - Description
+msgid "Learn how to use our virtual world."
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - CONSOLE
+# ============================================================================
+
+# console.html - Page title
+msgid "Console"
+msgstr ""
+
+# console.html - Section title
+msgid "Remote Console"
+msgstr ""
+
+# console.html - Instructions
+msgid "Enter console commands here"
+msgstr ""
+
+# console.html - Button
+msgid "Execute"
+msgstr ""
+
+# console.html - Button
+msgid "Clear"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - NOTIFICATIONS
+# ============================================================================
+
+# notification.html - Generic notification
+msgid "Notification"
+msgstr ""
+
+# notification.html - Success message
+msgid "Operation completed successfully"
+msgstr ""
+
+# notification.html - Error message
+msgid "An error occurred"
+msgstr ""
+
+# notification.html - Warning message
+msgid "Warning"
+msgstr ""
+
+# notification.html - Info message
+msgid "Information"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - TERMS OF SERVICE
+# ============================================================================
+
+# tos.html, termsofservice.html - Page title
+msgid "Terms of Service"
+msgstr ""
+
+# tos.html - Description
+msgid "Please read and accept our Terms of Service"
+msgstr ""
+
+# tos.html - Button
+msgid "I Accept"
+msgstr ""
+
+# tos.html - Button
+msgid "I Decline"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - PASSWORD RECOVERY
+# ============================================================================
+
+# forgotpasswordform.html - Page title
+msgid "Forgot Password"
+msgstr ""
+
+# forgotpasswordform.html - Instructions
+msgid "Enter your email address to reset your password"
+msgstr ""
+
+# forgotpasswordform.html - Form label
+msgid "Email Address:"
+msgstr ""
+
+# forgotpasswordform.html - Button
+msgid "Reset Password"
+msgstr ""
+
+# recoveringpassword.html - Page title
+msgid "Recovering Password"
+msgstr ""
+
+# recoveringpassword.html - Instructions
+msgid "Please check your email for password reset instructions"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - SPLASH
+# ============================================================================
+
+# splash.html - Greeting
+msgid "Hello!"
+msgstr ""
+
+# splash.html - Description
+msgid "Welcome to our virtual world"
+msgstr ""
+
+# splash.html - Button
+msgid "Enter"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - DESTINATIONS
+# ============================================================================
+
+# destinationlist.html - Section title
+msgid "Destinations"
+msgstr ""
+
+# destinationlist.html - Description
+msgid "Popular places to visit"
+msgstr ""
+
+# destinationlistitem.html - Button
+msgid "Visit"
+msgstr ""
+
+# ============================================================================
+# WEB PAGES - LINKS
+# ============================================================================
+
+# links.html - Page title
+msgid "Links"
+msgstr ""
+
+# links.html - Section title
+msgid "Useful Links"
+msgstr ""
+
+# links.html - Description
+msgid "External resources and partner sites"
+msgstr ""
+
+# ============================================================================
+# MENU ITEMS
+# ============================================================================
+
+# Addons menu
 msgid "Addons menu"
 msgstr ""
 
+# main-menu.html - Menu items
+msgid "Home"
+msgstr ""
+
+msgid "Account"
+msgstr ""
+
+# main-menu-admin.html - Admin menu items
+msgid "Admin"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+# main-menu-admin-extra.html - Extra admin menu items
+msgid "Estates"
+msgstr ""
+
+msgid "Groups"
+msgstr ""
+
+# main-menu-users.html - User menu items
+msgid "My Account"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+# main-menu-privileged.html - Privileged menu items
+msgid "Management"
+msgstr ""
+
+msgid "Tools"
+msgstr ""
+
+# ============================================================================
+# MISCELLANEOUS UI ELEMENTS
+# ============================================================================
+
+# Common UI elements
+msgid "Loading..."
+msgstr ""
+
+msgid "Please wait..."
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Deselect"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Sort rows"
+msgstr ""
+
+# RSS Feed
+msgid "Status and news from"
+msgstr ""
+
+msgid "Grid is online"
+msgstr ""
+
+msgid "is online and available. Currently"
+msgstr ""
+
+msgid "users are online."
+msgstr ""
+
+msgid "Current statistics:"
+msgstr ""
+
+msgid "users online,"
+msgstr ""
+
+msgid "regions available,"
+msgstr ""
+
+msgid "registered users total."
+msgstr ""
+
+msgid "Discover our virtual world. Create a free account and start your adventure!"
+msgstr ""
+
+# ============================================================================
+# END OF FILE
+# ============================================================================
