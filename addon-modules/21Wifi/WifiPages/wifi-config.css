@@ -128,12 +128,13 @@ body {
    LANGUAGE CONFIGURATION
    ============================================ */
 
-/* GERMAN (Default) - Active */
-/* German texts are displayed by default */
-
-/* ENGLISH - Uncomment to activate
+/* ENGLISH (Default) - Active */
 body .lang-de { display: none !important; }
 body .lang-en { display: inline !important; }
+
+/* GERMAN - Uncomment to activate
+body .lang-en { display: none !important; }
+body .lang-de { display: inline !important; }
 */
 
 /* ============================================
