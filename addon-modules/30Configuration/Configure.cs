@@ -123,7 +123,7 @@ namespace MetaverseInk.Configuration
                     _settings = new ConfigurationSettings
                     {
                         WorldName = "My World",
-                        DbType = "MySQL",
+                        DbType = "SQLite",  // Changed from MySQL to SQLite as default for easier setup
                         DbHost = "localhost",
                         DbSchema = "opensim",
                         DbUser = "opensim",
@@ -136,9 +136,9 @@ namespace MetaverseInk.Configuration
                         HttpPort = 9000,
                         BaseLocationX = 1000,
                         BaseLocationY = 1000,
-                        RegionSizeX = 256,
-                        RegionSizeY = 256,
-                        RegionSizeZ = 256,
+                        RegionSizeX = 512,  // Changed from 256 to 512 (current standard)
+                        RegionSizeY = 512,  // Changed from 256 to 512 (current standard)
+                        RegionSizeZ = 512,  // Changed from 256 to 512 (current standard)
                         GmailAccount = string.Empty,
                         GmailPassword = string.Empty,
                         AutoBackup = true,
@@ -259,6 +259,9 @@ namespace MetaverseInk.Configuration
             ConfigureGridCommon();
             ConfigureStandaloneCommon();
             ConfigureStandaloneHypergrid();
+            
+            // Validate region configurations for conflicts
+            ValidateRegionConfigurations();
         }
 
         private static void GetUserInput()
@@ -506,6 +509,138 @@ namespace MetaverseInk.Configuration
             return RegionConfigStatus.NeedsCreation;
         }
 
+        private static void ValidateRegionConfigurations()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n→ Validating region configurations...");
+            Console.ResetColor();
+
+            var regionFiles = new List<string>();
+            if (File.Exists("Regions/RegionConfig.ini"))
+                regionFiles.Add("Regions/RegionConfig.ini");
+            if (File.Exists("Regions/Regions.ini"))
+                regionFiles.Add("Regions/Regions.ini");
+
+            if (regionFiles.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ No region configuration files found.");
+                Console.ResetColor();
+                return;
+            }
+
+            var locations = new Dictionary<string, string>(); // location -> region name
+            var ports = new Dictionary<int, string>(); // port -> region name
+            var uuids = new Dictionary<string, string>(); // uuid -> region name
+            bool hasConflicts = false;
+
+            foreach (var file in regionFiles)
+            {
+                try
+                {
+                    string currentRegion = null;
+                    using (TextReader tr = new StreamReader(file))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            line = line.Trim();
+                            
+                            // Check for region section header
+                            if (line.StartsWith("[") && line.EndsWith("]"))
+                            {
+                                currentRegion = line.Substring(1, line.Length - 2);
+                                continue;
+                            }
+
+                            if (string.IsNullOrEmpty(currentRegion))
+                                continue;
+
+                            // Check Location
+                            if (line.StartsWith("Location") && line.Contains("="))
+                            {
+                                string location = line.Split('=')[1].Trim();
+                                if (locations.ContainsKey(location))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine($"❌ CONFLICT: Regions '{locations[location]}' and '{currentRegion}' have the same Location: {location}");
+                                    Console.WriteLine($"   File: {file}");
+                                    hasConflicts = true;
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    locations[location] = currentRegion;
+                                }
+                            }
+
+                            // Check InternalPort
+                            if (line.StartsWith("InternalPort") && line.Contains("="))
+                            {
+                                string portStr = line.Split('=')[1].Trim();
+                                if (int.TryParse(portStr, out int port))
+                                {
+                                    if (ports.ContainsKey(port))
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine($"❌ CONFLICT: Regions '{ports[port]}' and '{currentRegion}' have the same InternalPort: {port}");
+                                        Console.WriteLine($"   File: {file}");
+                                        hasConflicts = true;
+                                        Console.ResetColor();
+                                    }
+                                    else
+                                    {
+                                        ports[port] = currentRegion;
+                                    }
+                                }
+                            }
+
+                            // Check RegionUUID
+                            if (line.StartsWith("RegionUUID") && line.Contains("="))
+                            {
+                                string uuid = line.Split('=')[1].Trim();
+                                if (uuids.ContainsKey(uuid))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine($"❌ CONFLICT: Regions '{uuids[uuid]}' and '{currentRegion}' have the same RegionUUID: {uuid}");
+                                    Console.WriteLine($"   File: {file}");
+                                    hasConflicts = true;
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    uuids[uuid] = currentRegion;
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"❌ Error reading {file}: {ex.Message}");
+                    Console.ResetColor();
+                }
+            }
+
+            if (!hasConflicts)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"✓ All {locations.Count} region(s) validated successfully - no conflicts found.");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\n⚠ Please fix these conflicts before starting OpenSim!");
+                Console.WriteLine("  Each region must have:");
+                Console.WriteLine("  - Unique Location (X,Y coordinates)");
+                Console.WriteLine("  - Unique InternalPort");
+                Console.WriteLine("  - Unique RegionUUID");
+                Console.ResetColor();
+            }
+        }
+
         private static void ConfigureRegions()
         {
             Console.WriteLine("\n╔════════════════════════════════════╗");
@@ -574,6 +709,16 @@ namespace MetaverseInk.Configuration
                 Console.WriteLine($"  Region name: {_settings.WorldName}");
                 Console.WriteLine($"  Location: {_settings.BaseLocationX},{_settings.BaseLocationY}");
                 Console.WriteLine($"  Size: {_settings.RegionSizeX}x{_settings.RegionSizeY}x{_settings.RegionSizeZ}");
+                Console.WriteLine($"  Internal Port: {_settings.HttpPort + 10}");
+                Console.ResetColor();
+                
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\n⚠ IMPORTANT: If you add multiple regions manually:");
+                Console.WriteLine("  - Each region MUST have a unique Location (X,Y coordinates)");
+                Console.WriteLine("  - Each region MUST have a unique InternalPort");
+                Console.WriteLine("  - Each region MUST have a unique RegionUUID");
+                Console.WriteLine("  Example: Region 1 at Location 1000,1000 with Port 9010");
+                Console.WriteLine("           Region 2 at Location 1001,1000 with Port 9011");
                 Console.ResetColor();
             }
             catch (Exception e)
@@ -1169,7 +1314,7 @@ namespace MetaverseInk.Configuration
                 Console.WriteLine($"  World Name: {_settings.WorldName}");
                 Console.WriteLine($"  IP/Domain: {_settings.IpAddress}");
                 Console.WriteLine($"  HTTP Port: {_settings.HttpPort}");
-                Console.WriteLine($"  Database: {_settings.DbHost}/{_settings.DbSchema}");
+                Console.WriteLine($"  Database: {_settings.DbType} - {_settings.DbHost}/{_settings.DbSchema}");
                 Console.ResetColor();
             }
             else
@@ -1182,6 +1327,9 @@ namespace MetaverseInk.Configuration
                 }
                 Console.ResetColor();
             }
+            
+            // Also validate region configurations
+            ValidateRegionConfigurations();
         }
 
         private static void CreateConfigBackup()

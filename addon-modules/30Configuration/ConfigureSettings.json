@@ -1,5 +1,6 @@
 {
   "WorldName": "My World",
+  "DbType": "SQLite",
   "DbHost": "localhost",
   "DbSchema": "opensim",
   "DbUser": "opensim",
@@ -12,8 +13,9 @@
   "HttpPort": 9000,
   "BaseLocationX": 1000,
   "BaseLocationY": 1000,
-  "RegionSizeX": 256,
-  "RegionSizeY": 256,
+  "RegionSizeX": 512,
+  "RegionSizeY": 512,
+  "RegionSizeZ": 512,
   "GmailAccount": "",
   "GmailPassword": "",
   "AutoBackup": true,
