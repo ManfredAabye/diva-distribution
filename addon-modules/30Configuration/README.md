@@ -430,3 +430,73 @@ Wenn Sie von einer älteren Diva Distribution migrieren:
 ## 📄 Lizenz
 
 Teil der OpenSim Diva Distribution - siehe Hauptprojekt für Lizenzinformationen.
+
+Testausgabe: 2024-06-10
+Die Configure.cs konfiguriert jetzt alles automatisch basierend auf den Benutzereingaben:
+
+✅ Was wird automatisch konfiguriert:
+
+1. Benutzereingaben (Interactive Configuration):
+
+✅ WorldName (Name deiner Welt)
+✅ IP-Adresse/Domain (externes Hostname)
+✅ HTTP Port (Standard: 9000)
+✅ Datenbanktyp (MySQL/SQLite)
+Bei MySQL: Host, Port, Database, User, Password
+Bei SQLite: Automatisch, keine weitere Eingabe nötig
+✅ Wifi Admin (Vorname, Nachname, Passwort, Email)
+✅ Gmail-Konto (optional für Notifications)
+✅ Region-Einstellungen:
+Base Location X/Y
+Region Size (einheitlich für X, Y, Z)
+2. Automatische Konfiguration aller Dateien:
+OpenSim.ini:
+
+✅ BaseHostname = IP-Adresse
+✅ BaseURL = http://${Const|BaseHostname}
+✅ PublicPort = HTTP Port
+✅ Include-Architecture = "config-include/DivaPreferences.ini" (Diva Distribution)
+Robust.ini + Robust.HG.ini:
+
+✅ ConnectionString (Datenbank)
+✅ BaseHostname, BaseURL, PublicPort
+✅ Alle IP-Adressen ersetzt
+MyWorld.ini:
+
+✅ ConnectionString
+✅ [UserAgentService] mit StorageProvider + ConnectionString
+✅ GridInfo (login, gridname, welcome, register URLs)
+✅ HomeLocation
+✅ SMTP-Einstellungen (wenn Gmail angegeben)
+✅ Alle IP-Adressen und Ports
+GridCommon.ini:
+
+✅ Gatekeeper und HomeURI URLs
+✅ IP-Adressen angepasst
+StandaloneCommon.ini:
+
+✅ ConnectionString
+✅ IP-Adressen und Ports
+Regions/RegionConfig.ini:
+
+✅ Regionname = WorldName (statt "Default Region")
+✅ Location (X, Y Koordinaten)
+✅ SizeX, SizeY, SizeZ (einheitliche Größe)
+✅ InternalPort automatisch berechnet (HttpPort + 10)
+✅ ExternalHostName = IP-Adresse
+✅ Automatische UUID-Generierung (RegionUUID, MaptileStaticUUID)
+✅ Saubere Struktur mit allen optionalen Settings als Kommentare
+3. Automatisches Backup-System:
+✅ Erstellt ZIP-Archiv mit Timestamp
+✅ Einzelne .bak-Dateien für alle konfigurierten Files
+✅ Behält die letzten 10 Backups
+✅ Löscht automatisch ältere Backups
+4. Intelligente Features:
+✅ Verwendet bestehende .ini Dateien wenn .example fehlen (Fallback-Logik für einige Dateien)
+✅ Bewahrt bestehende Regions wenn RegionConfig.ini schon existiert
+✅ Überprüft Datenbankverbindung bei MySQL
+✅ Setzt Berechtigungen und Defaults
+
+📋 Der komplette Ablauf:
+
+Der User muss nur einmal die Werte eingeben, alles andere wird automatisch konfiguriert und aufeinander abgestimmt! 🎉
