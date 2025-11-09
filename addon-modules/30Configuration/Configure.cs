@@ -532,6 +532,7 @@ namespace MetaverseInk.Configuration
             var locations = new Dictionary<string, string>(); // location -> region name
             var ports = new Dictionary<int, string>(); // port -> region name
             var uuids = new Dictionary<string, string>(); // uuid -> region name
+            var regionData = new List<(string name, int x, int y, int sizeX, int sizeY)>(); // Store region data for overlap checking
             bool hasConflicts = false;
 
             foreach (var file in regionFiles)
@@ -539,6 +540,9 @@ namespace MetaverseInk.Configuration
                 try
                 {
                     string currentRegion = null;
+                    int locX = 0, locY = 0, sizeX = 256, sizeY = 256;
+                    bool hasLocation = false, hasSize = false;
+                    
                     using (TextReader tr = new StreamReader(file))
                     {
                         string line;
@@ -549,7 +553,17 @@ namespace MetaverseInk.Configuration
                             // Check for region section header
                             if (line.StartsWith("[") && line.EndsWith("]"))
                             {
+                                // Save previous region data if complete
+                                if (currentRegion != null && hasLocation)
+                                {
+                                    regionData.Add((currentRegion, locX, locY, sizeX, sizeY));
+                                }
+                                
                                 currentRegion = line.Substring(1, line.Length - 2);
+                                hasLocation = false;
+                                hasSize = false;
+                                sizeX = 256; // Reset to defaults
+                                sizeY = 256;
                                 continue;
                             }
 
@@ -560,6 +574,12 @@ namespace MetaverseInk.Configuration
                             if (line.StartsWith("Location") && line.Contains("="))
                             {
                                 string location = line.Split('=')[1].Trim();
+                                string[] coords = location.Split(',');
+                                if (coords.Length == 2 && int.TryParse(coords[0], out locX) && int.TryParse(coords[1], out locY))
+                                {
+                                    hasLocation = true;
+                                }
+                                
                                 if (locations.ContainsKey(location))
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
@@ -571,6 +591,27 @@ namespace MetaverseInk.Configuration
                                 else
                                 {
                                     locations[location] = currentRegion;
+                                }
+                            }
+
+                            // Check SizeX and SizeY
+                            if (line.StartsWith("SizeX") && line.Contains("="))
+                            {
+                                string sizeStr = line.Split('=')[1].Trim();
+                                if (int.TryParse(sizeStr, out int size))
+                                {
+                                    sizeX = size;
+                                    hasSize = true;
+                                }
+                            }
+                            
+                            if (line.StartsWith("SizeY") && line.Contains("="))
+                            {
+                                string sizeStr = line.Split('=')[1].Trim();
+                                if (int.TryParse(sizeStr, out int size))
+                                {
+                                    sizeY = size;
+                                    hasSize = true;
                                 }
                             }
 
@@ -613,6 +654,12 @@ namespace MetaverseInk.Configuration
                                 }
                             }
                         }
+                        
+                        // Save last region data
+                        if (currentRegion != null && hasLocation)
+                        {
+                            regionData.Add((currentRegion, locX, locY, sizeX, sizeY));
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -620,6 +667,37 @@ namespace MetaverseInk.Configuration
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"❌ Error reading {file}: {ex.Message}");
                     Console.ResetColor();
+                }
+            }
+            
+            // Check for region overlaps based on size
+            for (int i = 0; i < regionData.Count; i++)
+            {
+                for (int j = i + 1; j < regionData.Count; j++)
+                {
+                    var region1 = regionData[i];
+                    var region2 = regionData[j];
+                    
+                    // Calculate grid units (256m per unit)
+                    int r1EndX = region1.x + (region1.sizeX / 256);
+                    int r1EndY = region1.y + (region1.sizeY / 256);
+                    int r2EndX = region2.x + (region2.sizeX / 256);
+                    int r2EndY = region2.y + (region2.sizeY / 256);
+                    
+                    // Check for overlap
+                    bool overlapsX = region1.x < r2EndX && r1EndX > region2.x;
+                    bool overlapsY = region1.y < r2EndY && r1EndY > region2.y;
+                    
+                    if (overlapsX && overlapsY)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"❌ OVERLAP: Regions '{region1.name}' and '{region2.name}' overlap!");
+                        Console.WriteLine($"   '{region1.name}': Location {region1.x},{region1.y}, Size {region1.sizeX}x{region1.sizeY} (occupies {region1.x}-{r1EndX},{region1.y}-{r1EndY})");
+                        Console.WriteLine($"   '{region2.name}': Location {region2.x},{region2.y}, Size {region2.sizeX}x{region2.sizeY} (occupies {region2.x}-{r2EndX},{region2.y}-{r2EndY})");
+                        Console.WriteLine($"   → Regions with size {region1.sizeX}m need at least {region1.sizeX / 256} grid positions apart!");
+                        hasConflicts = true;
+                        Console.ResetColor();
+                    }
                 }
             }
 
@@ -717,8 +795,11 @@ namespace MetaverseInk.Configuration
                 Console.WriteLine("  - Each region MUST have a unique Location (X,Y coordinates)");
                 Console.WriteLine("  - Each region MUST have a unique InternalPort");
                 Console.WriteLine("  - Each region MUST have a unique RegionUUID");
-                Console.WriteLine("  Example: Region 1 at Location 1000,1000 with Port 9010");
-                Console.WriteLine("           Region 2 at Location 1001,1000 with Port 9011");
+                Console.WriteLine($"  - Regions with size {_settings.RegionSizeX}m occupy {_settings.RegionSizeX / 256} grid positions!");
+                Console.WriteLine($"  - They must be at least {_settings.RegionSizeX / 256} positions apart to avoid overlap!");
+                Console.WriteLine($"  Example for {_settings.RegionSizeX}x{_settings.RegionSizeY}m regions:");
+                Console.WriteLine($"    Region 1: Location 1000,1000 with Port 9010");
+                Console.WriteLine($"    Region 2: Location {1000 + (_settings.RegionSizeX / 256)},1000 with Port 9011 (NOT 1001!)");
                 Console.ResetColor();
             }
             catch (Exception e)
