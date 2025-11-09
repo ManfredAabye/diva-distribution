@@ -11,6 +11,9 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using OpenMetaverse;
 
+#pragma warning disable IL2026 // Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access
+#pragma warning disable IL3050 // Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality
+
 namespace MetaverseInk.Configuration
 {
     public class Configure
@@ -135,6 +138,7 @@ namespace MetaverseInk.Configuration
                         BaseLocationY = 1000,
                         RegionSizeX = 256,
                         RegionSizeY = 256,
+                        RegionSizeZ = 256,
                         GmailAccount = string.Empty,
                         GmailPassword = string.Empty,
                         AutoBackup = true,
@@ -397,15 +401,14 @@ namespace MetaverseInk.Configuration
             if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int locY))
                 _settings.BaseLocationY = locY;
 
-            Console.Write($"Region size X [{_settings.RegionSizeX}]: ");
+            Console.Write($"Region size (applies to X, Y, and Z) [{_settings.RegionSizeX}]: ");
             input = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int sizeX))
-                _settings.RegionSizeX = sizeX;
-
-            Console.Write($"Region size Y [{_settings.RegionSizeY}]: ");
-            input = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int sizeY))
-                _settings.RegionSizeY = sizeY;
+            if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int regionSize))
+            {
+                _settings.RegionSizeX = regionSize;
+                _settings.RegionSizeY = regionSize;
+                _settings.RegionSizeZ = regionSize;
+            }
 
             SaveConfiguration();
         }
@@ -562,6 +565,8 @@ namespace MetaverseInk.Configuration
                                 line = $"SizeX = {_settings.RegionSizeX}";
                             if (line.Contains("SizeY"))
                                 line = $"SizeY = {_settings.RegionSizeY}";
+                            if (line.Contains("SizeZ"))
+                                line = $"SizeZ = {_settings.RegionSizeZ}";
                             if (line.Contains("ExternalHostName"))
                                 line = $"ExternalHostName = {_settings.IpAddress}";
                             if (line.Contains("InternalPort"))
@@ -675,12 +680,23 @@ namespace MetaverseInk.Configuration
         {
             Console.WriteLine("\n→ Configuring OpenSim.ini...");
             
-            if (!File.Exists("OpenSim.ini.example"))
+            string sourceFile = "OpenSim.ini.example";
+            if (!File.Exists(sourceFile))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ OpenSim.ini.example not found, skipping...");
-                Console.ResetColor();
-                return;
+                if (File.Exists("OpenSim.ini"))
+                {
+                    sourceFile = "OpenSim.ini";
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ OpenSim.ini.example not found, using existing OpenSim.ini");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ OpenSim.ini.example not found, skipping...");
+                    Console.ResetColor();
+                    return;
+                }
             }
 
             // Create backup before modifying
@@ -688,19 +704,21 @@ namespace MetaverseInk.Configuration
 
             try
             {
-                using (TextReader tr = new StreamReader("OpenSim.ini.example"))
+                using (TextReader tr = new StreamReader(sourceFile))
                 {
                     using (TextWriter tw = new StreamWriter("OpenSim.ini"))
                     {
                         string line;
                         while ((line = tr.ReadLine()) != null)
                         {
-                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                            if (line.Contains("BaseHostname =") && !line.TrimStart().StartsWith(";"))
+                                line = $"    BaseHostname = \"{_settings.IpAddress}\"";
+                            else if (line.Contains("BaseURL =") && !line.TrimStart().StartsWith(";"))
+                                line = $"    BaseURL = http://${{Const|BaseHostname}}";
+                            else if (line.Contains("PublicPort") && !line.TrimStart().StartsWith(";"))
+                                line = $"    PublicPort = \"{_settings.HttpPort}\"";
+                            else if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
                                 line = line.Replace("127.0.0.1", _settings.IpAddress);
-                            if (line.Contains("BaseHostname") && !line.TrimStart().StartsWith(";"))
-                                line = $"    BaseHostname = {_settings.IpAddress}";
-                            if (line.Contains("PublicPort") && !line.TrimStart().StartsWith(";"))
-                                line = $"    PublicPort = {_settings.HttpPort}";
                             
                             tw.WriteLine(line);
                         }
@@ -723,12 +741,23 @@ namespace MetaverseInk.Configuration
         {
             Console.WriteLine("\n→ Configuring Robust.ini...");
             
-            if (!File.Exists("Robust.ini.example"))
+            string sourceFile = "Robust.ini.example";
+            if (!File.Exists(sourceFile))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ Robust.ini.example not found, skipping...");
-                Console.ResetColor();
-                return;
+                if (File.Exists("Robust.ini"))
+                {
+                    sourceFile = "Robust.ini";
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ Robust.ini.example not found, using existing Robust.ini");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ Robust.ini.example not found, skipping...");
+                    Console.ResetColor();
+                    return;
+                }
             }
 
             // Create backup before modifying
@@ -738,18 +767,24 @@ namespace MetaverseInk.Configuration
             {
                 string connString = GetConnectionString();
                 
-                using (TextReader tr = new StreamReader("Robust.ini.example"))
+                using (TextReader tr = new StreamReader(sourceFile))
                 {
                     using (TextWriter tw = new StreamWriter("Robust.ini"))
                     {
                         string line;
                         while ((line = tr.ReadLine()) != null)
                         {
-                            if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
+                            if (line.Contains("ConnectionString =") && !line.TrimStart().StartsWith(";"))
                                 line = $"    ConnectionString = \"{connString}\"";
-                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                            else if (line.Contains("BaseHostname =") && !line.TrimStart().StartsWith(";"))
+                                line = $"    BaseHostname = \"{_settings.IpAddress}\"";
+                            else if (line.Contains("BaseURL =") && !line.TrimStart().StartsWith(";"))
+                                line = $"    BaseURL = \"http://${{Const|BaseHostname}}\"";
+                            else if (line.Contains("PublicPort =") && !line.TrimStart().StartsWith(";"))
+                                line = $"    PublicPort = \"{_settings.HttpPort}\"";
+                            else if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
                                 line = line.Replace("127.0.0.1", _settings.IpAddress);
-                            if (line.Contains(":8002") && !line.TrimStart().StartsWith(";"))
+                            else if (line.Contains(":8002") && !line.TrimStart().StartsWith(";"))
                                 line = line.Replace(":8002", $":{_settings.HttpPort}");
                             
                             tw.WriteLine(line);
@@ -773,12 +808,23 @@ namespace MetaverseInk.Configuration
         {
             Console.WriteLine("\n→ Configuring Robust.HG.ini...");
             
-            if (!File.Exists("Robust.HG.ini.example"))
+            string sourceFile = "Robust.HG.ini.example";
+            if (!File.Exists(sourceFile))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ Robust.HG.ini.example not found, skipping...");
-                Console.ResetColor();
-                return;
+                if (File.Exists("Robust.HG.ini"))
+                {
+                    sourceFile = "Robust.HG.ini";
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ Robust.HG.ini.example not found, using existing Robust.HG.ini");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ Robust.HG.ini.example not found, skipping...");
+                    Console.ResetColor();
+                    return;
+                }
             }
 
             // Create backup before modifying
@@ -788,21 +834,27 @@ namespace MetaverseInk.Configuration
             {
                 string connString = GetConnectionString();
                 
-                using (TextReader tr = new StreamReader("Robust.HG.ini.example"))
+                using (TextReader tr = new StreamReader(sourceFile))
                 {
                     using (TextWriter tw = new StreamWriter("Robust.HG.ini"))
                     {
                         string line;
                         while ((line = tr.ReadLine()) != null)
                         {
-                            if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
+                            if (line.Contains("ConnectionString =") && !line.TrimStart().StartsWith(";"))
                                 line = $"    ConnectionString = \"{connString}\"";
-                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
-                                line = line.Replace("127.0.0.1", _settings.IpAddress);
-                            if (line.Contains(":8002") && !line.TrimStart().StartsWith(";"))
-                                line = line.Replace(":8002", $":{_settings.HttpPort}");
-                            if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
+                            else if (line.Contains("BaseHostname =") && !line.TrimStart().StartsWith(";"))
+                                line = $"    BaseHostname = \"{_settings.IpAddress}\"";
+                            else if (line.Contains("BaseURL =") && !line.TrimStart().StartsWith(";"))
+                                line = $"    BaseURL = \"http://${{Const|BaseHostname}}\"";
+                            else if (line.Contains("PublicPort =") && !line.TrimStart().StartsWith(";"))
+                                line = $"    PublicPort = \"{_settings.HttpPort}\"";
+                            else if (line.Contains("GatekeeperURI =") && !line.TrimStart().StartsWith(";"))
                                 line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            else if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace("127.0.0.1", _settings.IpAddress);
+                            else if (line.Contains(":8002") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace(":8002", $":{_settings.HttpPort}");
                             
                             tw.WriteLine(line);
                         }
@@ -825,47 +877,67 @@ namespace MetaverseInk.Configuration
         {
             Console.WriteLine("\n→ Configuring Wifi.ini...");
             
-            if (!File.Exists("Wifi.ini.example"))
+            string sourceFile = "Wifi.ini.example";
+            bool useExistingFile = false;
+            
+            if (!File.Exists(sourceFile))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ Wifi.ini.example not found, skipping...");
-                Console.ResetColor();
-                return;
+                if (File.Exists("Wifi.ini"))
+                {
+                    sourceFile = "Wifi.ini";
+                    useExistingFile = true;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ Wifi.ini.example not found, using existing Wifi.ini");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ Wifi.ini.example not found, skipping...");
+                    Console.ResetColor();
+                    return;
+                }
             }
 
-            // Create backup before modifying
-            BackupSingleFile("Wifi.ini");
+            // Only create individual backup if not using existing file (already backed up in main backup)
+            if (!useExistingFile)
+            {
+                BackupSingleFile("Wifi.ini");
+            }
 
             try
             {
-                using (TextReader tr = new StreamReader("Wifi.ini.example"))
+                // If using existing file, read content first, then write to temp
+                List<string> lines = new List<string>();
+                
+                using (TextReader tr = new StreamReader(sourceFile))
                 {
-                    using (TextWriter tw = new StreamWriter("Wifi.ini"))
+                    string line;
+                    while ((line = tr.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = tr.ReadLine()) != null)
-                        {
-                            if (line.Contains("GridName") && !line.TrimStart().StartsWith(";"))
-                                line = $"    GridName = \"{_settings.WorldName}\"";
-                            if (line.Contains("LoginURL") && !line.TrimStart().StartsWith(";"))
-                                line = $"    LoginURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
-                            if (line.Contains("WebAddress") && !line.TrimStart().StartsWith(";"))
-                                line = $"    WebAddress = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
-                            if (line.Contains("AdminFirst") && !line.TrimStart().StartsWith(";"))
-                                line = $"    AdminFirst = \"{_settings.AdminFirstName}\"";
-                            if (line.Contains("AdminLast") && !line.TrimStart().StartsWith(";"))
-                                line = $"    AdminLast = \"{_settings.AdminLastName}\"";
-                            if (line.Contains("AdminEmail") && !line.TrimStart().StartsWith(";"))
-                                line = $"    AdminEmail = \"{_settings.AdminEmail}\"";
-                            if (line.Contains("SmtpUsername") && !string.IsNullOrEmpty(_settings.GmailAccount) && !line.TrimStart().StartsWith(";"))
-                                line = $"    SmtpUsername = \"{_settings.GmailAccount}\"";
-                            if (line.Contains("SmtpPassword") && !string.IsNullOrEmpty(_settings.GmailPassword) && !line.TrimStart().StartsWith(";"))
-                                line = $"    SmtpPassword = \"{_settings.GmailPassword}\"";
-                            
-                            tw.WriteLine(line);
-                        }
+                        if (line.Contains("GridName") && !line.TrimStart().StartsWith(";"))
+                            line = $"    GridName = \"{_settings.WorldName}\"";
+                        if (line.Contains("LoginURL") && !line.TrimStart().StartsWith(";"))
+                            line = $"    LoginURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                        if (line.Contains("WebAddress") && !line.TrimStart().StartsWith(";"))
+                            line = $"    WebAddress = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                        if (line.Contains("AdminFirst") && !line.TrimStart().StartsWith(";"))
+                            line = $"    AdminFirst = \"{_settings.AdminFirstName}\"";
+                        if (line.Contains("AdminLast") && !line.TrimStart().StartsWith(";"))
+                            line = $"    AdminLast = \"{_settings.AdminLastName}\"";
+                        if (line.Contains("AdminEmail") && !line.TrimStart().StartsWith(";"))
+                            line = $"    AdminEmail = \"{_settings.AdminEmail}\"";
+                        if (line.Contains("SmtpUsername") && !string.IsNullOrEmpty(_settings.GmailAccount) && !line.TrimStart().StartsWith(";"))
+                            line = $"    SmtpUsername = \"{_settings.GmailAccount}\"";
+                        if (line.Contains("SmtpPassword") && !string.IsNullOrEmpty(_settings.GmailPassword) && !line.TrimStart().StartsWith(";"))
+                            line = $"    SmtpPassword = \"{_settings.GmailPassword}\"";
+                        
+                        lines.Add(line);
                     }
                 }
+                
+                // Write all lines at once
+                File.WriteAllLines("Wifi.ini", lines);
                 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("✓ Wifi.ini configured");
@@ -883,35 +955,55 @@ namespace MetaverseInk.Configuration
         {
             Console.WriteLine("\n→ Configuring config-include/DivaPreferences.ini...");
             
-            if (!File.Exists("config-include/DivaPreferences.ini.example"))
+            string sourceFile = "config-include/DivaPreferences.ini.example";
+            bool useExistingFile = false;
+            
+            if (!File.Exists(sourceFile))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ DivaPreferences.ini.example not found, skipping...");
-                Console.ResetColor();
-                return;
+                if (File.Exists("config-include/DivaPreferences.ini"))
+                {
+                    sourceFile = "config-include/DivaPreferences.ini";
+                    useExistingFile = true;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ DivaPreferences.ini.example not found, using existing DivaPreferences.ini");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ DivaPreferences.ini.example not found, skipping...");
+                    Console.ResetColor();
+                    return;
+                }
             }
 
-            // Create backup before modifying
-            BackupSingleFile("config-include/DivaPreferences.ini");
+            // Only create individual backup if not using existing file (already backed up in main backup)
+            if (!useExistingFile)
+            {
+                BackupSingleFile("config-include/DivaPreferences.ini");
+            }
 
             try
             {
-                using (TextReader tr = new StreamReader("config-include/DivaPreferences.ini.example"))
+                // Read content first, then write
+                List<string> lines = new List<string>();
+                
+                using (TextReader tr = new StreamReader(sourceFile))
                 {
-                    using (TextWriter tw = new StreamWriter("config-include/DivaPreferences.ini"))
+                    string line;
+                    while ((line = tr.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = tr.ReadLine()) != null)
-                        {
-                            if (line.Contains("HomeURI") && !line.TrimStart().StartsWith(";"))
-                                line = $"    HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
-                            if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
-                                line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
-                            
-                            tw.WriteLine(line);
-                        }
+                        if (line.Contains("HomeURI") && !line.TrimStart().StartsWith(";"))
+                            line = $"    HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                        if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
+                            line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                        
+                        lines.Add(line);
                     }
                 }
+                
+                // Write all lines at once
+                File.WriteAllLines("config-include/DivaPreferences.ini", lines);
                 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("✓ DivaPreferences.ini configured");
@@ -929,12 +1021,23 @@ namespace MetaverseInk.Configuration
         {
             Console.WriteLine("\n→ Configuring config-include/GridCommon.ini...");
             
-            if (!File.Exists("config-include/GridCommon.ini.example"))
+            string sourceFile = "config-include/GridCommon.ini.example";
+            if (!File.Exists(sourceFile))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ GridCommon.ini.example not found, skipping...");
-                Console.ResetColor();
-                return;
+                if (File.Exists("config-include/GridCommon.ini"))
+                {
+                    sourceFile = "config-include/GridCommon.ini";
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ GridCommon.ini.example not found, using existing GridCommon.ini");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ GridCommon.ini.example not found, skipping...");
+                    Console.ResetColor();
+                    return;
+                }
             }
 
             // Create backup before modifying
@@ -942,7 +1045,7 @@ namespace MetaverseInk.Configuration
 
             try
             {
-                using (TextReader tr = new StreamReader("config-include/GridCommon.ini.example"))
+                using (TextReader tr = new StreamReader(sourceFile))
                 {
                     using (TextWriter tw = new StreamWriter("config-include/GridCommon.ini"))
                     {
@@ -975,12 +1078,23 @@ namespace MetaverseInk.Configuration
         {
             Console.WriteLine("\n→ Configuring config-include/StandaloneCommon.ini...");
             
-            if (!File.Exists("config-include/StandaloneCommon.ini.example"))
+            string sourceFile = "config-include/StandaloneCommon.ini.example";
+            if (!File.Exists(sourceFile))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ StandaloneCommon.ini.example not found, skipping...");
-                Console.ResetColor();
-                return;
+                if (File.Exists("config-include/StandaloneCommon.ini"))
+                {
+                    sourceFile = "config-include/StandaloneCommon.ini";
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ StandaloneCommon.ini.example not found, using existing StandaloneCommon.ini");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ StandaloneCommon.ini.example not found, skipping...");
+                    Console.ResetColor();
+                    return;
+                }
             }
 
             // Create backup before modifying
@@ -990,7 +1104,7 @@ namespace MetaverseInk.Configuration
             {
                 string connString = GetConnectionString();
                 
-                using (TextReader tr = new StreamReader("config-include/StandaloneCommon.ini.example"))
+                using (TextReader tr = new StreamReader(sourceFile))
                 {
                     using (TextWriter tw = new StreamWriter("config-include/StandaloneCommon.ini"))
                     {
@@ -1025,43 +1139,63 @@ namespace MetaverseInk.Configuration
         {
             Console.WriteLine("\n→ Configuring config-include/StandaloneHypergrid.ini...");
             
-            if (!File.Exists("config-include/StandaloneHypergrid.ini.example"))
+            string sourceFile = "config-include/StandaloneHypergrid.ini.example";
+            bool useExistingFile = false;
+            
+            if (!File.Exists(sourceFile))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ StandaloneHypergrid.ini.example not found, skipping...");
-                Console.ResetColor();
-                return;
+                if (File.Exists("config-include/StandaloneHypergrid.ini"))
+                {
+                    sourceFile = "config-include/StandaloneHypergrid.ini";
+                    useExistingFile = true;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ StandaloneHypergrid.ini.example not found, using existing StandaloneHypergrid.ini");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ StandaloneHypergrid.ini.example not found, skipping...");
+                    Console.ResetColor();
+                    return;
+                }
             }
 
-            // Create backup before modifying
-            BackupSingleFile("config-include/StandaloneHypergrid.ini");
+            // Only create individual backup if not using existing file (already backed up in main backup)
+            if (!useExistingFile)
+            {
+                BackupSingleFile("config-include/StandaloneHypergrid.ini");
+            }
 
             try
             {
                 string connString = GetConnectionString();
                 
-                using (TextReader tr = new StreamReader("config-include/StandaloneHypergrid.ini.example"))
+                // Read content first, then write
+                List<string> lines = new List<string>();
+                
+                using (TextReader tr = new StreamReader(sourceFile))
                 {
-                    using (TextWriter tw = new StreamWriter("config-include/StandaloneHypergrid.ini"))
+                    string line;
+                    while ((line = tr.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = tr.ReadLine()) != null)
-                        {
-                            if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
-                                line = $"    ConnectionString = \"{connString}\"";
-                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
-                                line = line.Replace("127.0.0.1", _settings.IpAddress);
-                            if (line.Contains("HomeURI") && !line.TrimStart().StartsWith(";"))
-                                line = $"    HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
-                            if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
-                                line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
-                            if (line.Contains("welcome_message") && !line.TrimStart().StartsWith(";"))
-                                line = $"    welcome_message = \"Welcome to {_settings.WorldName}\"";
-                            
-                            tw.WriteLine(line);
-                        }
+                        if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
+                            line = $"    ConnectionString = \"{connString}\"";
+                        if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                            line = line.Replace("127.0.0.1", _settings.IpAddress);
+                        if (line.Contains("HomeURI") && !line.TrimStart().StartsWith(";"))
+                            line = $"    HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                        if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
+                            line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                        if (line.Contains("welcome_message") && !line.TrimStart().StartsWith(";"))
+                            line = $"    welcome_message = \"Welcome to {_settings.WorldName}\"";
+                        
+                        lines.Add(line);
                     }
                 }
+                
+                // Write all lines at once
+                File.WriteAllLines("config-include/StandaloneHypergrid.ini", lines);
                 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("✓ StandaloneHypergrid.ini configured");
@@ -1329,6 +1463,10 @@ namespace MetaverseInk.Configuration
                 }
                 
                 File.Copy(filePath, backupFileName, true);
+                
+                // Give the file system time to release the handle
+                System.Threading.Thread.Sleep(100);
+                
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine($"  → Backup: {backupFileName}");
                 Console.ResetColor();
@@ -1539,6 +1677,7 @@ namespace MetaverseInk.Configuration
         public int BaseLocationY { get; set; }
         public int RegionSizeX { get; set; }
         public int RegionSizeY { get; set; }
+        public int RegionSizeZ { get; set; }
         public string GmailAccount { get; set; }
         public string GmailPassword { get; set; }
         public bool AutoBackup { get; set; }
