@@ -15,6 +15,36 @@ namespace MetaverseInk.Configuration
 {
     public class Configure
     {
+        /*
+        1. Tool starten
+        2. Benutzereingaben sammeln
+        3. Hauptbackup erstellen (wenn aktiviert)
+        ├─ ZIP-Archiv erstellen
+        └─ Individuelle .bak Dateien
+        4. Für jede Konfigurationsdatei:
+        ├─ Einzeldatei-Backup erstellen
+        ├─ .example Datei lesen
+        ├─ Werte ersetzen
+        └─ Neue .ini Datei schreiben
+        5. Zusammenfassung anzeigen
+
+        Hauptverzeichnis /bin
+        OpenSim.ini
+        Robust.ini
+        Robust.HG.ini
+        Wifi.ini
+
+        Konfigurationsverzeichnis /bin/config-include
+        DivaPreferences.ini
+        GridCommon.ini
+        MyWorld.ini
+        StandaloneCommon.ini
+        StandaloneHypergrid.ini
+
+        Konfigurationsverzeichnis /bin/Regions
+        Regions.ini
+        */
+
         private static ConfigurationSettings _settings;
         private static readonly string ConfigFile = "ConfigureSettings.json";
         private static readonly string BackupDirectory = "config-backups";
@@ -90,6 +120,7 @@ namespace MetaverseInk.Configuration
                     _settings = new ConfigurationSettings
                     {
                         WorldName = "My World",
+                        DbType = "MySQL",
                         DbHost = "localhost",
                         DbSchema = "opensim",
                         DbUser = "opensim",
@@ -190,8 +221,7 @@ namespace MetaverseInk.Configuration
                 CreateConfigBackup();
             }
             
-            ConfigureRegions();
-            ConfigureMyWorld();
+            ConfigureAllFiles();
             DisplayInfo();
         }
 
@@ -208,9 +238,23 @@ namespace MetaverseInk.Configuration
                 CreateConfigBackup();
             }
             
+            ConfigureAllFiles();
+            DisplayInfo();
+        }
+        
+        private static void ConfigureAllFiles()
+        {
+            // Configure all configuration files
             ConfigureRegions();
             ConfigureMyWorld();
-            DisplayInfo();
+            ConfigureOpenSimIni();
+            ConfigureRobustIni();
+            ConfigureRobustHGIni();
+            ConfigureWifiIni();
+            ConfigureDivaPreferences();
+            ConfigureGridCommon();
+            ConfigureStandaloneCommon();
+            ConfigureStandaloneHypergrid();
         }
 
         private static void GetUserInput()
@@ -244,29 +288,59 @@ namespace MetaverseInk.Configuration
             if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int port))
                 _settings.HttpPort = port;
 
-            // Database Host
-            Console.Write($"Database host [{_settings.DbHost}]: ");
+            // Database Type
+            Console.WriteLine($"\n--- Database Settings ---");
+            Console.Write($"Database type (MySQL/SQLite) [{_settings.DbType}]: ");
             input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
-                _settings.DbHost = input;
+            {
+                input = input.Trim();
+                if (input.Equals("MySQL", StringComparison.OrdinalIgnoreCase) || 
+                    input.Equals("SQLite", StringComparison.OrdinalIgnoreCase))
+                {
+                    _settings.DbType = input.Equals("MySQL", StringComparison.OrdinalIgnoreCase) ? "MySQL" : "SQLite";
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"⚠ Invalid database type, using default: {_settings.DbType}");
+                    Console.ResetColor();
+                }
+            }
 
-            // Database Schema
-            Console.Write($"Database schema [{_settings.DbSchema}]: ");
-            input = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(input))
-                _settings.DbSchema = input;
+            // MySQL specific settings
+            if (_settings.DbType.Equals("MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                // Database Host
+                Console.Write($"Database host [{_settings.DbHost}]: ");
+                input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                    _settings.DbHost = input;
 
-            // Database User
-            Console.Write($"Database user [{_settings.DbUser}]: ");
-            input = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(input))
-                _settings.DbUser = input;
+                // Database Schema
+                Console.Write($"Database schema [{_settings.DbSchema}]: ");
+                input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                    _settings.DbSchema = input;
 
-            // Database Password
-            Console.Write($"Database password [{new string('*', _settings.DbPassword.Length)}]: ");
-            input = ReadPassword();
-            if (!string.IsNullOrWhiteSpace(input))
-                _settings.DbPassword = input;
+                // Database User
+                Console.Write($"Database user [{_settings.DbUser}]: ");
+                input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                    _settings.DbUser = input;
+
+                // Database Password
+                Console.Write($"Database password [{new string('*', _settings.DbPassword.Length)}]: ");
+                input = ReadPassword();
+                if (!string.IsNullOrWhiteSpace(input))
+                    _settings.DbPassword = input;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("→ SQLite will use local database files (no additional configuration needed)");
+                Console.ResetColor();
+            }
 
             // Wifi Admin
             Console.Write($"\nWifi admin first name [{_settings.AdminFirstName}]: ");
@@ -396,6 +470,18 @@ namespace MetaverseInk.Configuration
             }
             
             return "127.0.0.1";
+        }
+
+        private static string GetConnectionString()
+        {
+            if (_settings.DbType.Equals("SQLite", StringComparison.OrdinalIgnoreCase))
+            {
+                return "URI=file:OpenSim.db,version=3,UseUTF16Encoding=True";
+            }
+            else // MySQL
+            {
+                return $"Data Source={_settings.DbHost};Database={_settings.DbSchema};User ID={_settings.DbUser};Password={_settings.DbPassword};Old Guids=true;Allow Zero Datetime=true;";
+            }
         }
 
         private static RegionConfigStatus CheckRegionConfig()
@@ -537,7 +623,7 @@ namespace MetaverseInk.Configuration
                 return;
             }
 
-            string connString = $"ConnectionString = \"Data Source={_settings.DbHost};Database={_settings.DbSchema};User ID={_settings.DbUser};Password={_settings.DbPassword};Old Guids=true;Allow Zero Datetime=true;\"";
+            string connString = $"ConnectionString = \"{GetConnectionString()}\"";
 
             try
             {
@@ -581,6 +667,410 @@ namespace MetaverseInk.Configuration
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"❌ Error configuring MyWorld: {e.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureOpenSimIni()
+        {
+            Console.WriteLine("\n→ Configuring OpenSim.ini...");
+            
+            if (!File.Exists("OpenSim.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ OpenSim.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("OpenSim.ini");
+
+            try
+            {
+                using (TextReader tr = new StreamReader("OpenSim.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("OpenSim.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace("127.0.0.1", _settings.IpAddress);
+                            if (line.Contains("BaseHostname") && !line.TrimStart().StartsWith(";"))
+                                line = $"    BaseHostname = {_settings.IpAddress}";
+                            if (line.Contains("PublicPort") && !line.TrimStart().StartsWith(";"))
+                                line = $"    PublicPort = {_settings.HttpPort}";
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ OpenSim.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring OpenSim.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureRobustIni()
+        {
+            Console.WriteLine("\n→ Configuring Robust.ini...");
+            
+            if (!File.Exists("Robust.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ Robust.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("Robust.ini");
+
+            try
+            {
+                string connString = GetConnectionString();
+                
+                using (TextReader tr = new StreamReader("Robust.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("Robust.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
+                                line = $"    ConnectionString = \"{connString}\"";
+                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace("127.0.0.1", _settings.IpAddress);
+                            if (line.Contains(":8002") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace(":8002", $":{_settings.HttpPort}");
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ Robust.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring Robust.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureRobustHGIni()
+        {
+            Console.WriteLine("\n→ Configuring Robust.HG.ini...");
+            
+            if (!File.Exists("Robust.HG.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ Robust.HG.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("Robust.HG.ini");
+
+            try
+            {
+                string connString = GetConnectionString();
+                
+                using (TextReader tr = new StreamReader("Robust.HG.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("Robust.HG.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
+                                line = $"    ConnectionString = \"{connString}\"";
+                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace("127.0.0.1", _settings.IpAddress);
+                            if (line.Contains(":8002") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace(":8002", $":{_settings.HttpPort}");
+                            if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
+                                line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ Robust.HG.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring Robust.HG.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureWifiIni()
+        {
+            Console.WriteLine("\n→ Configuring Wifi.ini...");
+            
+            if (!File.Exists("Wifi.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ Wifi.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("Wifi.ini");
+
+            try
+            {
+                using (TextReader tr = new StreamReader("Wifi.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("Wifi.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("GridName") && !line.TrimStart().StartsWith(";"))
+                                line = $"    GridName = \"{_settings.WorldName}\"";
+                            if (line.Contains("LoginURL") && !line.TrimStart().StartsWith(";"))
+                                line = $"    LoginURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            if (line.Contains("WebAddress") && !line.TrimStart().StartsWith(";"))
+                                line = $"    WebAddress = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            if (line.Contains("AdminFirst") && !line.TrimStart().StartsWith(";"))
+                                line = $"    AdminFirst = \"{_settings.AdminFirstName}\"";
+                            if (line.Contains("AdminLast") && !line.TrimStart().StartsWith(";"))
+                                line = $"    AdminLast = \"{_settings.AdminLastName}\"";
+                            if (line.Contains("AdminEmail") && !line.TrimStart().StartsWith(";"))
+                                line = $"    AdminEmail = \"{_settings.AdminEmail}\"";
+                            if (line.Contains("SmtpUsername") && !string.IsNullOrEmpty(_settings.GmailAccount) && !line.TrimStart().StartsWith(";"))
+                                line = $"    SmtpUsername = \"{_settings.GmailAccount}\"";
+                            if (line.Contains("SmtpPassword") && !string.IsNullOrEmpty(_settings.GmailPassword) && !line.TrimStart().StartsWith(";"))
+                                line = $"    SmtpPassword = \"{_settings.GmailPassword}\"";
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ Wifi.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring Wifi.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureDivaPreferences()
+        {
+            Console.WriteLine("\n→ Configuring config-include/DivaPreferences.ini...");
+            
+            if (!File.Exists("config-include/DivaPreferences.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ DivaPreferences.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("config-include/DivaPreferences.ini");
+
+            try
+            {
+                using (TextReader tr = new StreamReader("config-include/DivaPreferences.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("config-include/DivaPreferences.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("HomeURI") && !line.TrimStart().StartsWith(";"))
+                                line = $"    HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
+                                line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ DivaPreferences.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring DivaPreferences.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureGridCommon()
+        {
+            Console.WriteLine("\n→ Configuring config-include/GridCommon.ini...");
+            
+            if (!File.Exists("config-include/GridCommon.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ GridCommon.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("config-include/GridCommon.ini");
+
+            try
+            {
+                using (TextReader tr = new StreamReader("config-include/GridCommon.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("config-include/GridCommon.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace("127.0.0.1", _settings.IpAddress);
+                            if (line.Contains(":8002") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace(":8002", $":{_settings.HttpPort}");
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ GridCommon.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring GridCommon.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureStandaloneCommon()
+        {
+            Console.WriteLine("\n→ Configuring config-include/StandaloneCommon.ini...");
+            
+            if (!File.Exists("config-include/StandaloneCommon.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ StandaloneCommon.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("config-include/StandaloneCommon.ini");
+
+            try
+            {
+                string connString = GetConnectionString();
+                
+                using (TextReader tr = new StreamReader("config-include/StandaloneCommon.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("config-include/StandaloneCommon.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
+                                line = $"    ConnectionString = \"{connString}\"";
+                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace("127.0.0.1", _settings.IpAddress);
+                            if (line.Contains("welcome_message") && !line.TrimStart().StartsWith(";"))
+                                line = $"    welcome_message = \"Welcome to {_settings.WorldName}\"";
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ StandaloneCommon.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring StandaloneCommon.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureStandaloneHypergrid()
+        {
+            Console.WriteLine("\n→ Configuring config-include/StandaloneHypergrid.ini...");
+            
+            if (!File.Exists("config-include/StandaloneHypergrid.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ StandaloneHypergrid.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("config-include/StandaloneHypergrid.ini");
+
+            try
+            {
+                string connString = GetConnectionString();
+                
+                using (TextReader tr = new StreamReader("config-include/StandaloneHypergrid.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("config-include/StandaloneHypergrid.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
+                                line = $"    ConnectionString = \"{connString}\"";
+                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace("127.0.0.1", _settings.IpAddress);
+                            if (line.Contains("HomeURI") && !line.TrimStart().StartsWith(";"))
+                                line = $"    HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
+                                line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            if (line.Contains("welcome_message") && !line.TrimStart().StartsWith(";"))
+                                line = $"    welcome_message = \"Welcome to {_settings.WorldName}\"";
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ StandaloneHypergrid.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring StandaloneHypergrid.ini: {ex.Message}");
                 Console.ResetColor();
             }
         }
@@ -648,29 +1138,91 @@ namespace MetaverseInk.Configuration
                 }
                 
                 string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string backupName = $"config_backup_{timestamp}";
-                string backupPath = Path.Combine(BackupDirectory, backupName);
-                Directory.CreateDirectory(backupPath);
                 
+                // Define all configuration files to backup with their descriptions
                 var filesToBackup = new Dictionary<string, string>
                 {
-                    { "config-include/MyWorld.ini", "MyWorld configuration" },
-                    { "Regions/RegionConfig.ini", "Region configuration" },
-                    { "bin/OpenSim.ini", "OpenSim configuration" },
-                    { "bin/Robust.ini", "Robust configuration" },
-                    { "bin/Wifi.ini", "Wifi configuration" },
+                    // Main directory files
+                    { "OpenSim.ini", "OpenSim main configuration" },
+                    { "Robust.ini", "Robust standalone configuration" },
+                    { "Robust.HG.ini", "Robust Hypergrid configuration" },
+                    { "Wifi.ini", "Wifi web interface configuration" },
+                    
+                    // config-include directory files
+                    { "config-include/DivaPreferences.ini", "Diva preferences configuration" },
+                    { "config-include/GridCommon.ini", "Grid common configuration" },
+                    { "config-include/MyWorld.ini", "MyWorld custom configuration" },
+                    { "config-include/StandaloneCommon.ini", "Standalone common configuration" },
+                    { "config-include/StandaloneHypergrid.ini", "Standalone Hypergrid configuration" },
+                    
+                    // Regions directory files
+                    { "Regions/Regions.ini", "Regions configuration" },
+                    
+                    // Additional files
                     { ConfigFile, "Configure tool settings" }
                 };
                 
                 int backedUpCount = 0;
+                int skippedCount = 0;
+                var backedUpFiles = new List<string>();
                 
+                Console.WriteLine("\nBacking up configuration files:");
+                Console.WriteLine("─────────────────────────────────────────────────────────");
+                
+                foreach (var item in filesToBackup)
+                {
+                    if (File.Exists(item.Key))
+                    {
+                        try
+                        {
+                            // Create backup with .bak extension and timestamp
+                            string backupFileName = $"{item.Key}.bak_{timestamp}";
+                            
+                            // Ensure directory exists for the backup
+                            string backupDir = Path.GetDirectoryName(backupFileName);
+                            if (!string.IsNullOrEmpty(backupDir) && !Directory.Exists(backupDir))
+                            {
+                                Directory.CreateDirectory(backupDir);
+                            }
+                            
+                            File.Copy(item.Key, backupFileName, true);
+                            backedUpFiles.Add(backupFileName);
+                            backedUpCount++;
+                            
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine($"✓ {item.Key}");
+                            Console.ResetColor();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"✗ {item.Key} - Error: {ex.Message}");
+                            Console.ResetColor();
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.WriteLine($"○ {item.Key} (not found)");
+                        Console.ResetColor();
+                        skippedCount++;
+                    }
+                }
+                
+                Console.WriteLine("─────────────────────────────────────────────────────────");
+                
+                // Also create a compressed archive in the backup directory
+                string backupName = $"config_backup_{timestamp}";
+                string backupPath = Path.Combine(BackupDirectory, backupName);
+                Directory.CreateDirectory(backupPath);
+                
+                // Copy files to archive directory
                 foreach (var item in filesToBackup)
                 {
                     if (File.Exists(item.Key))
                     {
                         string destPath = Path.Combine(backupPath, Path.GetFileName(item.Key));
                         File.Copy(item.Key, destPath, true);
-                        backedUpCount++;
                     }
                 }
                 
@@ -693,16 +1245,98 @@ namespace MetaverseInk.Configuration
                 
                 var zipInfo = new FileInfo(zipFile);
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"✓ Backup created successfully!");
-                Console.WriteLine($"  Location: {zipFile}");
+                Console.WriteLine($"\n✓ Backup created successfully!");
+                Console.WriteLine($"  Archive: {zipFile}");
                 Console.WriteLine($"  Size: {FormatBytes(zipInfo.Length)}");
                 Console.WriteLine($"  Files backed up: {backedUpCount}");
+                Console.WriteLine($"  Files skipped: {skippedCount}");
+                Console.WriteLine($"  Individual backups: {backedUpFiles.Count} files with .bak_{timestamp} extension");
                 Console.ResetColor();
+                
+                // Clean up old backups (keep last 10 archives)
+                CleanupOldBackups();
             }
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"❌ Backup failed: {ex.Message}");
+                Console.ResetColor();
+                if (_settings?.Debug == true)
+                {
+                    Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                }
+            }
+        }
+        
+        private static void CleanupOldBackups()
+        {
+            try
+            {
+                if (!Directory.Exists(BackupDirectory))
+                    return;
+                
+                var backupFiles = Directory.GetFiles(BackupDirectory, "config_backup_*.zip")
+                    .Select(f => new FileInfo(f))
+                    .OrderByDescending(f => f.CreationTime)
+                    .ToList();
+                
+                if (backupFiles.Count > 10)
+                {
+                    Console.WriteLine("\nCleaning up old backup archives (keeping last 10)...");
+                    var filesToDelete = backupFiles.Skip(10);
+                    
+                    foreach (var file in filesToDelete)
+                    {
+                        try
+                        {
+                            file.Delete();
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            Console.WriteLine($"  Removed: {file.Name}");
+                            Console.ResetColor();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"  Could not remove {file.Name}: {ex.Message}");
+                            Console.ResetColor();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"⚠ Could not clean up old backups: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+        
+        private static void BackupSingleFile(string filePath)
+        {
+            if (!File.Exists(filePath))
+                return;
+                
+            try
+            {
+                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                string backupFileName = $"{filePath}.bak_{timestamp}";
+                
+                // Ensure directory exists for the backup
+                string backupDir = Path.GetDirectoryName(backupFileName);
+                if (!string.IsNullOrEmpty(backupDir) && !Directory.Exists(backupDir))
+                {
+                    Directory.CreateDirectory(backupDir);
+                }
+                
+                File.Copy(filePath, backupFileName, true);
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine($"  → Backup: {backupFileName}");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"  ⚠ Could not backup {filePath}: {ex.Message}");
                 Console.ResetColor();
             }
         }
@@ -856,9 +1490,17 @@ namespace MetaverseInk.Configuration
             }
             
             Console.WriteLine($"\n💾 Database:");
-            Console.WriteLine($"   Host:   {_settings.DbHost}");
-            Console.WriteLine($"   Schema: {_settings.DbSchema}");
-            Console.WriteLine($"   User:   {_settings.DbUser}");
+            Console.WriteLine($"   Type:   {_settings.DbType}");
+            if (_settings.DbType.Equals("MySQL", StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine($"   Host:   {_settings.DbHost}");
+                Console.WriteLine($"   Schema: {_settings.DbSchema}");
+                Console.WriteLine($"   User:   {_settings.DbUser}");
+            }
+            else
+            {
+                Console.WriteLine($"   File:   OpenSim.db (SQLite)");
+            }
             
             Console.WriteLine("\n" + new string('═', 64));
         }
@@ -882,6 +1524,7 @@ namespace MetaverseInk.Configuration
     public class ConfigurationSettings
     {
         public string WorldName { get; set; }
+        public string DbType { get; set; } // "MySQL" or "SQLite"
         public string DbHost { get; set; }
         public string DbSchema { get; set; }
         public string DbUser { get; set; }

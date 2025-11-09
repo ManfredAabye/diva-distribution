@@ -55,10 +55,13 @@ Das Tool führt Sie durch folgende Schritte:
    - HTTP-Port
 
 2. **Datenbank-Konfiguration**
-   - Host (z.B. localhost)
-   - Schema/Datenbankname
-   - Benutzername
-   - Passwort
+   - **Datenbanktyp wählen:** MySQL oder SQLite
+   - Bei **MySQL**:
+     - Host (z.B. localhost)
+     - Schema/Datenbankname
+     - Benutzername
+     - Passwort
+   - Bei **SQLite**: Keine weiteren Eingaben erforderlich (verwendet OpenSim.db)
 
 3. **Administrator-Account**
    - Vorname
@@ -118,6 +121,7 @@ Die Konfiguration wird in `ConfigureSettings.json` gespeichert:
 ```json
 {
   "WorldName": "My World",
+  "DbType": "MySQL",
   "DbHost": "localhost",
   "DbSchema": "opensim",
   "DbUser": "opensim",
@@ -144,10 +148,11 @@ Die Konfiguration wird in `ConfigureSettings.json` gespeichert:
 | Parameter | Typ | Beschreibung | Standard |
 |-----------|-----|--------------|----------|
 | `WorldName` | string | Name Ihrer virtuellen Welt | "My World" |
-| `DbHost` | string | Datenbank-Server-Adresse | "localhost" |
-| `DbSchema` | string | Datenbank-Schema/Name | "opensim" |
-| `DbUser` | string | Datenbank-Benutzername | "opensim" |
-| `DbPassword` | string | Datenbank-Passwort | "secret" |
+| `DbType` | string | Datenbanktyp: "MySQL" oder "SQLite" | "MySQL" |
+| `DbHost` | string | Datenbank-Server-Adresse (nur MySQL) | "localhost" |
+| `DbSchema` | string | Datenbank-Schema/Name (nur MySQL) | "opensim" |
+| `DbUser` | string | Datenbank-Benutzername (nur MySQL) | "opensim" |
+| `DbPassword` | string | Datenbank-Passwort (nur MySQL) | "secret" |
 | `AdminFirstName` | string | Vorname des Wifi-Administrators | "Wifi" |
 | `AdminLastName` | string | Nachname des Wifi-Administrators | "Admin" |
 | `AdminPassword` | string | Passwort des Administrators | "secret" |
@@ -165,11 +170,31 @@ Die Konfiguration wird in `ConfigureSettings.json` gespeichert:
 
 ## 📁 Erstellte/Geänderte Dateien
 
-Das Tool konfiguriert folgende Dateien:
+Das Tool konfiguriert folgende Dateien automatisch:
 
-### 1. `Regions/RegionConfig.ini`
+### Hauptverzeichnis (/bin)
+
+- **OpenSim.ini** - Hauptkonfiguration für OpenSim Server
+- **Robust.ini** - Robust Standalone Grid Services
+- **Robust.HG.ini** - Robust Hypergrid Configuration
+- **Wifi.ini** - Web-Interface Konfiguration
+
+### Konfigurationsverzeichnis (/bin/config-include)
+
+- **DivaPreferences.ini** - Diva-spezifische Präferenzen
+- **GridCommon.ini** - Gemeinsame Grid-Einstellungen
+- **MyWorld.ini** - Ihre Welt-Konfiguration
+- **StandaloneCommon.ini** - Standalone gemeinsame Einstellungen
+- **StandaloneHypergrid.ini** - Standalone Hypergrid-Konfiguration
+
+### Regions-Verzeichnis (/bin/Regions)
+
+- **Regions.ini** - Region-Definitionen (früher RegionConfig.ini)
+
+### 1. `Regions/Regions.ini`
 
 Enthält die Konfiguration für alle Regionen:
+
 - Region-Namen
 - UUIDs (automatisch generiert)
 - Koordinaten
@@ -179,13 +204,14 @@ Enthält die Konfiguration für alle Regionen:
 ### 2. `config-include/MyWorld.ini`
 
 Hauptkonfiguration für Ihre Welt:
-- Datenbankverbindung
+
+- Datenbankverbindung (MySQL oder SQLite)
 - Netzwerkeinstellungen
 - Standard-Region
 - E-Mail-Konfiguration
 - Home-Location
 
-**Wichtig:** Bei erneuter Konfiguration wird die alte Datei als `MyWorld.ini.backup.{Zeitstempel}` gesichert.
+**Wichtig:** Bei erneuter Konfiguration wird automatisch ein Backup mit Zeitstempel erstellt.
 
 ## 💾 Backup-System
 
@@ -195,17 +221,30 @@ Wenn `AutoBackup: true` gesetzt ist, erstellt das Tool automatisch ein Backup vo
 
 ### Backup-Inhalt
 
-Backups umfassen:
+Backups umfassen folgende Dateien:
+
+- `OpenSim.ini`
+- `Robust.ini`
+- `Robust.HG.ini`
+- `Wifi.ini`
+- `config-include/DivaPreferences.ini`
+- `config-include/GridCommon.ini`
 - `config-include/MyWorld.ini`
-- `Regions/RegionConfig.ini`
-- `bin/OpenSim.ini`
-- `bin/Robust.ini`
-- `bin/Wifi.ini`
+- `config-include/StandaloneCommon.ini`
+- `config-include/StandaloneHypergrid.ini`
+- `Regions/Regions.ini`
 - `ConfigureSettings.json`
+
+### Doppelte Backup-Strategie
+
+Das Tool erstellt **zwei Arten von Backups**:
+
+1. **Individuelles Backup** - Jede Datei wird vor Änderung mit `.bak_ZEITSTEMPEL` gesichert
+2. **Vollständiges ZIP-Archiv** - Alle Konfigurationsdateien in einem komprimierten Archiv
 
 ### Backup-Verzeichnis
 
-```
+```bash
 config-backups/
 ├── config_backup_20251106_143022.zip
 ├── config_backup_20251105_091545.zip
@@ -222,7 +261,7 @@ Jedes Backup enthält eine `backup_info.json` mit Metadaten:
 }
 ```
 
-## ✅ Validierung
+## ✅ Validierung2
 
 Das Validierungs-Tool überprüft:
 
@@ -234,7 +273,7 @@ Das Validierungs-Tool überprüft:
 
 ### Beispiel-Ausgabe
 
-```
+```bash
 ╔════════════════════════════════════╗
 ║   Validating Configuration         ║
 ╚════════════════════════════════════╝
@@ -251,6 +290,7 @@ Das Validierungs-Tool überprüft:
 ### Passwort-Eingabe
 
 Passwörter werden während der Eingabe maskiert (*****):
+
 - Keine Klartext-Anzeige im Terminal
 - Backspace-Unterstützung zum Korrigieren
 - Sichere Speicherung in JSON-Konfiguration
@@ -299,6 +339,7 @@ dotnet Configure.dll --validate
 ### IP-Adresse / Domain
 
 Das Tool akzeptiert:
+
 - IPv4-Adressen (z.B. `192.168.1.100`)
 - Domain-Namen (z.B. `myworld.example.com`)
 - Localhost (`127.0.0.1` für lokale Tests)
@@ -313,6 +354,7 @@ Das Tool akzeptiert:
 ### Firewall-Hinweise
 
 Öffnen Sie folgende Ports:
+
 - TCP 9000 (HTTP/Wifi)
 - UDP 9000-9010 (Regionen)
 
@@ -320,7 +362,7 @@ Das Tool akzeptiert:
 
 ### Erfolgreiche Konfiguration
 
-```
+```bash
 ╔══════════════════════════════════════════════════════════════╗
 ║              Configuration Complete!                         ║
 ╚══════════════════════════════════════════════════════════════╝
@@ -337,6 +379,7 @@ Das Tool akzeptiert:
 📧 Your users get email notifications from example@gmail.com
 
 💾 Database:
+   Type:   MySQL
    Host:   localhost
    Schema: opensim
    User:   opensim
