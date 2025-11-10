@@ -113,41 +113,29 @@ namespace MetaverseInk.Configuration
                 {
                     string json = File.ReadAllText(ConfigFile);
                     _settings = JsonSerializer.Deserialize<ConfigurationSettings>(json);
+                    
+                    // Ensure Architecture property is set (for backward compatibility)
+                    if (_settings.Architecture == 0)
+                    {
+                        _settings.Architecture = ArchitectureType.Standalone;
+                    }
+                    
+                    // Ensure Region1Name is set
+                    if (string.IsNullOrEmpty(_settings.Region1Name))
+                    {
+                        _settings.Region1Name = _settings.WorldName;
+                    }
+                    
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("✓ Configuration loaded successfully");
+                    Console.WriteLine($"✓ Configuration loaded from {ConfigFile}");
+                    Console.WriteLine($"  World: {_settings.WorldName}");
+                    Console.WriteLine($"  Architecture: {_settings.Architecture}");
                     Console.ResetColor();
                 }
                 else
                 {
-                    // Create default configuration
-                    _settings = new ConfigurationSettings
-                    {
-                        WorldName = "My World",
-                        DbType = "SQLite",  // Changed from MySQL to SQLite as default for easier setup
-                        DbHost = "localhost",
-                        DbSchema = "opensim",
-                        DbUser = "opensim",
-                        DbPassword = "secret",
-                        AdminFirstName = "Wifi",
-                        AdminLastName = "Admin",
-                        AdminPassword = "secret",
-                        AdminEmail = "admin@localhost",
-                        IpAddress = DetectExternalIP(),
-                        HttpPort = 9000,
-                        BaseLocationX = 1000,
-                        BaseLocationY = 1000,
-                        RegionSizeX = 512,  // Changed from 256 to 512 (current standard)
-                        RegionSizeY = 512,  // Changed from 256 to 512 (current standard)
-                        RegionSizeZ = 512,  // Changed from 256 to 512 (current standard)
-                        GmailAccount = string.Empty,
-                        GmailPassword = string.Empty,
-                        AutoBackup = true,
-                        Debug = false
-                    };
-                    SaveConfiguration();
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("⚠ No configuration found. Created default configuration.");
-                    Console.ResetColor();
+                    // Load from architecture-specific default settings
+                    LoadArchitectureDefaultSettings();
                 }
             }
             catch (Exception ex)
@@ -155,7 +143,81 @@ namespace MetaverseInk.Configuration
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"❌ Error loading configuration: {ex.Message}");
                 Console.ResetColor();
-                _settings = new ConfigurationSettings(); // Use defaults
+                LoadArchitectureDefaultSettings();
+            }
+        }
+
+        private static void LoadArchitectureDefaultSettings()
+        {
+            // Default to Standalone (local grid without Hypergrid)
+            string defaultSettingsFile = "StandaloneSettings.json";
+            
+            try
+            {
+                if (File.Exists(defaultSettingsFile))
+                {
+                    string json = File.ReadAllText(defaultSettingsFile);
+                    _settings = JsonSerializer.Deserialize<ConfigurationSettings>(json);
+                    
+                    // Auto-detect external IP if not set
+                    if (_settings.IpAddress == "127.0.0.1" || string.IsNullOrEmpty(_settings.IpAddress))
+                    {
+                        _settings.IpAddress = "127.0.0.1";
+                    }
+                    
+                    // Ensure Region1Name is set
+                    if (string.IsNullOrEmpty(_settings.Region1Name))
+                    {
+                        _settings.Region1Name = _settings.WorldName;
+                    }
+                    
+                    SaveConfiguration();
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($"✓ Default configuration loaded from {defaultSettingsFile}");
+                    Console.WriteLine($"  Architecture: {_settings.Architecture}");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    // Fallback: Create minimal default configuration
+                    _settings = new ConfigurationSettings
+                    {
+                        WorldName = "My World",
+                        DbType = "SQLite",
+                        DbHost = "localhost",
+                        DbSchema = "opensim",
+                        DbUser = "opensim",
+                        DbPassword = "secret",
+                        AdminFirstName = "Wifi",
+                        AdminLastName = "Administrator",
+                        AdminPassword = "secret",
+                        AdminEmail = "admin@localhost",
+                        IpAddress = "127.0.0.1",
+                        HttpPort = 9000,
+                        BaseLocationX = 1000,
+                        BaseLocationY = 1000,
+                        RegionSizeX = 512,
+                        RegionSizeY = 512,
+                        RegionSizeZ = 512,
+                        GmailAccount = string.Empty,
+                        GmailPassword = string.Empty,
+                        AutoBackup = true,
+                        Debug = false,
+                        Architecture = ArchitectureType.Standalone,
+                        Region1Name = "Welcome"
+                    };
+                    SaveConfiguration();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("⚠ No default settings found. Created fallback configuration.");
+                    Console.ResetColor();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error loading default settings: {ex.Message}");
+                Console.ResetColor();
+                _settings = new ConfigurationSettings();
             }
         }
 
@@ -248,29 +310,132 @@ namespace MetaverseInk.Configuration
         
         private static void ConfigureAllFiles()
         {
-            // Configure all configuration files
+            // Configure all configuration files based on selected architecture
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\n→ Configuring for Architecture: {_settings.Architecture}");
+            Console.ResetColor();
+            
+            // Always configure these files regardless of architecture
             ConfigureRegions();
             ConfigureMyWorld();
-            ConfigureOpenSimIni();
-            ConfigureRobustIni();
-            ConfigureRobustHGIni();
+            ConfigureOpenSimIni(); // Sets Include-Architecture based on _settings.Architecture
             ConfigureWifiIni();
             ConfigureDivaPreferences();
-            ConfigureGridCommon();
-            ConfigureStandaloneCommon();
-            ConfigureStandaloneHypergrid();
+            ConfigureOsslEnable();
             
-            // Validate region configurations for conflicts
-            ValidateRegionConfigurations();
+            // Configure architecture-specific files
+            switch (_settings.Architecture)
+            {
+                case ArchitectureType.Standalone:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n→ Configuring Standalone architecture files...");
+                    Console.ResetColor();
+                    ConfigureStandaloneCommon();
+                    // Standalone.ini is included by OpenSim.ini, no separate configuration needed
+                    break;
+                    
+                case ArchitectureType.StandaloneHypergrid:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n→ Configuring Standalone with Hypergrid architecture files...");
+                    Console.ResetColor();
+                    ConfigureStandaloneCommon();
+                    ConfigureStandaloneHypergrid();
+                    break;
+                    
+                case ArchitectureType.Grid:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n→ Configuring Grid architecture files...");
+                    Console.WriteLine("   (Own grid with separate Robust server)");
+                    Console.ResetColor();
+                    ConfigureGridCommon();
+                    ConfigureRobustIni();
+                    break;
+                    
+                case ArchitectureType.GridHypergrid:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("\n→ Configuring Grid with Hypergrid architecture files...");
+                    Console.WriteLine("   (Own grid with separate Robust server and Hypergrid support)");
+                    Console.ResetColor();
+                    ConfigureGridCommon();
+                    ConfigureRobustHGIni();
+                    ConfigureGridHypergrid();
+                    break;
+                    
+                default:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"⚠ Unknown architecture: {_settings.Architecture}, using Standalone defaults");
+                    Console.ResetColor();
+                    ConfigureStandaloneCommon();
+                    // Standalone.ini is included by OpenSim.ini, no separate configuration needed
+                    break;
+            }
         }
 
         private static void GetUserInput()
         {
             Console.WriteLine("Please provide the following information (press Enter to use default):\n");
             
+            // ============================================
+            // STEP 1: ARCHITECTURE SELECTION (FIRST!)
+            // ============================================
+            Console.WriteLine("╔════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║          STEP 1: Architecture Selection                   ║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+            Console.WriteLine("1. Standalone (offline mode - single server, local grid only)");
+            Console.WriteLine("2. Standalone with Hypergrid (online mode - single server with Hypergrid)");
+            Console.WriteLine("3. Grid Mode (offline mode - own grid with separate Robust server)");
+            Console.WriteLine("4. Grid with Hypergrid (online mode - own grid with Robust server and Hypergrid)");
+            
+            string currentArch = _settings.Architecture.ToString();
+            int defaultChoice = _settings.Architecture == ArchitectureType.Standalone ? 1 :
+                                _settings.Architecture == ArchitectureType.StandaloneHypergrid ? 2 :
+                                _settings.Architecture == ArchitectureType.Grid ? 3 :
+                                _settings.Architecture == ArchitectureType.GridHypergrid ? 4 : 1;
+            
+            Console.Write($"\nSelect architecture [1-4, default: {defaultChoice}]: ");
+            string input = Console.ReadLine();
+            
+            int archChoice = defaultChoice;
+            if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int userChoice))
+            {
+                archChoice = userChoice;
+            }
+            
+            switch (archChoice)
+            {
+                case 1:
+                    _settings.Architecture = ArchitectureType.Standalone;
+                    break;
+                case 2:
+                    _settings.Architecture = ArchitectureType.StandaloneHypergrid;
+                    break;
+                case 3:
+                    _settings.Architecture = ArchitectureType.Grid;
+                    break;
+                case 4:
+                    _settings.Architecture = ArchitectureType.GridHypergrid;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"⚠ Invalid choice, keeping current: {currentArch}");
+                    Console.ResetColor();
+                    break;
+            }
+            
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"✓ Selected Architecture: {_settings.Architecture}");
+            Console.ResetColor();
+
+            // ============================================
+            // STEP 2: BASIC SETTINGS
+            // ============================================
+            Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║          STEP 2: Basic Settings                           ║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+            
             // World Name
             Console.Write($"Name of your world [{_settings.WorldName}]: ");
-            string input = Console.ReadLine();
+            input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
                 _settings.WorldName = input;
 
@@ -295,8 +460,13 @@ namespace MetaverseInk.Configuration
             if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int port))
                 _settings.HttpPort = port;
 
-            // Database Type
-            Console.WriteLine($"\n--- Database Settings ---");
+            // ============================================
+            // STEP 3: DATABASE SETTINGS
+            // ============================================
+            Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║          STEP 3: Database Settings                        ║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+            
             Console.Write($"Database type (MySQL/SQLite) [{_settings.DbType}]: ");
             input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
@@ -318,25 +488,21 @@ namespace MetaverseInk.Configuration
             // MySQL specific settings
             if (_settings.DbType.Equals("MySQL", StringComparison.OrdinalIgnoreCase))
             {
-                // Database Host
                 Console.Write($"Database host [{_settings.DbHost}]: ");
                 input = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(input))
                     _settings.DbHost = input;
 
-                // Database Schema
                 Console.Write($"Database schema [{_settings.DbSchema}]: ");
                 input = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(input))
                     _settings.DbSchema = input;
 
-                // Database User
                 Console.Write($"Database user [{_settings.DbUser}]: ");
                 input = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(input))
                     _settings.DbUser = input;
 
-                // Database Password
                 Console.Write($"Database password [{new string('*', _settings.DbPassword.Length)}]: ");
                 input = ReadPassword();
                 if (!string.IsNullOrWhiteSpace(input))
@@ -349,8 +515,14 @@ namespace MetaverseInk.Configuration
                 Console.ResetColor();
             }
 
-            // Wifi Admin
-            Console.Write($"\nWifi admin first name [{_settings.AdminFirstName}]: ");
+            // ============================================
+            // STEP 4: WIFI ADMIN SETTINGS
+            // ============================================
+            Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║          STEP 4: Wifi Administrator Settings             ║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+            
+            Console.Write($"Wifi admin first name [{_settings.AdminFirstName}]: ");
             input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
                 _settings.AdminFirstName = input;
@@ -365,7 +537,7 @@ namespace MetaverseInk.Configuration
             if (!string.IsNullOrWhiteSpace(input))
                 _settings.AdminPassword = input;
 
-            Console.Write($"\nWifi admin email [{_settings.AdminEmail}]: ");
+            Console.Write($"Wifi admin email [{_settings.AdminEmail}]: ");
             input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
             {
@@ -379,8 +551,14 @@ namespace MetaverseInk.Configuration
                 }
             }
 
-            // Gmail (optional)
-            Console.Write($"\nGmail account for notifications (optional) [{_settings.GmailAccount}]: ");
+            // ============================================
+            // STEP 5: OPTIONAL EMAIL SETTINGS
+            // ============================================
+            Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║          STEP 5: Email Notifications (Optional)          ║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+            
+            Console.Write($"Gmail account for notifications (optional) [{_settings.GmailAccount}]: ");
             input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input))
             {
@@ -392,8 +570,20 @@ namespace MetaverseInk.Configuration
                     _settings.GmailPassword = gmailPwd;
             }
 
-            // Region Settings
-            Console.WriteLine($"\n--- Region Settings ---");
+            // ============================================
+            // STEP 6: REGION SETTINGS
+            // ============================================
+            Console.WriteLine("\n╔════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║          STEP 6: Region Settings                          ║");
+            Console.WriteLine("╚════════════════════════════════════════════════════════════╝\n");
+            
+            Console.Write($"First region name [{_settings.WorldName}]: ");
+            input = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(input))
+                _settings.Region1Name = input;
+            else
+                _settings.Region1Name = _settings.WorldName; // Default to WorldName
+            
             Console.Write($"Base location X coordinate [{_settings.BaseLocationX}]: ");
             input = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int locX))
@@ -509,216 +699,6 @@ namespace MetaverseInk.Configuration
             return RegionConfigStatus.NeedsCreation;
         }
 
-        private static void ValidateRegionConfigurations()
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("\n→ Validating region configurations...");
-            Console.ResetColor();
-
-            var regionFiles = new List<string>();
-            if (File.Exists("Regions/RegionConfig.ini"))
-                regionFiles.Add("Regions/RegionConfig.ini");
-            if (File.Exists("Regions/Regions.ini"))
-                regionFiles.Add("Regions/Regions.ini");
-
-            if (regionFiles.Count == 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("⚠ No region configuration files found.");
-                Console.ResetColor();
-                return;
-            }
-
-            var locations = new Dictionary<string, string>(); // location -> region name
-            var ports = new Dictionary<int, string>(); // port -> region name
-            var uuids = new Dictionary<string, string>(); // uuid -> region name
-            var regionData = new List<(string name, int x, int y, int sizeX, int sizeY)>(); // Store region data for overlap checking
-            bool hasConflicts = false;
-
-            foreach (var file in regionFiles)
-            {
-                try
-                {
-                    string currentRegion = null;
-                    int locX = 0, locY = 0, sizeX = 256, sizeY = 256;
-                    bool hasLocation = false, hasSize = false;
-                    
-                    using (TextReader tr = new StreamReader(file))
-                    {
-                        string line;
-                        while ((line = tr.ReadLine()) != null)
-                        {
-                            line = line.Trim();
-                            
-                            // Check for region section header
-                            if (line.StartsWith("[") && line.EndsWith("]"))
-                            {
-                                // Save previous region data if complete
-                                if (currentRegion != null && hasLocation)
-                                {
-                                    regionData.Add((currentRegion, locX, locY, sizeX, sizeY));
-                                }
-                                
-                                currentRegion = line.Substring(1, line.Length - 2);
-                                hasLocation = false;
-                                hasSize = false;
-                                sizeX = 256; // Reset to defaults
-                                sizeY = 256;
-                                continue;
-                            }
-
-                            if (string.IsNullOrEmpty(currentRegion))
-                                continue;
-
-                            // Check Location
-                            if (line.StartsWith("Location") && line.Contains("="))
-                            {
-                                string location = line.Split('=')[1].Trim();
-                                string[] coords = location.Split(',');
-                                if (coords.Length == 2 && int.TryParse(coords[0], out locX) && int.TryParse(coords[1], out locY))
-                                {
-                                    hasLocation = true;
-                                }
-                                
-                                if (locations.ContainsKey(location))
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine($"❌ CONFLICT: Regions '{locations[location]}' and '{currentRegion}' have the same Location: {location}");
-                                    Console.WriteLine($"   File: {file}");
-                                    hasConflicts = true;
-                                    Console.ResetColor();
-                                }
-                                else
-                                {
-                                    locations[location] = currentRegion;
-                                }
-                            }
-
-                            // Check SizeX and SizeY
-                            if (line.StartsWith("SizeX") && line.Contains("="))
-                            {
-                                string sizeStr = line.Split('=')[1].Trim();
-                                if (int.TryParse(sizeStr, out int size))
-                                {
-                                    sizeX = size;
-                                    hasSize = true;
-                                }
-                            }
-                            
-                            if (line.StartsWith("SizeY") && line.Contains("="))
-                            {
-                                string sizeStr = line.Split('=')[1].Trim();
-                                if (int.TryParse(sizeStr, out int size))
-                                {
-                                    sizeY = size;
-                                    hasSize = true;
-                                }
-                            }
-
-                            // Check InternalPort
-                            if (line.StartsWith("InternalPort") && line.Contains("="))
-                            {
-                                string portStr = line.Split('=')[1].Trim();
-                                if (int.TryParse(portStr, out int port))
-                                {
-                                    if (ports.ContainsKey(port))
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.WriteLine($"❌ CONFLICT: Regions '{ports[port]}' and '{currentRegion}' have the same InternalPort: {port}");
-                                        Console.WriteLine($"   File: {file}");
-                                        hasConflicts = true;
-                                        Console.ResetColor();
-                                    }
-                                    else
-                                    {
-                                        ports[port] = currentRegion;
-                                    }
-                                }
-                            }
-
-                            // Check RegionUUID
-                            if (line.StartsWith("RegionUUID") && line.Contains("="))
-                            {
-                                string uuid = line.Split('=')[1].Trim();
-                                if (uuids.ContainsKey(uuid))
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine($"❌ CONFLICT: Regions '{uuids[uuid]}' and '{currentRegion}' have the same RegionUUID: {uuid}");
-                                    Console.WriteLine($"   File: {file}");
-                                    hasConflicts = true;
-                                    Console.ResetColor();
-                                }
-                                else
-                                {
-                                    uuids[uuid] = currentRegion;
-                                }
-                            }
-                        }
-                        
-                        // Save last region data
-                        if (currentRegion != null && hasLocation)
-                        {
-                            regionData.Add((currentRegion, locX, locY, sizeX, sizeY));
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"❌ Error reading {file}: {ex.Message}");
-                    Console.ResetColor();
-                }
-            }
-            
-            // Check for region overlaps based on size
-            for (int i = 0; i < regionData.Count; i++)
-            {
-                for (int j = i + 1; j < regionData.Count; j++)
-                {
-                    var region1 = regionData[i];
-                    var region2 = regionData[j];
-                    
-                    // Calculate grid units (256m per unit)
-                    int r1EndX = region1.x + (region1.sizeX / 256);
-                    int r1EndY = region1.y + (region1.sizeY / 256);
-                    int r2EndX = region2.x + (region2.sizeX / 256);
-                    int r2EndY = region2.y + (region2.sizeY / 256);
-                    
-                    // Check for overlap
-                    bool overlapsX = region1.x < r2EndX && r1EndX > region2.x;
-                    bool overlapsY = region1.y < r2EndY && r1EndY > region2.y;
-                    
-                    if (overlapsX && overlapsY)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"❌ OVERLAP: Regions '{region1.name}' and '{region2.name}' overlap!");
-                        Console.WriteLine($"   '{region1.name}': Location {region1.x},{region1.y}, Size {region1.sizeX}x{region1.sizeY} (occupies {region1.x}-{r1EndX},{region1.y}-{r1EndY})");
-                        Console.WriteLine($"   '{region2.name}': Location {region2.x},{region2.y}, Size {region2.sizeX}x{region2.sizeY} (occupies {region2.x}-{r2EndX},{region2.y}-{r2EndY})");
-                        Console.WriteLine($"   → Regions with size {region1.sizeX}m need at least {region1.sizeX / 256} grid positions apart!");
-                        hasConflicts = true;
-                        Console.ResetColor();
-                    }
-                }
-            }
-
-            if (!hasConflicts)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"✓ All {locations.Count} region(s) validated successfully - no conflicts found.");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\n⚠ Please fix these conflicts before starting OpenSim!");
-                Console.WriteLine("  Each region must have:");
-                Console.WriteLine("  - Unique Location (X,Y coordinates)");
-                Console.WriteLine("  - Unique InternalPort");
-                Console.WriteLine("  - Unique RegionUUID");
-                Console.ResetColor();
-            }
-        }
-
         private static void ConfigureRegions()
         {
             Console.WriteLine("\n╔════════════════════════════════════╗");
@@ -787,19 +767,6 @@ namespace MetaverseInk.Configuration
                 Console.WriteLine($"  Region name: {_settings.WorldName}");
                 Console.WriteLine($"  Location: {_settings.BaseLocationX},{_settings.BaseLocationY}");
                 Console.WriteLine($"  Size: {_settings.RegionSizeX}x{_settings.RegionSizeY}x{_settings.RegionSizeZ}");
-                Console.WriteLine($"  Internal Port: {_settings.HttpPort + 10}");
-                Console.ResetColor();
-                
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\n⚠ IMPORTANT: If you add multiple regions manually:");
-                Console.WriteLine("  - Each region MUST have a unique Location (X,Y coordinates)");
-                Console.WriteLine("  - Each region MUST have a unique InternalPort");
-                Console.WriteLine("  - Each region MUST have a unique RegionUUID");
-                Console.WriteLine($"  - Regions with size {_settings.RegionSizeX}m occupy {_settings.RegionSizeX / 256} grid positions!");
-                Console.WriteLine($"  - They must be at least {_settings.RegionSizeX / 256} positions apart to avoid overlap!");
-                Console.WriteLine($"  Example for {_settings.RegionSizeX}x{_settings.RegionSizeY}m regions:");
-                Console.WriteLine($"    Region 1: Location 1000,1000 with Port 9010");
-                Console.WriteLine($"    Region 2: Location {1000 + (_settings.RegionSizeX / 256)},1000 with Port 9011 (NOT 1001!)");
                 Console.ResetColor();
             }
             catch (Exception e)
@@ -852,6 +819,9 @@ namespace MetaverseInk.Configuration
 
             try
             {
+                bool inWifiSection = false;
+                bool wifiSectionWritten = false;
+                
                 using (TextReader tr = new StreamReader("config-include/MyWorld.ini.example"))
                 {
                     using (TextWriter tw = new StreamWriter("config-include/MyWorld.ini"))
@@ -862,6 +832,71 @@ namespace MetaverseInk.Configuration
                         
                         while ((line = tr.ReadLine()) != null)
                         {
+                            // Track wenn wir in der [WifiService] Sektion sind
+                            if (line.Trim().Equals("[WifiService]", StringComparison.OrdinalIgnoreCase))
+                            {
+                                inWifiSection = true;
+                                wifiSectionWritten = true;
+                                
+                                // Write complete WifiService section with all required services
+                                tw.WriteLine("[WifiService]");
+                                tw.WriteLine("    Enabled = true");
+                                tw.WriteLine("    ServerPort = ${Const|PublicPort}");
+                                tw.WriteLine($"    GridName = \"{_settings.WorldName}\"");
+                                tw.WriteLine($"    LoginURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                                tw.WriteLine($"    WebAddress = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                                tw.WriteLine();
+                                tw.WriteLine("    ;; Service dependencies - REQUIRED for Wifi to work properly");
+                                tw.WriteLine("    UserAccountService = \"OpenSim.Services.UserAccountService.dll:UserAccountService\"");
+                                tw.WriteLine("    AuthenticationService = \"OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService\"");
+                                tw.WriteLine("    GridService = \"OpenSim.Services.GridService.dll:GridService\"");
+                                tw.WriteLine("    InventoryService = \"OpenSim.Services.InventoryService.dll:XInventoryService\"");
+                                tw.WriteLine("    AvatarService = \"OpenSim.Services.AvatarService.dll:AvatarService\"");
+                                tw.WriteLine("    GridUserService = \"OpenSim.Services.UserAccountService.dll:GridUserService\"");
+                                tw.WriteLine();
+                                tw.WriteLine("    ;; The Wifi Administrator account");
+                                tw.WriteLine($"    AdminFirst = \"{_settings.AdminFirstName}\"");
+                                tw.WriteLine($"    AdminLast = \"{_settings.AdminLastName}\"");
+                                tw.WriteLine($"    AdminEmail = \"{_settings.AdminEmail}\"");
+                                tw.WriteLine($"    AdminPassword = \"{_settings.AdminPassword}\"");
+                                tw.WriteLine();
+                                tw.WriteLine("    ;; Do you want to be able to control grid registrations?");
+                                tw.WriteLine("    AccountConfirmationRequired = false");
+                                tw.WriteLine();
+                                tw.WriteLine("    ;; Variables for your mail server");
+                                if (!string.IsNullOrEmpty(_settings.GmailAccount))
+                                {
+                                    tw.WriteLine("    SmtpHost = \"smtp.gmail.com\"");
+                                    tw.WriteLine("    SmtpPort = \"587\"");
+                                    tw.WriteLine($"    SmtpUsername = \"{_settings.GmailAccount}\"");
+                                    tw.WriteLine($"    SmtpPassword = \"{_settings.GmailPassword}\"");
+                                }
+                                else
+                                {
+                                    tw.WriteLine("    ;SmtpHost = \"smtp.gmail.com\"");
+                                    tw.WriteLine("    ;SmtpPort = \"587\"");
+                                    tw.WriteLine("    ;SmtpUsername = \"your_email@gmail.com\"");
+                                    tw.WriteLine("    ;SmtpPassword = \"secret\"");
+                                }
+                                tw.WriteLine();
+                                tw.WriteLine($"    HomeLocation = \"{_settings.Region1Name}/128/128/30\"");
+                                
+                                // Skip all lines in original WifiService section until next section
+                                continue;
+                            }
+                            
+                            // Track when we leave WifiService section
+                            if (inWifiSection && line.TrimStart().StartsWith("["))
+                            {
+                                inWifiSection = false;
+                            }
+                            
+                            // Skip lines within WifiService section (we already wrote our complete version)
+                            if (inWifiSection)
+                            {
+                                continue;
+                            }
+                            
                             // Track wenn wir in der [UserAgentService] Sektion sind
                             if (line.Trim().StartsWith("[UserAgentService]"))
                             {
@@ -919,6 +954,11 @@ namespace MetaverseInk.Configuration
                 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("✓ Your World has been successfully configured for .NET 8");
+                if (wifiSectionWritten)
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("  ℹ [WifiService] section with AuthenticationService configured");
+                }
                 Console.ResetColor();
             }
             catch (Exception e)
@@ -944,8 +984,21 @@ namespace MetaverseInk.Configuration
             // Create backup before modifying
             BackupSingleFile("OpenSim.ini");
 
+            // Bestimme die korrekte Include-Architecture-Datei basierend auf gewählter Architektur
+            // HINWEIS: DivaPreferences.ini ist KEIN gültiger Include-Architecture-Wert
+            // Diva-spezifische Einstellungen sind jetzt direkt in StandaloneHypergrid.ini integriert
+            string architectureFile = _settings.Architecture switch
+            {
+                ArchitectureType.Standalone => "config-include/Standalone.ini",
+                ArchitectureType.StandaloneHypergrid => "config-include/StandaloneHypergrid.ini",
+                ArchitectureType.Grid => "config-include/Grid.ini",
+                ArchitectureType.GridHypergrid => "config-include/GridHypergrid.ini",
+                _ => "config-include/Standalone.ini" // Standard-Fallback: Standalone
+            };
+
             try
             {
+                bool architectureSet = false;
                 using (TextReader tr = new StreamReader("OpenSim.ini.example"))
                 {
                     using (TextWriter tw = new StreamWriter("OpenSim.ini"))
@@ -959,17 +1012,25 @@ namespace MetaverseInk.Configuration
                                 line = $"    BaseURL = http://${{Const|BaseHostname}}";
                             else if (line.Contains("PublicPort") && !line.TrimStart().StartsWith(";"))
                                 line = $"    PublicPort = \"{_settings.HttpPort}\"";
-                            else if (line.Contains("Include-Architecture") && line.Contains("Standalone.ini") && !line.TrimStart().StartsWith(";"))
+                            else if (line.Contains("Include-Architecture"))
                             {
-                                // Replace Standalone.ini with DivaPreferences.ini
-                                line = $"    Include-Architecture = \"config-include/DivaPreferences.ini\"";
-                            }
-                            else if (line.Contains("Include-Architecture") && !line.Contains("DivaPreferences") && !line.TrimStart().StartsWith(";"))
-                            {
-                                // Comment out other Include-Architecture lines
-                                string trimmed = line.TrimStart();
-                                if (!trimmed.StartsWith(";"))
-                                    line = "    ; " + trimmed;
+                                // Prüfe ob dies die gewählte Architecture ist
+                                string trimmed = line.TrimStart().TrimStart(';').TrimStart();
+                                
+                                if (trimmed.Contains(architectureFile))
+                                {
+                                    // Dies ist die gewählte Architecture - aktivieren (Kommentar entfernen)
+                                    line = $"    Include-Architecture = \"{architectureFile}\"";
+                                    architectureSet = true;
+                                }
+                                else
+                                {
+                                    // Andere Architectures auskommentiert lassen oder auskommentieren
+                                    if (!line.TrimStart().StartsWith(";"))
+                                        line = "    ; " + trimmed;
+                                    else
+                                        line = "    ; " + trimmed; // Sicherstellen dass es auskommentiert bleibt
+                                }
                             }
                             else if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
                                 line = line.Replace("127.0.0.1", _settings.IpAddress);
@@ -979,9 +1040,20 @@ namespace MetaverseInk.Configuration
                     }
                 }
                 
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("✓ OpenSim.ini configured");
-                Console.ResetColor();
+                if (architectureSet)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"✓ OpenSim.ini configured with Architecture: {_settings.Architecture}");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($"  ℹ Include-Architecture = \"{architectureFile}\"");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"❌ Failed to set Include-Architecture in OpenSim.ini");
+                    Console.ResetColor();
+                }
             }
             catch (Exception ex)
             {
@@ -1273,14 +1345,30 @@ namespace MetaverseInk.Configuration
             try
             {
                 string connString = GetConnectionString();
+                bool wifiSectionFound = false;
+                bool inWifiSection = false;
+                List<string> lines = new List<string>();
                 
+                // First pass: read all lines and check if WifiService exists
                 using (TextReader tr = new StreamReader("config-include/StandaloneCommon.ini.example"))
                 {
-                    using (TextWriter tw = new StreamWriter("config-include/StandaloneCommon.ini"))
+                    string line;
+                    while ((line = tr.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = tr.ReadLine()) != null)
+                        if (line.Trim().Equals("[WifiService]", StringComparison.OrdinalIgnoreCase))
                         {
+                            wifiSectionFound = true;
+                            inWifiSection = true;
+                        }
+                        else if (inWifiSection && line.TrimStart().StartsWith("["))
+                        {
+                            inWifiSection = false;
+                        }
+                        
+                        // Skip WifiService section if found (we'll add our own)
+                        if (!inWifiSection || !wifiSectionFound)
+                        {
+                            // Apply normal configuration replacements
                             if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
                                 line = $"    ConnectionString = \"{connString}\"";
                             if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
@@ -1288,13 +1376,74 @@ namespace MetaverseInk.Configuration
                             if (line.Contains("welcome_message") && !line.TrimStart().StartsWith(";"))
                                 line = $"    welcome_message = \"Welcome to {_settings.WorldName}\"";
                             
-                            tw.WriteLine(line);
+                            lines.Add(line);
                         }
                     }
                 }
                 
+                // Write all lines and append WifiService section at the end
+                using (TextWriter tw = new StreamWriter("config-include/StandaloneCommon.ini"))
+                {
+                    foreach (string line in lines)
+                    {
+                        tw.WriteLine(line);
+                    }
+                    
+                    // Add WifiService section (either replacing or adding new)
+                    tw.WriteLine();
+                    tw.WriteLine("; ===================================================================");
+                    tw.WriteLine("; Diva Wifi Service Configuration");
+                    tw.WriteLine("; Configured by Configure Tool");
+                    tw.WriteLine("; ===================================================================");
+                    tw.WriteLine();
+                    tw.WriteLine("[WifiService]");
+                    tw.WriteLine("    Enabled = true");
+                    tw.WriteLine("    ServerPort = ${Const|PublicPort}");
+                    tw.WriteLine($"    GridName = \"{_settings.WorldName}\"");
+                    tw.WriteLine($"    LoginURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                    tw.WriteLine($"    WebAddress = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                    tw.WriteLine();
+                    tw.WriteLine("    ;; Service dependencies - REQUIRED for Wifi to work properly");
+                    tw.WriteLine("    UserAccountService = \"OpenSim.Services.UserAccountService.dll:UserAccountService\"");
+                    tw.WriteLine("    AuthenticationService = \"OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService\"");
+                    tw.WriteLine("    GridService = \"OpenSim.Services.GridService.dll:GridService\"");
+                    tw.WriteLine("    InventoryService = \"OpenSim.Services.InventoryService.dll:XInventoryService\"");
+                    tw.WriteLine("    AvatarService = \"OpenSim.Services.AvatarService.dll:AvatarService\"");
+                    tw.WriteLine("    GridUserService = \"OpenSim.Services.UserAccountService.dll:GridUserService\"");
+                    tw.WriteLine();
+                    tw.WriteLine("    ;; The Wifi Administrator account");
+                    tw.WriteLine($"    AdminFirst = \"{_settings.AdminFirstName}\"");
+                    tw.WriteLine($"    AdminLast = \"{_settings.AdminLastName}\"");
+                    tw.WriteLine($"    AdminEmail = \"{_settings.AdminEmail}\"");
+                    tw.WriteLine($"    AdminPassword = \"{_settings.AdminPassword}\"");
+                    tw.WriteLine();
+                    tw.WriteLine("    ;; Do you want to be able to control grid registrations?");
+                    tw.WriteLine("    AccountConfirmationRequired = false");
+                    tw.WriteLine();
+                    tw.WriteLine("    ;; Variables for your mail server");
+                    tw.WriteLine("    ;; Users will get email notifications from this account.");
+                    if (!string.IsNullOrEmpty(_settings.GmailAccount))
+                    {
+                        tw.WriteLine("    SmtpHost = \"smtp.gmail.com\"");
+                        tw.WriteLine("    SmtpPort = \"587\"");
+                        tw.WriteLine($"    SmtpUsername = \"{_settings.GmailAccount}\"");
+                        tw.WriteLine($"    SmtpPassword = \"{_settings.GmailPassword}\"");
+                    }
+                    else
+                    {
+                        tw.WriteLine("    ;SmtpHost = \"smtp.gmail.com\"");
+                        tw.WriteLine("    ;SmtpPort = \"587\"");
+                        tw.WriteLine("    ;SmtpUsername = \"your_email@gmail.com\"");
+                        tw.WriteLine("    ;SmtpPassword = \"secret\"");
+                    }
+                    tw.WriteLine();
+                    tw.WriteLine($"    HomeLocation = \"{_settings.Region1Name}/128/128/30\"");
+                }
+                
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("✓ StandaloneCommon.ini configured");
+                Console.WriteLine("✓ StandaloneCommon.ini configured with Diva Wifi Service");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("  ℹ [WifiService] section with AuthenticationService added");
                 Console.ResetColor();
             }
             catch (Exception ex)
@@ -1344,17 +1493,168 @@ namespace MetaverseInk.Configuration
                             
                             tw.WriteLine(line);
                         }
+                        
+                        // ========================================
+                        // AgentPreferencesService Configuration
+                        // Required for proper agent preferences storage
+                        // ========================================
+                        tw.WriteLine();
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine("; Agent Preferences Service");
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine();
+                        tw.WriteLine("[AgentPreferencesService]");
+                        tw.WriteLine("    LocalServiceModule = \"OpenSim.Services.UserAccountService.dll:AgentPreferencesService\"");
+                        tw.WriteLine("    StorageProvider = \"OpenSim.Data.SQLite.dll\"");
+                        tw.WriteLine($"    ConnectionString = \"{connString}\"");
+                        
+                        // ========================================
+                        // Diva Distribution / MyWorld Settings
+                        // Direkt integriert für Diva-Kompatibilität
+                        // ========================================
+                        tw.WriteLine();
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine("; Diva Distribution / MyWorld Settings");
+                        tw.WriteLine("; Direkt integriert für Diva-Kompatibilität");
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine();
+                        tw.WriteLine("[Startup]");
+                        tw.WriteLine("    async_call_method = SmartThreadPool");
+                        tw.WriteLine("    use_async_when_possible = false");
+                        tw.WriteLine();
+                        tw.WriteLine("[Network]");
+                        tw.WriteLine($"    http_listener_port = {_settings.HttpPort}");
+                        tw.WriteLine();
+                        tw.WriteLine("[DataSnapshot]");
+                        tw.WriteLine($"    gridname = \"{_settings.WorldName}\"");
+                        tw.WriteLine();
+                        tw.WriteLine("[UserProfiles]");
+                        tw.WriteLine($"    ProfileServiceURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine();
+                        tw.WriteLine("[LoginService]");
+                        tw.WriteLine($"    WelcomeMessage = \"Welcome to {_settings.WorldName}!\"");
+                        tw.WriteLine($"    SRV_HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine($"    SRV_InventoryServerURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine($"    SRV_AssetServerURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine($"    SRV_FriendsServerURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine($"    SRV_IMServerURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine($"    SRV_GroupsServerURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine($"    SRV_ProfileServerURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine($"    MapTileURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}/\"");
                     }
                 }
                 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("✓ StandaloneHypergrid.ini configured");
+                Console.WriteLine("✓ StandaloneHypergrid.ini configured with Diva integration");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("  ℹ AgentPreferencesService added");
+                Console.WriteLine("  ℹ Diva/MyWorld settings integrated");
                 Console.ResetColor();
             }
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"❌ Error configuring StandaloneHypergrid.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureGridHypergrid()
+        {
+            Console.WriteLine("\n→ Configuring config-include/GridHypergrid.ini...");
+            
+            if (!File.Exists("config-include/GridHypergrid.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ GridHypergrid.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("config-include/GridHypergrid.ini");
+
+            try
+            {
+                string connString = GetConnectionString();
+                
+                using (TextReader tr = new StreamReader("config-include/GridHypergrid.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("config-include/GridHypergrid.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
+                                line = $"    ConnectionString = \"{connString}\"";
+                            if (line.Contains("127.0.0.1") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace("127.0.0.1", _settings.IpAddress);
+                            if (line.Contains("HomeURI") && !line.TrimStart().StartsWith(";"))
+                                line = $"    HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            if (line.Contains("GatekeeperURI") && !line.TrimStart().StartsWith(";"))
+                                line = $"    GatekeeperURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                            if (line.Contains("welcome_message") && !line.TrimStart().StartsWith(";"))
+                                line = $"    welcome_message = \"Welcome to {_settings.WorldName}\"";
+                            if (line.Contains(":8002") && !line.TrimStart().StartsWith(";"))
+                                line = line.Replace(":8002", $":{_settings.HttpPort}");
+                            
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ GridHypergrid.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring GridHypergrid.ini: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
+
+        private static void ConfigureOsslEnable()
+        {
+            Console.WriteLine("\n→ Configuring config-include/osslEnable.ini...");
+            
+            if (!File.Exists("config-include/osslEnable.ini.example"))
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("⚠ osslEnable.ini.example not found, skipping...");
+                Console.ResetColor();
+                return;
+            }
+
+            // Create backup before modifying
+            BackupSingleFile("config-include/osslEnable.ini");
+
+            try
+            {
+                // osslEnable.ini typically doesn't need IP/port replacements
+                // but we copy it to ensure it's in place
+                using (TextReader tr = new StreamReader("config-include/osslEnable.ini.example"))
+                {
+                    using (TextWriter tw = new StreamWriter("config-include/osslEnable.ini"))
+                    {
+                        string line;
+                        while ((line = tr.ReadLine()) != null)
+                        {
+                            // Apply any necessary replacements here if needed
+                            tw.WriteLine(line);
+                        }
+                    }
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("✓ osslEnable.ini configured");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"❌ Error configuring osslEnable.ini: {ex.Message}");
                 Console.ResetColor();
             }
         }
@@ -1395,7 +1695,7 @@ namespace MetaverseInk.Configuration
                 Console.WriteLine($"  World Name: {_settings.WorldName}");
                 Console.WriteLine($"  IP/Domain: {_settings.IpAddress}");
                 Console.WriteLine($"  HTTP Port: {_settings.HttpPort}");
-                Console.WriteLine($"  Database: {_settings.DbType} - {_settings.DbHost}/{_settings.DbSchema}");
+                Console.WriteLine($"  Database: {_settings.DbHost}/{_settings.DbSchema}");
                 Console.ResetColor();
             }
             else
@@ -1408,9 +1708,6 @@ namespace MetaverseInk.Configuration
                 }
                 Console.ResetColor();
             }
-            
-            // Also validate region configurations
-            ValidateRegionConfigurations();
         }
 
         private static void CreateConfigBackup()
@@ -1806,37 +2103,5 @@ namespace MetaverseInk.Configuration
             Console.WriteLine("  -h, --help       Display this help message");
             Console.WriteLine("\nWithout options, the tool runs in interactive mode.");
         }
-    }
-
-    public class ConfigurationSettings
-    {
-        public string WorldName { get; set; }
-        public string DbType { get; set; } // "MySQL" or "SQLite"
-        public string DbHost { get; set; }
-        public string DbSchema { get; set; }
-        public string DbUser { get; set; }
-        public string DbPassword { get; set; }
-        public string AdminFirstName { get; set; }
-        public string AdminLastName { get; set; }
-        public string AdminPassword { get; set; }
-        public string AdminEmail { get; set; }
-        public string IpAddress { get; set; }
-        public int HttpPort { get; set; }
-        public int BaseLocationX { get; set; }
-        public int BaseLocationY { get; set; }
-        public int RegionSizeX { get; set; }
-        public int RegionSizeY { get; set; }
-        public int RegionSizeZ { get; set; }
-        public string GmailAccount { get; set; }
-        public string GmailPassword { get; set; }
-        public bool AutoBackup { get; set; }
-        public bool Debug { get; set; }
-    }
-
-    public class BackupMetadata
-    {
-        public string Timestamp { get; set; }
-        public string WorldName { get; set; }
-        public int ItemCount { get; set; }
     }
 }

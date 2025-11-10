@@ -1,12 +1,12 @@
 {
-  "WorldName": "My World",
+  "WorldName": "My OpenSim World",
   "DbType": "SQLite",
   "DbHost": "localhost",
   "DbSchema": "opensim",
   "DbUser": "opensim",
   "DbPassword": "secret",
   "AdminFirstName": "Wifi",
-  "AdminLastName": "Admin",
+  "AdminLastName": "Administrator",
   "AdminPassword": "secret",
   "AdminEmail": "admin@localhost",
   "IpAddress": "127.0.0.1",
@@ -20,5 +20,6 @@
   "GmailPassword": "",
   "AutoBackup": true,
   "Debug": false,
-  "Architecture": "StandaloneHypergrid"
+  "Region1Name": "My Region",
+  "Architecture": "Standalone"
 }
