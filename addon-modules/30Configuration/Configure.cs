@@ -682,9 +682,9 @@ namespace MetaverseInk.Configuration
 
         private static RegionConfigStatus CheckRegionConfig()
         {
-            if (File.Exists("Regions/RegionConfig.ini"))
+            if (File.Exists("Regions/Regions.ini"))
             {
-                using (TextReader tr = new StreamReader("Regions/RegionConfig.ini"))
+                using (TextReader tr = new StreamReader("Regions/Regions.ini"))
                 {
                     string line;
                     while ((line = tr.ReadLine()) != null)
@@ -719,7 +719,7 @@ namespace MetaverseInk.Configuration
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("❌ Warning: Master Avatar is obsolete.");
-                Console.WriteLine("   Please edit file Regions/RegionConfig.ini and delete all references to MasterAvatar.");
+                Console.WriteLine("   Please edit file Regions/Regions.ini and delete all references to MasterAvatar.");
                 Console.ResetColor();
                 return;
             }
@@ -729,7 +729,7 @@ namespace MetaverseInk.Configuration
             try
             {
                 // Generate a clean Regions.ini based on the template structure
-                using (TextWriter tw = new StreamWriter("Regions/RegionConfig.ini"))
+                using (TextWriter tw = new StreamWriter("Regions/Regions.ini"))
                 {
                     tw.WriteLine($"[{_settings.WorldName}]");
                     tw.WriteLine($"\tLocation = {_settings.BaseLocationX},{_settings.BaseLocationY}");
