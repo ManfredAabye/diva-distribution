@@ -31,7 +31,7 @@ using OpenSim.Data;
 #if CSharpSqlite
     using Community.CsharpSqlite.Sqlite;
 #else
-using Mono.Data.Sqlite;
+using System.Data.SQLite;
 #endif
 
 namespace Diva.Data.SQLite
@@ -73,7 +73,7 @@ namespace Diva.Data.SQLite
 
         public void ResetTOS()
         {
-            using (SqliteCommand cmd = new SqliteCommand())
+            using (SQLiteCommand cmd = new SQLiteCommand())
             {
                 cmd.CommandText = String.Format("update {0} set TOS=?tos", m_Realm);
                 cmd.Parameters.AddWithValue("?tos", "");
@@ -83,7 +83,7 @@ namespace Diva.Data.SQLite
 
         public void ResetOnline()
         {
-            using (SqliteCommand cmd = new SqliteCommand())
+            using (SQLiteCommand cmd = new SQLiteCommand())
             {
                 cmd.CommandText = String.Format("update {0} set Online='False'", m_Realm);
                 DoQuery(cmd);

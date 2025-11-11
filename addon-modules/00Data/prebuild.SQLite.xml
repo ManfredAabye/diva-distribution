@@ -14,7 +14,7 @@
   <ReferencePath>../../../bin/</ReferencePath>
 
   <Reference name="log4net" path="../../../bin/"/>
-  <Reference name="Mono.Data.Sqlite"/>
+  <Reference name="System.Data.SQLite" path="../../../bin/"/>
   <Reference name="OpenMetaverseTypes" path="../../../bin/"/>
 
   <Reference name="OpenSim.Framework"/>

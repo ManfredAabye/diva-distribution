@@ -33,7 +33,7 @@ using log4net;
 #if CSharpSqlite
 using Community.CsharpSqlite.Sqlite;
 #else
-using Mono.Data.Sqlite;
+using System.Data.SQLite;
 #endif
 using OpenMetaverse;
 using OpenSim.Framework;
@@ -415,10 +415,10 @@ namespace Diva.Data.SQLite
 
         public void DeleteOld()
         {
-            using (SqliteCommand cmd = new SqliteCommand())
+            using (SQLiteCommand cmd = new SQLiteCommand())
             {
                 cmd.CommandText = String.Format("delete from {0} where TMStamp < ?tstamp", m_Realm);
-                cmd.Parameters.Add(new SqliteParameter("?tstamp", Util.UnixTimeSinceEpoch() - 14 * 24 * 60 * 60)); // > 2 weeks old
+                cmd.Parameters.Add(new SQLiteParameter("?tstamp", Util.UnixTimeSinceEpoch() - 14 * 24 * 60 * 60)); // > 2 weeks old
 
                 DoQuery(cmd);
             }
@@ -439,10 +439,10 @@ namespace Diva.Data.SQLite
 
         public void DeleteOld()
         {
-            using (SqliteCommand cmd = new SqliteCommand())
+            using (SQLiteCommand cmd = new SQLiteCommand())
             {
                 cmd.CommandText = String.Format("delete from {0} where TMStamp < ?tstamp", m_Realm);
-                cmd.Parameters.Add(new SqliteParameter("?tstamp", Util.UnixTimeSinceEpoch() - 14 * 24 * 60 * 60)); // > 2 weeks old
+                cmd.Parameters.Add(new SQLiteParameter("?tstamp", Util.UnixTimeSinceEpoch() - 14 * 24 * 60 * 60)); // > 2 weeks old
 
                 DoQuery(cmd);
             }

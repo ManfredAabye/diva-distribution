@@ -28,7 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-using Mono.Data.Sqlite;
+using System.Data.SQLite;
 
 namespace Diva.Data.SQLite
 {
@@ -54,11 +54,11 @@ namespace Diva.Data.SQLite
 
             List<string> terms = new List<string>();
 
-            SqliteCommand cmd = new SqliteCommand();
+            SQLiteCommand cmd = new SQLiteCommand();
 
             for (int i = 0 ; i < fields.Length ; i++)
             {
-                cmd.Parameters.Add(new SqliteParameter(":" + fields[i], keys[i]));
+                cmd.Parameters.Add(new SQLiteParameter(":" + fields[i], keys[i]));
                 terms.Add("`" + fields[i] + "` = :" + fields[i]);
             }
 
@@ -76,7 +76,7 @@ namespace Diva.Data.SQLite
 
         public virtual long GetCount(string where)
         {
-            SqliteCommand cmd = new SqliteCommand();
+            SQLiteCommand cmd = new SQLiteCommand();
 
             string query = String.Format("select count(*) from {0} where {1}",
                                              m_Realm, where);
@@ -88,7 +88,7 @@ namespace Diva.Data.SQLite
             return Convert.ToInt64(result);
         }
 
-        protected object DoQueryScalar(SqliteCommand cmd)
+        protected object DoQueryScalar(SQLiteCommand cmd)
         {
             lock (m_Connection)
             {
@@ -97,7 +97,7 @@ namespace Diva.Data.SQLite
             }
         }
 
-        new public virtual T[] DoQuery(SqliteCommand cmd)
+        new public virtual T[] DoQuery(SQLiteCommand cmd)
         {
             return base.DoQuery(cmd);
         }

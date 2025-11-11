@@ -27,7 +27,7 @@
 using System;
 using System.Reflection;
 
-using Mono.Data.Sqlite;
+using System.Data.SQLite;
 
 using OpenMetaverse;
 using OpenSim.Data;
@@ -69,7 +69,7 @@ namespace Diva.Data.SQLite
             if (words.Length > 2)
                 return new UserAccountData[0];
 
-            SqliteCommand cmd = new SqliteCommand();
+            SQLiteCommand cmd = new SQLiteCommand();
 
             if (words.Length == 1)
             {
