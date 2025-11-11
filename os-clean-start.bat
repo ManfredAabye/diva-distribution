@@ -9,8 +9,9 @@ echo.
 cd bin
 :: Delete OpenSim.log
 del *.log
-@REM del *.db
-@REM del *.db-wal
-@REM del *.db-shm
+:: Delete OpenSim sqlite database files
+del *.db
+del *.db-wal
+del *.db-shm
 :: Run OpenSim
 dotnet OpenSim.dll

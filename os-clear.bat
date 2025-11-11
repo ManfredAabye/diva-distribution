@@ -7,8 +7,8 @@ echo Lösche *.csproj Dateien...
 for /r %%i in (*.csproj) do @if exist "%%i" del /q "%%i" 2>nul
 echo Lösche *.sln Dateien...
 for /r %%i in (*.sln) do @if exist "%%i" del /q "%%i" 2>nul
-echo Fertig.
 
+echo Lösche addin-db-002 und addin-db-004 Ordner im bin Verzeichnis...
 if exist "bin\addin-db-002" (
 	del /F/Q/S bin\addin-db-002 > NUL
 	rmdir /Q/S bin\addin-db-002
@@ -18,4 +18,13 @@ if exist "bin\addin-db-004" (
 	rmdir /Q/S bin\addin-db-004
 	)
 
+cd bin
+echo Delete OpenSim.log
+del *.log
+echo Delete OpenSim sqlite database files
+del *.db
+del *.db-wal
+del *.db-shm
+
+echo Fertig.
 pause

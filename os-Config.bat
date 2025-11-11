@@ -13,4 +13,4 @@ del *.log
 @REM del *.db-wal
 @REM del *.db-shm
 :: Run OpenSim
-dotnet OpenSim.dll
+dotnet Configure.dll
