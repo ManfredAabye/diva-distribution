@@ -970,6 +970,7 @@ namespace MetaverseInk.Configuration
                         tw.WriteLine("[UserProfilesService]");
                         tw.WriteLine("    Enabled = true");
                         tw.WriteLine("    LocalServiceModule = \"OpenSim.Services.UserProfilesService.dll:UserProfilesService\"");
+                        tw.WriteLine("    StorageProvider = \"OpenSim.Data.SQLite.dll\"");
                         tw.WriteLine(connString);
                         tw.WriteLine("    UserAccountService = OpenSim.Services.UserAccountService.dll:UserAccountService");
                         tw.WriteLine("    AuthenticationServiceModule = \"OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService\"");
@@ -1501,6 +1502,7 @@ namespace MetaverseInk.Configuration
                     tw.WriteLine("[UserProfilesService]");
                     tw.WriteLine("    Enabled = true");
                     tw.WriteLine("    LocalServiceModule = \"OpenSim.Services.UserProfilesService.dll:UserProfilesService\"");
+                    tw.WriteLine("    StorageProvider = \"OpenSim.Data.SQLite.dll\"");
                     tw.WriteLine($"    ConnectionString = \"{connString}\"");
                     tw.WriteLine("    UserAccountService = OpenSim.Services.UserAccountService.dll:UserAccountService");
                     tw.WriteLine("    AuthenticationServiceModule = \"OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService\"");
@@ -1646,6 +1648,7 @@ namespace MetaverseInk.Configuration
                         tw.WriteLine("[UserProfilesService]");
                         tw.WriteLine("    Enabled = true");
                         tw.WriteLine("    LocalServiceModule = \"OpenSim.Services.UserProfilesService.dll:UserProfilesService\"");
+                        tw.WriteLine("    StorageProvider = \"OpenSim.Data.SQLite.dll\"");
                         tw.WriteLine($"    ConnectionString = \"{connString}\"");
                         tw.WriteLine("    UserAccountService = OpenSim.Services.UserAccountService.dll:UserAccountService");
                         tw.WriteLine("    AuthenticationServiceModule = \"OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService\"");
