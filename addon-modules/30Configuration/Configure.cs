@@ -288,6 +288,7 @@ namespace MetaverseInk.Configuration
             }
             
             ConfigureAllFiles();
+            ApplyEngineSettings(_settings);
             DisplayInfo();
         }
 
@@ -305,6 +306,7 @@ namespace MetaverseInk.Configuration
             }
             
             ConfigureAllFiles();
+            ApplyEngineSettings(_settings);
             DisplayInfo();
         }
         
@@ -2102,6 +2104,149 @@ namespace MetaverseInk.Configuration
             Console.WriteLine("  -r, --restore    Restore from backup");
             Console.WriteLine("  -h, --help       Display this help message");
             Console.WriteLine("\nWithout options, the tool runs in interactive mode.");
+        }
+
+        private static void ApplyEngineSettings(ConfigurationSettings settings)
+        {
+            string openSimIni = Path.Combine("bin", "OpenSim.ini");
+            if (!File.Exists(openSimIni))
+            {
+                Console.WriteLine("⚠️ OpenSim.ini not found. Skipping engine configuration.");
+                return;
+            }
+
+            Console.WriteLine("\n🔧 Applying engine settings to OpenSim.ini...");
+
+            // Create backup
+            string backup = openSimIni + $".bak_{DateTime.Now:yyyyMMdd_HHmmss}";
+            File.Copy(openSimIni, backup, true);
+            Console.WriteLine($"   Backup created: {Path.GetFileName(backup)}");
+
+            string content = File.ReadAllText(openSimIni);
+            bool modified = false;
+
+            // Apply Physics Engine settings
+            if (settings.PhysicsEngine != null)
+            {
+                if (!string.IsNullOrEmpty(settings.PhysicsEngine.Meshing))
+                {
+                    content = ApplyIniSetting(content, "Startup", "meshing", settings.PhysicsEngine.Meshing, ref modified);
+                    Console.WriteLine($"   ✓ Physics Meshing: {settings.PhysicsEngine.Meshing}");
+                }
+                if (!string.IsNullOrEmpty(settings.PhysicsEngine.Engine))
+                {
+                    content = ApplyIniSetting(content, "Startup", "physics", settings.PhysicsEngine.Engine, ref modified);
+                    Console.WriteLine($"   ✓ Physics Engine: {settings.PhysicsEngine.Engine}");
+                }
+            }
+
+            // Apply Script Engine settings
+            if (settings.ScriptEngine != null)
+            {
+                if (!string.IsNullOrEmpty(settings.ScriptEngine.DefaultEngine))
+                {
+                    content = ApplyIniSetting(content, "Startup", "DefaultScriptEngine", $"\"{settings.ScriptEngine.DefaultEngine}\"", ref modified);
+                    Console.WriteLine($"   ✓ Script Engine: {settings.ScriptEngine.DefaultEngine}");
+
+                    // Enable YEngine section if YEngine is selected
+                    if (settings.ScriptEngine.DefaultEngine.Equals("YEngine", StringComparison.OrdinalIgnoreCase))
+                    {
+                        content = ApplyIniSetting(content, "YEngine", "Enabled", "true", ref modified);
+                        content = ApplyIniSetting(content, "YEngine", "MinTimerInterval", settings.ScriptEngine.MinTimerInterval.ToString(), ref modified);
+                        content = ApplyIniSetting(content, "YEngine", "ScriptDistanceLimitFactor", settings.ScriptEngine.ScriptDistanceLimitFactor.ToString(), ref modified);
+                        content = ApplyIniSetting(content, "YEngine", "Priority", settings.ScriptEngine.Priority ?? "BelowNormal", ref modified);
+                        content = ApplyIniSetting(content, "YEngine", "MaxScriptEventQueue", settings.ScriptEngine.MaxScriptEventQueue.ToString(), ref modified);
+                        Console.WriteLine("   ✓ YEngine enabled and configured");
+                    }
+                }
+            }
+
+            // Apply Network settings
+            if (settings.Network != null)
+            {
+                if (!string.IsNullOrEmpty(settings.Network.OutboundDisallowForUserScriptsExcept))
+                {
+                    content = ApplyIniSetting(content, "Network", "OutboundDisallowForUserScriptsExcept", settings.Network.OutboundDisallowForUserScriptsExcept, ref modified);
+                    Console.WriteLine($"   ✓ HTTP Filter: {settings.Network.OutboundDisallowForUserScriptsExcept}");
+                }
+                if (settings.Network.HttpBodyMaxLenMAX > 0)
+                {
+                    content = ApplyIniSetting(content, "Network", "HttpBodyMaxLenMAX", settings.Network.HttpBodyMaxLenMAX.ToString(), ref modified);
+                }
+            }
+
+            // Apply OSSL settings
+            if (settings.OSSL != null)
+            {
+                if (!string.IsNullOrEmpty(settings.OSSL.AllowOsslFunctions))
+                {
+                    content = ApplyIniSetting(content, "OSSL", "AllowOSFunctions", settings.OSSL.AllowOsslFunctions, ref modified);
+                    Console.WriteLine($"   ✓ OSSL Functions: {settings.OSSL.AllowOsslFunctions}");
+                }
+                if (!string.IsNullOrEmpty(settings.OSSL.OsslThreatLevel))
+                {
+                    content = ApplyIniSetting(content, "OSSL", "OSFunctionThreatLevel", settings.OSSL.OsslThreatLevel, ref modified);
+                    Console.WriteLine($"   ✓ OSSL Threat Level: {settings.OSSL.OsslThreatLevel}");
+                }
+            }
+
+            if (modified)
+            {
+                File.WriteAllText(openSimIni, content);
+                Console.WriteLine("✅ Engine settings applied successfully!");
+            }
+            else
+            {
+                Console.WriteLine("ℹ️ No engine settings needed updating.");
+            }
+        }
+
+        private static string ApplyIniSetting(string content, string section, string key, string value, ref bool modified)
+        {
+            // Pattern to find the section
+            string sectionPattern = $@"^\s*\[{Regex.Escape(section)}\]";
+            var sectionMatch = Regex.Match(content, sectionPattern, RegexOptions.Multiline);
+
+            if (!sectionMatch.Success)
+            {
+                // Section doesn't exist, add it at the end
+                content += $"\n[{section}]\n{key} = {value}\n";
+                modified = true;
+                return content;
+            }
+
+            // Find the next section or end of file
+            int sectionStart = sectionMatch.Index;
+            int sectionEnd = content.Length;
+            var nextSectionMatch = Regex.Match(content.Substring(sectionStart + sectionMatch.Length), @"^\s*\[", RegexOptions.Multiline);
+            if (nextSectionMatch.Success)
+            {
+                sectionEnd = sectionStart + sectionMatch.Length + nextSectionMatch.Index;
+            }
+
+            string sectionContent = content.Substring(sectionStart, sectionEnd - sectionStart);
+
+            // Look for the key (commented or uncommented)
+            string keyPattern = $@"^\s*;?\s*{Regex.Escape(key)}\s*=.*$";
+            var keyMatch = Regex.Match(sectionContent, keyPattern, RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+            if (keyMatch.Success)
+            {
+                // Replace existing key
+                string newLine = $"{key} = {value}";
+                string newSectionContent = sectionContent.Remove(keyMatch.Index, keyMatch.Length).Insert(keyMatch.Index, newLine);
+                content = content.Remove(sectionStart, sectionEnd - sectionStart).Insert(sectionStart, newSectionContent);
+                modified = true;
+            }
+            else
+            {
+                // Key doesn't exist, add it after the section header
+                int insertPos = sectionStart + sectionMatch.Length;
+                content = content.Insert(insertPos, $"\n{key} = {value}");
+                modified = true;
+            }
+
+            return content;
         }
     }
 }

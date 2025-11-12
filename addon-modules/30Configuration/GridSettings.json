@@ -21,5 +21,44 @@
   "AutoBackup": true,
   "Debug": false,
   "Region1Name": "Grid Region",
-  "Architecture": "Grid"
+  "Architecture": "Grid",
+  
+  "PhysicsEngine": {
+    "Engine": "BulletSim",
+    "Meshing": "Meshmerizer",
+    "DisableUbODE": true
+  },
+  
+  "ScriptEngine": {
+    "DefaultEngine": "YEngine",
+    "YEngineEnabled": true,
+    "XEngineEnabled": false,
+    "MinTimerInterval": 0.05,
+    "ScriptDistanceLimitFactor": 20,
+    "DeleteScriptsOnStartup": false
+  },
+  
+  "Network": {
+    "OutboundDisallowForUserScriptsExcept": "127.0.0.1:8002",
+    "HttpBodyMaxLenMAX": 16384,
+    "ExternalHostNameForLSL": "127.0.0.1"
+  },
+  
+  "OSSL": {
+    "Enabled": true,
+    "AllowOSFunctions": true,
+    "AllowMODFunctions": true,
+    "AllowLightShareFunctions": true,
+    "OSFunctionThreatLevel": "High",
+    "PermissionErrorToOwner": false
+  },
+  
+  "GridService": {
+    "DefaultRegionFlags": "DefaultRegion, FallbackRegion"
+  },
+  
+  "Robust": {
+    "Enabled": true,
+    "Port": 8002
+  }
 }

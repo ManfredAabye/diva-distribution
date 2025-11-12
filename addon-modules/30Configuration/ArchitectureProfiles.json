@@ -16,6 +16,16 @@
       "Ports": {
         "DefaultHttp": 9000,
         "DefaultHttps": 9001
+      },
+      "PhysicsEngine": {
+        "Engine": "BulletSim",
+        "Meshing": "Meshmerizer",
+        "DisableUbODE": true
+      },
+      "ScriptEngine": {
+        "DefaultEngine": "YEngine",
+        "YEngineEnabled": true,
+        "XEngineEnabled": false
       }
     },
     "StandaloneHypergrid": {
@@ -41,6 +51,16 @@
         "EnableAgentPreferencesService": true,
         "AsyncCallMethod": "SmartThreadPool",
         "UseAsyncWhenPossible": false
+      },
+      "PhysicsEngine": {
+        "Engine": "BulletSim",
+        "Meshing": "Meshmerizer",
+        "DisableUbODE": true
+      },
+      "ScriptEngine": {
+        "DefaultEngine": "YEngine",
+        "YEngineEnabled": true,
+        "XEngineEnabled": false
       }
     },
     "Grid": {
@@ -61,6 +81,19 @@
         "DefaultHttp": 8002,
         "DefaultHttps": 8003,
         "RegionHttp": 9000
+      },
+      "GridService": {
+        "DefaultRegionFlags": "DefaultRegion, FallbackRegion"
+      },
+      "PhysicsEngine": {
+        "Engine": "BulletSim",
+        "Meshing": "Meshmerizer",
+        "DisableUbODE": true
+      },
+      "ScriptEngine": {
+        "DefaultEngine": "YEngine",
+        "YEngineEnabled": true,
+        "XEngineEnabled": false
       }
     },
     "GridHypergrid": {
@@ -81,6 +114,19 @@
         "DefaultHttp": 8002,
         "DefaultHttps": 8003,
         "RegionHttp": 9000
+      },
+      "GridService": {
+        "DefaultRegionFlags": "DefaultRegion, DefaultHGRegion, FallbackRegion"
+      },
+      "PhysicsEngine": {
+        "Engine": "BulletSim",
+        "Meshing": "Meshmerizer",
+        "DisableUbODE": true
+      },
+      "ScriptEngine": {
+        "DefaultEngine": "YEngine",
+        "YEngineEnabled": true,
+        "XEngineEnabled": false
       }
     }
   },
@@ -112,6 +158,36 @@
       "AdminLastName": "Admin",
       "AdminPassword": "gridhg123",
       "DbType": "MySQL"
+    }
+  },
+  "DefaultEngineSettings": {
+    "PhysicsEngine": {
+      "Engine": "BulletSim",
+      "Meshing": "Meshmerizer",
+      "DisableUbODE": true,
+      "Comment": "BulletSim aktiviert, ubODE deaktiviert"
+    },
+    "ScriptEngine": {
+      "DefaultEngine": "YEngine",
+      "YEngineEnabled": true,
+      "XEngineEnabled": false,
+      "MinTimerInterval": 0.05,
+      "ScriptDistanceLimitFactor": 20,
+      "DeleteScriptsOnStartup": false,
+      "Comment": "YEngine aktiviert, XEngine deaktiviert"
+    },
+    "OSSL": {
+      "Enabled": true,
+      "AllowOSFunctions": true,
+      "AllowMODFunctions": true,
+      "AllowLightShareFunctions": true,
+      "OSFunctionThreatLevel": "High",
+      "PermissionErrorToOwner": false,
+      "Comment": "OSSL-Funktionen aktiviert mit ThreatLevel High"
+    },
+    "Network": {
+      "HttpBodyMaxLenMAX": 16384,
+      "Comment": "HTTP-Filter muss für localhost konfiguriert werden"
     }
   }
 }

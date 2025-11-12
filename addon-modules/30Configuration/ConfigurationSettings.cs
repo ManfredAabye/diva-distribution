@@ -36,6 +36,116 @@ namespace MetaverseInk.Configuration
         /// </summary>
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public ArchitectureType Architecture { get; set; }
+        
+        /// <summary>
+        /// Physics Engine Configuration
+        /// </summary>
+        public PhysicsEngineSettings PhysicsEngine { get; set; }
+        
+        /// <summary>
+        /// Script Engine Configuration
+        /// </summary>
+        public ScriptEngineSettings ScriptEngine { get; set; }
+        
+        /// <summary>
+        /// Network Configuration
+        /// </summary>
+        public NetworkSettings Network { get; set; }
+        
+        /// <summary>
+        /// OSSL Configuration
+        /// </summary>
+        public OsslSettings OSSL { get; set; }
+        
+        /// <summary>
+        /// Grid Service Configuration
+        /// </summary>
+        public GridServiceSettings GridService { get; set; }
+        
+        /// <summary>
+        /// Hypergrid Configuration
+        /// </summary>
+        public HypergridSettings Hypergrid { get; set; }
+        
+        /// <summary>
+        /// Robust Configuration
+        /// </summary>
+        public RobustSettings Robust { get; set; }
+    }
+    
+    /// <summary>
+    /// Physics Engine Settings
+    /// </summary>
+    public class PhysicsEngineSettings
+    {
+        public string Engine { get; set; } // "BulletSim", "ubODE", etc.
+        public string Meshing { get; set; } // "Meshmerizer", "ubODEMeshmerizer"
+        public bool DisableUbODE { get; set; }
+    }
+    
+    /// <summary>
+    /// Script Engine Settings
+    /// </summary>
+    public class ScriptEngineSettings
+    {
+        public string DefaultEngine { get; set; } // "YEngine", "XEngine"
+        public bool YEngineEnabled { get; set; }
+        public bool XEngineEnabled { get; set; }
+        public double MinTimerInterval { get; set; }
+        public int ScriptDistanceLimitFactor { get; set; }
+        public bool DeleteScriptsOnStartup { get; set; }
+        public string Priority { get; set; } // "BelowNormal", "Normal", etc.
+        public int MaxScriptEventQueue { get; set; }
+    }
+    
+    /// <summary>
+    /// Network Settings
+    /// </summary>
+    public class NetworkSettings
+    {
+        public string OutboundDisallowForUserScriptsExcept { get; set; }
+        public int HttpBodyMaxLenMAX { get; set; }
+        public string ExternalHostNameForLSL { get; set; }
+    }
+    
+    /// <summary>
+    /// OSSL Settings
+    /// </summary>
+    public class OsslSettings
+    {
+        public bool Enabled { get; set; }
+        public string AllowOsslFunctions { get; set; } // "true", "false", or specific functions
+        public bool AllowMODFunctions { get; set; }
+        public bool AllowLightShareFunctions { get; set; }
+        public string OsslThreatLevel { get; set; } // "VeryLow", "Low", "Moderate", "High", "VeryHigh", "Severe"
+        public bool PermissionErrorToOwner { get; set; }
+    }
+    
+    /// <summary>
+    /// Grid Service Settings
+    /// </summary>
+    public class GridServiceSettings
+    {
+        public string DefaultRegionFlags { get; set; } // "DefaultRegion, FallbackRegion"
+    }
+    
+    /// <summary>
+    /// Hypergrid Settings
+    /// </summary>
+    public class HypergridSettings
+    {
+        public bool Enabled { get; set; }
+        public string WorldMapModule { get; set; }
+    }
+    
+    /// <summary>
+    /// Robust Settings
+    /// </summary>
+    public class RobustSettings
+    {
+        public bool Enabled { get; set; }
+        public int Port { get; set; }
+        public bool HypergridEnabled { get; set; }
     }
 
     /// <summary>

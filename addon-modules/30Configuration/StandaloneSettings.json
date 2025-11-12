@@ -21,5 +21,35 @@
   "AutoBackup": true,
   "Debug": false,
   "Region1Name": "My Region",
-  "Architecture": "Standalone"
+  "Architecture": "Standalone",
+  
+  "PhysicsEngine": {
+    "Engine": "BulletSim",
+    "Meshing": "Meshmerizer",
+    "DisableUbODE": true
+  },
+  
+  "ScriptEngine": {
+    "DefaultEngine": "YEngine",
+    "YEngineEnabled": true,
+    "XEngineEnabled": false,
+    "MinTimerInterval": 0.05,
+    "ScriptDistanceLimitFactor": 20,
+    "DeleteScriptsOnStartup": false
+  },
+  
+  "Network": {
+    "OutboundDisallowForUserScriptsExcept": "127.0.0.1:9000",
+    "HttpBodyMaxLenMAX": 16384,
+    "ExternalHostNameForLSL": "127.0.0.1"
+  },
+  
+  "OSSL": {
+    "Enabled": true,
+    "AllowOSFunctions": true,
+    "AllowMODFunctions": true,
+    "AllowLightShareFunctions": true,
+    "OSFunctionThreatLevel": "High",
+    "PermissionErrorToOwner": false
+  }
 }
