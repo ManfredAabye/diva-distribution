@@ -71,6 +71,16 @@ namespace MetaverseInk.Configuration
         /// Robust Configuration
         /// </summary>
         public RobustSettings Robust { get; set; }
+        
+        /// <summary>
+        /// Database Configuration
+        /// </summary>
+        public DatabaseSettings Database { get; set; }
+        
+        /// <summary>
+        /// Groups Configuration
+        /// </summary>
+        public GroupsSettings Groups { get; set; }
     }
     
     /// <summary>
@@ -146,6 +156,22 @@ namespace MetaverseInk.Configuration
         public bool Enabled { get; set; }
         public int Port { get; set; }
         public bool HypergridEnabled { get; set; }
+    }
+    
+    /// <summary>
+    /// Database Settings
+    /// </summary>
+    public class DatabaseSettings
+    {
+        public string SQLiteConnectionString { get; set; }
+    }
+    
+    /// <summary>
+    /// Groups Settings
+    /// </summary>
+    public class GroupsSettings
+    {
+        public bool MessageOnlineUsersOnly { get; set; }
     }
 
     /// <summary>

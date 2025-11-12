@@ -674,7 +674,13 @@ namespace MetaverseInk.Configuration
         {
             if (_settings.DbType.Equals("SQLite", StringComparison.OrdinalIgnoreCase))
             {
-                return "URI=file:OpenSim.db,version=3,UseUTF16Encoding=True";
+                // Use optimized SQLite connection string from settings if available
+                if (_settings.Database != null && !string.IsNullOrEmpty(_settings.Database.SQLiteConnectionString))
+                {
+                    return _settings.Database.SQLiteConnectionString;
+                }
+                // Fallback to ADO.NET format connection string
+                return "Data Source=opensim.db;Version=3;UseUTF16Encoding=True";
             }
             else // MySQL
             {
@@ -951,6 +957,46 @@ namespace MetaverseInk.Configuration
                             tw.WriteLine("    StorageProvider = \"OpenSim.Data.SQLite.dll\"");
                             tw.WriteLine(connString);
                         }
+                        
+                        // ========================================
+                        // UserProfilesService Configuration
+                        // Required for user profiles functionality
+                        // ========================================
+                        tw.WriteLine();
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine("; User Profiles Service");
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine();
+                        tw.WriteLine("[UserProfilesService]");
+                        tw.WriteLine("    Enabled = true");
+                        tw.WriteLine("    LocalServiceModule = \"OpenSim.Services.UserProfilesService.dll:UserProfilesService\"");
+                        tw.WriteLine(connString);
+                        tw.WriteLine("    UserAccountService = OpenSim.Services.UserAccountService.dll:UserAccountService");
+                        tw.WriteLine("    AuthenticationServiceModule = \"OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService\"");
+                        
+                        // ========================================
+                        // Groups Configuration
+                        // Using Groups Module V2 with Local Service Connector
+                        // ========================================
+                        tw.WriteLine();
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine("; Groups Module V2 Configuration");
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine();
+                        tw.WriteLine("[Groups]");
+                        tw.WriteLine("    Enabled = true");
+                        tw.WriteLine("    Module = \"Groups Module V2\"");
+                        tw.WriteLine("    StorageProvider = \"OpenSim.Data.SQLite.dll\"");
+                        tw.WriteLine(connString);
+                        tw.WriteLine("    ServicesConnectorModule = \"Groups Local Service Connector\"");
+                        tw.WriteLine("    MessagingEnabled = true");
+                        tw.WriteLine("    MessagingModule = \"Groups Messaging Module V2\"");
+                        
+                        // Apply MessageOnlineUsersOnly if configured
+                        if (_settings.Groups != null && _settings.Groups.MessageOnlineUsersOnly)
+                        {
+                            tw.WriteLine("    MessageOnlineUsersOnly = true");
+                        }
                     }
                 }
                 
@@ -960,6 +1006,8 @@ namespace MetaverseInk.Configuration
                 {
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("  ℹ [WifiService] section with AuthenticationService configured");
+                    Console.WriteLine("  ℹ [UserProfilesService] section added");
+                    Console.WriteLine("  ℹ [Groups] Module V2 with Local Service Connector configured");
                 }
                 Console.ResetColor();
             }
@@ -1440,12 +1488,54 @@ namespace MetaverseInk.Configuration
                     }
                     tw.WriteLine();
                     tw.WriteLine($"    HomeLocation = \"{_settings.Region1Name}/128/128/30\"");
+                    
+                    // ========================================
+                    // UserProfilesService Configuration
+                    // Required for user profiles functionality
+                    // ========================================
+                    tw.WriteLine();
+                    tw.WriteLine("; ========================================");
+                    tw.WriteLine("; User Profiles Service");
+                    tw.WriteLine("; ========================================");
+                    tw.WriteLine();
+                    tw.WriteLine("[UserProfilesService]");
+                    tw.WriteLine("    Enabled = true");
+                    tw.WriteLine("    LocalServiceModule = \"OpenSim.Services.UserProfilesService.dll:UserProfilesService\"");
+                    tw.WriteLine($"    ConnectionString = \"{connString}\"");
+                    tw.WriteLine("    UserAccountService = OpenSim.Services.UserAccountService.dll:UserAccountService");
+                    tw.WriteLine("    AuthenticationServiceModule = \"OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService\"");
+                    
+                    // ========================================
+                    // Groups Configuration
+                    // Using Groups Module V2 with Local Service Connector
+                    // ========================================
+                    tw.WriteLine();
+                    tw.WriteLine("; ========================================");
+                    tw.WriteLine("; Groups Module V2 Configuration");
+                    tw.WriteLine("; ========================================");
+                    tw.WriteLine();
+                    tw.WriteLine("[Groups]");
+                    tw.WriteLine("    Enabled = true");
+                    tw.WriteLine("    Module = \"Groups Module V2\"");
+                    tw.WriteLine("    StorageProvider = \"OpenSim.Data.SQLite.dll\"");
+                    tw.WriteLine($"    ConnectionString = \"{connString}\"");
+                    tw.WriteLine("    ServicesConnectorModule = \"Groups Local Service Connector\"");
+                    tw.WriteLine("    MessagingEnabled = true");
+                    tw.WriteLine("    MessagingModule = \"Groups Messaging Module V2\"");
+                    
+                    // Apply MessageOnlineUsersOnly if configured
+                    if (_settings.Groups != null && _settings.Groups.MessageOnlineUsersOnly)
+                    {
+                        tw.WriteLine("    MessageOnlineUsersOnly = true");
+                    }
                 }
                 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("✓ StandaloneCommon.ini configured with Diva Wifi Service");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("  ℹ [WifiService] section with AuthenticationService added");
+                Console.WriteLine("  ℹ [UserProfilesService] section added");
+                Console.WriteLine("  ℹ [Groups] Module V2 with Local Service Connector configured");
                 Console.ResetColor();
             }
             catch (Exception ex)
@@ -1543,6 +1633,48 @@ namespace MetaverseInk.Configuration
                         tw.WriteLine($"    SRV_GroupsServerURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
                         tw.WriteLine($"    SRV_ProfileServerURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
                         tw.WriteLine($"    MapTileURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}/\"");
+                        
+                        // ========================================
+                        // UserProfilesService Configuration
+                        // Required for user profiles functionality with Hypergrid
+                        // ========================================
+                        tw.WriteLine();
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine("; User Profiles Service");
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine();
+                        tw.WriteLine("[UserProfilesService]");
+                        tw.WriteLine("    Enabled = true");
+                        tw.WriteLine("    LocalServiceModule = \"OpenSim.Services.UserProfilesService.dll:UserProfilesService\"");
+                        tw.WriteLine($"    ConnectionString = \"{connString}\"");
+                        tw.WriteLine("    UserAccountService = OpenSim.Services.UserAccountService.dll:UserAccountService");
+                        tw.WriteLine("    AuthenticationServiceModule = \"OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService\"");
+                        
+                        // ========================================
+                        // Groups Configuration for Hypergrid
+                        // Using Groups Module V2 with HG Service Connector
+                        // ========================================
+                        tw.WriteLine();
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine("; Groups Module V2 Configuration (Hypergrid)");
+                        tw.WriteLine("; ========================================");
+                        tw.WriteLine();
+                        tw.WriteLine("[Groups]");
+                        tw.WriteLine("    Enabled = true");
+                        tw.WriteLine("    Module = \"Groups Module V2\"");
+                        tw.WriteLine("    StorageProvider = \"OpenSim.Data.SQLite.dll\"");
+                        tw.WriteLine($"    ConnectionString = \"{connString}\"");
+                        tw.WriteLine("    ServicesConnectorModule = \"Groups HG Service Connector\"");
+                        tw.WriteLine("    LocalService = local");
+                        tw.WriteLine($"    HomeURI = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"");
+                        tw.WriteLine("    MessagingEnabled = true");
+                        tw.WriteLine("    MessagingModule = \"Groups Messaging Module V2\"");
+                        
+                        // Apply MessageOnlineUsersOnly if configured
+                        if (_settings.Groups != null && _settings.Groups.MessageOnlineUsersOnly)
+                        {
+                            tw.WriteLine("    MessageOnlineUsersOnly = true");
+                        }
                     }
                 }
                 
@@ -1551,6 +1683,8 @@ namespace MetaverseInk.Configuration
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("  ℹ AgentPreferencesService added");
                 Console.WriteLine("  ℹ Diva/MyWorld settings integrated");
+                Console.WriteLine("  ℹ [UserProfilesService] section added");
+                Console.WriteLine("  ℹ [Groups] Module V2 with HG Service Connector configured");
                 Console.ResetColor();
             }
             catch (Exception ex)
@@ -2188,6 +2322,14 @@ namespace MetaverseInk.Configuration
                     content = ApplyIniSetting(content, "OSSL", "OSFunctionThreatLevel", settings.OSSL.OsslThreatLevel, ref modified);
                     Console.WriteLine($"   ✓ OSSL Threat Level: {settings.OSSL.OsslThreatLevel}");
                 }
+            }
+            
+            // Apply Groups settings
+            if (settings.Groups != null)
+            {
+                // MessageOnlineUsersOnly is required for "Groups Messaging Module V2"
+                content = ApplyIniSetting(content, "Groups", "MessageOnlineUsersOnly", settings.Groups.MessageOnlineUsersOnly.ToString().ToLower(), ref modified);
+                Console.WriteLine($"   ✓ Groups MessageOnlineUsersOnly: {settings.Groups.MessageOnlineUsersOnly}");
             }
 
             if (modified)

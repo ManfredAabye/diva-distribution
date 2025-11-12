@@ -66,5 +66,13 @@
     "Enabled": true,
     "Port": 8002,
     "HypergridEnabled": true
+  },
+  
+  "Database": {
+    "SQLiteConnectionString": "Data Source=opensim.db;Version=3;UseUTF16Encoding=True"
+  },
+  
+  "Groups": {
+    "MessageOnlineUsersOnly": true
   }
 }
