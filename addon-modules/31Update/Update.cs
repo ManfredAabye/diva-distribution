@@ -91,7 +91,7 @@ namespace Update
                         MigrateConfigs();
                         break;
                     case "4":
-                        await RestoreFromBackup();
+                        RestoreFromBackup();
                         break;
                     case "5":
                         DisplayCurrentVersion();
@@ -130,7 +130,7 @@ namespace Update
                     break;
                 case "--restore":
                 case "-r":
-                    await RestoreFromBackup();
+                    RestoreFromBackup();
                     break;
                 case "--version":
                 case "-v":
@@ -531,7 +531,7 @@ namespace Update
             }
         }
 
-        private static async Task RestoreFromBackup()
+        private static void RestoreFromBackup()
         {
             Console.WriteLine("\n╔════════════════════════════════════╗");
             Console.WriteLine("║     Restore from Backup            ║");

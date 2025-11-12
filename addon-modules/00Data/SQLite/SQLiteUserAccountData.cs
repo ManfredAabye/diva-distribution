@@ -36,17 +36,9 @@ namespace Diva.Data.SQLite
 {
     public class SQLiteUserAccountData : OpenSim.Data.SQLite.SQLiteUserAccountData, IUserAccountData
     {
-        private SQLiteGenericTableHandler<UserAccountData> m_DatabaseHandler;
-
-        protected override Assembly Assembly
-        {
-            get { return GetType().BaseType.Assembly; }
-        }
-
         public SQLiteUserAccountData(string connectionString, string realm) 
             : base(connectionString, realm)
         {
-            m_DatabaseHandler = new SQLiteGenericTableHandler<UserAccountData>(connectionString, realm, "UserAccount");
         }
 
         public UserAccountData[] GetActiveAccounts(UUID scopeID, string query, string excludeTerm)
@@ -82,14 +74,24 @@ namespace Diva.Data.SQLite
                     m_Realm, scopeID.ToString(), words[0], words[1], excludeTerm);
             }
 
-            return m_DatabaseHandler.DoQuery(cmd);
+            return DoQuery(cmd);
         }
 
         public long GetActiveAccountsCount(UUID scopeID, string excludeTerm)
         {
             string where = string.Format("(ScopeID='{0}' or ScopeID='00000000-0000-0000-0000-000000000000') and (FirstName not like '{1}%')", scopeID, excludeTerm);
 
-            return m_DatabaseHandler.GetCount(where);
+            using (SQLiteCommand cmd = new SQLiteCommand())
+            {
+                cmd.CommandText = String.Format("select count(*) from {0} where {1}", m_Realm, where);
+
+                lock (m_Connection)
+                {
+                    cmd.Connection = m_Connection;
+                    object result = cmd.ExecuteScalar();
+                    return Convert.ToInt64(result);
+                }
+            }
         }
     }
 }

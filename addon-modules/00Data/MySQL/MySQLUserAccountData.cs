@@ -40,17 +40,9 @@ namespace Diva.Data.MySQL
 {
     public class MySQLUserAccountData : OpenSim.Data.MySQL.MySqlUserAccountData, IUserAccountData
     {
-        private MySQLGenericTableHandler<UserAccountData> m_DatabaseHandler;
-
-        protected override Assembly Assembly
-        {
-            get { return GetType().BaseType.Assembly; }
-        }
-
         public MySQLUserAccountData(string connectionString, string realm)
                 : base(connectionString, realm)
         {
-            m_DatabaseHandler = new MySQLGenericTableHandler<UserAccountData>(connectionString, realm, "UserAccount");
         }
 
         public UserAccountData[] GetActiveAccounts(UUID scopeID, string query, string excludeTerm)
@@ -91,14 +83,33 @@ namespace Diva.Data.MySQL
             cmd.CommandText = cmd.CommandText + " and (FirstName not like ?exclude)";
             cmd.Parameters.AddWithValue("?exclude", excludeTerm + "%");
 
-            return m_DatabaseHandler.DoQuery(cmd);
+            return DoQuery(cmd);
         }
 
         public long GetActiveAccountsCount(UUID scopeID, string excludeTerm)
         {
             string where = string.Format("(ScopeID='{0}' or ScopeID='00000000-0000-0000-0000-000000000000') and (FirstName not like '{1}%')", scopeID, excludeTerm);
 
-            return m_DatabaseHandler.GetCount(where);
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                cmd.CommandText = String.Format("select count(*) from {0} where {1}", m_Realm, where);
+
+                using (MySqlConnection dbcon = new MySqlConnection(m_connectionString))
+                {
+                    dbcon.Open();
+                    cmd.Connection = dbcon;
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return Convert.ToInt64(reader[0]);
+                        }
+                    }
+                }
+            }
+
+            return 0;
         }
     }
 }

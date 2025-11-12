@@ -34,11 +34,6 @@ namespace Diva.Data.MySQL
 {
     public class MySQLGenericTableHandler<T> : OpenSim.Data.MySQL.MySQLGenericTableHandler<T> where T : class, new()
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().BaseType.Assembly; }
-        }
-
         public MySQLGenericTableHandler(string connectionString, string realm, string storeName)
             : base(connectionString, realm, storeName) { }
 

@@ -26,49 +26,77 @@
 
 using System;
 using System.Reflection;
-
-using OpenSim.Data;
-#if CSharpSqlite
-    using Community.CsharpSqlite.Sqlite;
-#else
 using System.Data.SQLite;
-#endif
+using OpenSim.Data;
 
 namespace Diva.Data.SQLite
 {
     public class SQLiteGridUserData : OpenSim.Data.SQLite.SQLiteGridUserData, IGridUserData
     {
-        private SQLiteGenericTableHandler<GridUserData> m_DatabaseHandler;
-        
-        protected override Assembly Assembly
-        {
-            get { return GetType().BaseType.Assembly; }
-        }
-
         public SQLiteGridUserData(string connectionString, string realm) 
             : base(connectionString, realm)
         {
-            m_DatabaseHandler = new SQLiteGenericTableHandler<GridUserData>(connectionString, realm, "GridUserStore");
         }
 
         public GridUserData[] GetOnlineUsers()
         {
-            return m_DatabaseHandler.Get("Online", true.ToString());
+            return Get("Online", true.ToString());
         }
 
         public long GetOnlineUserCount()
         {
-            return m_DatabaseHandler.GetCount("Online", true.ToString());
+            try
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand())
+                {
+                    cmd.CommandText = String.Format("select count(*) from {0} where Online='True'", m_Realm);
+                    
+                    lock (m_Connection)
+                    {
+                        cmd.Connection = m_Connection;
+                        object result = cmd.ExecuteScalar();
+                        return Convert.ToInt64(result);
+                    }
+                }
+            }
+            catch (System.Data.SQLite.SQLiteException)
+            {
+                // Tabelle existiert noch nicht während Wifi-Initialisierung
+                return 0;
+            }
         }
 
         public long GetActiveUserCount(int period)
         {
-            return m_DatabaseHandler.GetCount(string.Format("Online = '{0}' OR CAST(julianday('now')-julianday(datetime(Logout, 'unixepoch')) AS INTEGER) <= {1}", true, period));
+            try
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand())
+                {
+                    cmd.CommandText = String.Format("select count(*) from {0} where Online = 'True' OR CAST(julianday('now')-julianday(datetime(Logout, 'unixepoch')) AS INTEGER) <= {1}", m_Realm, period);
+                    
+                    lock (m_Connection)
+                    {
+                        cmd.Connection = m_Connection;
+                        object result = cmd.ExecuteScalar();
+                        return Convert.ToInt64(result);
+                    }
+                }
+            }
+            catch (System.Data.SQLite.SQLiteException)
+            {
+                // Tabelle existiert noch nicht während Wifi-Initialisierung
+                return 0;
+            }
         }
 
         public GridUserData[] GetUsers(string pattern)
         {
-            return m_DatabaseHandler.Get(pattern);
+            using (SQLiteCommand cmd = new SQLiteCommand())
+            {
+                cmd.CommandText = String.Format("select * from {0} where UserID like ?pattern", m_Realm);
+                cmd.Parameters.AddWithValue("?pattern", pattern);
+                return DoQuery(cmd);
+            }
         }
 
         public void ResetTOS()
@@ -83,12 +111,19 @@ namespace Diva.Data.SQLite
 
         public void ResetOnline()
         {
-            using (SQLiteCommand cmd = new SQLiteCommand())
+            try
             {
-                cmd.CommandText = String.Format("update {0} set Online='False'", m_Realm);
-                DoQuery(cmd);
+                using (SQLiteCommand cmd = new SQLiteCommand())
+                {
+                    cmd.CommandText = String.Format("update {0} set Online='False'", m_Realm);
+                    DoQuery(cmd);
+                }
+            }
+            catch (System.Data.SQLite.SQLiteException)
+            {
+                // Tabelle existiert noch nicht - ignoriere Fehler bei Wifi-Start
+                return;
             }
         }
-
     }
 }

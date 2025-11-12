@@ -29,12 +29,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
-using log4net;
-#if CSharpSqlite
-using Community.CsharpSqlite.Sqlite;
-#else
 using System.Data.SQLite;
-#endif
+using log4net;
 using OpenMetaverse;
 using OpenSim.Framework;
 using OpenSim.Data;
@@ -351,11 +347,6 @@ namespace Diva.Data.SQLite
 
     public class SQLiteGroupsGroupsHandler : SQLiteGenericTableHandler<GroupData>
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().Assembly; }
-        }
-
         public SQLiteGroupsGroupsHandler(string connectionString, string realm, string store)
             : base(connectionString, realm, store)
         {
@@ -364,11 +355,6 @@ namespace Diva.Data.SQLite
 
     public class SQLiteGroupsMembershipHandler : SQLiteGenericTableHandler<MembershipData>
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().Assembly; }
-        }
-
         public SQLiteGroupsMembershipHandler(string connectionString, string realm)
             : base(connectionString, realm, string.Empty)
         {
@@ -377,11 +363,6 @@ namespace Diva.Data.SQLite
 
     public class SQLiteGroupsRolesHandler : SQLiteGenericTableHandler<RoleData>
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().Assembly; }
-        }
-
         public SQLiteGroupsRolesHandler(string connectionString, string realm)
             : base(connectionString, realm, string.Empty)
         {
@@ -390,11 +371,6 @@ namespace Diva.Data.SQLite
 
     public class SQLiteGroupsRoleMembershipHandler : SQLiteGenericTableHandler<RoleMembershipData>
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().Assembly; }
-        }
-
         public SQLiteGroupsRoleMembershipHandler(string connectionString, string realm)
             : base(connectionString, realm, string.Empty)
         {
@@ -403,11 +379,6 @@ namespace Diva.Data.SQLite
 
     public class SQLiteGroupsInvitesHandler : SQLiteGenericTableHandler<InvitationData>
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().Assembly; }
-        }
-
         public SQLiteGroupsInvitesHandler(string connectionString, string realm)
             : base(connectionString, realm, string.Empty)
         {
@@ -427,11 +398,6 @@ namespace Diva.Data.SQLite
 
     public class SQLiteGroupsNoticesHandler : SQLiteGenericTableHandler<NoticeData>
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().Assembly; }
-        }
-
         public SQLiteGroupsNoticesHandler(string connectionString, string realm)
             : base(connectionString, realm, string.Empty)
         {
@@ -451,11 +417,6 @@ namespace Diva.Data.SQLite
 
     public class SQLiteGroupsPrincipalsHandler : SQLiteGenericTableHandler<PrincipalData>
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().Assembly; }
-        }
-
         public SQLiteGroupsPrincipalsHandler(string connectionString, string realm)
             : base(connectionString, realm, string.Empty)
         {

@@ -41,27 +41,49 @@ namespace Diva.Data.MySQL
     /// </summary>
     public class MySQLRegionData : OpenSim.Data.MySQL.MySqlRegionData, IRegionData
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().BaseType.Assembly; }
-        }
-
-        private MySQLGenericTableHandler<RegionData> m_DatabaseHandler;
-
         public MySQLRegionData(string connectionString, string realm)
             : base(connectionString, realm)
         {
-            m_DatabaseHandler = new MySQLGenericTableHandler<RegionData>(connectionString, realm, "GridStore");
         }
 
         public RegionData[] Get(UUID scopeID, int regionFlags, int excludeFlags)
         {
-            return m_DatabaseHandler.Get(CreateWhereClause(scopeID, regionFlags, excludeFlags));
+            string where = CreateWhereClause(scopeID, regionFlags, excludeFlags);
+            
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                string tableName = "regions";
+                cmd.CommandText = String.Format("select * from {0} where {1}", tableName, where);
+                List<RegionData> ret = RunCommand(cmd);
+                return ret.ToArray();
+            }
         }
 
         public long GetCount(UUID scopeID, int regionFlags, int excludeFlags)
         {
-            return m_DatabaseHandler.GetCount(CreateWhereClause(scopeID, regionFlags, excludeFlags));
+            string where = CreateWhereClause(scopeID, regionFlags, excludeFlags);
+
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                string tableName = "regions";
+                cmd.CommandText = String.Format("select count(*) from {0} where {1}", tableName, where);
+
+                using (MySqlConnection dbcon = new MySqlConnection(m_connectionString))
+                {
+                    dbcon.Open();
+                    cmd.Connection = dbcon;
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return Convert.ToInt64(reader[0]);
+                        }
+                    }
+                }
+            }
+
+            return 0;
         }
 
         private string CreateWhereClause(UUID scopeID, int regionFlags, int excludeFlags)

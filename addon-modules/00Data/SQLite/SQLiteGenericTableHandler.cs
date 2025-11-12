@@ -34,11 +34,6 @@ namespace Diva.Data.SQLite
 {
     public class SQLiteGenericTableHandler<T> : OpenSim.Data.SQLite.SQLiteGenericTableHandler<T> where T : class, new()
     {
-        protected override Assembly Assembly
-        {
-            get { return GetType().BaseType.Assembly; }
-        }
-
         public SQLiteGenericTableHandler(string connectionString, string realm, string storeName)
             : base(connectionString, realm, storeName) { }
 
@@ -88,7 +83,7 @@ namespace Diva.Data.SQLite
             return Convert.ToInt64(result);
         }
 
-        protected object DoQueryScalar(SQLiteCommand cmd)
+        public object DoQueryScalar(SQLiteCommand cmd)
         {
             lock (m_Connection)
             {
