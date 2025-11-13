@@ -1245,29 +1245,69 @@ namespace MetaverseInk.Configuration
 
             try
             {
+                string connString = GetConnectionString();
+                string storageProvider = _settings.DbType.Equals("SQLite", StringComparison.OrdinalIgnoreCase) 
+                    ? "Diva.Data.SQLite.dll" 
+                    : "Diva.Data.MySQL.dll";
+                
                 using (TextReader tr = new StreamReader("Wifi.ini.example"))
                 {
                     using (TextWriter tw = new StreamWriter("Wifi.ini"))
                     {
                         string line;
+                        bool inDatabaseService = false;
+                        
                         while ((line = tr.ReadLine()) != null)
                         {
-                            if (line.Contains("GridName") && !line.TrimStart().StartsWith(";"))
-                                line = $"    GridName = \"{_settings.WorldName}\"";
-                            if (line.Contains("LoginURL") && !line.TrimStart().StartsWith(";"))
-                                line = $"    LoginURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
-                            if (line.Contains("WebAddress") && !line.TrimStart().StartsWith(";"))
-                                line = $"    WebAddress = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
-                            if (line.Contains("AdminFirst") && !line.TrimStart().StartsWith(";"))
-                                line = $"    AdminFirst = \"{_settings.AdminFirstName}\"";
-                            if (line.Contains("AdminLast") && !line.TrimStart().StartsWith(";"))
-                                line = $"    AdminLast = \"{_settings.AdminLastName}\"";
-                            if (line.Contains("AdminEmail") && !line.TrimStart().StartsWith(";"))
-                                line = $"    AdminEmail = \"{_settings.AdminEmail}\"";
-                            if (line.Contains("SmtpUsername") && !string.IsNullOrEmpty(_settings.GmailAccount) && !line.TrimStart().StartsWith(";"))
-                                line = $"    SmtpUsername = \"{_settings.GmailAccount}\"";
-                            if (line.Contains("SmtpPassword") && !string.IsNullOrEmpty(_settings.GmailPassword) && !line.TrimStart().StartsWith(";"))
-                                line = $"    SmtpPassword = \"{_settings.GmailPassword}\"";
+                            // Track wenn wir in [DatabaseService] sind
+                            if (line.Trim().Equals("[DatabaseService]", StringComparison.OrdinalIgnoreCase))
+                            {
+                                inDatabaseService = true;
+                                tw.WriteLine(line);
+                                continue;
+                            }
+                            else if (inDatabaseService && line.TrimStart().StartsWith("["))
+                            {
+                                // Neue Sektion beginnt
+                                inDatabaseService = false;
+                            }
+                            
+                            // In DatabaseService Sektion
+                            if (inDatabaseService)
+                            {
+                                if (line.Contains("StorageProvider"))
+                                {
+                                    line = $"    StorageProvider = \"{storageProvider}\"";
+                                }
+                                else if (line.Contains("ConnectionString"))
+                                {
+                                    line = $"    ConnectionString = \"{connString}\"";
+                                }
+                            }
+                            // In WifiService Sektion
+                            else
+                            {
+                                if (line.Contains("GridName") && !line.TrimStart().StartsWith(";"))
+                                    line = $"    GridName = \"{_settings.WorldName}\"";
+                                else if (line.Contains("LoginURL") && !line.TrimStart().StartsWith(";"))
+                                    line = $"    LoginURL = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                                else if (line.Contains("WebAddress") && !line.TrimStart().StartsWith(";"))
+                                    line = $"    WebAddress = \"http://{_settings.IpAddress}:{_settings.HttpPort}\"";
+                                else if (line.Contains("AdminFirst") && !line.TrimStart().StartsWith(";"))
+                                    line = $"    AdminFirst = \"{_settings.AdminFirstName}\"";
+                                else if (line.Contains("AdminLast") && !line.TrimStart().StartsWith(";"))
+                                    line = $"    AdminLast = \"{_settings.AdminLastName}\"";
+                                else if (line.Contains("AdminEmail") && !line.TrimStart().StartsWith(";"))
+                                    line = $"    AdminEmail = \"{_settings.AdminEmail}\"";
+                                else if (line.Contains("SmtpUsername") && !string.IsNullOrEmpty(_settings.GmailAccount) && !line.TrimStart().StartsWith(";"))
+                                    line = $"    SmtpUsername = \"{_settings.GmailAccount}\"";
+                                else if (line.Contains("SmtpPassword") && !string.IsNullOrEmpty(_settings.GmailPassword) && !line.TrimStart().StartsWith(";"))
+                                    line = $"    SmtpPassword = \"{_settings.GmailPassword}\"";
+                                else if (line.Contains("ServerPort") && !line.TrimStart().StartsWith(";"))
+                                    line = "    ServerPort = ${Const|PublicPort}";
+                                else if (line.Contains("Enabled") && !line.TrimStart().StartsWith(";") && line.Contains("WifiService"))
+                                    line = "    Enabled = true";
+                            }
                             
                             tw.WriteLine(line);
                         }
@@ -1275,7 +1315,10 @@ namespace MetaverseInk.Configuration
                 }
                 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("✓ Wifi.ini configured");
+                Console.WriteLine("✓ Wifi.ini configured with database connection");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"  ℹ StorageProvider: {storageProvider}");
+                Console.WriteLine($"  ℹ Database: {(_settings.DbType.Equals("SQLite", StringComparison.OrdinalIgnoreCase) ? "opensim.db (SQLite)" : $"{_settings.DbHost}/{_settings.DbSchema} (MySQL)")}");
                 Console.ResetColor();
             }
             catch (Exception ex)
@@ -1396,28 +1439,37 @@ namespace MetaverseInk.Configuration
             try
             {
                 string connString = GetConnectionString();
-                bool wifiSectionFound = false;
                 bool inWifiSection = false;
+                bool inUserProfilesSection = false;
                 List<string> lines = new List<string>();
                 
-                // First pass: read all lines and check if WifiService exists
+                // First pass: read all lines and skip WifiService and UserProfilesService sections
                 using (TextReader tr = new StreamReader("config-include/StandaloneCommon.ini.example"))
                 {
                     string line;
                     while ((line = tr.ReadLine()) != null)
                     {
+                        // Check for WifiService section
                         if (line.Trim().Equals("[WifiService]", StringComparison.OrdinalIgnoreCase))
                         {
-                            wifiSectionFound = true;
                             inWifiSection = true;
+                            inUserProfilesSection = false;
                         }
-                        else if (inWifiSection && line.TrimStart().StartsWith("["))
+                        // Check for UserProfilesService section
+                        else if (line.Trim().Equals("[UserProfilesService]", StringComparison.OrdinalIgnoreCase))
                         {
+                            inUserProfilesSection = true;
                             inWifiSection = false;
                         }
+                        // Check for new section
+                        else if (line.TrimStart().StartsWith("[") && !line.TrimStart().StartsWith("[;"))
+                        {
+                            inWifiSection = false;
+                            inUserProfilesSection = false;
+                        }
                         
-                        // Skip WifiService section if found (we'll add our own)
-                        if (!inWifiSection || !wifiSectionFound)
+                        // Skip WifiService and UserProfilesService sections (we'll add our own)
+                        if (!inWifiSection && !inUserProfilesSection)
                         {
                             // Apply normal configuration replacements
                             if (line.Contains("ConnectionString") && !line.TrimStart().StartsWith(";"))
@@ -1432,7 +1484,7 @@ namespace MetaverseInk.Configuration
                     }
                 }
                 
-                // Write all lines and append WifiService section at the end
+                // Write all lines and append WifiService, UserProfilesService and Groups sections at the end
                 using (TextWriter tw = new StreamWriter("config-include/StandaloneCommon.ini"))
                 {
                     foreach (string line in lines)
@@ -1440,7 +1492,9 @@ namespace MetaverseInk.Configuration
                         tw.WriteLine(line);
                     }
                     
-                    // Add WifiService section (either replacing or adding new)
+                    // ========================================
+                    // Add WifiService section
+                    // ========================================
                     tw.WriteLine();
                     tw.WriteLine("; ===================================================================");
                     tw.WriteLine("; Diva Wifi Service Configuration");
@@ -1497,6 +1551,7 @@ namespace MetaverseInk.Configuration
                     tw.WriteLine();
                     tw.WriteLine("; ========================================");
                     tw.WriteLine("; User Profiles Service");
+                    tw.WriteLine("; Configured by Configure Tool - ENABLED");
                     tw.WriteLine("; ========================================");
                     tw.WriteLine();
                     tw.WriteLine("[UserProfilesService]");
@@ -1514,6 +1569,7 @@ namespace MetaverseInk.Configuration
                     tw.WriteLine();
                     tw.WriteLine("; ========================================");
                     tw.WriteLine("; Groups Module V2 Configuration");
+                    tw.WriteLine("; Configured by Configure Tool");
                     tw.WriteLine("; ========================================");
                     tw.WriteLine();
                     tw.WriteLine("[Groups]");
@@ -1536,7 +1592,7 @@ namespace MetaverseInk.Configuration
                 Console.WriteLine("✓ StandaloneCommon.ini configured with Diva Wifi Service");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("  ℹ [WifiService] section with AuthenticationService added");
-                Console.WriteLine("  ℹ [UserProfilesService] section added");
+                Console.WriteLine("  ℹ [UserProfilesService] section added and ENABLED");
                 Console.WriteLine("  ℹ [Groups] Module V2 with Local Service Connector configured");
                 Console.ResetColor();
             }

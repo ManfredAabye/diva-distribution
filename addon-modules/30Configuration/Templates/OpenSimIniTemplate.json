@@ -1,0 +1,87 @@
+{
+  "OpenSimIni": {
+    "Description": "Main OpenSim configuration template",
+    "Sections": {
+      "Const": {
+        "BaseHostname": "${IpAddress}",
+        "BaseURL": "http://${Const|BaseHostname}",
+        "PublicPort": "${HttpPort}",
+        "PrivatePort": "${HttpPort}"
+      },
+      
+      "Startup": {
+        "region_info_source": "filesystem",
+        "allow_regionless": false,
+        "NonPhysicalPrimMax": 256,
+        "PhysicalPrimMax": 64,
+        "ClampPrimSize": false,
+        "AllowScriptCrossing": true,
+        "TrustBinaries": false,
+        "CombineContiguousRegions": false,
+        "InworldRestartShutsDown": false,
+        "MaxPrimUndos": 20,
+        "physics": "${PhysicsEngine.Engine}",
+        "meshing": "${PhysicsEngine.Meshing}",
+        "DefaultScriptEngine": "${ScriptEngine.DefaultEngine}",
+        "async_call_method": "SmartThreadPool",
+        "MaxPoolThreads": 300,
+        "MinPoolThreads": 2,
+        "PrimUpdatesPerCallback": 100,
+        "TextureRequestRate": 500,
+        "TextureSendLimit": 20
+      },
+      
+      "Network": {
+        "http_listener_port": "${HttpPort}",
+        "default_location_x": "${BaseLocationX}",
+        "default_location_y": "${BaseLocationY}",
+        "hostname": "${IpAddress}",
+        "http_listener_ssl_port": 0,
+        "HttpBodyMaxLenMAX": "${Network.HttpBodyMaxLenMAX}",
+        "ExternalHostNameForLSL": "${Network.ExternalHostNameForLSL}"
+      },
+      
+      "AccessControl": {
+        "AllowedClients": "all",
+        "DeniedClients": ""
+      },
+      
+      "Map": {
+        "GenerateMaptiles": true,
+        "MapImageModule": "MapImageModule",
+        "MaptileRefresh": 0,
+        "MaptileStaticUUID": "00000000-0000-0000-0000-000000000000"
+      },
+      
+      "Permissions": {
+        "serverside_object_permissions": true,
+        "allow_grid_gods": false,
+        "region_owner_is_god": true,
+        "parcel_owner_is_god": true,
+        "simple_build_permissions": false
+      },
+      
+      "EstateManagement": {
+        "DefaultEstateName": "My Estate",
+        "DefaultEstateOwnerName": "${AdminFirstName} ${AdminLastName}",
+        "DefaultEstateOwnerUUID": "00000000-0000-0000-0000-000000000000",
+        "DefaultEstateOwnerEMail": "${AdminEmail}",
+        "DefaultEstateOwnerPassword": "${AdminPassword}"
+      },
+      
+      "SMTP": {
+        "enabled": false,
+        "internal_object_host": "lsl.opensim.local",
+        "host_domain_header_from": "${IpAddress}",
+        "SMTP_SERVER_HOSTNAME": "",
+        "SMTP_SERVER_PORT": 25,
+        "SMTP_SERVER_LOGIN": "",
+        "SMTP_SERVER_PASSWORD": ""
+      },
+      
+      "Architecture": {
+        "Include-Architecture": "${IncludeArchitecture}"
+      }
+    }
+  }
+}

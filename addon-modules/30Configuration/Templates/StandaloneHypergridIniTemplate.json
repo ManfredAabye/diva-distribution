@@ -1,0 +1,122 @@
+{
+  "StandaloneHypergridTemplate": {
+    "Description": "StandaloneHypergrid.ini template - Hypergrid services for Standalone mode",
+    "Sections": {
+      "Modules": {
+        "AssetCaching": "FlotsamAssetCache",
+        "Include-FlotsamCache": "config-include/FlotsamCache.ini"
+      },
+      
+      "SimulationService": {
+        "ConnectorProtocolVersion": "0.3"
+      },
+      
+      "EntityTransferModule": {
+        "AllowDisallowedAgentDataUpdate": "true",
+        "RegionUpTime": "00:00:00"
+      },
+      
+      "HGEntityTransferModule": {
+        "LevelHGTeleport": "0",
+        "RestrictAppearanceAbroad": "false",
+        "RestrictInventoryAccessAbroad": "false",
+        "CheckSupportedClientVersions": "false"
+      },
+      
+      "Messaging": {
+        "MessageTransferModule": "HGMessageTransferModule",
+        "LureModule": "HGLureModule",
+        "OfflineIMService": "OpenSim.Addons.OfflineIM.dll:OfflineIMService",
+        "StorageProvider": "${IMDll}",
+        "ConnectionString": "${IMConnectionString}",
+        "MuteListModule": "MuteListModule",
+        "ForwardOfflineGroupMessages": "true"
+      },
+      
+      "HGInventoryAccessModule": {
+        "HomeURI": "http://${IpAddress}:${HttpPort}",
+        "Gatekeeper": "http://${IpAddress}:${HttpPort}",
+        "OutboundPermission": "True",
+        "RestrictInventoryAccessAbroad": "False",
+        "CheckSupportedClientVersions": "false"
+      },
+      
+      "HGAssetService": {
+        "HomeURI": "http://${IpAddress}:${HttpPort}",
+        "UserAccountsService": "OpenSim.Services.UserAccountService.dll:UserAccountService",
+        "ProfileServerURI": "http://${IpAddress}:${HttpPort}"
+      },
+      
+      "HGFriendsModule": {
+        "LevelHGFriends": "0"
+      },
+      
+      "HGInventoryService": {
+        "HomeURI": "http://${IpAddress}:${HttpPort}",
+        "UserAccountsService": "OpenSim.Services.UserAccountService.dll:UserAccountService",
+        "ProfileServerURI": "http://${IpAddress}:${HttpPort}"
+      },
+      
+      "UserAgentService": {
+        "LocalServiceModule": "OpenSim.Services.HypergridService.dll:UserAgentService",
+        "GridUserService": "OpenSim.Services.UserAccountService.dll:GridUserService",
+        "GridService": "OpenSim.Services.GridService.dll:GridService",
+        "GatekeeperService": "OpenSim.Services.HypergridService.dll:GatekeeperService",
+        "PresenceService": "OpenSim.Services.PresenceService.dll:PresenceService",
+        "FriendsService": "OpenSim.Services.FriendsService.dll:FriendsService",
+        "UserAccountService": "OpenSim.Services.UserAccountService.dll:UserAccountService",
+        "LevelOutsideContacts": "0",
+        "ShowDetails": "true"
+      },
+      
+      "GatekeeperService": {
+        "LocalServiceModule": "OpenSim.Services.HypergridService.dll:GatekeeperService",
+        "UserAccountService": "OpenSim.Services.UserAccountService.dll:UserAccountService",
+        "UserAgentService": "OpenSim.Services.HypergridService.dll:UserAgentService",
+        "PresenceService": "OpenSim.Services.PresenceService.dll:PresenceService",
+        "GridUserService": "OpenSim.Services.UserAccountService.dll:GridUserService",
+        "GridService": "OpenSim.Services.GridService.dll:GridService",
+        "AuthenticationService": "OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService",
+        "SimulationService": "OpenSim.Services.Connectors.dll:SimulationServiceConnector",
+        "AllowTeleportsToAnyRegion": "true",
+        "ForeignAgentsAllowed": "true",
+        "ExternalName": "http://${IpAddress}:${HttpPort}",
+        "ScopeID": "00000000-0000-0000-0000-000000000000",
+        "DeniedUsers": "",
+        "DeniedMacs": "",
+        "DeniedIDs": "",
+        "AllowedClients": ""
+      },
+      
+      "UserProfilesService": {
+        "LocalServiceModule": "OpenSim.Services.UserProfilesService.dll:UserProfilesService",
+        "Enabled": "true",
+        "UserAccountService": "OpenSim.Services.UserAccountService.dll:UserAccountService",
+        "AuthenticationServiceModule": "OpenSim.Services.AuthenticationService.dll:PasswordAuthenticationService"
+      },
+      
+      "Friends": {
+        "Connector": "OpenSim.Services.FriendsService.dll:FriendsService"
+      },
+      
+      "Groups": {
+        "Enabled": "true",
+        "Module": "Groups Module V2",
+        "StorageProvider": "${GroupsDll}",
+        "ConnectionString": "${GroupsConnectionString}",
+        "ServicesConnectorModule": "Groups HG Service Connector",
+        "LocalService": "local",
+        "GroupsServerURI": "",
+        "HomeURI": "http://${IpAddress}:${HttpPort}",
+        "MessagingEnabled": "true",
+        "MessagingModule": "Groups Messaging Module V2",
+        "NoticesEnabled": "true",
+        "MessageOnlineUsersOnly": "true"
+      },
+      
+      "MapImageService": {
+        "MapImageServerURI": ""
+      }
+    }
+  }
+}
