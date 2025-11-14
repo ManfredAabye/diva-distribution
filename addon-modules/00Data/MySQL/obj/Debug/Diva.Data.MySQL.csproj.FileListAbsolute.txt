@@ -1,0 +1,8 @@
+D:\OpenSim_Win_Builder_01112025\opensimsource\bin\Diva.Data.MySQL.dll
+D:\OpenSim_Win_Builder_01112025\opensimsource\bin\Diva.Data.MySQL.pdb
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\MySQL\obj\Debug\Diva.Data.MySQL.csproj.AssemblyReference.cache
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\MySQL\obj\Debug\Diva.Data.MySQL.GeneratedMSBuildEditorConfig.editorconfig
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\MySQL\obj\Debug\Diva.Data.MySQL.csproj.CoreCompileInputs.cache
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\MySQL\obj\Debug\Diva.Dat.9444CF63.Up2Date
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\MySQL\obj\Debug\Diva.Data.MySQL.dll
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\MySQL\obj\Debug\Diva.Data.MySQL.pdb

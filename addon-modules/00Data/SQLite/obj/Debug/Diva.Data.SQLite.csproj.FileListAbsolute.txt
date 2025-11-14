@@ -1,0 +1,8 @@
+D:\OpenSim_Win_Builder_01112025\opensimsource\bin\Diva.Data.SQLite.dll
+D:\OpenSim_Win_Builder_01112025\opensimsource\bin\Diva.Data.SQLite.pdb
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\SQLite\obj\Debug\Diva.Data.SQLite.csproj.AssemblyReference.cache
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\SQLite\obj\Debug\Diva.Data.SQLite.GeneratedMSBuildEditorConfig.editorconfig
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\SQLite\obj\Debug\Diva.Data.SQLite.csproj.CoreCompileInputs.cache
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\SQLite\obj\Debug\Diva.Dat.859CD4F8.Up2Date
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\SQLite\obj\Debug\Diva.Data.SQLite.dll
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\SQLite\obj\Debug\Diva.Data.SQLite.pdb

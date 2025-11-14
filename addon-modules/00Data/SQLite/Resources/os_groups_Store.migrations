@@ -1,0 +1,101 @@
+:VERSION 1         # -------------------------- 
+
+BEGIN TRANSACTION;
+
+CREATE TABLE IF NOT EXISTS `os_groups_groups` (
+  `GroupID` char(36) NOT NULL default '',
+  `Location` varchar(255) NOT NULL default '',
+  `Name` varchar(255) NOT NULL default '',
+  `Charter` text NOT NULL,
+  `InsigniaID` char(36) NOT NULL default '',
+  `FounderID` char(36) NOT NULL default '',
+  `MembershipFee` integer NOT NULL default 0,
+  `OpenEnrollment` varchar(255) NOT NULL default '',
+  `ShowInList` integer NOT NULL default 0,
+  `AllowPublish` integer NOT NULL default 0,
+  `MaturePublish` integer NOT NULL default 0,
+  `OwnerRoleID` char(36) NOT NULL default '',
+  PRIMARY KEY  (`GroupID`)
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS Name ON os_groups_groups(Name);
+
+CREATE TABLE IF NOT EXISTS `os_groups_membership` (
+  `GroupID` char(36) NOT NULL default '',
+  `PrincipalID` VARCHAR(255) NOT NULL default '',
+  `SelectedRoleID` char(36) NOT NULL default '',
+  `Contribution` integer NOT NULL default 0,
+  `ListInProfile` integer NOT NULL default 1,
+  `AcceptNotices` integer NOT NULL default 1,
+  `AccessToken` char(36) NOT NULL default '',
+  PRIMARY KEY  (`GroupID`,`PrincipalID`)
+);
+
+CREATE INDEX IF NOT EXISTS PrincipalID ON os_groups_membership(PrincipalID);
+
+CREATE TABLE IF NOT EXISTS `os_groups_roles` (
+  `GroupID` char(36) NOT NULL default '',
+  `RoleID` char(36) NOT NULL default '',
+  `Name` varchar(255) NOT NULL default '',
+  `Description` varchar(255) NOT NULL default '',
+  `Title` varchar(255) NOT NULL default '',
+  `Powers` bigint NOT NULL default 0,
+  PRIMARY KEY  (`GroupID`,`RoleID`)
+);
+
+CREATE INDEX IF NOT EXISTS GroupID ON os_groups_roles(GroupID);
+
+CREATE TABLE IF NOT EXISTS `os_groups_rolemembership` (
+  `GroupID` char(36) NOT NULL default '',
+  `RoleID` char(36) NOT NULL default '',
+  `PrincipalID` VARCHAR(255) NOT NULL default '',
+  PRIMARY KEY  (`GroupID`,`RoleID`,`PrincipalID`)
+);
+
+CREATE INDEX IF NOT EXISTS PrincipalID ON os_groups_rolemembership(PrincipalID);
+
+CREATE TABLE IF NOT EXISTS `os_groups_invites` (
+  `InviteID` char(36) NOT NULL default '',
+  `GroupID` char(36) NOT NULL default '',
+  `RoleID` char(36) NOT NULL default '',
+  `PrincipalID` VARCHAR(255) NOT NULL default '',
+  `TMStamp` integer NOT NULL default 0,
+  PRIMARY KEY  (`InviteID`)
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS PrincipalGroup ON os_groups_invites(GroupID,PrincipalID);
+
+CREATE TABLE IF NOT EXISTS `os_groups_notices` (
+  `GroupID` char(36) NOT NULL default '',
+  `NoticeID` char(36) NOT NULL default '',
+  `TMStamp` integer NOT NULL default 0,
+  `FromName` varchar(255) NOT NULL default '',
+  `Subject` varchar(255) NOT NULL default '',
+  `Message` text NOT NULL,
+  `HasAttachment` integer NOT NULL default 0,
+  `AttachmentType` integer NOT NULL default 0,
+  `AttachmentName` varchar(128) NOT NULL default '',
+  `AttachmentItemID` char(36) NOT NULL default '',
+  `AttachmentOwnerID` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`NoticeID`)
+);
+
+CREATE INDEX IF NOT EXISTS GroupID ON os_groups_notices(GroupID);
+CREATE INDEX IF NOT EXISTS TMStamp ON os_groups_notices(TMStamp);
+
+CREATE TABLE IF NOT EXISTS `os_groups_principals` (
+  `PrincipalID` VARCHAR(255) NOT NULL default '',
+  `ActiveGroupID` char(36) NOT NULL default '',
+  PRIMARY KEY  (`PrincipalID`)
+);
+
+COMMIT;
+
+:VERSION 2         # -------------------------- 
+
+BEGIN TRANSACTION;
+
+-- Diva-Tabellen in os_groups umbenennen falls vorhanden
+-- SQLite unterstützt kein direktes RENAME, daher prüfen wir nur ob Tabellen existieren
+
+COMMIT;

@@ -1,0 +1,38 @@
+<!-- Diva.Data.SQLite -->
+<Project name="Diva.Data.SQLite" path="addon-modules/00Data/SQLite" type="Library">
+  <Configuration name="Debug">
+    <Options>
+      <OutputPath>../../../bin/</OutputPath>
+      <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+      <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    </Options>
+  </Configuration>
+  <Configuration name="Release">
+    <Options>
+      <OutputPath>../../../bin/</OutputPath>
+      <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+      <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    </Options>
+  </Configuration>
+
+  <ReferencePath>../../../bin/</ReferencePath>
+
+  <Reference name="log4net" path="../../../bin/"/>
+  <Reference name="System.Data.SQLite" path="../../../bin/"/>
+  <Reference name="OpenMetaverseTypes" path="../../../bin/"/>
+
+  <Reference name="OpenSim.Framework"/>
+  <Reference name="OpenSim.Data"/>
+  <Reference name="OpenSim.Data.Null"/>
+  <Reference name="OpenSim.Data.SQLite"/>
+  <Reference name="OpenSim.Region.Framework"/>
+
+  <Reference name="Diva.Data"/>
+
+  <Files>
+    <Match pattern="*.cs" recurse="true">
+      <Exclude pattern="Tests" />
+    </Match>
+    <Match buildAction="EmbeddedResource" path="Resources" pattern="*.migrations" recurse="false"/>
+  </Files>
+</Project>

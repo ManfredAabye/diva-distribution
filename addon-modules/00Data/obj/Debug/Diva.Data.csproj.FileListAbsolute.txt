@@ -1,0 +1,8 @@
+D:\OpenSim_Win_Builder_01112025\opensimsource\bin\Diva.Data.dll
+D:\OpenSim_Win_Builder_01112025\opensimsource\bin\Diva.Data.pdb
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\obj\Debug\Diva.Data.csproj.AssemblyReference.cache
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\obj\Debug\Diva.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\obj\Debug\Diva.Data.csproj.CoreCompileInputs.cache
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\obj\Debug\Diva.Data.csproj.Up2Date
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\obj\Debug\Diva.Data.dll
+D:\OpenSim_Win_Builder_01112025\opensimsource\addon-modules\00Data\obj\Debug\Diva.Data.pdb

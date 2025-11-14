@@ -1,0 +1,287 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\addon-modules\\00Data\\Diva.Data.csproj": {}
+  },
+  "projects": {
+    "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\addon-modules\\00Data\\Diva.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\addon-modules\\00Data\\Diva.Data.csproj",
+        "projectName": "Diva.Data",
+        "projectPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\addon-modules\\00Data\\Diva.Data.csproj",
+        "packagesPath": "C:\\Users\\zainh\\.nuget\\packages\\",
+        "outputPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\addon-modules\\00Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zainh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Data\\OpenSim.Data.csproj": {
+                "projectPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Data\\OpenSim.Data.csproj"
+              },
+              "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Framework\\OpenSim.Framework.csproj": {
+                "projectPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Framework\\OpenSim.Framework.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100-rc.2.25502.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Data\\OpenSim.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Data\\OpenSim.Data.csproj",
+        "projectName": "OpenSim.Data",
+        "projectPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Data\\OpenSim.Data.csproj",
+        "packagesPath": "C:\\Users\\zainh\\.nuget\\packages\\",
+        "outputPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zainh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Framework\\OpenSim.Framework.csproj": {
+                "projectPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Framework\\OpenSim.Framework.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100-rc.2.25502.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Framework\\OpenSim.Framework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Framework\\OpenSim.Framework.csproj",
+        "projectName": "OpenSim.Framework",
+        "projectPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Framework\\OpenSim.Framework.csproj",
+        "packagesPath": "C:\\Users\\zainh\\.nuget\\packages\\",
+        "outputPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\OpenSim\\Framework\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zainh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\ThirdParty\\SmartThreadPool\\SmartThreadPool.csproj": {
+                "projectPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\ThirdParty\\SmartThreadPool\\SmartThreadPool.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100-rc.2.25502.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\ThirdParty\\SmartThreadPool\\SmartThreadPool.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\ThirdParty\\SmartThreadPool\\SmartThreadPool.csproj",
+        "projectName": "SmartThreadPool",
+        "projectPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\ThirdParty\\SmartThreadPool\\SmartThreadPool.csproj",
+        "packagesPath": "C:\\Users\\zainh\\.nuget\\packages\\",
+        "outputPath": "D:\\OpenSim_Win_Builder_01112025\\opensimsource\\ThirdParty\\SmartThreadPool\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\zainh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100-rc.2.25502.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
