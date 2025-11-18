@@ -1,0 +1,57 @@
+{
+  "GlobalSettings": {
+    "BaseIP": "127.0.0.1",
+    "ExternalHostName": "SYSTEMIP",
+    "DatabaseType": "SQLite",
+    "MySQLConnectionString": "Data Source=localhost;Database=opensim;User ID=opensim;Password=***;Old Guids=true;",
+    "GridName": "My OpenSim Grid",
+    "GridNick": "MyGrid",
+    "WelcomeMessage": "Welcome to OpenSimulator",
+    "Economy": "false"
+  },
+  "StandaloneSettings": {
+    "HttpPort": "9000",
+    "InternalPort": "8003"
+  },
+  "RobustSettings": {
+    "PublicPort": "8002",
+    "PrivatePort": "8003",
+    "GridServerURI": "http://127.0.0.1:8002",
+    "GatekeeperURI": "http://127.0.0.1:8002"
+  },
+  "RegionSettings": {
+    "DefaultRegion": {
+      "RegionName": "DefaultRegion",
+      "RegionUUID": "00000000-0000-0000-0000-000000000000",
+      "Location": "1000,1000",
+      "InternalPort": "9000",
+      "ExternalHostName": "SYSTEMIP",
+      "MaxPrims": "45000",
+      "MaxAgents": "100"
+    },
+    "DefaultHGRegion": {
+      "RegionName": "DefaultHGRegion",
+      "RegionUUID": "00000000-0000-0000-0000-000000000001",
+      "Location": "1001,1000",
+      "InternalPort": "9001",
+      "ExternalHostName": "SYSTEMIP",
+      "MaxPrims": "45000",
+      "MaxAgents": "100"
+    },
+    "FallbackRegion": {
+      "RegionName": "FallbackRegion",
+      "RegionUUID": "00000000-0000-0000-0000-000000000002",
+      "Location": "1000,1001",
+      "InternalPort": "9002",
+      "ExternalHostName": "SYSTEMIP",
+      "MaxPrims": "45000",
+      "MaxAgents": "100"
+    }
+  },
+  "PathSettings": {
+    "BinPath": "bin",
+    "ConfigIncludePath": "bin/config-include",
+    "RegionsPath": "bin/Regions",
+    "BackupPath": "backups"
+  }
+}
