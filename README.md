@@ -1,7 +1,7 @@
 # ⚠️This is a feasibility study and has no practical use yet
 Status: It works.
 
-Configuration using Configure.exe/dll first test.
+Configuration using Configure.exe/dll doesn't work.
 
 Updating using Update.exe/dll doesn't work.
 
@@ -288,4 +288,5 @@ See [Migration Guide](DOTNET8_MIGRATION_GUIDE.md) for detailed steps.
 ## 🌟 Made with ❤️ for the OpenSim Community
 
 **Current Status**: ✅ Stable | **Version**: .NET 8 Migration | **Updated**: November 2025
+
 
