@@ -39,10 +39,6 @@
   </Configuration>
 
   <ReferencePath>../../bin/</ReferencePath>
-  
-  <Reference name="System"/>
-  <Reference name="System.Core"/>
-  <Reference name="System.Text.Json"/>
 
   <Files>
     <Match pattern="*.cs" recurse="false">
