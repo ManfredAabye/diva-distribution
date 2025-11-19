@@ -39,6 +39,9 @@ namespace Diva.Wifi
         {
             //m_log.DebugFormat("[Wifi]: DefaultRequest from {0}", env.TheRequest.IPEndPoint.ToString());
 
+            // Check if statistics need to be updated
+            CheckAndUpdateStatistics();
+
             SessionInfo sinfo;
             if (TryGetSessionInfo(env.TheRequest, out sinfo))
             {

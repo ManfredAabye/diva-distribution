@@ -583,6 +583,7 @@ namespace Diva.Wifi
         {
             return Services.SendEMailSync(to, cc, bcc, subject, message);
         }
+
         #endregion IWifiApp
     }
 

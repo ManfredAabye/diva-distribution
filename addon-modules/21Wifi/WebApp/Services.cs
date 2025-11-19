@@ -99,7 +99,7 @@ namespace Diva.Wifi
 
             m_ServerAdminPassword = webApp.RemoteAdminPassword;
             //m_log.DebugFormat("[Services]: RemoteAdminPassword is {0}", m_ServerAdminPassword);
-            m_LastStatisticsUpdate = new DateTime();
+            m_LastStatisticsUpdate = DateTime.MinValue; // Initialize to MinValue so first update always runs
 
             // Create the necessary services
             m_UserAccountService = new UserAccountService(config);
@@ -128,6 +128,121 @@ namespace Diva.Wifi
                 m_Client.EnableSsl = true;
             m_Client.Credentials = new NetworkCredential(m_WebApp.SmtpUsername, m_WebApp.SmtpPassword);
             m_Client.SendCompleted += new SendCompletedEventHandler(SendCompletedCallback);
+        }
+
+        public void CheckAndUpdateStatistics()
+        {
+            if (m_WebApp.StatisticsUpdateInterval == TimeSpan.Zero)
+                return;
+
+            DateTime now = DateTime.UtcNow;
+            if (m_LastStatisticsUpdate == DateTime.MinValue || (now - m_LastStatisticsUpdate) >= m_WebApp.StatisticsUpdateInterval)
+            {
+                m_log.InfoFormat("[Wifi]: CheckAndUpdateStatistics - updating now (last update: {0}, interval: {1})", 
+                    m_LastStatisticsUpdate == DateTime.MinValue ? "never" : m_LastStatisticsUpdate.ToString(), 
+                    m_WebApp.StatisticsUpdateInterval);
+                
+                m_LastStatisticsUpdate = now;
+                ComputeStatistics();
+            }
+        }
+
+        public void ComputeStatistics()
+        {
+            m_log.InfoFormat("[Wifi]: ComputeStatistics - starting statistics computation");
+            
+            try
+            {
+                // Update regions count
+                if (m_GridService != null)
+                {
+                    m_log.DebugFormat("[Wifi]: Getting regions list");
+                    // Use GetRegionRange to get all regions (0-65535 covers entire grid)
+                    List<GridRegion> regions = m_GridService.GetRegionRange(UUID.Zero, 0, 65535, 0, 65535);
+                    int regionsCount = regions != null ? regions.Count : 0;
+                    m_WebApp.Statistics["RegionsTotal"] = regionsCount;
+                    m_log.InfoFormat("[Wifi]: RegionsTotal = {0} (found {1} regions)", regionsCount, regionsCount);
+                }
+                else
+                {
+                    m_log.WarnFormat("[Wifi]: GridService is null");
+                }
+
+                // Update users count
+                if (m_UserAccountService != null)
+                {
+                    m_log.DebugFormat("[Wifi]: Getting users list");
+                    List<UserAccount> users = m_UserAccountService.GetUserAccounts(UUID.Zero, string.Empty);
+                    int usersCount = users != null ? users.Count : 0;
+                    m_WebApp.Statistics["UsersTotal"] = usersCount;
+                    m_log.InfoFormat("[Wifi]: UsersTotal = {0}", usersCount);
+                    
+                    // Update online users count
+                    if (m_PresenceService != null)
+                    {
+                        int onlineCount = 0;
+                        m_log.DebugFormat("[Wifi]: Checking online users");
+                        if (users != null)
+                        {
+                            foreach (UserAccount user in users)
+                            {
+                                PresenceInfo[] presences = m_PresenceService.GetAgents(new string[] { user.PrincipalID.ToString() });
+                                if (presences != null && presences.Length > 0)
+                                {
+                                    foreach (PresenceInfo p in presences)
+                                    {
+                                        if (p.RegionID != UUID.Zero)
+                                        {
+                                            onlineCount++;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        m_WebApp.Statistics["UsersInworld"] = onlineCount;
+                        m_log.InfoFormat("[Wifi]: UsersInworld = {0}", onlineCount);
+                    }
+                    else
+                    {
+                        m_log.WarnFormat("[Wifi]: PresenceService is null");
+                    }
+
+                    // Update active users (logged in during the specified period)
+                    if (m_GridUserService != null)
+                    {
+                        DateTime cutoff = DateTime.UtcNow.AddDays(-m_WebApp.StatisticsActiveUsersPeriod);
+                        int activeCount = 0;
+                        
+                        m_log.DebugFormat("[Wifi]: Checking active users (cutoff: {0})", cutoff);
+                        if (users != null)
+                        {
+                            foreach (UserAccount user in users)
+                            {
+                                GridUserInfo gridUser = m_GridUserService.GetGridUserInfo(user.PrincipalID.ToString());
+                                if (gridUser != null && gridUser.Login >= cutoff)
+                                    activeCount++;
+                            }
+                        }
+                        m_WebApp.Statistics["UsersActive"] = activeCount;
+                        m_log.InfoFormat("[Wifi]: UsersActive = {0}", activeCount);
+                    }
+                    else
+                    {
+                        m_log.WarnFormat("[Wifi]: GridUserService is null");
+                    }
+                }
+                else
+                {
+                    m_log.WarnFormat("[Wifi]: UserAccountService is null");
+                }
+
+                m_log.InfoFormat("[Wifi]: Statistics computation completed successfully");
+            }
+            catch (Exception e)
+            {
+                m_log.ErrorFormat("[Wifi]: Error computing statistics: {0}\n{1}", e.Message, e.StackTrace);
+            }
         }
 
         private void CreateGod()
@@ -265,26 +380,7 @@ namespace Diva.Wifi
             return m_Sessions.TryGetValue(sid, out session) && session.Account.PrincipalID.ToString() == uid;
         }
 
-        public void ComputeStatistics()
-        {
-            // Users in world
-            m_WebApp.Statistics["UsersInworld"] = m_GridUserService.GetOnlineUserCount();
-            
-            // For the other stats, let's check less often
-            DateTime now = DateTime.Now;
-            if (now - m_LastStatisticsUpdate < m_WebApp.StatisticsUpdateInterval)
-                return;
-            m_LastStatisticsUpdate = now;
 
-            // Total users
-            m_WebApp.Statistics["UsersTotal"] = m_UserAccountService.GetActiveAccountsCount(UUID.Zero, m_PendingIdentifier);
-
-            // Active users
-            m_WebApp.Statistics["UsersActive"] = m_GridUserService.GetActiveUserCount(m_WebApp.StatisticsActiveUsersPeriod);
-
-            // Total local regions
-            m_WebApp.Statistics["RegionsTotal"] = m_GridService.GetLocalRegionsCount(UUID.Zero);
-        }
 
 
         private static string _(string textId, Environment env)
